@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<h1> CONTACT US</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
+</form>

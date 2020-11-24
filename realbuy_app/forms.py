@@ -72,6 +72,10 @@
         class Meta:
             model = Property
             fields = ('sell_or_rent','property_type','image','city','address','location')
+            '''widgets = {
+                'sell_or_rent': forms.RadioSelect(attrs={'class':'sellorrent'})
+                
+            }'''
             
         SELLorRENT = [('1', 'Sell'), ('2', 'Rent')]
         sell_or_rent = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=SELLorRENT, class='sellorrent')
@@ -88,6 +92,10 @@
         class Meta:
             model = Property
             fields = ('price','bathroom','bedroom','built_up_area','built_up_unit','carpet_area','carpet_unit','resale_or_new','property_floor','ownership','total_floor','availability','description','date')
+            '''widgets = {
+                'built_up_unit': forms.Select(attrs={'class':'builtupunit'})
+                
+            }'''
             
         price = forms.CharField(widget=forms.NumberInput())
         bathroom = forms.CharField(widget=forms.NumberInput())

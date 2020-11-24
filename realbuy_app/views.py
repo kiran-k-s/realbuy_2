@@ -1,13 +1,24 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Property
+from .forms import AddForm1, AddForm2, ContactUsForm
 
 def home(request):
     return render(request, 'home.html',{})
 
+def CategoryViewRecent(request, cats):
+    category_property = Property.objects.filter(property_type=cats)
+    return render(request, 'recent.html', {'cats':cats, 'category_property':category_property})
+
+def CategoryViewFilter(request, cats):
+    category_property = Property.objects.filter(property_type=cats)
+    return render(request, 'filter.html', {'cats':cats, 'category_property':category_property})
+
+
 class RecentView(ListView):
     model = Property
     template_name = 'recent.html'
+    fields = ('sell_or_rent','image','city','address','location')
     ordering = ['-id']
     
 class DetailView(DetailView):
@@ -16,15 +27,19 @@ class DetailView(DetailView):
     
 class AddView1(CreateView):
     model = Property
+    form_class = AddForm1
     template_name = 'add1.html'
-    #fields = '__all__'
-    fields = ('sell_or_rent','property_type','image','city','address','location')
     
 class AddView2(CreateView):
     model = Property
+    form_class = AddForm2
     template_name = 'add2.html'
     #fields = '__all__'
-    fields = ('price','bathroom','bedroom','built_up_area','built_up_unit','carpet_area','carpet_unit','resale_or_new','property_floor','ownership','total_floor','availability','description','date')
+    
+class ContactUs(CreateView):
+    model = ContactUs
+    form_class = ContactUsForm
+    template_name = 'contactus.html'
     
 
     

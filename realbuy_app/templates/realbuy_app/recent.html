@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+
+<h1>Recent Properties</h1>
+<a href={% url 'category_recent' property.category %}>COMMERCIAL</a>
+<a href=furnishe homes>FURNISHED HOMES</a>
+<a href=plot>LAND&amp;PLOT</a>
+<a href=rental>RENTAL</a>
+{% for property in object_list %}
+    <li> {{ property.image }}</li>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent = 'Sell' %}
+        <div> ON RENT </div>
+    {% else %}
+        <div> TO SELL </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+
+{% endfor %}
+
+{% endblock %}
