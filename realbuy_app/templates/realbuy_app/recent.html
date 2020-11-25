@@ -4,7 +4,7 @@
 
 
 <h1>Recent Properties</h1>
-<a href={% url 'category_recent' property.category %}>COMMERCIAL</a>
+<a href="{% url 'category_recent' property.category|slugify %}">COMMERCIAL</a>
 <a href=furnishe homes>FURNISHED HOMES</a>
 <a href=plot>LAND&amp;PLOT</a>
 <a href=rental>RENTAL</a>

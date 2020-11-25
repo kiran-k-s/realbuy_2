@@ -110,7 +110,7 @@
         resale_or_new = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=RESALEorNEW, class='resaleornew')
         PROPERTY_FLOOR = [('1', '1'), ('2','2'), ('3','3'), ('4', '4')]
         property_floor = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=PROPERTY_FLOOR,class='propertyfloor')
-        ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'ownership', 'placeholder' : 'Ownership'}))
+        ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'value':'', 'id':'owner', 'type':'hidden'}))
         total_floor = forms.CharField(widget=forms.NumberInput())
         AVAILABILITY = [('R', 'Ready to Move'),('U', 'Under Construction'),]
         availability = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=AVAILABILITY, class='availability')

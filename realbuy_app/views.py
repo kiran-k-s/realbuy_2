@@ -9,8 +9,8 @@ def home(request):
     return render(request, 'home.html',{})
 
 def CategoryViewRecent(request, cats):
-    category_property = Property.objects.filter(property_type=cats)
-    return render(request, 'recent.html', {'cats':cats, 'category_property':category_property})
+    category_property = Property.objects.filter(property_type=cats.replace('-',' '))
+    return render(request, 'recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
 
 def CategoryViewFilter(request, cats):
     category_property = Property.objects.filter(property_type=cats)

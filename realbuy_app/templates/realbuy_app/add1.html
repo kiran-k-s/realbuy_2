@@ -10,4 +10,10 @@
     <button class='btn btn-secondary'>Next</button>
 </form>
 
+<script>
+    var name = "{{ user.username }}";
+    document.getElementById("owner").value = name;
+    
+</script>
+
 {% endblock %}
