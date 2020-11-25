@@ -1,0 +1,15 @@
+{% if user.is_authenticated %}
+<a class='nav-link' href="{% url 'edit profile' %}">Edit Profile</a>
+
+<h1> My properties </h1>
+  <a class='nav-link' href="{% url 'user_category' Property.ownership %}"></a>
+    <a class='nav-link' href="{% url 'update1' property.pk %}">Edit</a>
+    <a class='nav-link' href="{% url 'delete' property.pk %}">My Profile</a>
+
+<h1> My wishlist </h1>
+    user.wishlist
+
+{% else %}
+
+
+{% endif %}
