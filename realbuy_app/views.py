@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Property, ContactUs
 from .forms import AddForm1, AddForm2, ContactUsForm
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 
 
 def home(request):
@@ -22,6 +23,17 @@ class RecentView(ListView):
     template_name = 'recent.html'
     fields = ('sell_or_rent','image','city','address','location')
     ordering = ['-id']
+    
+    
+class FeaturedView(ListView):
+    model = Property
+    template_name = 'featured.html'
+    fields = ('sell_or_rent','image','price','bedroom', 'bathroom','location')
+    #stuff = get_object_or_404(Post, id=self.kwargs['pk'])
+    #total_likes = stuff.total_likes()
+    ordering = ['-likes.count()']
+    
+
     
 class DetailView(DetailView):
     model = Property
@@ -57,6 +69,20 @@ class DeleteView(DeleteView):
     model = Property
     template_name = 'delete.html'
     success_url = reverse_lazy('home')
+    
+def LikeView(request, pk):
+    post = get_object_or_404(Property, id=request.POST.get('post_id'))
+    liked = False
+    if post.likes.filter(id=request.user.id).exists()
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+        
+    return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
+    
+    
     
 
     

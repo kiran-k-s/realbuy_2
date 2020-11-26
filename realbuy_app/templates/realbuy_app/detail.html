@@ -1,0 +1,13 @@
+<a href="{% url 'home' %}">Back</a>
+
+
+<form action="{% url 'like_post' property.pk %}" method="POST">
+{% csrf_token %}
+{% if user.is_authenticated %}
+    {% if liked %}
+    <button type="submit", name="post_id", value="{{ property.id }}">Like</button>
+    {% else %}
+    <button type="submit", name="post_id", value="{{ property.id }}">Unlike</button>
+    {% endif %}
+{% endif %}
+</form>

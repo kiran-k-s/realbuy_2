@@ -5,6 +5,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('home', views.index, name='home'),
     path('recent', views.RecentView, name='recent'),
+    path('featured', views.FeaturedView, name='featured'),
     path('detail/<int:pk>', views.DetailView, name='detail')
     path('add1', views.AddView1, name='add1'),
     path('add2', views.AddView2, name='add2'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('update1/<int:pk>', views.UpdateView1, name='update1')
     path('update2/<int:pk>', views.UpdateView2, name='update2')
     path('delete/<int:pk>', views.DeleteView, name='delete')
+    path('like/<int:pk>', views.LikeView, name='like_post'),
     
     
     url(r'^api/contacts/$', views.contacts_list),

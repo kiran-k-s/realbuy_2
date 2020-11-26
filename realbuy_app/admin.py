@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Property
+from .models import Property,ContactUs,Profile
 from .forms import TypeAdminForm,FloorAdminForm
 
 
@@ -10,3 +10,6 @@ class FloorAdmin(admin.ModelAdmin):
     form = FloorAdminForm
     
 admin.site.register(Property, TypeAdmin, FloorAdmin)
+admin.site.register(ContactUs)
+admin.site.register(Profile)
+

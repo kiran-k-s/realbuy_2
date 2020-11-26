@@ -55,12 +55,18 @@ class Property(models.Model):
     
     description = models.Textfield()
     date = models.DateField.auto_now_add()
+    likes = models.ManyToManyField(User, related_name='realbuy_posts')
     
     def __str__(self)
         return self.description + '|' + str(self.ownership)
     
     def get_absolute_url(self):
         return reverse('detail' ,args=(str(self.id)))
+    
+    def total_likes(self):
+        return self.likes.count()
+    
+    
     
     
     
@@ -74,6 +80,19 @@ class ContactUs(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+    email = models.EmailField()
+    phone = models.CharField(max_length=15, blank=True)
+    address = models.Textfield()
+    
+    def __str__(self):
+        return str(self.user)
+    
     
     
     

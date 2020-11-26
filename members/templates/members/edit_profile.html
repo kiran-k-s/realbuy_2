@@ -1,0 +1,10 @@
+<h1>edit</h1>
+
+<br/>
+
+{{ user.profile.phone }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Update Profile</button>
+</form>
