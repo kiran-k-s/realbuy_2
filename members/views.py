@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
 from django.urls import reverse_lazy
-from .forms import RegisterForm, EditForm
+from .forms import RegisterForm, EditForm, PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView
 
 class UserRegisterView(generic.CreateView):

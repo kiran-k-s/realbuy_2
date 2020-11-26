@@ -1,33 +1,35 @@
-    from django import forms
-    from .models import Property
+from django import forms
+from .models import Property,ContactUs
     
-    PROPERTY_TYPE = (
+PROPERTY_TYPE = (
         ('C', 'Commercial'),
         ('F', 'Furnished Home'),
         ('L', 'Land and Plot'),
         ('R', 'Rental'),
-    )
+    )    
     
-    class TypeAdminForm(ModelForm):
+class TypeAdminForm(forms.ModelForm):
         property_type = forms.MultipleChoiceField(choices = PROPERTY_TYPE)
+        #property_type = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple(choices = PROPERTY_TYPE)
         
+        def clean_property_type(self):
+            property_type = self.cleaned_data['property_type']
+            if not property_type:
+                raise forms.ValidationError("...")
+
+            if len(property_type) > 4:
+                raise forms.ValidationError("...")
+
+            property_type = ''.join(property_type)
+            
         class Meta:
             model = Property
+            fields = ('property_type',)
             
-        def clean_property_type(self):
-        property_type = self.cleaned_data['property_type']
-        if not property_type:
-            raise forms.ValidationError("...")
-
-        if len(property_type) > 4:
-            raise forms.ValidationError("...")
-
-        property_type = ''.join(property_type)
-        return property_type
+        
     
     
-    
-    PROPERTY_FLOOR = (
+PROPERTY_FLOOR = (
         ('1', '1'),
         ('2', '2'),
         ('3', '3'),
@@ -48,15 +50,18 @@
         ('18', '18'),
         ('19', '19'),
         ('20', '20'),
-    )
+    )    
+
     
-    class FloorAdminForm(ModelForm):
+class FloorAdminForm(forms.ModelForm):
         property_floor = forms.MultipleChoiceField(choices = PROPERTY_FLOOR)
+        
         
         class Meta:
             model = Property
+            fields = ('property_floor',)
             
-        def clean_property_floor(self):
+        '''def clean_property_floor(self):
         property_floor = self.cleaned_data['property_floor']
         if not property_floor:
             raise forms.ValidationError("...")
@@ -65,10 +70,10 @@
             raise forms.ValidationError("...")
 
         property_floor = ''.join(property_floor)
-        return property_floor
+        return property_floor'''
     
     
-    class AddForm1(forms.ModelForm):
+class AddForm1(forms.ModelForm):
         class Meta:
             model = Property
             fields = ('sell_or_rent','property_type','image','city','address','location')
@@ -78,9 +83,9 @@
             }'''
             
         SELLorRENT = [('1', 'Sell'), ('2', 'Rent')]
-        sell_or_rent = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=SELLorRENT, class='sellorrent')
+        sell_or_rent = forms.ChoiceField(required=True, widget=forms.RadioSelect(attrs={'choices': 'SELLorRENT', 'class':'sellorrent'}))
         PROPERTY_TYPE = [('1', 'Commercial'), ('2','Furnished Home'), ('3','Land and Plot'), ('4', 'Rental')]
-        property_type = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=PROPERTY_TYPE,class='propertytype')
+        property_type = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple(attrs={'choices':'PROPERTY_TYPE','class':'propertytype'}))
         image = forms.ImageField()
         city = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'city', 'placeholder' : 'City'}))
         address = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'address', 'placeholder' : 'Address'}))
@@ -88,10 +93,10 @@
         
         
         
-    class AddForm2(forms.ModelForm):
+class AddForm2(forms.ModelForm):
         class Meta:
             model = Property
-            fields = ('price','bathroom','bedroom','built_up_area','built_up_unit','carpet_area','carpet_unit','resale_or_new','property_floor','ownership','total_floor','availability','description','date')
+            fields = ('price','bathroom','bedroom','built_up_area','built_up_unit','carpet_area','carpet_unit','resale_or_new','property_floor','ownership','total_floor','availability','description')
             '''widgets = {
                 'built_up_unit': forms.Select(attrs={'class':'builtupunit'})
                 
@@ -102,24 +107,24 @@
         bedroom = forms.CharField(widget=forms.NumberInput())
         built_up_area = forms.CharField(widget=forms.NumberInput())
         BUILTupUNIT = [('1', 'm\N{SUPERSCRIPT TWO}'),('2', 'cm\N{SUPERSCRIPT TWO}'),('3', 'mm\N{SUPERSCRIPT TWO}'),]
-        built_up_unit = forms.ChoiceField(required=True, widget=forms.Select, choices=BUILTupUNIT, class='builtupunit')
+        built_up_unit = forms.ChoiceField(required=True, widget=forms.Select(attrs={'choices':'BUILTupUNIT','class':'builtupunit'}))
         carpet_area = forms.CharField(widget=forms.NumberInput())
         CARPET_UNIT = [('1', 'm\N{SUPERSCRIPT TWO}'),('2', 'cm\N{SUPERSCRIPT TWO}'),('3', 'mm\N{SUPERSCRIPT TWO}'),]
-        carpet_unit = forms.ChoiceField(required=True, widget=forms.Select, choices=CARPET_UNIT, class='carpetunit')
+        carpet_unit = forms.ChoiceField(required=True, widget=forms.Select(attrs={'choices':'CARPET_UNIT','class':'carpetunit'}))
         RESALEorNEW = [('1', 'Resale'), ('2', 'New')]
-        resale_or_new = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=RESALEorNEW, class='resaleornew')
+        resale_or_new = forms.ChoiceField(required=True, widget=forms.RadioSelect(attrs={'choices':'RESALEorNEW', 'class':'resaleornew'}))
         PROPERTY_FLOOR = [('1', '1'), ('2','2'), ('3','3'), ('4', '4')]
-        property_floor = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple,choices=PROPERTY_FLOOR,class='propertyfloor')
+        property_floor = forms.MultipleChoiceField(required=True,widget=forms.CheckboxSelectMultiple(attrs={'choices':'PROPERTY_FLOOR','class':'propertyfloor'}))
         ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'value':'', 'id':'owner', 'type':'hidden'}))
         total_floor = forms.CharField(widget=forms.NumberInput())
         AVAILABILITY = [('R', 'Ready to Move'),('U', 'Under Construction'),]
-        availability = forms.ChoiceField(required=True, widget=forms.RadioSelect, choices=AVAILABILITY, class='availability')
+        availability = forms.ChoiceField(required=True, widget=forms.RadioSelect(attrs={'choices':'AVAILABILITY', 'class':'availability'}))
         description = forms.CharField(min_length=20, widget=forms.Textarea(attrs={"class":"description" ,"placeholder":"Description"}))
         
         
         
                                                    
-    class ContactUsForm(forms.Form):
+class ContactUsForm(forms.Form):
         class Meta:
             model = ContactUs
             fields = ('name','email','phone','message')

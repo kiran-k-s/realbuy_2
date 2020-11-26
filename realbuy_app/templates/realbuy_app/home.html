@@ -1,9 +1,39 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Home</title></head>
+<body>
+    
 {% if user.is_authenticated %}
-  <a class='nav-link' href="{% url 'add1' %}">Add Property</a>
     <a class='nav-link' href="{% url 'logout' %}">Logout</a>
     <a class='nav-link' href="{% url 'profile' %}">My Profile</a>
-
+    
 {% else %}
-
+    
+<a href='{% url 'home' %}'>
+<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>
+</a>
+<a href='{% url 'about_us' %}'>
+<button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>
+</a>
+<a href='{% url 'featured' %}'>
+<button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button>
+</a>
+<a href='{% url 'recent' %}'>
+<button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button>
+</a>
+<a href='{% url 'add1' %}'>
+<button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>
+</a>
+<a href='{% url 'contactus' %}'>
+<button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
+</a>
+<a href='{% url 'login' %}'>
+<button type="button" class="home-top-right" id="home-top-right-7">LOGIN</button>
+</a>
 
 {% endif %}
+
+</body>
+</html>

@@ -9,7 +9,10 @@ class TypeAdmin(admin.ModelAdmin):
 class FloorAdmin(admin.ModelAdmin):
     form = FloorAdminForm
     
-admin.site.register(Property, TypeAdmin, FloorAdmin)
+class PropertyExtendAdmin(TypeAdmin, FloorAdmin):
+    pass
+    
+admin.site.register(Property, PropertyExtendAdmin)
 admin.site.register(ContactUs)
 admin.site.register(Profile)
 

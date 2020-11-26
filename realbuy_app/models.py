@@ -53,11 +53,11 @@ class Property(models.Model):
     )
     availability = models.CharField(max_length=1,choices=AVAILABILITY)
     
-    description = models.Textfield()
-    date = models.DateField.auto_now_add()
+    description = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='realbuy_posts')
     
-    def __str__(self)
+    def __str__(self):
         return self.description + '|' + str(self.ownership)
     
     def get_absolute_url(self):
@@ -76,7 +76,7 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
     phone = models.CharField(max_length=15, blank=True)
-    message = models.Textfield()
+    message = models.TextField()
     
     def __str__(self):
         return self.name
@@ -88,7 +88,7 @@ class Profile(models.Model):
     image = models.ImageField(upload_to='images/')
     email = models.EmailField()
     phone = models.CharField(max_length=15, blank=True)
-    address = models.Textfield()
+    address = models.TextField()
     
     def __str__(self):
         return str(self.user)

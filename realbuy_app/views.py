@@ -6,8 +6,12 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
 
-def home(request):
-    return render(request, 'home.html',{})
+def Home(request):
+    return render(request, 'realbuy_app/home.html',{})
+
+def AboutUs(request):
+    return render(request, 'realbuy_app/aboutus.html',{})
+
 
 def CategoryViewRecent(request, cats):
     category_property = Property.objects.filter(property_type=cats.replace('-',' '))
@@ -73,7 +77,7 @@ class DeleteView(DeleteView):
 def LikeView(request, pk):
     post = get_object_or_404(Property, id=request.POST.get('post_id'))
     liked = False
-    if post.likes.filter(id=request.user.id).exists()
+    if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
         liked = False
     else:
