@@ -9,7 +9,7 @@
     <a class='nav-link' href="{% url 'logout' %}">Logout</a>
     <a class='nav-link' href="{% url 'profile' %}">My Profile</a>
     
-{% else %}
+{% endif %}
     
 <a href='{% url 'home' %}'>
 <button type="button" class="home-top-right" id="home-top-right-1">HOME</button>
@@ -33,7 +33,6 @@
 <button type="button" class="home-top-right" id="home-top-right-7">LOGIN</button>
 </a>
 
-{% endif %}
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from multiselectfield import MultiSelectField
 
 class Property(models.Model):
     SELLorRENT = (
@@ -9,7 +10,13 @@ class Property(models.Model):
     )
     sell_or_rent = models.CharField(max_length=1, choices=SELLorRENT)
     
-    property_type = models.CharField(max_length=4)
+    PROPERTY_TYPE = (
+        ('commercial', 'Commercial'),
+        ('furnished home', 'Furnished Home'),
+        ('land and plot', 'Land and Plot'),
+        ('rental', 'Rental'),
+    )    
+    property_type = MultiSelectField(choices = PROPERTY_TYPE)
     
     image = models.ImageField(upload_to='images/')
     city = models.CharField(max_length=30)
@@ -23,7 +30,7 @@ class Property(models.Model):
     BUILTupUNIT = (
         ('1', 'm\N{SUPERSCRIPT TWO}'),
         ('2', 'cm\N{SUPERSCRIPT TWO}'),
-        ('3', 'mm\N{SUPERSCRIPT TWO}'),
+        ('3', 'sq.ft'),
     )
     built_up_unit = models.CharField(max_length=1, choices=BUILTupUNIT)
     
@@ -32,7 +39,7 @@ class Property(models.Model):
     CARPET_UNIT = (
         ('1', 'm\N{SUPERSCRIPT TWO}'),
         ('2', 'cm\N{SUPERSCRIPT TWO}'),
-        ('3', 'mm\N{SUPERSCRIPT TWO}'),
+        ('3', 'sq.ft'),
     )
     carpet_unit = models.CharField(max_length=1, choices=CARPET_UNIT)
     
@@ -43,7 +50,29 @@ class Property(models.Model):
     )
     resale_or_new = models.CharField(max_length=1,choices=RESALEorNEW, default=('R', 'Resale'))
     
-    property_floor = models.CharField(max_length=20)
+    PROPERTY_FLOOR = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9'),
+        ('10', '10'),
+        ('11', '11'),
+        ('12', '12'),
+        ('13', '13'),
+        ('14', '14'),
+        ('15', '15'),
+        ('16', '16'),
+        ('17', '17'),
+        ('18', '18'),
+        ('19', '19'),
+        ('20', '20'),
+    )    
+    property_floor = MultiSelectField(choices = PROPERTY_FLOOR)
     ownership = models.ForeignKey(User, on_delete=models.CASCADE)
     total_floor = models.IntegerField()
     

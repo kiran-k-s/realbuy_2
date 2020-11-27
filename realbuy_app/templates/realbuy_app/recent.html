@@ -1,25 +1,47 @@
-{% extends 'base2.html' %}
-
-{% block content %}
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Recent Properties</title></head>
+<body>
 
 
 <h1>Recent Properties</h1>
-<a href="{% url 'category_recent' property.category|slugify %}">COMMERCIAL</a>
-<a href=furnishe homes>FURNISHED HOMES</a>
-<a href=plot>LAND&amp;PLOT</a>
-<a href=rental>RENTAL</a>
+<a href="{% url 'category_recent' 'commercial' %}">COMMERCIAL</a>
+<a href="{% url 'category_recent' 'furnished home'|slugify %}">FURNISHED HOMES</a>
+<a href="{% url 'category_recent' 'land and plot'|slugify %}">LAND&amp;PLOT</a>
+<a href="{% url 'category_recent' 'rental' %}">RENTAL</a>   
 {% for property in object_list %}
-    <li> {{ property.image }}</li>
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
     <li> {{ property.location}}</li>
     <li> {{ property.city }}</li>
     <li> {{ property.address }}</li>
-    {% if property.sell_or_rent = 'Sell' %}
-        <div> ON RENT </div>
+    {% if property.sell_or_rent == 'S' %}
+        <div> ON SALE </div>
     {% else %}
-        <div> TO SELL </div>
+        <div> ON RENT </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+
+{% endfor %}
+{% for property in category_property %}
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent == 'S' %}
+        <div> ON SALE </div>
+    {% else %}
+        <div> ON RENT </div>
     {% endif %}
     <li> {{ property.price }}</li>
 
 {% endfor %}
 
-{% endblock %}
+
+</body>
+</html>

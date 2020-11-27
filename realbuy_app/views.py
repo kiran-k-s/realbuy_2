@@ -15,7 +15,7 @@ def AboutUs(request):
 
 def CategoryViewRecent(request, cats):
     category_property = Property.objects.filter(property_type=cats.replace('-',' '))
-    return render(request, 'recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
+    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
 
 def CategoryViewFilter(request, cats):
     category_property = Property.objects.filter(property_type=cats)
@@ -24,7 +24,7 @@ def CategoryViewFilter(request, cats):
 
 class RecentView(ListView):
     model = Property
-    template_name = 'recent.html'
+    template_name = 'realbuy_app/recent.html'
     fields = ('sell_or_rent','image','city','address','location')
     ordering = ['-id']
     

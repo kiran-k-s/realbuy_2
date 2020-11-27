@@ -1,11 +1,11 @@
 from . import views
 from django.urls import path
-from .views import AddView1,AddView2
+from .views import AddView1,AddView2,RecentView
 
 urlpatterns = [
     path('', views.Home, name='home'),
     path('about_us/', views.AboutUs, name='about_us'),
-    path('recent/', views.RecentView, name='recent'),
+    path('recent/', RecentView.as_view(), name='recent'),
     path('featured/', views.FeaturedView, name='featured'),
     path('detail/<int:pk>', views.DetailView, name='detail'),
     path('add1/', AddView1.as_view, name='add1'),
