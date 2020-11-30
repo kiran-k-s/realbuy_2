@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Login</title></head>
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class='btn btn-secondary'>Login</button>
+    <h4>New User?<a href="{% url 'register' %}" class="btn btn-link">Register Here</a></h4>
+</form>
+    
+</body>
+</html>

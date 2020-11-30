@@ -1,13 +1,24 @@
-{% extends 'base2.html' %}
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Add Property</title></head>
+<body>
 
-{% block content %}
+
+<h1>Add Property</h1>
 
 
 
-<form method="POST">
+<form method="post">
     {% csrf_token %}
-    {{ form as_p }}
-    <button class='btn btn-secondary'>POST AD</button>
+    {{ form.as_p }}
+<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
+
+    
 </form>
 
-{% endblock %}
+
+
+</body>
+</html>

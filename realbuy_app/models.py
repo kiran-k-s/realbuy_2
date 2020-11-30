@@ -5,10 +5,10 @@ from multiselectfield import MultiSelectField
 
 class Property(models.Model):
     SELLorRENT = (
-        ('S', 'Sell'),
-        ('R', 'Rent'),
+        ('sell', 'Sell'),
+        ('rent', 'Rent'),
     )
-    sell_or_rent = models.CharField(max_length=1, choices=SELLorRENT)
+    sell_or_rent = models.CharField(max_length=100, choices=SELLorRENT)
     
     PROPERTY_TYPE = (
         ('commercial', 'Commercial'),
@@ -28,27 +28,27 @@ class Property(models.Model):
     built_up_area = models.FloatField()
     
     BUILTupUNIT = (
-        ('1', 'm\N{SUPERSCRIPT TWO}'),
-        ('2', 'cm\N{SUPERSCRIPT TWO}'),
-        ('3', 'sq.ft'),
+        ('cm', 'sq.cm'),
+        ('m', 'sq.m'),
+        ('ft', 'sq.ft'),
     )
-    built_up_unit = models.CharField(max_length=1, choices=BUILTupUNIT)
+    built_up_unit = models.CharField(max_length=100, choices=BUILTupUNIT)
     
     carpet_area = models.FloatField()
     
     CARPET_UNIT = (
-        ('1', 'm\N{SUPERSCRIPT TWO}'),
-        ('2', 'cm\N{SUPERSCRIPT TWO}'),
-        ('3', 'sq.ft'),
+        ('cm', 'sq.cm'),
+        ('m', 'sq.m'),
+        ('ft', 'sq.ft'),
     )
-    carpet_unit = models.CharField(max_length=1, choices=CARPET_UNIT)
+    carpet_unit = models.CharField(max_length=100, choices=CARPET_UNIT)
     
     
     RESALEorNEW = (
-        ('R', 'Resale'),
-        ('N', 'New Booking'),
+        ('resale', 'Resale'),
+        ('new', 'New Booking'),
     )
-    resale_or_new = models.CharField(max_length=1,choices=RESALEorNEW, default=('R', 'Resale'))
+    resale_or_new = models.CharField(max_length=100,choices=RESALEorNEW, default=('resale', 'Resale'))
     
     PROPERTY_FLOOR = (
         ('1', '1'),
@@ -77,10 +77,10 @@ class Property(models.Model):
     total_floor = models.IntegerField()
     
     AVAILABILITY = (
-        ('R', 'Ready to Move'),
-        ('U', 'Under Construction'),
+        ('ready to move', 'Ready to Move'),
+        ('under construction', 'Under Construction'),
     )
-    availability = models.CharField(max_length=1,choices=AVAILABILITY)
+    availability = models.CharField(max_length=100,choices=AVAILABILITY)
     
     description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)

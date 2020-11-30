@@ -5,10 +5,24 @@ from django import forms
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'id':'email-register'}))
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'id':'username'}))
+    password1 = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'id':'password1'}))
+    password2 = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'id':'password2'}))
+    
     
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+        
+        
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+        
         
 class EditForm(UserChangeForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'id':'email-register'}))

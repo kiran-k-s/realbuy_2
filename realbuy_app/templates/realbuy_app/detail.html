@@ -1,6 +1,22 @@
-<a href="{% url 'home' %}">Back</a>
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Details</title></head>
+<body>
 
+<a href="{% url 'home' %}">CLOSE</a>
+    
 
+    
+    <li> {{ property.location}}</li>
+    <li> {{ property.price}}</li>
+    <li> {{ property.built_up_area}}</li>
+    <li> {{ property.bedroom}}</li>
+    <li> {{ property.bathroom}}</li>
+    <li> {{ property.description}}</li>
+    
+    
 <form action="{% url 'like_post' property.pk %}" method="POST">
 {% csrf_token %}
 {% if user.is_authenticated %}
@@ -11,3 +27,9 @@
     {% endif %}
 {% endif %}
 </form>
+
+    
+ 
+
+</body>
+</html>

@@ -1,10 +1,26 @@
-{% extends 'base2.html' %}
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Contact Us</title></head>
+<body>
 
-{% block content %}
 
-<h1> CONTACT US</h1>
+<h1>Contact Us</h1>
+
+
+
 <form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
+    {{ form.as_p }}
+    <a href='{% url 'contactus' %}'>
+<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
+
+</a>
+    
 </form>
+
+
+
+</body>
+</html>

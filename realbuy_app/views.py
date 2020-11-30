@@ -4,6 +4,7 @@ from .models import Property, ContactUs
 from .forms import AddForm1, AddForm2, ContactUsForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required 
 
 
 def Home(request):
@@ -39,19 +40,20 @@ class FeaturedView(ListView):
     
 
     
-class DetailView(DetailView):
+class DetailedView(DetailView):
     model = Property
-    template_name = 'detail.html'
+    template_name = 'realbuy_app/detail.html'
     
-class AddView1(CreateView):
-    model = Property
-    form_class = AddForm1
-    template_name = 'add1.html'
+@login_required    
+def AddView1(request):
+    form = AddForm1(request.POST or None)
+    return render(request,"realbuy_app/add1.html",{'form':form})
+    
     
 class AddView2(CreateView):
     model = Property
     form_class = AddForm2
-    template_name = 'add2.html'
+    template_name = 'realbuy_app/add2.html'
     #fields = '__all__'
     
 class ContactUs(CreateView):
