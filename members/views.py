@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
 from django.urls import reverse_lazy
@@ -29,7 +29,7 @@ def UserLoginView(request):
         else:
             print("error....")
             
-    return render(request, "members/login_page.html",context)
+    return render(request, "members/login.html",context)
 
     
 class UserEditView(generic.UpdateView):

@@ -24,6 +24,7 @@ class AddForm1(forms.Form):
             model = Property
             fields = ('sell_or_rent','property_type','image','city','address','location')
             
+            
         
         
 class AddForm2(forms.ModelForm):
@@ -34,10 +35,10 @@ class AddForm2(forms.ModelForm):
         bedroom = forms.CharField(widget=forms.NumberInput())
         built_up_area = forms.CharField(widget=forms.NumberInput())
         BUILTupUNIT = [('cm', 'sq.cm'),('m', 'sq.m'),('ft', 'sq.ft')]
-        built_up_unit = forms.ChoiceField(required=True, widget=forms.Select(attrs={'choices':'BUILTupUNIT','class':'builtupunit'}))
+        built_up_unit = forms.ChoiceField(choices=BUILTupUNIT, widget=forms.Select(attrs={ 'class':'builtupunit'}))
         carpet_area = forms.CharField(widget=forms.NumberInput())
         CARPET_UNIT = [('cm', 'sq.cm'),('m', 'sq.m'),('ft', 'sq.ft')]
-        carpet_unit = forms.ChoiceField(required=True, widget=forms.Select(attrs={'choices':'CARPET_UNIT','class':'carpetunit'}))
+        carpet_unit = forms.ChoiceField(choices=CARPET_UNIT, widget=forms.Select(attrs={ 'class':'carpetunit'}))
         RESALEorNEW = [('resale', 'Resale'), ('new', 'New Booking')]
         resale_or_new = forms.ChoiceField(choices=RESALEorNEW, widget=forms.RadioSelect(attrs={ 'class':'resaleornew'}))
         
@@ -45,7 +46,7 @@ class AddForm2(forms.ModelForm):
         property_floor = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                           choices=PROPERTY_FLOOR)
 
-        ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'value':'', 'id':'owner', 'type':'hidden'}))
+        #ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'value':'', 'id':'owner','readonly':True}))
         total_floor = forms.CharField(widget=forms.NumberInput())
         AVAILABILITY = [('ready to move', 'Ready to Move'),('under construction', 'Under Construction'),]
         availability = forms.ChoiceField(choices=AVAILABILITY, widget=forms.RadioSelect(attrs={ 'class':'availability'}))
@@ -54,6 +55,9 @@ class AddForm2(forms.ModelForm):
         class Meta:
             model = Property
             fields = ('price','bathroom','bedroom','built_up_area','built_up_unit','carpet_area','carpet_unit','resale_or_new','property_floor','ownership','total_floor','availability','description')
+            widgets = {
+                'ownership': forms.TextInput(attrs={'value':'', 'id':'owner','readonly':True})
+            }
             
         
         
