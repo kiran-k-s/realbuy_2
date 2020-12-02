@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'realbuy_app',
     'members',
     'multiselectfield',
+    'select2',
 ]
 
 MIDDLEWARE = [

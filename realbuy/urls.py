@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('',include('realbuy_app.urls')),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    #url(r'^select2/', include('select2.urls')),
     
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

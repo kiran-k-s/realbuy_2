@@ -15,7 +15,8 @@ def AboutUs(request):
 
 
 def CategoryViewRecent(request, cats):
-    category_property = Property.objects.filter(property_type=cats.replace('-',' '))
+    cats2 = cats + ','
+    category_property = Property.objects.filter(property_type = cats2.replace('-',' ').split(','))
     return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
 
 def CategoryViewFilter(request, cats):
@@ -44,7 +45,7 @@ class DetailedView(DetailView):
     model = Property
     template_name = 'realbuy_app/detail.html'
     
-@login_required    
+@login_required(login_url='/login_page/')    
 def AddView1(request):
     form = AddForm1(request.POST or None)
     return render(request,"realbuy_app/add1.html",{'form':form})
@@ -54,7 +55,7 @@ class AddView2(CreateView):
     model = Property
     form_class = AddForm2
     template_name = 'realbuy_app/add2.html'
-    #fields = '__all__'
+    success_url = reverse_lazy('home')
     
 class ContactUs(CreateView):
     model = ContactUs

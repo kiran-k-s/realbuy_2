@@ -1,5 +1,7 @@
 from django import forms
 from .models import Property,ContactUs
+#from select2.forms import Select2MultipleWidget
+from django.core.exceptions import FieldDoesNotExist
 
     
     
@@ -43,10 +45,11 @@ class AddForm2(forms.ModelForm):
         resale_or_new = forms.ChoiceField(choices=RESALEorNEW, widget=forms.RadioSelect(attrs={ 'class':'resaleornew'}))
         
         PROPERTY_FLOOR = [('1', '1'), ('2','2'), ('3','3'), ('4', '4'), ('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),('11','11'),('12','12'),('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20')]
-        property_floor = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
-                                          choices=PROPERTY_FLOOR)
+        #property_floor = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                          #choices=PROPERTY_FLOOR)
+        #property_floor = forms.MultipleChoiceField(choices=PROPERTY_FLOOR,widget=Select2MultipleWidget)
 
-        #ownership = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'value':'', 'id':'owner','readonly':True}))
+
         total_floor = forms.CharField(widget=forms.NumberInput())
         AVAILABILITY = [('ready to move', 'Ready to Move'),('under construction', 'Under Construction'),]
         availability = forms.ChoiceField(choices=AVAILABILITY, widget=forms.RadioSelect(attrs={ 'class':'availability'}))
@@ -58,6 +61,7 @@ class AddForm2(forms.ModelForm):
             widgets = {
                 'ownership': forms.TextInput(attrs={'value':'', 'id':'owner','readonly':True})
             }
+            
             
         
         
