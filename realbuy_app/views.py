@@ -5,6 +5,7 @@ from .forms import AddForm1, AddForm2, ContactUsForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
+from django.db.models import Q
 
 
 def Home(request):
@@ -15,10 +16,9 @@ def AboutUs(request):
 
 
 def CategoryViewRecent(request, cats):
-    cats2 = cats + ','
-    category_property = Property.objects.filter(property_type = cats2.replace('-',' ').split(','))
+    category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
     return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
-
+#value = [item.strip() for item in value.split(',') if item.strip()]
 def CategoryViewFilter(request, cats):
     category_property = Property.objects.filter(property_type=cats)
     return render(request, 'filter.html', {'cats':cats, 'category_property':category_property})
