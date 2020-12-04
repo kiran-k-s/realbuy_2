@@ -17,9 +17,9 @@
         background: url('{% static "realbuy_app/images/bg.png" %}') no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
-        -o-background-size: cover; 
-        width :100%;
-        height:100%;  
+        -o-background-size: cover;
+        background-size: cover;
+    }
     
     
     
@@ -38,12 +38,10 @@
 </head>
     
 <body>
-
 <img src="{% static 'realbuy_app/images/logo.png' %}" id="logo">
 
 <span id="welcome">Welcome to realbuy</span>
 <span id="welcome-sub">Realbuy is a real estate firm with a vision to create luxurious living spaces that surpass the expectations of customers. Although recently launched the firm is driven with an instinct and far stretching insight that improves the real estate offerings in the city...</span>
-    
 <a href='{% url 'home' %}'>
 <button type="button" id="home-filter1" class="home-filter">SALE</button>
 </a>
@@ -71,16 +69,14 @@
     
 {% if user.is_authenticated %}
     <a href='{% url 'logout' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-logout" style="left: 1843px;
-    width: 48px;" >LOGOUT</button>
+    <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
     <a href='{% url 'profile' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-profile" style="height: 24px;
-    top: 28px; left: 1843px; width: 48px; font-size:10px;">PROFILE</button>
+    <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
     </a>
 {% else %}
     <a href='{% url 'login_page' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-login">LOGIN</button>
+    <button type="button" class="home-top-right" id="home-login">LOGIN</button>
     </a>
    
 {% endif %}
