@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Search results</title>
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Google fonts -->
+    
+<style>
+    @font-face {
+    font-family: 'Antipasto';
+    src: local('Antipasto'),
+                        url('{% static 'realbuy_app/fonts/Antipasto.ttf' %} ');
+    }
+</style>
+    
+<style type="text/css">
+    
+    body { 
+        background: url('{% static "realbuy_app/images/bg.png" %}') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    
+    
+         
+</style>
+    <!-- Custom styles for this template -->
+<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
+</head>
+    
+<body>
+<img src="{% static 'realbuy_app/images/logo.png' %}" id="filter-logo">    
+<h1>Search Results</h1>
+    
+{% if user.is_authenticated %}
+    <a href='{% url 'logout' %}'>
+    <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
+    </a>
+    <a href='{% url 'profile' %}'>
+    <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
+    </a>
+{% else %}
+    <a href='{% url 'login_page' %}'>
+    <button type="button" class="home-top-right" id="home-login">LOGIN</button>
+    </a>
+   
+{% endif %}
+    
+<a href='{% url 'home' %}'>
+<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>
+</a>
+<a href='{% url 'about_us' %}'>
+<button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>
+</a>
+<a href='{% url 'featured' %}'>
+<button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button>
+</a>
+<a href='{% url 'recent' %}'>
+<button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button>
+</a>
+<a href='{% url 'add1' %}'>
+<button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>
+</a>
+<a href='{% url 'contactus' %}'>
+<button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
+</a>
+    
+<form method="get" action="{% url 'category_filter2' %}">
+      <input type="text" list="location" placeholder="LOCATION(ANY)" />
+      <datalist id="location">
+            <option value="edappal">Edappal</option>
+            <option value="trivandrum">Trivandrum</option>
+            <option value="thrissur">Thrissur</option>
+            <option value="ernamkulam">Ernamkulam</option>
+      </datalist>
+      
+      <select id="property_status" name="property_status" placeholder="PROPERTY STATUS">
+      <option hidden disabled selected value>PROPERTY STATUS</option>
+      <option value="ready to move">Ready to move</option>
+      <option value="under construction">Under Construction</option>
+      <option value="sell">Sell</option>
+      <option value="rent">Rent</option>
+      </select>
+    
+      <select id="areamin" name="areamin" placeholder="AREA MIN SQUAREFEET">
+      <option hidden disabled selected value>AREA MIN SQUAREFEET</option>
+      <option value="1000">1000</option>
+      <option value="5000">5000</option>
+      <option value="10000"> 10000</option>
+      <option value="100000">100000</option>
+      </select>
+    
+      <select id="areamax" name="areamax" placeholder="AREA MAX SQUAREFEET">
+      <option hidden disabled selected value>AREA MAX SQUAREFEET</option>
+      <option value="1000"> 1000</option>
+      <option value="5000"> 5000</option>
+          <option value="10000">10000</option>
+      <option value="100000">100000</option>
+      </select>
+    
+    
+      <button type="submit" id="filter-submit">SEARCH</button>
+</form>
+    
+
+<a href="{% url 'category_filter1' 'commercial' %}">COMMERCIAL</a>
+<a href="{% url 'category_filter1' 'furnished home'|slugify %}">FURNISHED HOMES</a>
+<a href="{% url 'category_filter1' 'land and plot'|slugify %}">LAND&amp;PLOT</a>
+<a href="{% url 'category_filter1' 'rental' %}">RENTAL</a>   
+{% if query_home %}
+{% for property in query_home %}
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent == 'sell' %}
+        <div> ON SALE </div>
+    {% else %}
+        <div> ON RENT </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+{% endfor %}
+{% endif %}
+{% for property in category_property_home %}
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent == 'sell' %}
+        <div> ON SALE </div>
+    {% else %}
+        <div> ON RENT </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+{% endfor %}
+{% for property in query_filter %}
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent == 'sell' %}
+        <div> ON SALE </div>
+    {% else %}
+        <div> ON RENT </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+{% endfor %}
+{% for property in category_property_filter %}
+    <a href="{% url 'detail' property.id %}">
+            <img class ="card-img-top" src="{{property.image.url}}">
+           </a>
+    <li> {{ property.location}}</li>
+    <li> {{ property.city }}</li>
+    <li> {{ property.address }}</li>
+    {% if property.sell_or_rent == 'sell' %}
+        <div> ON SALE </div>
+    {% else %}
+        <div> ON RENT </div>
+    {% endif %}
+    <li> {{ property.price }}</li>
+
+{% endfor %}
+    
+<img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
+<img src="{% static 'realbuy_app/images/twitter.png' %}" id="home-twitter">
+<img src="{% static 'realbuy_app/images/google.png' %}" id="home-google">
+    
+<span id="home-copyright">&copy; 2016. realbuy.com. All rights reserved.</span>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
+
+    

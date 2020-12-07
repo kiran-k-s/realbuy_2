@@ -1,31 +1,37 @@
 {% extends "realbuy_app/home.html" %}
-{% block title %}
-{% endblock %}
-{% block content %}
-{% endblock %}
-<!doctype html>
-<html lang="en">
 {% load static %}
-    
-<head><title>Contact Us</title></head>
-<body>
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script src="{% static 'realbuy_app/scripts/contactus.js' %}"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>  
 
 
 <h1>Contact Us</h1>
-
-
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <a href='{% url 'contactus' %}'>
-<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
-
-</a>
     
+<form class="form-add_data" id="cform" method="POST">  
+        {% csrf_token %}
+            
+   
+
+        
+        <input type="text" id="inputName" placeholder="Name"  onblur="nameValidate();" required></input>
+        <div style="padding-left:39px;" class="error_msg" id="nameError"></div>
+        <input type="email" id="inputEmail" placeholder="Email address" required onblur="mailValidate();">
+        <div style="padding-left:39px;" class="error_msg" id="mailError"></div>
+        <input type="number" id="inputPhone" placeholder="Phone Number" required onblur="numberValidate();">
+        <div style="padding-left:39px;" class="error_msg" id="phoneError"></div>
+        <textarea type="text" id="inputMessage" placeholder="Description" required onblur="messageValidate();"></textarea>
+        <div style="padding-left:39px;" class="error_msg" id="descriptionError"></div>
+
+        
+        <button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
 </form>
+                    
+                    
+<div style="padding-left:39px;" class="error_msg" id="success"></div>     
 
 
 
-</body>
-</html>
+{% endblock %}

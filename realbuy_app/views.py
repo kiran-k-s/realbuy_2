@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
 from django.db.models import Q
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 
 def Home(request):
@@ -14,14 +16,48 @@ def Home(request):
 def AboutUs(request):
     return render(request, 'realbuy_app/aboutus.html',{})
 
+def CategoryViewHome1(request, cats):
+    category_property_home = Property.objects.filter(Q(sell_or_rent__contains=cats)|Q(availability__contains=cats.replace('-',' '))).distinct()
+    return render(request, 'realbuy_app/filter.html', {'cats':cats.title().replace('-',' '), 'category_property_home':category_property_home})
+
+def CategoryViewHome2(request):
+    qs = Property.objects.all()
+    search_query = request.GET.get('home_search')
+    if search_query != '' and search_query is not None:
+        qs = qs.filter(Q(location__icontains=search_query)|Q(property_type__icontains=search_query)|Q(city__icontains=search_query)|Q(address__icontains=search_query)|Q(resale_or_new__icontains=search_query)).distinct()
+    context = {
+        'queryhome': qs
+    }
+    return render(request, 'realbuy_app/filter.html', context)
+
 
 def CategoryViewRecent(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
     return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
-#value = [item.strip() for item in value.split(',') if item.strip()]
-def CategoryViewFilter(request, cats):
-    category_property = Property.objects.filter(property_type=cats)
-    return render(request, 'filter.html', {'cats':cats, 'category_property':category_property})
+
+def CategoryViewFilter1(request, cats):
+    category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
+    return render(request, 'realbuy_app/filter.html', {'category_property_filter':category_property})
+
+def CategoryViewFilter2(request):
+    qs = Property.objects.all()
+    location = request.GET.get('location')
+    property_status = request.GET.get('property_status')
+    areamin = request.GET.get('areamin')
+    areamax = request.GET.get('areamax')
+    if location != '' and location is not None:
+        qs = qs.filter(Q(city__icontains=location)|Q(location__icontains=search_query)).distinct()
+    if property_status != '' and property_status is not None:
+        qs = qs.filter(Q(availability__icontains=property_status)|Q(sell_or_rent__icontains=property_status)|Q(resale_or_new__icontains=property_status)).distinct()
+    if areamin != '' and areamin is not None:
+        qs = qs.filter(built_up_area__gte=areamin)
+    if areamax != '' and areamax is not None:
+        qs = qs.filter(built_up_area__lte=areamax)
+    
+    context = {
+        'queryfilter': qs
+    }
+    return render(request, 'realbuy_app/filter.html', context)
 
 
 class RecentView(ListView):
@@ -60,7 +96,20 @@ class AddView2(CreateView):
 class ContactUs(CreateView):
     model = ContactUs
     form_class = ContactUsForm
-    template_name = 'contactus.html'
+    template_name = 'realbuy_app/contactus.html'
+    
+@require_POST
+@csrf_exempt
+def add(request):
+    form = ContactUsForm(request.POST)
+
+    if form.is_valid():
+        new_contactus = Contactus(name=request.POST['name'], email=request.POST['email'], phone=request.POST['phone'], description=request.POST['description'],)
+        new_contactus.save()
+
+        messages.success(request, 'Details added successfully')
+    
+    return redirect('contact_us')
     
 class UpdateView1(UpdateView):
     model = Property
