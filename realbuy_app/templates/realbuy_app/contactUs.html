@@ -12,10 +12,6 @@
     
 <form class="form-add_data" id="cform" method="POST">  
         {% csrf_token %}
-            
-   
-
-        
         <input type="text" id="inputName" placeholder="Name"  onblur="nameValidate();" required></input>
         <div style="padding-left:39px;" class="error_msg" id="nameError"></div>
         <input type="email" id="inputEmail" placeholder="Email address" required onblur="mailValidate();">

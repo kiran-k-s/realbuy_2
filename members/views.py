@@ -40,8 +40,6 @@ class UserEditView(generic.UpdateView):
     def get_object(self):
         return self.request.user
     
-def Profile(request):
-    return render(request, 'profile.html',{})
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm

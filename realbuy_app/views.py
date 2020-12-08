@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 
 
 def Home(request):
@@ -75,8 +78,6 @@ class FeaturedView(ListView):
     #total_likes = stuff.total_likes()
     ordering = ['-likes.count()']
     
-
-    
 class DetailedView(DetailView):
     model = Property
     template_name = 'realbuy_app/detail.html'
@@ -85,7 +86,6 @@ class DetailedView(DetailView):
 def AddView1(request):
     form = AddForm1(request.POST or None)
     return render(request,"realbuy_app/add1.html",{'form':form})
-    
     
 class AddView2(CreateView):
     model = Property
@@ -137,8 +137,19 @@ def LikeView(request, pk):
         liked = True
         
     return HttpResponseRedirect(reverse('recent', args=[str(pk)]))
-    
-    
-    
 
+def Profile(request):
+    return render(request, 'realbuy_app/profile.html',{})    
+    
+    
+def simple_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'core/simple_upload.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'core/simple_upload.html')
     

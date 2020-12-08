@@ -35,7 +35,7 @@ Recent Properties{% endblock %}{% block content %}
         {% csrf_token %}
         {% if user.is_authenticated %}
             {% if liked %}
-            <button type="submit", name="post_id", value="{{ property.id }}"></button>
+            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star' %}"></button>
             {% else %}
             <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star' %}"></button>
             {% endif %}

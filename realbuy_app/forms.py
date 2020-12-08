@@ -16,7 +16,6 @@ class AddForm1(forms.Form):
         ('rental', 'Rental') ]
         property_type = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                           choices=PROPERTY_TYPE)
-        image = forms.ImageField()
 
         city = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'city', 'placeholder' : 'City'}))
         address = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'address', 'placeholder' : 'Address'}))
