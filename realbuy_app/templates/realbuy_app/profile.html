@@ -1,5 +1,16 @@
-<script>
-    var name = "{{ user.username }}";
-    document.getElementById("owner").value = name;
-    
-</script>
+{% if user.is_authenticated %}
+    {% if user.id == property.ownership.id %}
+<a class='nav-link' href="{% url 'edit_profile' %}">Edit Profile</a>
+
+<h1> My properties </h1>
+  <a class='nav-link' href="{% url 'user_category' Property.ownership %}"></a>
+    <a class='nav-link' href="{% url 'update1' property.pk %}">Edit</a>
+    <a class='nav-link' href="{% url 'delete' property.pk %}">My Profile</a>
+
+<h1> My wishlist </h1>
+    user.wishlist
+
+{% else %}
+
+
+{% endif %}

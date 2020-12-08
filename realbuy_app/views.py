@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Property, ContactUs
 from .forms import AddForm1, AddForm2, ContactUsForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
 from django.db.models import Q
@@ -104,12 +104,12 @@ def add(request):
     form = ContactUsForm(request.POST)
 
     if form.is_valid():
-        new_contactus = Contactus(name=request.POST['name'], email=request.POST['email'], phone=request.POST['phone'], description=request.POST['description'],)
+        new_contactus = ContactUs(name=request.POST['name'], email=request.POST['email'], phone=request.POST['phone'], message=request.POST['message'],)
         new_contactus.save()
 
         messages.success(request, 'Details added successfully')
     
-    return redirect('contact_us')
+    return redirect('contactus')
     
 class UpdateView1(UpdateView):
     model = Property
@@ -136,7 +136,7 @@ def LikeView(request, pk):
         post.likes.add(request.user)
         liked = True
         
-    return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('recent', args=[str(pk)]))
     
     
     
