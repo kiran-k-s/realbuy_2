@@ -5,7 +5,7 @@ from django.core.exceptions import FieldDoesNotExist
 
     
     
-class AddForm1(forms.Form):
+class AddForm1(forms.ModelForm):
             
             
         SELLorRENT = [('sell', 'Sell'),('rent', 'Rent')]

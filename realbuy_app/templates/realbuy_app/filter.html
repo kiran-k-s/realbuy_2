@@ -69,12 +69,12 @@
 </a>
     
 <form method="get" action="{% url 'category_filter2' %}">
-      <input type="text" list="location" placeholder="LOCATION(ANY)" />
-      <datalist id="location">
-            <option value="edappal">Edappal</option>
-            <option value="trivandrum">Trivandrum</option>
-            <option value="thrissur">Thrissur</option>
-            <option value="ernamkulam">Ernamkulam</option>
+      <input type="text" list="location2" name="location1" id="location1" placeholder="LOCATION(ANY)" />
+      <datalist id="location2" name="location2">
+            <option>Edappal</option>
+            <option>Trivandrum</option>
+            <option>Thrissur</option>
+            <option>Ernamkulam</option>
       </datalist>
       
       <select id="property_status" name="property_status" placeholder="PROPERTY STATUS">

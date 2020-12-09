@@ -9,7 +9,6 @@ from django.db.models import Q
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 
 
 
@@ -44,12 +43,12 @@ def CategoryViewFilter1(request, cats):
 
 def CategoryViewFilter2(request):
     qs = Property.objects.all()
-    location = request.GET.get('location')
+    location = request.GET.get('location1')
     property_status = request.GET.get('property_status')
     areamin = request.GET.get('areamin')
     areamax = request.GET.get('areamax')
     if location != '' and location is not None:
-        qs = qs.filter(Q(city__icontains=location)|Q(location__icontains=search_query)).distinct()
+        qs = qs.filter(Q(city__icontains=location)|Q(location__icontains=location)).distinct()
     if property_status != '' and property_status is not None:
         qs = qs.filter(Q(availability__icontains=property_status)|Q(sell_or_rent__icontains=property_status)|Q(resale_or_new__icontains=property_status)).distinct()
     if areamin != '' and areamin is not None:
@@ -142,14 +141,4 @@ def Profile(request):
     return render(request, 'realbuy_app/profile.html',{})    
     
     
-def simple_upload(request):
-    if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        return render(request, 'core/simple_upload.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request, 'core/simple_upload.html')
     
