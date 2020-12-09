@@ -469,7 +469,7 @@
     top: 90px;
     left: 690px;
     height: 27px;
-    width: 160px;
+    width: 100px;
     font-family: 'Antipasto';
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
@@ -479,13 +479,13 @@
     top: 90px;
     left: 740px;
     height: 27px;
-    width: 160px;
+    width: 100px;
     font-family: 'Antipasto';
     font-size: 16px;
     color: rgba(47, 181, 110, 1);
 }
 .recentTopRight{
-    position: relative;
+    position: absolute;
     color: rgba(255, 255, 255, 1);
     font-family: 'Antipasto';
     font-size: 11px;
@@ -503,24 +503,46 @@
     color: rgba(47, 181, 110, 1);
 }
 #recentTopRight1{
-    left:10;
-    width:65;
-}/*
+    left:1050px;
+    width:65px;
+}
 #recentTopRight2{
-    left:1120;
-    width:95;
+    left:1120px;
+    width:95px;
 }
 #recentTopRight3{
-    left:1220;
-    width:65;
+    left:1220px;
+    width:65px;
 }
 #recentTopRight4{
-    left:1290;
-    width:50;
+    left:1290px;
+    width:50px;
 }
-#recentContent{}
-#recentList{}
-#recentImage{}
+#recentContent{
+    position:relative;
+    display: grid;
+    top:120px;
+    left:690px;
+    height:535px;
+    width:670px;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+    background-color: #2196F3;
+
+}
+#recentList{
+    position:relative;
+    height:150px;
+    width:160px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    background-color: red;
+}
+#recentImage{
+    height:50px;
+    width:50px;
+}
 #recentSellOrRent{}
 #recentCity{}
 #recentAddress{}

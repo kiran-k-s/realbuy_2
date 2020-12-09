@@ -28,7 +28,7 @@ def CategoryViewHome2(request):
     if search_query != '' and search_query is not None:
         qs = qs.filter(Q(location__icontains=search_query)|Q(property_type__icontains=search_query)|Q(city__icontains=search_query)|Q(address__icontains=search_query)|Q(resale_or_new__icontains=search_query)).distinct()
     context = {
-        'queryhome': qs
+        'query_home': qs
     }
     return render(request, 'realbuy_app/filter.html', context)
 
@@ -57,7 +57,7 @@ def CategoryViewFilter2(request):
         qs = qs.filter(built_up_area__lte=areamax)
     
     context = {
-        'queryfilter': qs
+        'query_filter': qs
     }
     return render(request, 'realbuy_app/filter.html', context)
 
