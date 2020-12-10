@@ -1,4 +1,5 @@
-{% extends 'realbuy_app/home.html' %}
+{% extends 'realbuy_app/base.html' %}
+{% load static %}
 {% block title %}
 Recent Properties{% endblock %}{% block content %}
 <div id="recentBigBox"></div>
@@ -10,7 +11,44 @@ Recent Properties{% endblock %}{% block content %}
 <a href="{% url 'category_recent' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
 <div id="recentContent">
 {% for property in object_list %}
-    <div id=recentList>
+    <div id="recentList">
+        
+        <a href="{% url 'detail' property.id %}">
+            <img id="recentImage" src="{{property.image.url}}">
+        </a>
+        
+            
+            
+        
+        <div id="recentSellOrRent">
+            {% if property.sell_or_rent == 'sell' %}
+                <div> ON SALE </div>
+            {% else %}
+                <div> ON RENT </div>
+            {% endif %}
+        </div>
+        <div id="recentCity"> {{ property.city}}</div>
+        <div id="recentAddress"> {{ property.address|slice:":30" }}</div>
+        <span id="recentPrice1">&#8377; </span>
+        <span id="recentPrice2"> {{ property.price }}</span>
+        
+        <div id="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            {% if liked %}
+            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star.png' %}"></button>
+            {% else %}
+            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star.png' %}"></button>
+            {% endif %}
+        {% endif %}</form>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<!--
+<div class="recentContent">
+{% for property in category_property %}
+    <div class=recentList>
         
         <a href="{% url 'detail' property.id %}">
             <img id="recentImage" src="{{property.image.url}}">
@@ -43,37 +81,7 @@ Recent Properties{% endblock %}{% block content %}
         </div>
     </div>
 {% endfor %}
-</div>
-{% for property in category_property %}
-    <ul id=recentList>
-    <li id="recentImage"><a href="{% url 'detail' property.id %}">
-            <img class ="card-img-top" src="{{property.image.url}}">
-           </a>
-    </li>
-    <li id="recentCity"> {{ property.city}}</li>
-    <li id="recentAddress"> {{ property.address }}</li>
-    <li id="recentPrice2"> {{ property.price }}</li>
-    <li id="recentSellOrRent">
-    {% if property.sell_or_rent == 'sell' %}
-        <div> ON SALE </div>
-    {% else %}
-        <div> ON RENT </div>
-    {% endif %}
-    </li>
-    <li><form action="{% url 'like_post' property.pk %}" method="POST">
-{% csrf_token %}
-{% if user.is_authenticated %}
-    {% if liked %}
-    <button type="submit", name="post_id", value="{{ property.id }}">Like</button>
-    {% else %}
-    <button type="submit", name="post_id", value="{{ property.id }}">Unlike</button>
-    {% endif %}
-{% endif %}
-</form></li>
-</ul>
-
-
-{% endfor %}
+</div>  -->
 
 
 {% endblock %}

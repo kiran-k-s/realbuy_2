@@ -91,11 +91,16 @@ class AddView2(CreateView):
     form_class = AddForm2
     template_name = 'realbuy_app/add2.html'
     success_url = reverse_lazy('home')
+
+def ContactUs(request):
+    form = ContactUsForm()
+    context = {'form' : form}
+    return render(request,'realbuy_app/contactus.html', context)
     
-class ContactUs(CreateView):
+'''class ContactUs(CreateView):
     model = ContactUs
     form_class = ContactUsForm
-    template_name = 'realbuy_app/contactus.html'
+    template_name = 'realbuy_app/contactus.html'  '''
     
 @require_POST
 @csrf_exempt

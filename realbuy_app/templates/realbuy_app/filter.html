@@ -110,8 +110,6 @@
 <a href="{% url 'category_filter1' 'furnished home'|slugify %}">FURNISHED HOMES</a>
 <a href="{% url 'category_filter1' 'land and plot'|slugify %}">LAND&amp;PLOT</a>
 <a href="{% url 'category_filter1' 'rental' %}">RENTAL</a>  
-{{ query_home }} 
-<h1> kiran </h1>
 {% if query_home %}
 {% for property in query_home %}
     <a href="{% url 'detail' property.id %}">
