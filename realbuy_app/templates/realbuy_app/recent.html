@@ -20,11 +20,11 @@ Recent Properties{% endblock %}{% block content %}
             
             
         
-        <div id="recentSellOrRent">
+        <div>
             {% if property.sell_or_rent == 'sell' %}
-                <div> ON SALE </div>
+                <div id="recentSell"> ON SALE </div>
             {% else %}
-                <div> ON RENT </div>
+                <div id="recentRent"> ON RENT </div>
             {% endif %}
         </div>
         <div id="recentCity"> {{ property.city}}</div>

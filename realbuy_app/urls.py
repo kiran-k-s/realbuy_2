@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from .views import AddView2,RecentView,DetailedView
+from .views import AddView2,RecentView,DetailedView,FeaturedView
 
 urlpatterns = [
     path('', views.Home, name='home'),
@@ -11,16 +11,15 @@ urlpatterns = [
     path('about_us/', views.AboutUs, name='about_us'),
     path('recent/', RecentView.as_view(), name='recent'),
     path('category_recent/<str:cats>/', views.CategoryViewRecent, name='category_recent'),
-    path('featured/', views.FeaturedView, name='featured'),
+    path('featured/',views.FeaturedView, name='featured'),
     path('detail/<int:pk>', DetailedView.as_view(), name='detail'),
     path('add1/', views.AddView1, name='add1'),
     path('add2/', AddView2.as_view(), name='add2'),
-    path('contactus/', views.ContactUs, name='contactus'),
+    path('contactus/',views.ContactUs, name='contactus'),
     path('update1/<int:pk>', views.UpdateView1, name='update1'),
     path('update2/<int:pk>', views.UpdateView2, name='update2'),
     path('delete/<int:pk>', views.DeleteView, name='delete'),
     path('like/<int:pk>', views.LikeView, name='like_post'),
-    path('add', views.add, name='add'),
     path('profile', views.Profile, name='profile'),
     
 ]

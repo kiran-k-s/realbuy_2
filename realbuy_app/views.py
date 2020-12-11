@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
 from .models import Property, ContactUs
 from .forms import AddForm1, AddForm2, ContactUsForm
 from django.urls import reverse_lazy,reverse
@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.http import JsonResponse
 
 
 
@@ -67,15 +68,19 @@ class RecentView(ListView):
     template_name = 'realbuy_app/recent.html'
     fields = ('sell_or_rent','image','city','address','location')
     ordering = ['-id']
-    
-    
-class FeaturedView(ListView):
+
+'''class FeaturedView(ListView):
     model = Property
-    template_name = 'featured.html'
-    fields = ('sell_or_rent','image','price','bedroom', 'bathroom','location')
-    #stuff = get_object_or_404(Post, id=self.kwargs['pk'])
-    #total_likes = stuff.total_likes()
-    ordering = ['-likes.count()']
+    template_name = 'realbuy_app/featured.html'
+    fields = ('sell_or_rent','image','city','address','location')
+    ordering = ['-total_likes()'] '''
+    
+    
+def FeaturedView(request):
+    featured=Property.objects.annotate(like_count=count('likes')).order_by('-like_count')
+    context = {'featured' : featured}
+    return render(request,'realbuy_app/featured.html', context)
+    
     
 class DetailedView(DetailView):
     model = Property
@@ -92,17 +97,31 @@ class AddView2(CreateView):
     template_name = 'realbuy_app/add2.html'
     success_url = reverse_lazy('home')
 
-def ContactUs(request):
+'''def ContactUs(request):
     form = ContactUsForm()
     context = {'form' : form}
-    return render(request,'realbuy_app/contactus.html', context)
+    return render(request,'realbuy_app/contactus.html', context)'''
     
-'''class ContactUs(CreateView):
-    model = ContactUs
-    form_class = ContactUsForm
-    template_name = 'realbuy_app/contactus.html'  '''
+def ContactUs(request):
+    form = ContactUsForm()
+    # if request.method == 'POST':
+    #     form = ContactModelForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('contact')
+    if request.is_ajax():
+        form = ContactUsForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({
+                'message': 'success'
+            })
+    return render(request, 'realbuy_app/contactus.html', {'form': form})
+
     
-@require_POST
+ 
+'''@require_POST
 @csrf_exempt
 def add(request):
     form = ContactUsForm(request.POST)
@@ -113,7 +132,7 @@ def add(request):
 
         messages.success(request, 'Details added successfully')
     
-    return redirect('contactus')
+    return redirect('contactus')  '''
     
 class UpdateView1(UpdateView):
     model = Property

@@ -66,10 +66,10 @@ class AddForm2(forms.ModelForm):
         
         
                                                    
-class ContactUsForm(forms.Form):
-        '''class Meta:
+class ContactUsForm(forms.ModelForm):
+        class Meta:
             model = ContactUs
-            fields = ('name','email','phone','message')'''
+            fields = ('name','email','phone','message')
         name = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(
             attrs={'id':'inputName', 'placeholder' : 'Name'}))
         email = forms.EmailField(max_length=45 , widget=forms.EmailInput(

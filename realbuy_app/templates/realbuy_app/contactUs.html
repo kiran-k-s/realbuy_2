@@ -2,15 +2,12 @@
 {% load static %}
 {% block title %}Contact Us{% endblock %}
 {% block content %}
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>-->
 <script src="{% static 'realbuy_app/scripts/contactus.js' %}"></script> 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>  
 
-
-<h1>Contact Us</h1>
     
-<form class="form-add_data" id="cform" method="POST">  
+<!--<form class="form-add_data" id="cform" method="POST">  
         {% csrf_token %}
         <input type="text" id="inputName" placeholder="Name"  onblur="nameValidate();" required></input>
         <div style="padding-left:39px;" class="error_msg" id="nameError"></div>
@@ -23,10 +20,16 @@
 
         
         <button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
+</form> -->
+
+<form id='contactForm' method='POST'>
+    {% csrf_token %}
+    <div id="error_message"></div>
+    {{ form.as_p }}
+    
+    <button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
 </form>
-                    
-                    
-<div style="padding-left:39px;" class="error_msg" id="success"></div>     
+                       
 
 
 

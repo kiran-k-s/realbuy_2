@@ -1,4 +1,54 @@
-{{ property.body|slice:":500" }}
+{% extends 'realbuy_app/base.html' %}
+{% load static %}
+{% block title %}
+Featured Properties{% endblock %}
+{% block content %}
 
-{% for property in object_list %}
-   if property.likes.count()
+
+<div id="recentBigBox"></div>
+<div id="recentBigBox2"></div>
+<span id="recentHead1">Recent</span> <span id="recentHead2">Properties</span>
+<a href="{% url 'category_recent' 'commercial' %}"><button type="button" class="recentTopRight" id="recentTopRight1">COMMERCIAL</button></a>
+<a href="{% url 'category_recent' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
+<a href="{% url 'category_recent' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
+<a href="{% url 'category_recent' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
+<div id="recentContent">
+{% for property in featured %}
+
+    <div id="recentList">
+        
+        <a href="{% url 'detail' property.id %}">
+            <img id="recentImage" src="{{property.image.url}}">
+        </a>
+        
+            
+            
+        
+        <div>
+            {% if property.sell_or_rent == 'sell' %}
+                <div id="recentSell"> ON SALE </div>
+            {% else %}
+                <div id="recentRent"> ON RENT </div>
+            {% endif %}
+        </div>
+        <div id="recentCity"> {{ property.city}}</div>
+        <div id="recentAddress"> {{ property.address|slice:":30" }}</div>
+        <span id="recentPrice1">&#8377; </span>
+        <span id="recentPrice2"> {{ property.price }}</span>
+        
+        <div id="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            {% if liked %}
+            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star.png' %}"></button>
+            {% else %}
+            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/star.png' %}"></button>
+            {% endif %}
+        {% endif %}</form>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
+

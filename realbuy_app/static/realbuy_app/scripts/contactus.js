@@ -1,4 +1,38 @@
-function nameValidate()
+
+/*function validate(){
+  var name = document.getElementById("inputName").value;
+  var email = document.getElementById("inputEmail").value;
+  var phone = document.getElementById("inputPhone").value;
+  var message = document.getElementById("inputMessage").value;
+  var error_message = document.getElementById("error_message");
+  
+  error_message.style.padding = "10px";
+  
+  var text;
+  if(name.length < 5){
+    text = "Please Enter valid Name";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(email.indexOf("@") == -1 || email.length < 6){
+    text = "Please Enter valid Email";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(isNaN(phone) || phone.length != 10){
+    text = "Please Enter valid Phone Number";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(message.length <= 140){
+    text = "Please Enter More Than 140 Characters";
+    error_message.innerHTML = text;
+    return false;
+  }
+  //alert("Form Submitted Successfully!");
+  //return true;
+} */
+/*function nameValidate()
 {
 var name=document.getElementById("inputName").value;
 
@@ -81,10 +115,31 @@ function messageValidate()
 		{
 		document.getElementById("descriptionError").innerHTML ="Error: Description is mandatory with a minimum of 20 character length";
 		return false;
-		}
+		}      
 	
+}   */
+const form = document.getElementById('contactForm');
+form.addEventListener("submit", submitHandler);
+
+function submitHandler(e) {
+    e.preventDefault();
+    $.ajax({
+        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url         : '{% url 'contactus' %}', // the url where we want to POST
+        data        : $('#contactForm').serialize(), // our form data
+        dataType    : 'json', // what type of data do we expect back from the server
+        success     : successFunction
+    });
 }
 
+function successFunction(msg) {
+    if (msg.message === 'success') {
+        alert('Success!');
+        form.reset()
+    }
+}
+
+   /*
 
         $(document).ready(function(){
             $('#fbutton').click(function(e){
@@ -128,8 +183,9 @@ function messageValidate()
 
 
                 })          
-        });
-    
+        });           */
+
+
 		
 		
 
