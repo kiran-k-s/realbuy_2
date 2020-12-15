@@ -1,37 +1,84 @@
-<!doctype html>
-<html lang="en">
+{% extends 'realbuy_app/base.html' %}
 {% load static %}
-    
-<head><title>Details</title></head>
-<body>
+{% block title %}
+Details{% endblock %}{% block content %}
+<div id="detail-big-box"></div>
+<div id="detail-big-box-2"></div>
 
-<a href="{% url 'home' %}">CLOSE</a>
+<a href="{% url 'home' %}">
+    <img id="detail-close" src="{% static 'realbuy_app/images/close.png' %}">
+</a>
     
+<div>
+    <img id="detail-image" src="{{property.image.url}}">
+</div>
+<div id="detail-box-1">
+    <img id="detail-box-1-image" src="{% static 'realbuy_app/images/location_carousel.png' %}">
+    <div id="detail-location">{{ property.location}}</div>
+    <div id="detail-price-1">{{ property.price}}</div>
+    <div id="detail-price-2">{{ property.price}}</div>
+</div>
+<div id="detail-box-2">
+    <img id="detail-box-2-image" src="{% static 'realbuy_app/images/area.png' %}">
+    <div id="detail-area-head">Area</div>
+    <div id="detail-area-content-1">{{ property.built_up_area}}</div>
+    <div id="detail-area-content-2">SQFT</div>
+</div>
+<div id="detail-box-3">
+    <img id="detail-box-3-image" src="{% static 'realbuy_app/images/bedroom.png' %}">
+    <div id="detail-bedroom-head">Bedrooms</div>
+    <div id="detail-bedroom-content">{{ property.bedroom}}</div>
+</div>
+<div id="detail-box-4">
+    <img id="detail-box-4-image" src="{% static 'realbuy_app/images/bathroom.png' %}">
+    <div id="detail-bathroom-head">Bedrooms</div>
+    <div id="detail-bathroom-content">{{ property.bathroom}}</div>    
+</div>
+<div id="detail-description">
+        {{ property.description}}
+</div>
+<div id="detail-seller-head">Seller Info</div>
+<div id="detail-seller-username">{{ property.owner.username}}</div>
+<div id="detail-seller-address">{{ property.owner.address}}</div>
 
-    
-    <li> {{ property.location}}</li>
-    <li> {{ property.price}}</li>
-    <li> {{ property.built_up_area}}</li>
-    <li> {{ property.bedroom}}</li>
-    <li> {{ property.bathroom}}</li>
-    <li> {{ property.description}}</li>
-    <li> {{ property.total_likes}}</li>
+<div id="detail-task-bar">Detail</div>
 
-    
-    
-<form action="{% url 'like_post' property.pk %}" method="POST">
-{% csrf_token %}
-{% if user.is_authenticated %}
-    {% if liked %}
-    <button type="submit", name="post_id", value="{{ property.id }}">Like</button>
-    {% else %}
-    <button type="submit", name="post_id", value="{{ property.id }}">Unlike</button>
-    {% endif %}
-{% endif %}
-</form>
+<div>
+    <a href="#">
+            <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+    </a>
+    <span>Mail</span>
+</div>
+<div>
+    <a href="#">
+        <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+    </a>
+    <span>Phone</span>
+</div>
+<div>
+    <div id="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% if liked %}
+        <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+        {% else %}
+        <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+        {% endif %}
+    {% endif %}</form>
+    </div>
+    <span>Shortlist</span>
+</div>
+<div>
+    <a href="#">
+        <img id="detail-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
+    </a>
+    <span>Map</span>
+</div>
+<div>
+    <a href="#">
+        <img id="detail-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+    </a>
+    <span>Share</span>
+</div>
 
-    
- 
-
-</body>
-</html>
+{% endblock %}
