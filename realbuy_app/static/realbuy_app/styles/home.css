@@ -626,3 +626,322 @@
     background-color: red;
     width:50px;
 }
+
+/* detail.html */
+
+#detail-big-box{
+    position: absolute;
+    top: 75px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#detail-big-box-2{
+    position: absolute;
+    top: 320px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#detail-close{
+    position: absolute;
+    top: 90px;
+    left: 695px;
+    height: 20px;
+    width: 60px;
+    z-index: 1;
+}
+#detail-image{
+    position: absolute;
+    top: 80px;
+    left: 680px;
+    height: 240px;
+    width: 450px;
+}
+#detail-box-1{
+    position: absolute;
+    top: 80px;
+    left: 1130px;
+    height: 60px;
+    right:0;
+}
+#detail-box-1-image{
+    position: absolute;
+top: 15px;
+left: 15px;
+height: 20px;
+width: 18px;
+}
+#detail-location{
+    position: absolute;
+top: 13px;
+left: 45px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 9px;
+color: rgba(184, 184, 184, 1);
+}
+.detail-price{
+    position: absolute;
+    display: inline-block;
+    top: 21px;
+    left:45px;
+    color: rgba(255, 255, 255, 1);
+}
+#detail-price-1{
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+#detail-price-2{
+    font-family: 'Antipasto';
+    font-size: 11px;
+    height: 11px;
+}
+#detail-box-2{
+    position: absolute;
+    top: 140px;
+    left: 1130px;
+    height: 60px;
+    right:0;
+    background-color: rgba(16, 16, 16, 1);
+}
+#detail-box-2-image{
+    position: absolute;
+top: 15px;
+left: 15px;
+height: 20px;
+width: 18px;
+}
+#detail-area-head{
+    position: absolute;
+top: 13px;
+left: 45px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 9px;
+color: rgba(184, 184, 184, 1);
+}
+.detail-area-content{
+    position: absolute;
+    display: inline-block;
+    top: 21px;
+    left:45px;
+    color: rgba(255, 255, 255, 1);
+}
+#detail-area-content-1{
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+#detail-area-content-2{
+    font-family: 'Antipasto';
+    font-size: 11px;
+    height: 11px;
+}
+#detail-box-3{
+    position: absolute;
+    top: 200px;
+    left: 1130px;
+    height: 60px;
+    right:0;
+}
+#detail-box-3-image{
+    position: absolute;
+top: 15px;
+left: 15px;
+height: 20px;
+width: 18px;
+}
+#detail-bedroom-head{
+    position: absolute;
+top: 13px;
+left: 45px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 9px;
+color: rgba(184, 184, 184, 1);
+}
+#detail-bedroom-content{
+    position: absolute;
+    top: 21px;
+    left:45px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+#detail-box-4{
+    position: absolute;
+    top: 260px;
+    left: 1130px;
+    height: 60px;
+    right:0;
+    background-color: rgba(16, 16, 16, 1);
+}
+#detail-box-4-image{
+    position: absolute;
+top: 15px;
+left: 15px;
+height: 20px;
+width: 18px;
+}
+#detail-bathroom-head{
+    position: absolute;
+top: 13px;
+left: 45px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 9px;
+color: rgba(184, 184, 184, 1);
+}
+#detail-bathroom-content{
+    position: absolute;
+    top: 21px;
+    left:45px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+#detail-description{
+    position: absolute;
+top: 335px;
+left: 695px;
+height: 100px;
+font-family: 'Antipasto';
+font-size: 10px;
+color: rgba(255, 255, 255, 1);
+line-height: 12px;
+}
+#detail-seller-head{
+    position: absolute;
+top: 445px;
+left: 695px;
+height: 20px;
+width: 65px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(47, 181, 110, 1);
+
+}
+#detail-seller-username{
+    position: absolute;
+top: 460px;
+left: 695px;
+height: 20px;
+width: 336px;
+font-family: 'Antipasto';
+font-size: 10px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-seller-address{
+    position: absolute;
+top: 473px;
+left: 695px;
+height: 60px;
+width: 336px;
+font-family: 'Antipasto';
+font-size: 10px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-task-bar{
+    position: absolute;
+top: 510px;
+left: 680px;
+height: 45px;
+right:0;
+background-color: rgba(35, 35, 35, 1);
+}
+#detail-mail-image{
+    position: absolute;
+top: 523px;
+left: 700px;
+height: 18px;
+width: 24px;
+box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+#detail-mail{
+    position: absolute;
+top: 525px;
+left: 729px;
+height: 10px;
+width: 50px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-phone-image{
+    position: absolute;
+top: 523px;
+left: 820px;
+height: 18px;
+width: 18px;
+
+}
+#detail-phone{
+    position: absolute;
+top: 525px;
+left: 843px;
+height: 10px;
+width: 65px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-shortlist-image{
+     position: absolute;
+top: 523px;
+left: 953px;
+height: 18px;
+width: 17px;
+font-size: 5px;
+background-color: Transparent;
+
+}
+#detail-shortlist{
+    position: absolute;
+top: 525px;
+left: 965px;
+height: 10px;
+width: 45px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-map-image{
+     position: absolute;
+top: 523px;
+left: 1055px;
+height: 18px;
+width: 16px;
+}
+#detail-map{
+    position: absolute;
+top: 525px;
+left: 1076px;
+height: 10px;
+width: 20px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(198, 198, 198, 1);
+}
+#detail-share-image{
+     position: absolute;
+top: 523px;
+left: 1140px;
+height: 18px;
+width: 16px;
+}
+#detail-share{
+    position: absolute;
+top: 525px;
+left: 1161px;
+height: 10px;
+width: 30px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(198, 198, 198, 1);
+}

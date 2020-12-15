@@ -15,14 +15,18 @@ Details{% endblock %}{% block content %}
 <div id="detail-box-1">
     <img id="detail-box-1-image" src="{% static 'realbuy_app/images/location_carousel.png' %}">
     <div id="detail-location">{{ property.location}}</div>
-    <div id="detail-price-1">{{ property.price}}</div>
-    <div id="detail-price-2">{{ property.price}}</div>
+    <div class="detail-price">
+        <span id="detail-price-1">{{ property.price}}</span>
+        <span id="detail-price-2">Lakhs</span>
+    </div>
 </div>
 <div id="detail-box-2">
     <img id="detail-box-2-image" src="{% static 'realbuy_app/images/area.png' %}">
     <div id="detail-area-head">Area</div>
-    <div id="detail-area-content-1">{{ property.built_up_area}}</div>
-    <div id="detail-area-content-2">SQFT</div>
+    <div class="detail-area-content">
+        <span id="detail-area-content-1">{{ property.built_up_area}}</span>
+        <span id="detail-area-content-2">{{property.built_up_unit}}</span>
+    </div>
 </div>
 <div id="detail-box-3">
     <img id="detail-box-3-image" src="{% static 'realbuy_app/images/bedroom.png' %}">
@@ -31,15 +35,16 @@ Details{% endblock %}{% block content %}
 </div>
 <div id="detail-box-4">
     <img id="detail-box-4-image" src="{% static 'realbuy_app/images/bathroom.png' %}">
-    <div id="detail-bathroom-head">Bedrooms</div>
+    <div id="detail-bathroom-head">Bathrooms</div>
     <div id="detail-bathroom-content">{{ property.bathroom}}</div>    
 </div>
 <div id="detail-description">
         {{ property.description}}
+        has built a remarkable name and has established itself as one of the well known entities in the real estate arena. Providing help and assistance to the clients regarding realty issues along with offering useful and effective real estate solutions, stems out as the
 </div>
 <div id="detail-seller-head">Seller Info</div>
-<div id="detail-seller-username">{{ property.owner.username}}</div>
-<div id="detail-seller-address">{{ property.owner.address}}</div>
+<div id="detail-seller-username">Username{{ property.owner.username}}</div>
+<div id="detail-seller-address">Address{{ property.owner.address}}</div>
 
 <div id="detail-task-bar">Detail</div>
 
@@ -47,38 +52,37 @@ Details{% endblock %}{% block content %}
     <a href="#">
             <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
     </a>
-    <span>Mail</span>
+    <span id="detail-mail">SEND MAIL</span>
 </div>
 <div>
     <a href="#">
         <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
     </a>
-    <span>Phone</span>
+    <span id="detail-phone">PHONE NUMBER</span>
 </div>
 <div>
-    <div id="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
+    <div><form action="{% url 'like_post' property.pk %}" method="POST">
     {% csrf_token %}
-    {% if user.is_authenticated %}
         {% if liked %}
-        <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+        <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
         {% else %}
-        <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+        <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
         {% endif %}
-    {% endif %}</form>
+    </form>
     </div>
-    <span>Shortlist</span>
+    <span id="detail-shortlist">SHORTLIST</span>
 </div>
 <div>
     <a href="#">
         <img id="detail-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
     </a>
-    <span>Map</span>
+    <span id="detail-map">MAP</span>
 </div>
 <div>
     <a href="#">
         <img id="detail-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
     </a>
-    <span>Share</span>
+    <span id="detail-share">SHARE</span>
 </div>
 
 {% endblock %}
