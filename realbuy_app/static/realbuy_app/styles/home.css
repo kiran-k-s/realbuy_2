@@ -523,31 +523,33 @@
     left:1305px;
     width:50px;
 }
-#recentContent{
-    position:fixed;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-    grid-gap: 15px 15px;
+.recentContent{
+    position:absolute;
     top:125px;
     left:695px;
     height:530px;
     width:650px;
-    background-color: rgba(22, 22, 22, 1);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-gap: 15px;
+    /*background-color: rgba(22, 22, 22, 1);*/
+    background-color: blue;
 
 }
-#recentList{
+.recentList{
     position:relative;
     height:165px;
     width:205px;
-    /*border: 1px solid black;*/
+    background-color: red;
+    z-index: 10;
 }
-#recentImage{
-    position:relative;
+.recentImage{
+    position: absolute;
     height:110px;
     width:205px;
 }
-#recentRent{
+.recentRent{
     position: absolute;
     top:100px;
     left:140px;
@@ -559,7 +561,7 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#recentSell{
+.recentSell{
     position: absolute;
     top:100px;
     left:140px;
@@ -571,7 +573,7 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#recentCity{
+.recentCity{
     position: absolute;
     top:110px;
     height: 15px;
@@ -580,7 +582,7 @@
     font-size: 12px;
     color: rgba(225, 225, 225, 1);
 }
-#recentAddress{
+.recentAddress{
     position: absolute;
     top:125px;
     height: 20px;
@@ -589,9 +591,14 @@
     font-size: 10px;
     color: rgba(225, 225, 225, 1);
 }
-#recentPrice1{
+.recentPrice{
     position: absolute;
-    top:142px;
+    display: inline-block;
+    top: 142px;
+    left:2px;
+    color: rgba(255, 255, 255, 1);
+}
+.recentPrice1{
     left: 2px;
     z-index: 1;
     height: 20px;
@@ -599,26 +606,29 @@
     font-family: 'PingFangSC-Regular';
     font-size: 11px;
     color: rgba(47, 181, 110, 1);
-
 }
-#recentPrice2{
-    position: absolute;
-    top:142px;
-    left:10px;
+.recentPrice2{
     height: 15px;
     width: 90px;
     font-family: 'Antipasto';
     font-size: 11px;
     color: rgba(47, 181, 110, 1);
 }
-#recentLike{
+.recentPrice3{
+    height: 15px;
+    width: 90px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(47, 181, 110, 1);
+}
+.recentLike{
     position: absolute;
     font-size: 5px;
-    top: 142px;
-    left: 100px;
-    height: 10px;
-    width: 10px;
-    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    top: 132px;
+    left: 145px;
+    height: 5px;
+    width: 5px;
+    background: transparent;
 }
 
 
@@ -944,4 +954,92 @@ width: 30px;
 font-family: 'Antipasto';
 font-size: 11px;
 color: rgba(198, 198, 198, 1);
+}
+
+
+/* filter.html */
+
+#filter-big-box-1{
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#filter-big-box-2{
+    position: absolute;
+    top: 65px;
+    left: 0px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#filter-logo{
+    
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 60px;
+    width: 180px;
+}
+#filter-head-1{
+    position: absolute;
+top: 132px;
+left: 40px;
+height: 27px;
+width: 160px;
+font-family: 'Antipasto';
+font-size: 24px;
+color: rgba(255, 255, 255, 1);
+}
+#filter-head-2{
+    position: absolute;
+top: 132px;
+left: 40px;
+height: 27px;
+width: 160px;
+font-family: 'Antipasto';
+font-size: 24px;
+color: rgba(47, 181, 110, 1);
+}
+#filter-location{
+    position: absolute;
+top: 219px;
+left: 40px;
+height: 45px;
+width: 180px;
+background-color: rgba(240, 240, 240, 1);
+}
+#filter-property-status{
+    position: absolute;
+top: 219px;
+left: 221px;
+height: 45px;
+width: 180px;
+background-color: rgba(240, 240, 240, 1);
+}
+#filter-area-min{
+    position: absolute;
+top: 219px;
+left: 402px;
+height: 45px;
+width: 180px;
+background-color: rgba(240, 240, 240, 1);
+}
+#filter-area-max{
+    position: absolute;
+top: 219px;
+left: 402px;
+height: 45px;
+width: 180px;
+background-color: rgba(240, 240, 240, 1);
+}
+#filter_submit{
+    position: absolute;
+top: 219px;
+left: 583px;
+height: 45px;
+width: 120px;
+background-color: rgba(47, 181, 110, 1);
 }

@@ -32,8 +32,8 @@
 </head>
     
 <body>
-<img src="{% static 'realbuy_app/images/logo.png' %}" id="filter-logo">    
-<h1>Search Results</h1>
+<img id="filter-logo" src="{% static 'realbuy_app/images/logo_small.png' %}" >    
+<span id="filter-head-1">Search</span><span id="filter-head-2"> Results</span>
     
 {% if user.is_authenticated %}
     <a href='{% url 'logout' %}'>
@@ -67,8 +67,10 @@
 <a href='{% url 'contactus' %}'>
 <button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
 </a>
-    
+<div id="filter-big-box-1"></div>
+<div id="filter-big-box-2"></div>    
 <form method="get" action="{% url 'category_filter2' %}">
+      <div id="filter-location">
       <input type="text" list="location2" name="location1" id="location1" placeholder="LOCATION(ANY)" />
       <datalist id="location2" name="location2">
             <option>Edappal</option>
@@ -76,7 +78,8 @@
             <option>Thrissur</option>
             <option>Ernamkulam</option>
       </datalist>
-      
+      </div>
+      <div id="filter-property-status">
       <select id="property_status" name="property_status" placeholder="PROPERTY STATUS">
       <option hidden disabled selected value>PROPERTY STATUS</option>
       <option value="ready to move">Ready to move</option>
@@ -84,7 +87,8 @@
       <option value="sell">Sell</option>
       <option value="rent">Rent</option>
       </select>
-    
+      </div>
+      <div id="filter-area-min">
       <select id="areamin" name="areamin" placeholder="AREA MIN SQUAREFEET">
       <option hidden disabled selected value>AREA MIN SQUAREFEET</option>
       <option value="1000">1000</option>
@@ -92,7 +96,8 @@
       <option value="10000"> 10000</option>
       <option value="100000">100000</option>
       </select>
-    
+      </div>
+      <div id="filter-area-max">
       <select id="areamax" name="areamax" placeholder="AREA MAX SQUAREFEET">
       <option hidden disabled selected value>AREA MAX SQUAREFEET</option>
       <option value="1000"> 1000</option>
@@ -100,21 +105,23 @@
           <option value="10000">10000</option>
       <option value="100000">100000</option>
       </select>
+      </div>
     
-    
-      <button type="submit" id="filter-submit">SEARCH</button>
+      <button type="submit" id="filter_submit">SEARCH</button>
 </form>
     
+<a href="{% url 'category_filter1' 'commercial' %}"><button type="button" class="recentTopRight" id="recentTopRight1">COMMERCIAL</button></a>
+<a href="{% url 'category_filter1' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
+<a href="{% url 'category_filter1' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
+<a href="{% url 'category_filter1' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
 
-<a href="{% url 'category_filter1' 'commercial' %}">COMMERCIAL</a>
-<a href="{% url 'category_filter1' 'furnished home'|slugify %}">FURNISHED HOMES</a>
-<a href="{% url 'category_filter1' 'land and plot'|slugify %}">LAND&amp;PLOT</a>
-<a href="{% url 'category_filter1' 'rental' %}">RENTAL</a>  
-{% if query_home %}
-{% for property in query_home %}
+<div class="filter-grid">
+  <div class="filter-grid-content">
+    {% if query_home %}
+    {% for property in query_home %}
     <a href="{% url 'detail' property.id %}">
             <img class ="card-img-top" src="{{property.image.url}}">
-           </a>
+    </a>
     <li> {{ property.location}}</li>
     <li> {{ property.city }}</li>
     <li> {{ property.address }}</li>
@@ -124,56 +131,78 @@
         <div> ON RENT </div>
     {% endif %}
     <li> {{ property.price }}</li>
-{% endfor %}
-{% endif %}
-{% for property in category_property_home %}
-    <a href="{% url 'detail' property.id %}">
-            <img class ="card-img-top" src="{{property.image.url}}">
-           </a>
-    <li> {{ property.location}}</li>
-    <li> {{ property.city }}</li>
-    <li> {{ property.address }}</li>
-    {% if property.sell_or_rent == 'sell' %}
-        <div> ON SALE </div>
-    {% else %}
-        <div> ON RENT </div>
+    {% endfor %}
     {% endif %}
-    <li> {{ property.price }}</li>
-{% endfor %}
-{% for property in query_filter %}
-    <a href="{% url 'detail' property.id %}">
-            <img class ="card-img-top" src="{{property.image.url}}">
-           </a>
-    <li> {{ property.location}}</li>
-    <li> {{ property.city }}</li>
-    <li> {{ property.address }}</li>
-    {% if property.sell_or_rent == 'sell' %}
-        <div> ON SALE </div>
-    {% else %}
-        <div> ON RENT </div>
-    {% endif %}
-    <li> {{ property.price }}</li>
-{% endfor %}
-{% for property in category_property_filter %}
-    <a href="{% url 'detail' property.id %}">
-            <img class ="card-img-top" src="{{property.image.url}}">
-           </a>
-    <li> {{ property.location}}</li>
-    <li> {{ property.city }}</li>
-    <li> {{ property.address }}</li>
-    {% if property.sell_or_rent == 'sell' %}
-        <div> ON SALE </div>
-    {% else %}
-        <div> ON RENT </div>
-    {% endif %}
-    <li> {{ property.price }}</li>
-
-{% endfor %}
+  </div>
+</div>
     
+<div class="filter-grid">
+  <div class="filter-grid-content">
+      {% for property in category_property_home %}
+          <a href="{% url 'detail' property.id %}">
+                  <img class ="card-img-top" src="{{property.image.url}}">
+                 </a>
+          <li> {{ property.location}}</li>
+          <li> {{ property.city }}</li>
+          <li> {{ property.address }}</li>
+          {% if property.sell_or_rent == 'sell' %}
+              <div> ON SALE </div>
+          {% else %}
+              <div> ON RENT </div>
+          {% endif %}
+          <li> {{ property.price }}</li>
+      {% endfor %}
+  </div>
+</div>
+
+<div class="filter-grid">
+  <div class="filter-grid-content">
+      {% for property in query_filter %}
+          <a href="{% url 'detail' property.id %}">
+                  <img class ="card-img-top" src="{{property.image.url}}">
+                 </a>
+          <li> {{ property.location}}</li>
+          <li> {{ property.city }}</li>
+          <li> {{ property.address }}</li>
+          {% if property.sell_or_rent == 'sell' %}
+              <div> ON SALE </div>
+          {% else %}
+              <div> ON RENT </div>
+          {% endif %}
+          <li> {{ property.price }}</li>
+      {% endfor %}
+  </div>
+</div>
+
+<div class="filter-grid">
+  <div class="filter-grid-content">
+      {% for property in category_property_filter %}
+          <a href="{% url 'detail' property.id %}">
+                  <img class ="card-img-top" src="{{property.image.url}}">
+                 </a>
+          <li> {{ property.location}}</li>
+          <li> {{ property.city }}</li>
+          <li> {{ property.address }}</li>
+          {% if property.sell_or_rent == 'sell' %}
+              <div> ON SALE </div>
+          {% else %}
+              <div> ON RENT </div>
+          {% endif %}
+          <li> {{ property.price }}</li>
+
+      {% endfor %}
+  </div>
+</div>
+    
+<a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
+</a>
+<a href="https://twitter.com/realbuy2">
 <img src="{% static 'realbuy_app/images/twitter.png' %}" id="home-twitter">
+</a>
+<a href="https://myaccount.google.com/u/2/">
 <img src="{% static 'realbuy_app/images/google.png' %}" id="home-google">
-    
+</a>
 <span id="home-copyright">&copy; 2016. realbuy.com. All rights reserved.</span>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
