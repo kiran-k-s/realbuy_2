@@ -120,7 +120,7 @@
     {% if query_home %}
     {% for property in query_home %}
     <a href="{% url 'detail' property.id %}">
-            <img class ="card-img-top" src="{{property.image.url}}">
+            <img class ="filter-image" src="{{property.image.url}}">
     </a>
     <li> {{ property.location}}</li>
     <li> {{ property.city }}</li>
