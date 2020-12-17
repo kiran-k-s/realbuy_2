@@ -70,7 +70,7 @@
 <div id="filter-big-box-1"></div>
 <div id="filter-big-box-2"></div>    
 <form method="get" action="{% url 'category_filter2' %}">
-      <input class="filter-location" type="text" list="location2" name="location1" id="location1" placeholder="LOCATION(ANY)" />
+      <input class="filter-location-1" type="text" list="location2" name="location1" id="location1" placeholder="LOCATION (ANY)" />
       <datalist id="location2" name="location2">
             <option>Edappal</option>
             <option>Trivandrum</option>
@@ -112,7 +112,7 @@
     {% if query_home %}
     {% for property in query_home %}
       <a href="{% url 'detail' property.id %}">
-              <img class ="filter-image" src="{{property.image.url}}">
+      <img class ="filter-image" src="{{property.image.url}}">
       </a>
       
       {% if property.sell_or_rent == 'sell' %}
@@ -121,19 +121,19 @@
       <div class="filter-rent"> ON RENT </div>
       {% endif %}
       <div class="filter-price">
-        <span class="filter-price-1">{{ property.price}}</span>
-        <span class="filter-price-2">Lakhs</span>
+      <span class="filter-price-1">&#8377; </span>
+      <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
       </div>
-      <span class="filter-type-and-loc">TYPE&amp;LOCATION:</span>
+      <span class="filter-type-and-loc">TYPE & LOCATION:</span>
       <div class="filter-location"> {{ property.location}}</div>
       <span class="filter-plot-area">PLOT AREA:</span>
       <div class="filter-area">
-        <span class="filter-area-1">{{ property.built_up_area}}</span>
-        <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
+      <span class="filter-area-1">{{ property.built_up_area}}</span>
+      <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
       </div>
       <span class="filter-society">SOCIETY:</span>
       <div class="filter-city"> {{ property.city }}</div>
-      <span class="filter-description">DESCRIPTION:</span>
+      <span class="filter-description-head">DESCRIPTION:</span>
       <div class="filter-description"> {{ property.description }} </div>
       <span class="filter-posted">POSTED:</span>
       <div class="filter-date"> {{ property.date }}</div>
@@ -183,9 +183,9 @@
     
 <div class="filter-grid">
   <div class="filter-grid-content">
-      {% for property in category_property_home %}
+    {% for property in category_property_home %}
           <a href="{% url 'detail' property.id %}">
-              <img class ="filter-image" src="{{property.image.url}}">
+          <img class ="filter-image" src="{{property.image.url}}">
           </a>
           
           {% if property.sell_or_rent == 'sell' %}
@@ -194,16 +194,21 @@
           <div class="filter-rent"> ON RENT </div>
           {% endif %}
           <div class="filter-price">
-            <span class="filter-price-1">{{ property.price}}</span>
-            <span class="filter-price-2">Lakhs</span>
+          <span class="filter-price-1">&#8377; </span>
+          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
           </div>
+          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
           <div class="filter-location"> {{ property.location}}</div>
+          <span class="filter-plot-area">PLOT AREA:</span>
           <div class="filter-area">
-            <span class="filter-area-1">{{ property.built_up_area}}</span>
-            <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
+          <span class="filter-area-1">{{ property.built_up_area}}</span>
+          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
           </div>
+          <span class="filter-society">SOCIETY:</span>
           <div class="filter-city"> {{ property.city }}</div>
+          <span class="filter-description-head">DESCRIPTION:</span>
           <div class="filter-description"> {{ property.description }} </div>
+          <span class="filter-posted">POSTED:</span>
           <div class="filter-date"> {{ property.date }}</div>
           <div class="filter-task-bar"></div>
 
@@ -243,15 +248,15 @@
               </a>
               <span class="filter-share">SHARE</span>
           </div>
-      {% endfor %}
+    {% endfor %}
   </div>
 </div>
 
 <div class="filter-grid">
   <div class="filter-grid-content">
-      {% for property in query_filter %}
+    {% for property in query_filter %}
           <a href="{% url 'detail' property.id %}">
-              <img class ="filter-image" src="{{property.image.url}}">
+          <img class ="filter-image" src="{{property.image.url}}">
           </a>
           
           {% if property.sell_or_rent == 'sell' %}
@@ -260,16 +265,21 @@
           <div class="filter-rent"> ON RENT </div>
           {% endif %}
           <div class="filter-price">
-            <span class="filter-price-1">{{ property.price}}</span>
-            <span class="filter-price-2">Lakhs</span>
+          <span class="filter-price-1">&#8377; </span>
+          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
           </div>
+          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
           <div class="filter-location"> {{ property.location}}</div>
+          <span class="filter-plot-area">PLOT AREA:</span>
           <div class="filter-area">
-            <span class="filter-area-1">{{ property.built_up_area}}</span>
-            <span class="filter-area-2">{{ property.built_up_unit }}</span>
+          <span class="filter-area-1">{{ property.built_up_area}}</span>
+          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
           </div>
+          <span class="filter-society">SOCIETY:</span>
           <div class="filter-city"> {{ property.city }}</div>
+          <span class="filter-description-head">DESCRIPTION:</span>
           <div class="filter-description"> {{ property.description }} </div>
+          <span class="filter-posted">POSTED:</span>
           <div class="filter-date"> {{ property.date }}</div>
           <div class="filter-task-bar"></div>
 
@@ -309,7 +319,7 @@
               </a>
               <span class="filter-share">SHARE</span>
           </div>
-      {% endfor %}
+    {% endfor %}
   </div>
 </div>
 
@@ -317,7 +327,7 @@
   <div class="filter-grid-content">
       {% for property in category_property_filter %}
           <a href="{% url 'detail' property.id %}">
-              <img class ="filter-image" src="{{property.image.url}}">
+          <img class ="filter-image" src="{{property.image.url}}">
           </a>
           
           {% if property.sell_or_rent == 'sell' %}
@@ -326,16 +336,21 @@
           <div class="filter-rent"> ON RENT </div>
           {% endif %}
           <div class="filter-price">
-            <span class="filter-price-1">{{ property.price}}</span>
-            <span class="filter-price-2">Lakhs</span>
+          <span class="filter-price-1">&#8377; </span>
+          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
           </div>
+          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
           <div class="filter-location"> {{ property.location}}</div>
+          <span class="filter-plot-area">PLOT AREA:</span>
           <div class="filter-area">
-            <span class="filter-area-1">{{ property.built_up_area}}</span>
-            <span class="filter-area-2">{{ property.built_up_unit }}</span>
+          <span class="filter-area-1">{{ property.built_up_area}}</span>
+          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
           </div>
+          <span class="filter-society">SOCIETY:</span>
           <div class="filter-city"> {{ property.city }}</div>
+          <span class="filter-description-head">DESCRIPTION:</span>
           <div class="filter-description"> {{ property.description }} </div>
+          <span class="filter-posted">POSTED:</span>
           <div class="filter-date"> {{ property.date }}</div>
           <div class="filter-task-bar"></div>
 
@@ -376,20 +391,20 @@
               <span class="filter-share">SHARE</span>
           </div>
 
-      {% endfor %}
+    {% endfor %}
   </div>
 </div>
     
 <a href="https://www.facebook.com/real.buy.5439/">
-<img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
+<img src="{% static 'realbuy_app/images/fb.png' %}" id="filter-fb">
 </a>
 <a href="https://twitter.com/realbuy2">
-<img src="{% static 'realbuy_app/images/twitter.png' %}" id="home-twitter">
+<img src="{% static 'realbuy_app/images/twitter.png' %}" id="filter-twitter">
 </a>
 <a href="https://myaccount.google.com/u/2/">
-<img src="{% static 'realbuy_app/images/google.png' %}" id="home-google">
+<img src="{% static 'realbuy_app/images/google.png' %}" id="filter-google">
 </a>
-<span id="home-copyright">&copy; 2016. realbuy.com. All rights reserved.</span>
+<span id="filter-copyright">&copy; 2016. realbuy.com. All rights reserved.</span>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
