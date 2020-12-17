@@ -27,16 +27,14 @@ Recent Properties{% endblock %}{% block content %}
             <span class="recentPrice2">{{ property.price}}</span><span class="recentPrice3">/Month</span>
             
         </div>
-        <div class="recentLike">
         <form action="{% url 'like_post' property.pk %}" method="POST">
         {% csrf_token %}
             {% if liked %}
-            <button type="submit", name="post_id", value="{{ property.id }}"><img  src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+            <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
             {% else %}
-            <button type="submit", name="post_id", value="{{ property.id }}"><img  src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+            <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
             {% endif %}
         </form>
-        </div>
     </div>
 {% endfor %}
 </div>
@@ -59,16 +57,15 @@ Recent Properties{% endblock %}{% block content %}
             
         </div>
         
-        <div class="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
+        <form action="{% url 'like_post' property.pk %}" method="POST">
         {% csrf_token %}
         {% if user.is_authenticated %}
             {% if liked %}
-            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+            <button class="recentLike" type="submit", name="post_id", value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
             {% else %}
-            <button type="submit", name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+            <button class="recentLike" type="submit", name="post_id", value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
             {% endif %}
         {% endif %}</form>
-        </div>
     </div>
     
 {% endfor %}

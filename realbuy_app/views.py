@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
 from .models import Property, ContactUs
 from .forms import AddForm1, AddForm2, ContactUsForm
@@ -86,10 +86,23 @@ class DetailedView(DetailView):
     model = Property
     template_name = 'realbuy_app/detail.html'
     
-@login_required(login_url='/login_page/')    
+'''@login_required(login_url='/login_page/')    
 def AddView1(request):
     form = AddForm1(request.POST or None)
-    return render(request,"realbuy_app/add1.html",{'form':form})
+    return render(request,"realbuy_app/add1.html",{'form':form})'''
+
+@login_required(login_url='/login_page/') 
+def AddView1(request): 
+  
+    if request.method == 'POST': 
+        form = AddForm1(request.POST, request.FILES) 
+  
+        if form.is_valid():  
+            form.save()
+            return redirect('add2') 
+    else: 
+        form = AddForm1() 
+    return render(request, 'realbuy_app/add1.html', {'form' : form}) 
     
 class AddView2(CreateView):
     model = Property

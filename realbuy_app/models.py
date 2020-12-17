@@ -23,24 +23,24 @@ class Property(models.Model):
     city = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
     location = models.CharField(max_length=30)
-    price = models.IntegerField()
-    bathroom = models.IntegerField()
-    bedroom = models.IntegerField()
-    built_up_area = models.FloatField()
+    price = models.IntegerField(blank=True)
+    bathroom = models.IntegerField(blank=True)
+    bedroom = models.IntegerField(blank=True)
+    built_up_area = models.FloatField(blank=True)
     
     BUILTupUNIT = (
-        ('cm', 'sq.cm'),
-        ('m', 'sq.m'),
-        ('ft', 'sq.ft'),
+        ('CENTS', 'cents'),
+        ('SQM', 'sq.m'),
+        ('SQFT', 'sq.ft'),
     )
     built_up_unit = models.CharField(max_length=100, choices=BUILTupUNIT)
     
-    carpet_area = models.FloatField()
+    carpet_area = models.FloatField(blank=True)
     
     CARPET_UNIT = (
-        ('cm', 'sq.cm'),
-        ('m', 'sq.m'),
-        ('ft', 'sq.ft'),
+        ('CENTS', 'cents'),
+        ('SQM', 'sq.m'),
+        ('SQFT', 'sq.ft'),
     )
     carpet_unit = models.CharField(max_length=100, choices=CARPET_UNIT)
     
@@ -75,7 +75,7 @@ class Property(models.Model):
     )    
     property_floor = MultiSelectField(choices = PROPERTY_FLOOR)
     ownership = models.ForeignKey(User, on_delete=models.CASCADE)
-    total_floor = models.IntegerField()
+    total_floor = models.IntegerField(blank=True)
     
     AVAILABILITY = (
         ('ready to move', 'Ready to Move'),
@@ -83,7 +83,7 @@ class Property(models.Model):
     )
     availability = models.CharField(max_length=100,choices=AVAILABILITY)
     
-    description = models.TextField()
+    description = models.TextField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='realbuy_posts')
     

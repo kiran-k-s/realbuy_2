@@ -31,9 +31,6 @@ class AddForm1(forms.ModelForm):
 class AddForm2(forms.ModelForm):
         
             
-        price = forms.CharField(widget=forms.NumberInput())
-        bathroom = forms.CharField(widget=forms.NumberInput())
-        bedroom = forms.CharField(widget=forms.NumberInput())
         built_up_area = forms.CharField(widget=forms.NumberInput())
         BUILTupUNIT = [('cm', 'sq.cm'),('m', 'sq.m'),('ft', 'sq.ft')]
         built_up_unit = forms.ChoiceField(choices=BUILTupUNIT, widget=forms.Select(attrs={ 'class':'builtupunit'}))

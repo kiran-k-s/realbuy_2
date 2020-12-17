@@ -132,8 +132,8 @@ function submitHandler(e) {
     });
 }
 
-function successFunction(msg) {
-    if (msg.message === 'success') {
+function successFunction(data) {
+    if (data.message === 'success') {
         alert('Success!');
         form.reset()
     }

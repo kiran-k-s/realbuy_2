@@ -16,9 +16,8 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <a href='{% url 'add2' %}'>
 <button type="submit" id="next-add2">Next</button>
-</a>
+
     
 </form>
 
