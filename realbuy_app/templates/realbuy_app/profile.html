@@ -1,16 +1,34 @@
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+    
+<head><title>profile</title>
+<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
+</head>
+<body>
 {% if user.is_authenticated %}
-    {% if user.id == property.ownership.id %}
+{{ property.price}}
+{{ user.profile.user }}
+<img src="{{ property.ownership.profile.image.url}}">
+<img src="{{ user.profile.image.url }}">
+{{ user.profile.email }}
+{{ user.profile.phone }}
+{{ user.profile.address }}
+{% if user.id == property.ownership.id %}
 <a class='nav-link' href="{% url 'edit_profile' %}">Edit Profile</a>
 
 <h1> My properties </h1>
   <a class='nav-link' href="{% url 'user_category' Property.ownership %}"></a>
     <a class='nav-link' href="{% url 'update1' property.pk %}">Edit</a>
-    <a class='nav-link' href="{% url 'delete' property.pk %}">My Profile</a>
-
+    <a class='nav-link' href="{% url 'delete' property.pk %}">Delete</a>
+	{{ property.location}}
 <h1> My wishlist </h1>
-    user.wishlist
-
-{% else %}
-
 
 {% endif %}
+{% endif %}
+
+
+</body>
+</html>

@@ -5,33 +5,34 @@
 <head><title>Login</title></head>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
-<!--<script src="{% static 'realbuy_app/scripts/login.js' %}"></script> -->
+<script src="{% static 'members/scripts/login.js' %}"></script> 
 
 <body>
-<!--<div id="mainform">
+<div id="mainform">
 
-<h2>jQuery Popup Form Example</h2>  -->
+<h2>jQuery Popup Form Example</h2>
 <!-- Required div starts here -->
 <div class="form" id="popup">
 <b>1.Onload Popup Login Form</b><br/><hr/>
 <span>Wait for 3 second.Login Popup form Will appears.</span><br/><br/><br/>
 
-<b>2.Onclick Popup Contact Form</b><hr/>
-<p id="onclick">Popup</p>
-<br/>
 </div>
 
-<!-- Right side div -->
-<div id="formget"><a href=https://www.formget.com/app><img src="images/formget.jpg" alt="Online Form Builder"/></a>
-</div>
-</div>
-<div class="model" role="dialog" id="Modelsignup">
-<form method="POST" class="form" id="login">
-    {% csrf_token %}
+
+
+<div id="logindiv">
+<form method="POST" class="form" action="#" id="login">
+<img src="images/button_cancel.png" class="img" id="cancel"/>
+<h3>Login Form</h3>
+{% csrf_token %}
     {{ form.as_p }}
     <button class='btn btn-secondary'>Login</button>
     <h4>New User?<a href="{% url 'register' %}" class="btn btn-link">Register Here</a></h4>
+<input type="button" id="cancel" value="Cancel"/>
+<br/>
+
 </form>
+</div> 
     
 </body>
 </html>

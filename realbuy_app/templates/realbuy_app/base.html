@@ -95,10 +95,10 @@
 <a href='{% url 'contactus' %}'>
 <button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
 </a>
-
+<!--
 <div class="form-popup" id="myForm">
   <form class="form-container" method="POST" action="">
-<!--    <div class="row">
+    <div class="row">
       <h2 style="text-align:center">Login with Social Media or Manually</h2>
       <div class="vl">
         <span class="vl-innertext">or</span>
@@ -119,7 +119,7 @@
       <div class="col">
         <div class="hide-md-lg">
           <p>Or sign in manually:</p>
-        </div> -->
+        </div> 
 
         {% csrf_token %}
         {{ form.as_p }}
@@ -130,7 +130,7 @@
   </form>
 </div>
 
-<!--<div class="bottom-container">
+<div class="bottom-container">
   <div class="row">
     <div class="col">
       <a href="#" style="color:white" class="btn">Sign up</a>

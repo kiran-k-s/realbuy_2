@@ -175,7 +175,13 @@ def LikeView(request, pk):
     return HttpResponseRedirect(reverse('recent', args=[str(pk)]))
 
 def Profile(request):
-    return render(request, 'realbuy_app/profile.html',{})    
+    properties = Property.objects.all()
+    
+    context = {
+        'properties': properties
+    }
+    return render(request, 'realbuy_app/profile.html', context) 
+    
     
     
     
