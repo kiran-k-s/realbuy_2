@@ -29,7 +29,7 @@ def UserLoginView(request):
         else:
             print("error....")
             
-    return render(request, "members/login.html",context)
+    return render(request, "realbuy_app/base.html",context)
 
     
 class UserEditView(generic.UpdateView):
