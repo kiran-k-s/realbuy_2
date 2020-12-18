@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+    
+<head><title>Update Page 1</title>
+<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
+</head>
+<body>
+
+
+<h1>Update Property</h1>
+
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button type="submit" id="next-add2">Next</button>
+
+    
+</form>
+
+
+
+</body>
+</html>

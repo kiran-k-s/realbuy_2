@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from realbuy_app.models import Profile
 
 
 class RegisterForm(UserCreationForm):
@@ -31,8 +32,8 @@ class EditForm(UserChangeForm):
     is_staff=forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'id':'staffedit'}))'''
     
     class Meta:
-        model = User
-        fields = ('username', 'email')
+        model = Profile
+        fields = ('user', 'email','image','phone','address')
         
         
         

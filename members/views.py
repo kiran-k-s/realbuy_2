@@ -7,6 +7,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
 
 
+
 class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
     template_name = 'members/register.html'

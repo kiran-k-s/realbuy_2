@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+    
+<head><title>Delete Property</title>
+<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
+</head>
+<body>
+
+
+<h1>Delete Property</h1>
+
+
+
+<form id='AddForm2' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">Delete</button>
+
+    
+</form>
+
+
+
+</body>
+</html>

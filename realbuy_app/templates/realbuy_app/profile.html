@@ -9,24 +9,26 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-{{ property.price}}
 {{ user.profile.user }}
-<img src="{{ property.ownership.profile.image.url}}">
 <img src="{{ user.profile.image.url }}">
 {{ user.profile.email }}
 {{ user.profile.phone }}
 {{ user.profile.address }}
-{% if user.id == property.ownership.id %}
-<a class='nav-link' href="{% url 'edit_profile' %}">Edit Profile</a>
+<a href="{% url 'edit_profile' %}">Edit Profile</a>
 
 <h1> My properties </h1>
-  <a class='nav-link' href="{% url 'user_category' Property.ownership %}"></a>
+{% for property in properties %}
+{% if user.id == property.ownership.id %}
+
+
+    <img src="{{ property.image.url }}">
     <a class='nav-link' href="{% url 'update1' property.pk %}">Edit</a>
     <a class='nav-link' href="{% url 'delete' property.pk %}">Delete</a>
-	{{ property.location}}
-<h1> My wishlist </h1>
-
 {% endif %}
+{% endfor %}  
+
+
+
 {% endif %}
 
 

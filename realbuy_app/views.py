@@ -150,16 +150,16 @@ def add(request):
 class UpdateView1(UpdateView):
     model = Property
     form_class = AddForm1
-    template_name = 'update1.html'
+    template_name = 'realbuy_app/update1.html'
     
 class UpdateView2(UpdateView):
     model = Property
     form_class = AddForm2
-    template_name = 'update2.html'
+    template_name = 'realbuy_app/update2.html'
     
 class DeleteView(DeleteView):
     model = Property
-    template_name = 'delete.html'
+    template_name = 'realbuy_app/delete.html'
     success_url = reverse_lazy('home')
     
 def LikeView(request, pk):

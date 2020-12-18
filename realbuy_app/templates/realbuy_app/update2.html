@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+    
+<head><title>Update Page2</title>
+</head>
+
+<body>
+
+
+<h1>Update Property</h1>
+
+
+
+<form id='AddForm2' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
+
+    
+</form>
+<script>
+var name = "{{ user.username }}";
+document.getElementById("owner").value = name;
+document.getElementById('AddForm2').onsubmit = function() {
+      
+    var txt = document.getElementById('owner');
+    txt.value = "{{ user.id }}";
+  }
+</script>
+</body>
+
+</html>
