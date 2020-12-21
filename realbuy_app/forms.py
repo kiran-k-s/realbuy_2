@@ -32,10 +32,10 @@ class AddForm2(forms.ModelForm):
         
             
         built_up_area = forms.CharField(widget=forms.NumberInput())
-        BUILTupUNIT = [('cm', 'sq.cm'),('m', 'sq.m'),('ft', 'sq.ft')]
+        BUILTupUNIT = [('CENTS', 'cents'),('SQM', 'sq.m'),('SQFT', 'sq.ft')]
         built_up_unit = forms.ChoiceField(choices=BUILTupUNIT, widget=forms.Select(attrs={ 'class':'builtupunit'}))
         carpet_area = forms.CharField(widget=forms.NumberInput())
-        CARPET_UNIT = [('cm', 'sq.cm'),('m', 'sq.m'),('ft', 'sq.ft')]
+        CARPET_UNIT = [('CENTS', 'cents'),('SQM', 'sq.m'),('SQFT', 'sq.ft')]
         carpet_unit = forms.ChoiceField(choices=CARPET_UNIT, widget=forms.Select(attrs={ 'class':'carpetunit'}))
         RESALEorNEW = [('resale', 'Resale'), ('new', 'New Booking')]
         resale_or_new = forms.ChoiceField(choices=RESALEorNEW, widget=forms.RadioSelect(attrs={ 'class':'resaleornew'}))

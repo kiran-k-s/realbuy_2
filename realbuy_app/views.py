@@ -97,18 +97,39 @@ def AddView1(request):
     if request.method == 'POST': 
         form = AddForm1(request.POST, request.FILES) 
   
-        if form.is_valid():  
-            form.save()
+        if form.is_valid(): 
+            
+            request.session['sell_or_rent'] = form.cleaned_data.get('sell_or_rent')
+            request.session['property_type'] = form.cleaned_data.get('property_type')
+            request.session['city'] = form.cleaned_data.get('city')
+            request.session['address'] = form.cleaned_data.get('address')
+            request.session['location'] = form.cleaned_data.get('location') 
+
+            #form.save()
             return redirect('add2') 
     else: 
         form = AddForm1() 
     return render(request, 'realbuy_app/add1.html', {'form' : form}) 
     
-class AddView2(CreateView):
-    model = Property
-    form_class = AddForm2
-    template_name = 'realbuy_app/add2.html'
-    success_url = reverse_lazy('home')
+def AddView2(request):
+    if request.method == 'POST': 
+        form = AddForm2(request.POST) 
+  
+        if form.is_valid(): 
+            sell_or_rent = request.session.pop('sell_or_rent') 
+            property_type = request.session.pop('property_type')
+            city = request.session.pop('city')
+            address = request.session.pop('address')
+            location = request.session.pop('location')
+            form.save()
+            return redirect('home') 
+            #success_url = reverse_lazy('home')
+    else: 
+        form = AddForm2() 
+    return render(request, 'realbuy_app/add2.html', {'form' : form}) 
+    
+    
+    
 
 '''def ContactUs(request):
     form = ContactUsForm()

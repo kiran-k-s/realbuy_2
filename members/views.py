@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from .forms import RegisterForm, EditForm, PasswordChangingForm,LoginForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
-
+from django.contrib.messages.views import SuccessMessageMixin
+from bootstrap_modal_forms.mixins import PassRequestMixin
 
 
 class UserRegisterView(generic.CreateView):

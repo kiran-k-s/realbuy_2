@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'members',
     'multiselectfield',
     'select2',
+    'bootstrap_modal_forms'
 ]
 
 MIDDLEWARE = [

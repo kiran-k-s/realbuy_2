@@ -23,33 +23,33 @@ class Property(models.Model):
     city = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
     location = models.CharField(max_length=30)
-    price = models.IntegerField(blank=True)
-    bathroom = models.IntegerField(blank=True)
-    bedroom = models.IntegerField(blank=True)
-    built_up_area = models.FloatField(blank=True)
+    price = models.IntegerField(blank=True,null=True)
+    bathroom = models.IntegerField(blank=True,null=True)
+    bedroom = models.IntegerField(blank=True,null=True)
+    built_up_area = models.FloatField(blank=True,null=True)
     
     BUILTupUNIT = (
         ('CENTS', 'cents'),
         ('SQM', 'sq.m'),
         ('SQFT', 'sq.ft'),
     )
-    built_up_unit = models.CharField(max_length=100, choices=BUILTupUNIT)
+    built_up_unit = models.CharField(max_length=100, choices=BUILTupUNIT,null=True)
     
-    carpet_area = models.FloatField(blank=True)
+    carpet_area = models.FloatField(blank=True,null=True)
     
     CARPET_UNIT = (
         ('CENTS', 'cents'),
         ('SQM', 'sq.m'),
         ('SQFT', 'sq.ft'),
     )
-    carpet_unit = models.CharField(max_length=100, choices=CARPET_UNIT)
+    carpet_unit = models.CharField(max_length=100, choices=CARPET_UNIT,null=True)
     
     
     RESALEorNEW = (
         ('resale', 'Resale'),
         ('new', 'New Booking'),
     )
-    resale_or_new = models.CharField(max_length=100,choices=RESALEorNEW, default=('resale', 'Resale'))
+    resale_or_new = models.CharField(max_length=100,choices=RESALEorNEW, null=True)
     
     PROPERTY_FLOOR = (
         ('1', '1'),
@@ -73,22 +73,22 @@ class Property(models.Model):
         ('19', '19'),
         ('20', '20'),
     )    
-    property_floor = MultiSelectField(choices = PROPERTY_FLOOR)
-    ownership = models.ForeignKey(User, on_delete=models.CASCADE)
-    total_floor = models.IntegerField(blank=True)
+    property_floor = MultiSelectField(choices = PROPERTY_FLOOR,null=True)
+    ownership = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    total_floor = models.IntegerField(blank=True,null=True)
     
     AVAILABILITY = (
         ('ready to move', 'Ready to Move'),
         ('under construction', 'Under Construction'),
     )
-    availability = models.CharField(max_length=100,choices=AVAILABILITY)
+    availability = models.CharField(max_length=100,choices=AVAILABILITY,null=True)
     
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True,null=True)
     date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='realbuy_posts')
     
     def __str__(self):
-        return self.description + '|' + str(self.ownership)
+        return str(self.description) + '|' + str(self.ownership)
     
     def get_absolute_url(self):
         return reverse('detail' ,args=(str(self.id)))

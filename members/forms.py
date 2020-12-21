@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.models import User
 from django import forms
 from realbuy_app.models import Profile
-
+from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'id':'email-register'}))
@@ -16,7 +16,7 @@ class RegisterForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
         
         
-class LoginForm(forms.Form):
+class LoginForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
     
