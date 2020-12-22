@@ -33,7 +33,7 @@
 </head>
     
 <body>
-<!--<img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> -->
+<img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> 
 <span id="welcome">Welcome to realbuy</span>
 <span id="welcome-sub">Realbuy is a real estate firm with a vision to create luxurious living spaces that surpass the expectations of customers. Although recently launched the firm is driven with an instinct and far stretching insight that improves the real estate offerings in the city...</span>
 <a href="{% url 'category_home1' 'sell' %}">
@@ -107,7 +107,7 @@
 <script type="text/javascript">
   $(function () {
     // Sign up button
-    $("#home-login").modalForm({formURL: "{% url 'members:login_page' %}"});
+    $("#home-login").modalForm({formURL: "{% url 'login_page' %}"});
 
   });
 </script>
