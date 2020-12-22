@@ -1,36 +1,74 @@
-
-<!doctype html>
-<html lang="en">
+{% extends 'realbuy_app/base.html' %}
 {% load static %}
-
-    
-<head><title>profile</title>
-<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
-</head>
-<body>
+{% block title %}
+User Profile{% endblock %}{% block content %}
 {% if user.is_authenticated %}
-{{ user.profile.user }}
-<img src="{{ user.profile.image.url }}">
-{{ user.profile.email }}
-{{ user.profile.phone }}
-{{ user.profile.address }}
-<a href="{% url 'edit_profile' %}">Edit Profile</a>
+<div id="profile-big-box"></div>
+<div id="profile-big-box-2"></div> 
+<div id="profile-user-section"></div>
+<img id="profile-pic" src="{{ user.profile.image.url }}">
+<img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
+<div id="profile-username">{{ user.profile.user }}</div>
+<img id="profile-mail-icon" src="{% static 'realbuy_app/images/profile/mail_icon.png' %}">
+<div id="profile-mail">{{ user.profile.email }}</div>
+<img id="profile-phone-icon" src="{% static 'realbuy_app/images/profile/phone_icon.png' %}">
+<div id="profile-phone">+91 {{ user.profile.phone }}</div>
+<img id="profile-address-icon" src="{% static 'realbuy_app/images/profile/location_icon.png' %}">
+<div id="profile-address">{{ user.profile.address }}</div>
 
-<h1> My properties </h1>
-{% for property in properties %}
-{% if user.id == property.ownership.id %}
+<a href="{% url 'edit_profile' %}">
+	<button type="button" id="profile-edit-button"></button>
+	<img id="profile-edit-image" src="{% static 'realbuy_app/images/profile/edit1.png' %}">
+</a>
+
+<span id="profile-head-1">My</span> <span id="profile-head-2">Properties</span>
+
+<div class="profile-grid">
+	{% for property in properties %}
+	{% if user.id == property.ownership.id %}
 
 
-    <img src="{{ property.image.url }}">
-    <a class='nav-link' href="{% url 'update1' property.pk %}">Edit</a>
-    <a class='nav-link' href="{% url 'delete' property.pk %}">Delete</a>
+    <a href="{% url 'detail' property.id %}">
+    <div class="profile-grid-content">
+          <img class ="profile-property-image" src="{{property.image.url}}">
+          
+          
+          {% if property.sell_or_rent == 'sell' %}
+          <div class="profile-property-sell"> ON SALE </div>
+          {% else %}
+          <div class="profile-property-rent"> ON RENT </div>
+          {% endif %}
+          <div class="profile-property-price">
+          <span class="profile-property-price-1">&#8377; </span>
+          <span class="profile-property-price-2">{{ property.price}}</span><span class="profile-property-price-3">/Month</span>
+          </div>
+          <span class="profile-property-type-and-loc">TYPE & LOCATION:</span>
+          <div class="profile-property-location"> {{ property.location}}</div>
+          <span class="profile-property-plot-area">PLOT AREA:</span>
+          <div class="profile-property-area">
+          <span class="profile-property-area-1">{{ property.built_up_area}}</span>
+          <span class="profile-property-area-2">Cents{{ property.built_up_unit }}</span>
+          </div>
+          <span class="profile-property-society">SOCIETY:</span>
+          <div class="profile-property-city"> {{ property.city }}</div>
+          <span class="profile-property-description-head">DESCRIPTION:</span>
+          <div class="profile-property-description"> {{ property.description }} </div>
+          <span class="profile-property-posted">POSTED:</span>
+          <div class="profile-property-date"> {{ property.date }}</div>
+          <a href="{% url 'update1' property.pk %}">
+			<button type="button" class="profile-property-edit-button"></button>
+			<img class="profile-property-edit-image" src="{% static 'realbuy_app/images/profile/edit.png' %}">
+		  </a>
+		  <a href="{% url 'delete' property.pk %}">
+			<button type="button" class="profile-property-delete-button"></button>
+			<img class="profile-property-delete-image" src="{% static 'realbuy_app/images/profile/delete-button.png' %}">
+		  </a>
+    	  
+    </div>
+	</a>
+	{% endif %}
+	{% endfor %}  
+</div>
+
+
 {% endif %}
-{% endfor %}  
-
-
-
-{% endif %}
-
-
-</body>
-</html>

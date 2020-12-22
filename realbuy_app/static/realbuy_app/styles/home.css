@@ -632,7 +632,7 @@
     margin: 0;
     width: 20px;
     background: transparent;
-    border: none;
+    border: 2px solid blue;
 }
 .recentLikeImage{
     position: absolute;
@@ -930,6 +930,25 @@ width: 45px;
 font-family: 'Antipasto';
 font-size: 11px;
 color: rgba(198, 198, 198, 1);
+}
+.detailLike{
+    position: absolute;
+    top:145px;
+    left: 170px;
+    display: inline-block;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    background: transparent;
+    border: none;
+}
+.detailLikeImage{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    height:20px;
+    width:20px;
 }
 #detail-map-image{
      position: absolute;
@@ -1375,4 +1394,345 @@ color: rgba(198, 198, 198, 1);
     font-family: 'Antipasto';
     font-size: 9px;
     color: rgba(255, 255, 255, 1);
+}
+
+
+/* profile.html */
+
+#profile-big-box{
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#profile-big-box-2{
+    position: absolute;
+    top: 75px;
+    left: 0px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#profile-user-section{
+    position: absolute;
+top: 110px;
+left: 970px;
+height: 970px;
+width: 950px;
+background-color: rgba(30, 30, 30, 1);
+}
+#profile-pic{
+    position: absolute;
+top: 144px;
+left: 1003px;
+height: 125px;
+width: 125px;
+border-radius: 125px;
+}
+#profile-username-icon{
+    position: absolute;
+top: 169px;
+left: 1179px;
+height: 22px;
+width: 18px;
+}
+#profile-username{
+    position: absolute;
+top: 165px;
+left: 1226px;
+height: 24px;
+width: 144px;
+font-family: 'Roboto-Regular';
+font-size: 18px;
+color: rgba(206, 206, 206, 1);
+}
+#profile-mail-icon{
+    position: absolute;
+top: 220px;
+left: 1180px;
+height: 14px;
+width: 18px;
+}
+#profile-mail{
+    position: absolute;
+top: 198px;
+left: 1226px;
+height: 48px;
+width: 155px;
+font-family: 'Roboto-Regular';
+font-size: 18px;
+color: rgba(206, 206, 206, 1);
+line-height: 48px;
+}
+#profile-phone-icon{
+    position: absolute;
+top: 170px;
+left: 1462px;
+height: 16px;
+width: 16px;
+}
+#profile-phone{
+    position: absolute;
+top: 153px;
+left: 1507px;
+height: 48px;
+width: 137px;
+font-family: 'Roboto-Regular';
+font-size: 18px;
+color: rgba(206, 206, 206, 1);
+line-height: 48px;
+}
+#profile-address-icon{
+    position: absolute;
+top: 214px;
+left: 1461px;
+height: 19px;
+width: 19px;
+}
+#profile-address{
+    position: absolute;
+top: 211px;
+left: 1507px;
+height: 96px;
+width: 179px;
+font-family: 'Roboto-Regular';
+font-size: 18px;
+color: rgba(206, 206, 206, 1);
+line-height: 24px;
+}
+#profile-edit-button{
+    position: absolute;
+top: 110px;
+left: 1870px;
+height: 50px;
+width: 50px;
+background-color: rgba(45, 44, 44, 1);
+}
+#profile-edit-image{
+    position: absolute;
+top: 123px;
+left: 1884px;
+height: 24px;
+width: 24px;
+}
+#profile-head-1{
+    position: absolute;
+top: 90px;
+left: 20px;
+height: 16px;
+width: 45px;
+font-family: 'Antipasto';
+font-size: 16px;
+color: rgba(255, 255, 255, 1);
+z-index: 1;
+
+}
+#profile-head-2{
+    position: absolute;
+top: 90px;
+left: 65px;
+height: 16px;
+width: 60px;
+font-family: 'Antipasto';
+font-size: 16px;
+color: rgba(47, 181, 110, 1);
+z-index: 1;
+}
+    
+.profile-grid{
+    position:absolute;
+    top:185px;
+    height:400px;
+    width:670px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding:20px;
+    border: 1px solid blue;
+    /*background-color: rgba(22, 22, 22, 1);*/
+}
+.profile-grid-content{
+    position: relative;
+    height:170px;
+    width:650px;
+    border: 1px solid red;
+}
+    
+.profile-property-image{
+    position: absolute;
+    top:10px;
+    left: 10px;
+    height:110px;
+    width:200px;
+}
+.profile-property-sell{
+    position: absolute;
+    top:10px;
+    left:160px;
+    height: 15px;
+    width: 50px;
+    background-color: rgba(231, 93, 54, 1);
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+.profile-property-rent{
+    position: absolute;
+    top:10px;
+    left:160px;
+    height: 15px;
+    width: 50px;
+    background-color: rgba(47, 181, 110, 1);
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+.profile-property-price{
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    left:220px;
+    color: rgba(47, 181, 110, 1);
+}
+.profile-property-price-1{
+    z-index: 1;
+    font-family: 'PingFangSC-Regular';
+    font-size: 15px;
+}
+.profile-property-price-2{
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+.profile-property-price-3{
+    font-family: 'Antipasto';
+    font-size: 15px;
+    height: 15px;
+}
+.profile-property-type-and-loc{
+    position: absolute;
+top: 27px;
+left: 220px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(176, 176, 176, 1);
+}
+.profile-property-location{
+    position: absolute;
+    top:27px;
+    left:298px;
+    height: 15px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+}
+.profile-property-plot-area{
+    position: absolute;
+top: 45px;
+left: 220px;
+height: 10px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(176, 176, 176, 1);
+}
+.profile-property-area{
+    position: absolute;
+    display: inline-block;
+    top: 45px;
+    left:270px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+}
+.profile-property-society{
+    position: absolute;
+top: 63px;
+left: 220px;
+height: 10px;
+width: 65px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(176, 176, 176, 1);
+}
+.profile-property-city{
+    position: absolute;
+    top:63px;
+    left: 260px;
+    height: 15px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+}
+.profile-property-description-head{
+    position: absolute;
+top: 81px;
+left: 220px;
+height: 10px;
+width: 65px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(176, 176, 176, 1);
+}
+.profile-property-description{
+    position: absolute;
+    top:81px;
+    left:275px;
+    height: 15px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+}
+.profile-property-posted{
+    position: absolute;
+top: 99px;
+left: 220px;
+height: 10px;
+width: 65px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(176, 176, 176, 1);
+}
+.profile-property-date{
+    position: absolute;
+    top:99px;
+    left:258px;
+    height: 15px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+}
+.profile-property-edit-button{
+    position: absolute;
+top: 457px;
+left: 1790px;
+height: 50px;
+width: 50px;
+background-color: rgba(35, 35, 35, 1);
+}
+.profile-property-edit-image{
+    position: absolute;
+top: 470px;
+left: 1803px;
+height: 24px;
+width: 24px;
+}
+.profile-property-delete-button{
+    position: absolute;
+top: 457px;
+left: 1839px;
+height: 50px;
+width: 50px;
+background-color: rgba(45, 44, 44, 1);
+}
+.profile-property-delete-image{
+    position: absolute;
+top: 469px;
+left: 1854px;
+height: 24px;
+width: 20px;
 }
