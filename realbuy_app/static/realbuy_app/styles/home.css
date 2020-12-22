@@ -532,17 +532,16 @@
     width:650px;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-    grid-gap: 15px;
-    /*background-color: rgba(22, 22, 22, 1);*/
-    background-color: blue;
+    column-gap: 15px;
+    background-color: rgba(22, 22, 22, 1);
+    /*background-color: blue;*/
 
 }
 .recentList{
     position:relative;
     height:165px;
     width:205px;
-    background-color: red;
+    /*background-color: red;*/
     z-index: 10;
 }
 .recentImage{
@@ -624,20 +623,21 @@
 }
 .recentLike{
     position: absolute;
-    top:145px;
-    left: 170px;
+    top:150px;
+    left: 173px;
     display: inline-block;
-    height: 20px;
+    height: 15px;
     padding: 0;
     margin: 0;
-    width: 20px;
+    width: 15px;
     background: transparent;
-    border: 2px solid blue;
+    /*border: 2px solid blue;*/
+    border:none;
 }
 .recentLikeImage{
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    bottom:0px;
+    right:0px;
     height:20px;
     width:20px;
 }
@@ -1521,10 +1521,10 @@ width: 16px;
 }
 #profile-head-1{
     position: absolute;
-top: 90px;
-left: 20px;
+top: 245px;
+left: 695px;
 height: 16px;
-width: 45px;
+width: 30px;
 font-family: 'Antipasto';
 font-size: 16px;
 color: rgba(255, 255, 255, 1);
@@ -1533,33 +1533,46 @@ z-index: 1;
 }
 #profile-head-2{
     position: absolute;
-top: 90px;
-left: 65px;
+top: 245px;
+left: 717px;
 height: 16px;
-width: 60px;
+width: 300px;
 font-family: 'Antipasto';
 font-size: 16px;
 color: rgba(47, 181, 110, 1);
 z-index: 1;
 }
-    
+/* Hide scrollbar for Chrome, Safari and Opera */
+.profile-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.profile-grid {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}   
 .profile-grid{
+
+    overflow: auto;
     position:absolute;
-    top:185px;
-    height:400px;
-    width:670px;
+    top:275px;
+    left:680px;
+    width:665px;
+    height:363px;
     display: grid;
-    grid-template-rows: auto;
-    grid-gap: 20px;
-    padding:20px;
-    border: 1px solid blue;
-    /*background-color: rgba(22, 22, 22, 1);*/
+    grid-row-gap: 15px;
+    padding-left:10px;
+    padding-right: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(22, 22, 22, 1);
 }
 .profile-grid-content{
     position: relative;
-    height:170px;
-    width:650px;
-    border: 1px solid red;
+    height:130px;
+    width:655px;
+    border: 1px solid rgba(30, 30, 30, 1);
 }
     
 .profile-property-image{
@@ -1710,31 +1723,33 @@ color: rgba(176, 176, 176, 1);
 }
 .profile-property-edit-button{
     position: absolute;
-top: 457px;
-left: 1790px;
-height: 50px;
-width: 50px;
+top: 0px;
+left: 585px;
+height: 35px;
+width: 35px;
 background-color: rgba(35, 35, 35, 1);
+border: none;
 }
 .profile-property-edit-image{
     position: absolute;
-top: 470px;
-left: 1803px;
-height: 24px;
-width: 24px;
+top: 10px;
+left: 595px;
+height: 16px;
+width: 16px;
 }
 .profile-property-delete-button{
     position: absolute;
-top: 457px;
-left: 1839px;
-height: 50px;
-width: 50px;
+top: 0px;
+left: 620px;
+height: 35px;
+width: 35px;
 background-color: rgba(45, 44, 44, 1);
+border: none;
 }
 .profile-property-delete-image{
     position: absolute;
-top: 469px;
-left: 1854px;
-height: 24px;
-width: 20px;
+top: 10px;
+left: 630px;
+height: 16px;
+width: 16px;
 }

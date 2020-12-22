@@ -20,7 +20,6 @@ User Profile{% endblock %}{% block content %}
 	<button type="button" id="profile-edit-button"></button>
 	<img id="profile-edit-image" src="{% static 'realbuy_app/images/profile/edit1.png' %}">
 </a>
-<!--
 <span id="profile-head-1">My</span> <span id="profile-head-2">Properties</span>
 
 <div class="profile-grid">
@@ -28,10 +27,11 @@ User Profile{% endblock %}{% block content %}
 	{% if user.id == property.ownership.id %}
 
 
-    <a href="{% url 'detail' property.id %}">
+    
     <div class="profile-grid-content">
+    	  <a href="{% url 'detail' property.id %}">
           <img class ="profile-property-image" src="{{property.image.url}}">
-          
+          </a>
           
           {% if property.sell_or_rent == 'sell' %}
           <div class="profile-property-sell"> ON SALE </div>
@@ -65,11 +65,10 @@ User Profile{% endblock %}{% block content %}
 		  </a>
     	  
     </div>
-	</a>
 	{% endif %}
 	{% endfor %}  
 </div>
 
 
-{% endif %}  -->
+{% endif %}  
 {% endblock %}
