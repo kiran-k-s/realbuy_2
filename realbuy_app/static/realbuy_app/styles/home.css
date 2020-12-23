@@ -642,11 +642,6 @@
     width:20px;
 }
 
-#error_message{
-    background-color: red;
-    width:50px;
-}
-
 /* detail.html */
 
 #detail-big-box{
@@ -1796,7 +1791,7 @@ width: 16px;
     position: absolute;
 top: 145px;
 left: 695px;
-height: 10px;
+height: 14px;
 width: 10px;
 }
 #contactus-location{
@@ -1838,7 +1833,7 @@ color: rgba(255, 255, 255, 1);
     position: absolute;
 top: 405px;
 left: 695px;
-height: 10px;
+height: 13px;
 width: 214px;
 font-family: 'Lato-Regular';
 font-size: 10px;
@@ -1979,4 +1974,19 @@ font-family: 'Antipasto';
 font-size: 12px;
 color: rgba(255, 255, 255, 1);
 border:none;
+}
+::placeholder{
+    position: relative;
+    left:10px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(140, 140, 140, 1);;
+}
+.contactus_error{
+    position:absolute;
+    top:485px;
+    left:850px;
+    background-color: yellow;
+    width : 70px;
+
 }

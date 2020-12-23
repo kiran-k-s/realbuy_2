@@ -10,6 +10,7 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.http import JsonResponse
+from django.core.mail import send_mail
 
 
 
@@ -130,12 +131,6 @@ def AddView2(request):
     
     
     
-
-'''def ContactUs(request):
-    form = ContactUsForm()
-    context = {'form' : form}
-    return render(request,'realbuy_app/contactus.html', context)'''
-    
 def ContactUs(request):
     form = ContactUsForm()
     # if request.method == 'POST':
@@ -148,25 +143,20 @@ def ContactUs(request):
         print(request.POST)
         if form.is_valid():
             form.save()
+            # send an email
+            send_mail(
+                'message from' + request.POST['contactus_name'],  #subject
+                 request.POST['contactus_message'],  #message
+                 request.POST['contactus_mail'], #from email
+                 ['realbuy1983@gmail.com'], # to email
+
+                 )
+
             return JsonResponse({
                 'message': 'success'
             })
     return render(request, 'realbuy_app/contactus.html', {'form': form})
 
-    
- 
-'''@require_POST
-@csrf_exempt
-def add(request):
-    form = ContactUsForm(request.POST)
-
-    if form.is_valid():
-        new_contactus = ContactUs(name=request.POST['name'], email=request.POST['email'], phone=request.POST['phone'], message=request.POST['message'],)
-        new_contactus.save()
-
-        messages.success(request, 'Details added successfully')
-    
-    return redirect('contactus')  '''
     
 class UpdateView1(UpdateView):
     model = Property

@@ -40,12 +40,23 @@ Contact Us{% endblock %}{% block content %}
 
 <form id='contactForm' method='POST'>
     {% csrf_token %}
-    <div id="error_message"></div>
-    {{ form.as_p }}
-    
+    <div class="contactus_error"></div>
+    {{ form.name }}
+    {{ form.email }}
+    {{ form.phone }}
+    {{ form.message }}
     <button id="contactus_submit" type="submit">SUBMIT</button>
 </form>
 
+<!--<script type="text/javascript">
+$form.find(“TextInput[#contactus_name])
+    .on(“blur”, function() {
+        var value = $(this).val();
+        if (value === “”) {
+            $(this).hide();
+        }
+    })
+</script> -->
 <script type="text/javascript">
 const form = document.getElementById('contactForm');
 form.addEventListener("submit", submitHandler);

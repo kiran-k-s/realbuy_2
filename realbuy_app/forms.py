@@ -68,7 +68,7 @@ class ContactUsForm(forms.ModelForm):
             model = ContactUs
             fields = ('name','email','phone','message')
         name = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(
-            attrs={'id':'contactus_name', 'placeholder' : 'Name'}))
+            attrs={'id':'contactus_name','placeholder' : 'Name'}))
         email = forms.EmailField(max_length=45 , widget=forms.EmailInput(
             attrs={'id':'contactus_mail', "placeholder":"Email"}
         ))
