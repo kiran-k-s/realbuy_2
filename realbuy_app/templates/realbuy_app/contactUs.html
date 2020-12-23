@@ -1,20 +1,40 @@
-<!doctype html>
-<html lang="en">
+{% extends 'realbuy_app/base.html' %}
 {% load static %}
-
-    
-<head><title>Contact Us</title>
+{% block title %}
+Contact Us{% endblock %}{% block content %}
     
 <script
         src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
         crossorigin="anonymous"></script> 
 
-</head>
-<body>
+
+<div id="contactus-big-box"></div>
+<div id="contactus-big-box-2"></div>
+<span id="contactus-head-1">Contact</span> <span id="contactus-head-2">Us</span>
+<img src="{% static 'realbuy_app/images/location_carousel.png' %}" id="contactus-location-icon">
+<span id="contactus-location">Our Location</span>
+
+<!--<div id="contactus-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105730.58891652685!2d76.35495828437325!3d9.997311585902336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c8201a7dadf%3A0x3d1dac7f91e2f2e0!2sCarnival%20Phase%20IV%20Exit%20Rd%2C%20Infopark%20Campus%2C%20Kakkanad%2C%20Kerala%20682030!5e0!3m2!1sen!2sin!4v1608699991189!5m2!1sen!2sin" width="500" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        
+    </iframe>
+</div> -->
+<img src="{% static 'realbuy_app/images/contactus/location.png' %}" id="contactus-map-icon">
+<img src="{% static 'realbuy_app/images/contactus/address.png' %}" id="contactus-address-icon">
+<span id="contactus-address">Address</span>
+<span id="contactus-address-1">9A, 9th floor,</span>
+<span id="contactus-address-2">Carnival Infopark, Kakkanad,</span>
+<span id="contactus-address-3">Kochi - 682 030</span>
+<span id="contactus-phone">Phone : 0484-2415010</span>
+<span id="contactus-mail">Email : support@realbuy.com</span>
+<span id="contactus-opening">Opening Hours:</span>
+<span id="contactus-opening-1">Monday - Friday : 9 am To 6 pm</span>
+<span id="contactus-opening-2">Saturday - Sunday : 9 am To 2 pm</span>
+<img src="{% static 'realbuy_app/images/contactus/mail.png' %}" id="contactus-mail-icon">
+<span id="contactus-agent">Contact our agent</span>
 
 
-<h1>Contact Us</h1>
 
 
 
@@ -23,7 +43,7 @@
     <div id="error_message"></div>
     {{ form.as_p }}
     
-    <button class="btn btn-lg btn-danger btn-block" type="submit">submit</button>
+    <button id="contactus_submit" type="submit">SUBMIT</button>
 </form>
 
 <script type="text/javascript">
@@ -56,9 +76,7 @@ function successFunction(data) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-</body>
-</html>
-
+{% endblock %}
 
     
 <!--<form class="form-add_data" id="cform" method="POST">  

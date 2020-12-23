@@ -68,15 +68,15 @@ class ContactUsForm(forms.ModelForm):
             model = ContactUs
             fields = ('name','email','phone','message')
         name = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(
-            attrs={'id':'inputName', 'placeholder' : 'Name'}))
+            attrs={'id':'contactus_name', 'placeholder' : 'Name'}))
         email = forms.EmailField(max_length=45 , widget=forms.EmailInput(
-            attrs={'id':'inputEmail', "placeholder":"Email address"}
+            attrs={'id':'contactus_mail', "placeholder":"Email"}
         ))
         phone = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(
-            attrs={'id':'inputPhone', "placeholder":"Phone Number"}
+            attrs={'id':'contactus_phone', "placeholder":"Phone Number"}
         ),required=False)
         message = forms.CharField(min_length=20, widget=forms.Textarea(
-            attrs={'id':'inputMessage',"placeholder":"Message"}
+            attrs={'id':'contactus_message',"placeholder":"Message"}
         ))
                          
                                                    

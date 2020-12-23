@@ -1753,3 +1753,230 @@ left: 630px;
 height: 16px;
 width: 16px;
 }
+
+/* contactus.html */
+
+#contactus-big-box{
+    position: absolute;
+    top: 75px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#contactus-big-box-2{
+    position: absolute;
+    top: 80px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#contactus-head-1{
+    position: absolute;
+    top: 90px;
+    left: 695px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+#contactus-head-2{
+    position: absolute;
+    top: 90px;
+    left: 745px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(47, 181, 110, 1);
+}
+#contactus-location-icon{
+    position: absolute;
+top: 145px;
+left: 695px;
+height: 10px;
+width: 10px;
+}
+#contactus-location{
+    position: absolute;
+top: 140px;
+left: 715px;
+height: 20px;
+width: 87px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(255, 255, 255, 1);
+}
+#contactus-map{
+    position: absolute;
+top: 160px;
+left: 695px;
+}
+#contactus-map-icon{
+    
+}
+#contactus-address-icon{
+    position: absolute;
+top: 380px;
+left: 695px;
+height: 15px;
+width: 18px;
+}
+#contactus-address{
+    position: absolute;
+top: 378px;
+left: 722px;
+height: 20px;
+width: 87px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(255, 255, 255, 1);
+}
+#contactus-address-1{
+    position: absolute;
+top: 405px;
+left: 695px;
+height: 10px;
+width: 214px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-address-2{
+    position: absolute;
+top: 420px;
+left: 695px;
+height: 10px;
+width: 180px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+
+}
+#contactus-address-3{
+    position: absolute;
+top: 435px;
+left: 695px;
+height: 10px;
+width: 214px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-phone{
+    position: absolute;
+top: 405px;
+left: 910px;
+height: 10px;
+width: 180px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-mail{
+    position: absolute;
+top: 420px;
+left: 910px;
+height: 10px;
+width: 180px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-opening{
+    position: absolute;
+top: 398px;
+left: 1140px;
+height: 10px;
+width: 214px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-opening-1{
+    position: absolute;
+top: 413px;
+left: 1140px;
+height: 10px;
+width: 180px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-opening-2{
+    position: absolute;
+top: 428px;
+left: 1140px;
+height: 10px;
+width: 214px;
+font-family: 'Lato-Regular';
+font-size: 10px;
+color: rgba(248, 248, 248, 1);
+}
+#contactus-mail-icon{
+    position: absolute;
+top: 490px;
+left: 695px;
+height: 10px;
+width: 14px;
+}
+#contactus-agent{
+    position: absolute;
+top: 485px;
+left: 720px;
+height: 12px;
+width: 124px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(255, 255, 255, 1);
+}
+#contactus_name{
+    position: absolute;
+top: 510px;
+left: 695px;
+height: 30px;
+width: 260px;
+border: 1px solid rgba(140, 140, 140, 1);
+background: transparent;
+}
+#contactus_mail{
+    position: absolute;
+top: 550px;
+left: 695px;
+height: 30px;
+width: 260px;
+border: 1px solid rgba(140, 140, 140, 1);
+background: transparent;
+}
+#contactus_phone{
+    position: absolute;
+top: 590px;
+left: 695px;
+height: 30px;
+width: 260px;
+border: 1px solid rgba(140, 140, 140, 1);
+background: transparent;
+}
+#contactus_message{
+    position: absolute;
+top: 510px;
+left: 965px;
+height: 110px;
+width: 260px;
+border: 1px solid rgba(140, 140, 140, 1);
+background: transparent;
+}
+#contactus_submit{
+    position: absolute;
+top: 510px;
+left: 1235px;
+height: 30px;
+width: 80px;
+background-color: rgba(47, 181, 110, 1);
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(255, 255, 255, 1);
+border:none;
+}
