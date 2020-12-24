@@ -16,6 +16,7 @@ class AddForm1(forms.ModelForm):
         ('rental', 'Rental') ]
         property_type = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                           choices=PROPERTY_TYPE)
+        '''property_type = forms.MultipleChoiceField(choices=PROPERTY_TYPE, widget=forms.SelectMultiple(attrs={ 'class':'propertytype'}))'''
 
         city = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'city', 'placeholder' : 'City'}))
         address = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'address', 'placeholder' : 'Address'}))
@@ -25,8 +26,40 @@ class AddForm1(forms.ModelForm):
             model = Property
             fields = ('sell_or_rent','property_type','image','city','address','location')
             
-            
+        def __init__(self, *args, **kwargs):
+            super(AddForm1, self).__init__(*args, **kwargs)  
+            self.fields['image'].widget.attrs.update({'class' : 'add-image','placeholder':'upload property image'}) 
+
+
+        def propertytype_choices(self):
         
+            field = self['property_type']
+            widget = field.field.widget
+
+            attrs = {}
+            auto_id = field.auto_id
+            if auto_id and 'id' not in widget.attrs:
+                attrs['id'] = auto_id
+
+            name = field.html_name
+
+            return widget.render(name, field.value(), attrs=attrs)
+ 
+
+            
+        def sellorrent_choices(self):
+        
+            field = self['sell_or_rent']
+            widget = field.field.widget
+
+            attrs = {}
+            auto_id = field.auto_id
+            if auto_id and 'id' not in widget.attrs:
+                attrs['id'] = auto_id
+
+            name = field.html_name
+
+            return widget.render(name, field.value(), attrs=attrs)
         
 class AddForm2(forms.ModelForm):
         

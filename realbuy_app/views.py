@@ -99,14 +99,14 @@ def AddView1(request):
         form = AddForm1(request.POST, request.FILES) 
   
         if form.is_valid(): 
-            
+            '''
             request.session['sell_or_rent'] = form.cleaned_data.get('sell_or_rent')
             request.session['property_type'] = form.cleaned_data.get('property_type')
             request.session['city'] = form.cleaned_data.get('city')
             request.session['address'] = form.cleaned_data.get('address')
-            request.session['location'] = form.cleaned_data.get('location') 
+            request.session['location'] = form.cleaned_data.get('location') '''
 
-            #form.save()
+            form.save()
             return redirect('add2') 
     else: 
         form = AddForm1() 
