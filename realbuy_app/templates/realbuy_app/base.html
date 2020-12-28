@@ -53,6 +53,11 @@
 </head>
     
 <body>
+  <!-- bootstrap modal form for login popup -->
+<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.js' %}"></script>
+<script src="{% static 'assets/js/jquery.js' %}"></script>
+
 <img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> 
 <span id="welcome">Welcome to realbuy</span>
 <span id="welcome-sub">Realbuy is a real estate firm with a vision to create luxurious living spaces that surpass the expectations of customers. Although recently launched the firm is driven with an instinct and far stretching insight that improves the real estate offerings in the city...</span>
@@ -98,7 +103,7 @@
       </div>
     </div> -->
     
-    <button type="button" class="home-top-right" id="home-login">LOGIN</button>
+    <button type="button" class="home-top-right" id="home-login" onclick="togglePopupLogin()">LOGIN</button>
     
 {% endif %}
 <ul class="navbar-nav">
@@ -134,6 +139,23 @@
   </li>
 </ul>
 
+   <!-- login popup -->
+<div class="popup" id="home-popup">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="home-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupLogin()">
+    <span id="detail-popup-email">LOGIN</span>
+    <form method="POST" class="form" action="#" id="login">
+    {% csrf_token %}
+    <p><label for="id_username">Username:</label> <input type="text" name="username" class="form-control" required id="id_username"></p>
+    <p><label for="id_password">Password:</label> <input type="password" name="password" class="form-control" required id="id_password"></p>
+
+    <button class='btn btn-secondary'>Login</button>
+    </form>
+    <h4>New User?<a href="/members/register/" class="btn btn-link">Register Here</a></h4>
+  </div>
+</div>
+
     
 {% block content %}
 {% endblock %}
@@ -149,12 +171,10 @@
         }); */
 </script> 
 
-<script type="text/javascript"> /*
-  $(function () {
-    // Sign up button
-    $("#home-login").modalForm({formURL: "{% url 'login_page' %}"});
-
-  });  */
+<script>
+function togglePopupLogin(){
+  document.getElementById("home-popup").classList.toggle("active");
+}
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
