@@ -213,40 +213,43 @@
           <div class="filter-task-bar"></div>
 
           <div>
-              <a href="#">
-                      <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
-              </a>
-              <span class="filter-mail">SEND MAIL</span>
+          <a href="#">
+          <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+          </a>
+          <span class="filter-mail">SEND MAIL</span>
           </div>
+
           <div>
-              <a href="#">
-                  <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
-              </a>
-              <span class="filter-phone">PHONE NUMBER</span>
+          <a href="#">
+          <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+          </a>
+          <span class="filter-phone">PHONE NUMBER</span>
           </div>
+
           <div>
-              <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
-              {% csrf_token %}
-                  {% if liked %}
-                  <button type="submit" name="post_id" value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-                  {% else %}
-                  <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-                  {% endif %}
-              </form>
-              </div>
-              <span class="filter-shortlist">SHORTLIST</span>
+          <form action="{% url 'like_post' property.pk %}" method="POST">
+          {% csrf_token %}
+          {% if liked %}
+          <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+          {% else %}
+          <button type="submit",class="filter-shortlist-button" name="post_id", value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+          {% endif %}
+          </form>
+          <span class="filter-shortlist">SHORTLIST</span>
           </div>
+
           <div>
-              <a href="#">
-                  <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
-              </a>
-              <span class="filter-map">MAP</span>
+          <a href="#">
+          <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
+          </a>
+          <span class="filter-map">MAP</span>
           </div>
+
           <div>
-              <a href="#">
-                  <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
-              </a>
-              <span class="filter-share">SHARE</span>
+          <a href="#">
+          <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+          </a>
+          <span class="filter-share">SHARE</span>
           </div>
     {% endfor %}
   </div>

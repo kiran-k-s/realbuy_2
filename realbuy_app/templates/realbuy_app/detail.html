@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}
 Details{% endblock %}{% block content %}
+
 <div id="detail-big-box"></div>
 <div id="detail-big-box-2"></div>
 
@@ -43,35 +44,33 @@ Details{% endblock %}{% block content %}
         has built a remarkable name and has established itself as one of the well known entities in the real estate arena. Providing help and assistance to the clients regarding realty issues along with offering useful and effective real estate solutions, stems out as the
 </div>
 <div id="detail-seller-head">Seller Info</div>
-<div id="detail-seller-username">Username{{ property.owner.username}}</div>
-<div id="detail-seller-address">Address{{ property.owner.address}}</div>
+<div id="detail-seller-username"> {{ property.ownership.profile.user}}</div>
+<div id="detail-seller-address"> {{ property.ownership.profile.address}}</div>
 
 <div id="detail-task-bar">Detail</div>
 
 <div>
-    <a href="#">
-            <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
-    </a>
+    
+    <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}" onclick="togglePopup1()">
+    
     <span id="detail-mail">SEND MAIL</span>
 </div>
 <div>
-    <a href="#">
-        <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
-    </a>
+    <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
+<!--
 <div>
-    <div><form action="{% url 'like_post' property.pk %}" method="POST">
+    <form action="{% url 'like_post' property.pk %}" method="POST">
     {% csrf_token %}
-        {% if liked %}
-        <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-        {% else %}
-        <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-        {% endif %}
+    {% if liked %}
+    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+    {% else %}
+    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+    {% endif %}
     </form>
-    </div>
     <span id="detail-shortlist">SHORTLIST</span>
-</div>
+</div> -->
 <div>
     <a href="#">
         <img id="detail-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
@@ -84,5 +83,36 @@ Details{% endblock %}{% block content %}
     </a>
     <span id="detail-share">SHARE</span>
 </div>
+
+<!-- email popup -->
+
+<div class="popup" id="detail-popup-1">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup1()">
+    <span id="detail-popup-email">{{property.ownership.profile.email}}</span>
+  </div>
+</div>
+
+<!-- phone number popup -->
+
+<div class="popup" id="detail-popup-2">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
+    <span id="detail-popup-phone">{{property.ownership.profile.phone}}</span>
+  </div>
+</div>
+
+
+<script>
+function togglePopup1(){
+  document.getElementById("detail-popup-1").classList.toggle("active");
+}
+
+function togglePopup2(){
+  document.getElementById("detail-popup-2").classList.toggle("active");
+}
+</script>
 
 {% endblock %}
