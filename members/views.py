@@ -7,10 +7,15 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
 
 
-class UserRegisterView(generic.CreateView):
+'''class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
     template_name = 'members/register.html'
     success_url = reverse_lazy('login_page')
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        return redirect('home')
+    else:
+        print("error....")'''
     
 def UserLoginView(request):
     form = LoginForm(request.POST or None)
