@@ -31,35 +31,7 @@ class AddForm1(forms.ModelForm):
             self.fields['image'].widget.attrs.update({'class' : 'add-image','placeholder':'upload property image'}) 
 
 
-        def propertytype_choices(self):
         
-            field = self['property_type']
-            widget = field.field.widget
-
-            attrs = {}
-            auto_id = field.auto_id
-            if auto_id and 'id' not in widget.attrs:
-                attrs['id'] = auto_id
-
-            name = field.html_name
-
-            return widget.render(name, field.value(), attrs=attrs)
- 
-
-            
-        def sellorrent_choices(self):
-        
-            field = self['sell_or_rent']
-            widget = field.field.widget
-
-            attrs = {}
-            auto_id = field.auto_id
-            if auto_id and 'id' not in widget.attrs:
-                attrs['id'] = auto_id
-
-            name = field.html_name
-
-            return widget.render(name, field.value(), attrs=attrs)
         
 class AddForm2(forms.ModelForm):
         
@@ -114,4 +86,8 @@ class ContactUsForm(forms.ModelForm):
             attrs={'id':'contactus_message',"placeholder":"Message"}
         ))
                          
+          #removing auto created options list    
+        '''def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['name'].queryset = ContactUs.objects.none()'''
                                                    

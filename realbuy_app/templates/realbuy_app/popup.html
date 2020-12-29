@@ -1,0 +1,61 @@
+{% load static %}
+   <!-- login popup -->
+<div class="popup" id="home-popup">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="home-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupLogin()">
+    <span id="home-popup-head">LOGIN</span>
+    <div id="home-popup-box-1"></div>
+    <div id="home-popup-box-2"></div>
+    <form method="POST" action="{% url 'login_page' %}">
+    {% csrf_token %}
+    <span id="login-popup-username-head">Name/Email</span>
+    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username">
+    <span id="login-popup-password-head">Password</span>
+    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password">
+
+    <button type="submit" id='login-popup-submit'>LOGIN</button>
+    </form>
+    <a href="#" id="login-popup-forgot"> Forgot Password? </a>
+    <span id="login-popup-or">Or</span>
+    <a href="https://www.facebook.com/real.buy.5439/">
+    <img src="{% static 'realbuy_app/images/fb.png' %}" id="login-popup-fb">
+    </a>
+    <a href="https://twitter.com/realbuy2">
+    <img src="{% static 'realbuy_app/images/twitter.png' %}" id="login-popup-twitter">
+    </a>
+    <a href="https://myaccount.google.com/u/2/">
+    <img src="{% static 'realbuy_app/images/google.png' %}" id="login-popup-google">
+    </a>
+    <span id="login-popup-register-1">Don't have an account?</span>
+    <span id="login-popup-register-2" onclick="togglePopupRegister()">Create Account</span>
+  </div>
+</div>
+
+  <!-- register popup -->
+
+<div class="popup" id="register-popup">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="register-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupRegister()">
+    <span id="register-popup-head">REGISTER</span>
+    <div id="register-popup-box-1"></div>
+    <div id="register-popup-box-2"></div>
+    <form method="POST">
+    {% csrf_token %}
+  
+    <span id="register-popup-username-head">Username</span>
+    <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required>
+    <span id="register-popup-email-head">Email</span>
+    <label for="email-register"></label> <input type="email" name="email" id="email-register" class="register-popup-email" required>
+    <span id="register-popup-password1-head">Password</span>
+    <label for="password1"></label> <input type="password" name="password1" id="password1" class="register-popup-password1" maxlength="100" required>
+    <span id="register-popup-password2-head">Confirm Password</span>
+    <label for="password2"></label> <input type="password" name="password2" id="password2" class="register-popup-password2" maxlength="100" required>
+
+    <button type="submit" id='register-popup-submit'>REGISTER</button>
+    </form>
+    
+    <span id="register-popup-login" onclick="togglePopupRegister()">Go to login</span>
+  </div>
+</div>

@@ -32,44 +32,45 @@
   //alert("Form Submitted Successfully!");
   //return true;
 } */
-/*function nameValidate()
+function nameValidate()
 {
-var name=document.getElementById("inputName").value;
+var name=document.getElementById("contactus_name").value;
 
 if(name.length>=3 && name.length <=100)
 		{
 			if(/^[a-zA-Z\s]+$/.test(name))
 			{
-                document.getElementById("nameError").innerHTML ="";
+                document.getElementById("contactus_error").innerHTML ="";
 				return true;
 			}
 		else
 			{
-                document.getElementById("nameError").innerHTML ="Error: Name should only contain characters and space.";
+                document.getElementById("contactus_error").innerHTML ="Error: Name should only contain characters and space.";
+                /*$('#contactus_name').css('display','block'); */
 				return false;
 			}
 		}
 		
 else
     {	
-        document.getElementById("nameError").innerHTML ="Error: Name length should be greater than 3 characters and less than 100 characters";
+        document.getElementById("contactus_error").innerHTML ="Error: Name length should be greater than 3 characters and less than 100 characters";
         return false;
     }		
 }
 
 function mailValidate()
 {
-var email=document.getElementById("inputEmail").value;
+var email=document.getElementById("contactus_mail").value;
 const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 if(re.test(email))
 		{
-			document.getElementById("mailError").innerHTML ="";
+			document.getElementById("contactus_error").innerHTML ="";
 			return true;
 		}
     
 else
 		{
-			document.getElementById("mailError").innerHTML ="Error: Invalid E-mail id";
+			document.getElementById("contactus_error").innerHTML ="Error: Invalid E-mail id";
 			return false;
 		}
 
@@ -78,25 +79,25 @@ else
 function numberValidate()
 {
 
-	var  mobile=document.getElementById("inputPhone").value;
+	var  mobile=document.getElementById("contactus_phone").value;
 	const re=/^\d+$/;
 
 	if(re.test(mobile)|| mobile.length ==0) 
 		{
 		if(mobile.length==0 || mobile.length ==10)
 			{
-			document.getElementById("phoneError").innerHTML ="";
+			document.getElementById("contactus_error").innerHTML ="";
 			return true;
 			}
 		else
 			{
-			document.getElementById("phoneError").innerHTML ="Error: Invalid phone number";
+			document.getElementById("contactus_error").innerHTML ="Error: Invalid phone number";
 			return false;
 			}
 		}
 	else
 		{
-			document.getElementById("phoneError").innerHTML ="Error: Invalid phone number";
+			document.getElementById("contactus_error").innerHTML ="Error: Invalid phone number";
 			return false;
 		}
 
@@ -104,20 +105,21 @@ function numberValidate()
 
 function messageValidate()
 {
-	var  message=document.getElementById("inputMessage").value;
+	var  message=document.getElementById("contactus_message").value;
 
 	if(message.length>=20)
 		{
-		document.getElementById("descriptionError").innerHTML ="";
+		document.getElementById("contactus_error").innerHTML ="";
 		return true;
 		}
 	else
 		{
-		document.getElementById("descriptionError").innerHTML ="Error: Description is mandatory with a minimum of 20 character length";
+		document.getElementById("contactus_error").innerHTML ="Error: Description is mandatory with a minimum of 20 character length";
 		return false;
 		}      
 	
-}   */
+}   
+
 const form = document.getElementById('contactForm');
 form.addEventListener("submit", submitHandler);
 
@@ -139,9 +141,7 @@ function successFunction(data) {
     }
 }
 
-   /*
-
-        $(document).ready(function(){
+/*        $(document).ready(function(){
             $('#fbutton').click(function(e){
                   //var isvalid=validation()
                   

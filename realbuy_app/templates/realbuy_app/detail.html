@@ -89,6 +89,7 @@ Details{% endblock %}{% block content %}
 <div class="popup" id="detail-popup-1">
   <div class="overlay"></div>
   <div class="content">
+    <div id="detail-popup-box1"></div>
     <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup1()">
     <span id="detail-popup-email">{{property.ownership.profile.email}}</span>
   </div>
@@ -99,6 +100,7 @@ Details{% endblock %}{% block content %}
 <div class="popup" id="detail-popup-2">
   <div class="overlay"></div>
   <div class="content">
+    <div id="detail-popup-box2"></div>
     <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
     <span id="detail-popup-phone">{{property.ownership.profile.phone}}</span>
   </div>

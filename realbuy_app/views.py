@@ -144,18 +144,18 @@ def ContactUs(request):
         if form.is_valid():
             form.save()
             # send an email
-            send_mail(
+            '''send_mail(
                 'message from' + request.POST['contactus_name'],  #subject
                  request.POST['contactus_message'],  #message
                  request.POST['contactus_mail'], #from email
                  ['realbuy1983@gmail.com'], # to email
 
-                 )
+                 )'''
 
             return JsonResponse({
                 'message': 'success'
             })
-    return render(request, 'realbuy_app/contactus.html', {'form': form})
+    return render(request, 'realbuy_app/contactus.html',{'form' : form})
 
     
 class UpdateView1(UpdateView):
