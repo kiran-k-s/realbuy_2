@@ -144,15 +144,31 @@
   <div class="overlay"></div>
   <div class="content">
     <img id="home-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupLogin()">
-    <span id="detail-popup-email">LOGIN</span>
-    <form method="POST" class="form" action="#" id="login">
+    <span id="home-popup-head">LOGIN</span>
+    <div id="home-popup-box-1"></div>
+    <div id="home-popup-box-2"></div>
+    <form method="POST" action="{% url 'login_page' %}">
     {% csrf_token %}
-    <p><label for="id_username">Username:</label> <input type="text" name="username" class="form-control" required id="id_username"></p>
-    <p><label for="id_password">Password:</label> <input type="password" name="password" class="form-control" required id="id_password"></p>
+    <span id="login-popup-username-head">Name/Email</span>
+    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username">
+    <span id="login-popup-password-head">Password</span>
+    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password">
 
-    <button class='btn btn-secondary'>Login</button>
+    <button type="submit" id='login-popup-submit'>LOGIN</button>
     </form>
-    <h4>New User?<a href="/members/register/" class="btn btn-link">Register Here</a></h4>
+    <a href="#"> Forgot Password? </a>
+    <span id="login-popup-or">Or</span>
+    <a href="https://www.facebook.com/real.buy.5439/">
+    <img src="{% static 'realbuy_app/images/fb.png' %}" id="login-popup-fb">
+    </a>
+    <a href="https://twitter.com/realbuy2">
+    <img src="{% static 'realbuy_app/images/twitter.png' %}" id="login-popup-twitter">
+    </a>
+    <a href="https://myaccount.google.com/u/2/">
+    <img src="{% static 'realbuy_app/images/google.png' %}" id="login-popup-google">
+    </a>
+    <span id="login-popup-register-1">Don't have an account?</span>
+    <a href="/members/register/" id="login-popup-register-2">Create Account</a>
   </div>
 </div>
 

@@ -255,22 +255,23 @@ button {
   left:0px;
   width:100vw;
   height:100vh;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.5);
   z-index:1;
   display:none;
 }
 
 #home-popup .content {
   position:absolute;
-  top:50%;
+  top:45%;
   left:50%;
   transform:translate(-50%,-50%) scale(0);
   background:#fff;
-  width:500px;
-  height:250px;
+  width:310px;
+  height:350px;
   z-index:2;
   text-align:center;
   padding:20px;
+  border: solid 8px black;
   box-sizing:border-box;
   font-family:"Open Sans",sans-serif;
 }
@@ -278,17 +279,17 @@ button {
 #home-popup-close{
   cursor:pointer;
   position:absolute;
-  right:20px;
-  top:20px;
-  width:30px;
-  height:30px;
-  background:#222;
+  right:10px;
+  top:10px;
+  width:20px;
+  height:20px;
   color:#fff;
   font-size:25px;
   font-weight:600;
   line-height:30px;
   text-align:center;
   border-radius:50%;
+  z-index: 1;
 }
 
 #home-popup.active .overlay {
@@ -300,6 +301,81 @@ button {
   transform:translate(-50%,-50%) scale(1);
 }
 
+#home-popup-box-1{
+    position: absolute;
+top: 0px;
+left: 0px;
+right:0px;
+height: 40px;
+
+background-color: rgba(43, 43, 43, 1);
+}
+#home-popup-box-2{
+position: absolute;
+top: 40px;
+left: 0px;
+right:0px;
+height: 295px;
+background-color: rgba(30, 30, 30, 1);
+}
+#home-popup-head{
+    position: absolute;
+top: 5px;
+left: 125px;
+height: 20px;
+font-family: 'Antipasto';
+font-size: 20px;
+color: rgba(240, 240, 240, 1);
+z-index: 1;
+}
+#login-popup-username-head{
+    position: absolute;
+top: 50px;
+left: 30px;
+height: 11px;
+width: 72px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(244, 244, 244, 1);
+}
+.login-popup-username{
+    position: absolute;
+top: 65px;
+left: 30px;
+height: 20px;
+width: 200px;
+border: 1px solid rgba(210, 210, 210, 1);
+}
+#login-popup-password-head{
+    position: absolute;
+top: 90px;
+left: 30px;
+height: 11px;
+width: 72px;
+font-family: 'Antipasto';
+font-size: 11px;
+color: rgba(244, 244, 244, 1);
+}
+.login-popup-password{
+    position: absolute;
+top: 105px;
+left: 30px;
+height: 20px;
+width: 200px;
+border: 1px solid rgba(210, 210, 210, 1);
+}
+#login-popup-submit{
+    position: absolute;
+top: 130px;
+left: 30px;
+height: 30px;
+width: 200px;
+background-color: rgba(40, 140, 86, 1);
+font-family: 'Antipasto';
+font-size: 16px;
+color: rgba(216, 216, 216, 1);
+
+}
 
 
 /* aboutus.html */
@@ -652,8 +728,10 @@ button {
     height:530px;
     width:650px;
     display: grid;
-    grid-template-columns: 205px 205px 205px;
-    grid-template-rows: 165px 165px 165px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    /*grid-template-columns: 205px 205px 205px;
+    grid-template-rows: 165px 165px 165px;*/
     grid-gap: 15px;
     /*background-color: rgba(22, 22, 22, 1);*/
     border: 1px solid blue;
@@ -1186,8 +1264,8 @@ color: rgba(198, 198, 198, 1);
   top:70%;
   left:75%;
   transform:translate(-75%,-70%) scale(0);
-  background: rgba(43, 43, 43, 1);
-  /*background:#fff;*/
+  /*background: rgba(43, 43, 43, 1);*/
+  background:#fff;
   width:300px;
   height:100px;
   z-index:2;
@@ -1363,7 +1441,7 @@ color: rgba(51, 51, 51, 1);
     /*background-color: rgba(22, 22, 22, 1);*/
 }
 .filter-grid-content{
-    position:absolute;
+    position:relative;
     height:120px;
     width:600px;
     border: 1px solid red;
@@ -1371,7 +1449,7 @@ color: rgba(51, 51, 51, 1);
 
 }
 .filter-image{
-    position: relative;
+    position: absolute;
     top:10px;
     left: 10px;
     height:110px;
