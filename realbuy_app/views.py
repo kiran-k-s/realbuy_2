@@ -168,9 +168,9 @@ class UpdateView2(UpdateView):
     form_class = AddForm2
     template_name = 'realbuy_app/update2.html'
     
-class DeleteView(DeleteView):
+class DeletePropertyView(DeleteView):
     model = Property
-    template_name = 'realbuy_app/delete.html'
+    #template_name = 'realbuy_app/delete.html'
     success_url = reverse_lazy('home')
     
 def LikeView(request, pk):

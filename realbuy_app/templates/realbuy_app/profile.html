@@ -59,15 +59,40 @@ User Profile{% endblock %}{% block content %}
 			<button type="button" class="profile-property-edit-button"></button>
 			<img class="profile-property-edit-image" src="{% static 'realbuy_app/images/profile/edit.png' %}">
 		  </a>
-		  <a href="{% url 'delete' property.pk %}">
+      <a onclick="togglePopupDelete()">
 			<button type="button" class="profile-property-delete-button"></button>
 			<img class="profile-property-delete-image" src="{% static 'realbuy_app/images/profile/delete-button.png' %}">
-		  </a>
+      </a>
     	  
     </div>
 	{% endif %}
 	{% endfor %}  
 </div>
+
+   <!-- delete popup -->
+<div class="popup" id="delete-popup">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="delete-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupDelete()">
+    <span id="delete-popup-head">CONFIRM DELETE</span>
+    <div id="delete-popup-box-1"></div>
+    <div id="delete-popup-box-2"></div>
+    <form method="POST" > 
+    {% csrf_token %}
+    <img src="{% static 'realbuy_app/images/alert.png' %}" id="delete-popup-alert">
+    <span id="delete-popup-content">Are you sure you want to delete this item?</span>
+    <button type="submit" id='delete-popup-submit'>DELETE</button>
+    <button type="button" id='delete-popup-cancel' onclick="togglePopupDelete()">CANCEL</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+function togglePopupDelete(){
+  document.getElementById("delete-popup").classList.toggle("active");
+}
+</script>
 
 
 {% endif %}  
