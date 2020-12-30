@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
-from .models import Property, ContactUs
-from .forms import AddForm1, AddForm2, ContactUsForm
+from .models import Property, ContactUs, Profile
+from .forms import AddForm1, AddForm2, ContactUsForm, ProfileForm
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
@@ -168,10 +168,12 @@ class UpdateView2(UpdateView):
     form_class = AddForm2
     template_name = 'realbuy_app/update2.html'
     
-class DeletePropertyView(DeleteView):
+'''class DeletePropertyView(DeleteView):
     model = Property
     #template_name = 'realbuy_app/delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home') '''
+
+
     
 def LikeView(request, pk):
     post = get_object_or_404(Property, id=request.POST.get('post_id'))
@@ -185,14 +187,33 @@ def LikeView(request, pk):
         
     return HttpResponseRedirect(reverse('recent', args=[str(pk)]))
 
-def Profile(request):
+def ProfileView(request, pk):
     properties = Property.objects.all()
-    
+    profile = Profile.objects.get(id=pk)
     context = {
-        'properties': properties
+        'properties': properties,
+        'profile': profile
     }
     return render(request, 'realbuy_app/profile.html', context) 
+
+
+def EditProfile(request, pk):
+    update_profile = Profile.objects.get(id=pk)
+    properties = Property.objects.all()
+    form = ProfileForm(instance=update_profile)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES, instance=update_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile',pk)
+    context = {
+        'form':form,'profile':update_profile,'properties': properties
+    }
+    return render(request, 'realbuy_app/edit_profile.html', context)
     
     
-    
+def DeleteView(request, pk):
+    if request.method == 'POST':
+        Property.objects.get(id=pk).delete()
+        return redirect('profile',pk)    
     

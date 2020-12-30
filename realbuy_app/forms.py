@@ -1,5 +1,5 @@
 from django import forms
-from .models import Property,ContactUs
+from .models import Property,ContactUs,Profile
 #from django_select2.forms import Select2MultipleWidget
 from django.core.exceptions import FieldDoesNotExist
 
@@ -85,9 +85,29 @@ class ContactUsForm(forms.ModelForm):
         message = forms.CharField(min_length=20, widget=forms.Textarea(
             attrs={'id':'contactus_message',"placeholder":"Message"}
         ))
+
                          
           #removing auto created options list    
         '''def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.fields['name'].queryset = ContactUs.objects.none()'''
-                                                   
+
+
+class ProfileForm(forms.ModelForm):
+        class Meta:
+            model = Profile
+            fields = ('name','image','email','phone','address')
+        name = forms.CharField(widget=forms.TextInput(
+            attrs={'id':'profile-edit-name'}))
+        email = forms.EmailField(max_length=45 , widget=forms.EmailInput(
+            attrs={'id':'profile-edit-email'}
+        ))
+        phone = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(
+            attrs={'id':'profile-edit-phone'}
+        ),required=False)
+        address = forms.CharField(widget=forms.Textarea(
+            attrs={'id':'profile-edit-address'}
+        ))
+        def __init__(self, *args, **kwargs):
+            super(ProfileForm, self).__init__(*args, **kwargs)  
+            self.fields['image'].widget.attrs.update({'id' : 'profile-edit-upload','placeholder':'upload profile picture'}) 

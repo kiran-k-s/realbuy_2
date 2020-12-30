@@ -115,6 +115,7 @@ class ContactUs(models.Model):
     
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30, default="user")
     image = models.ImageField(upload_to='images/')
     email = models.EmailField()
     phone = models.CharField(max_length=15, blank=True)

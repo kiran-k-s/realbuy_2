@@ -53,10 +53,6 @@
 </head>
     
 <body>
-  <!-- bootstrap modal form for login popup -->
-<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
-<script src="{% static 'assets/js/bootstrap.js' %}"></script>
-<script src="{% static 'assets/js/jquery.js' %}"></script>
 
 <img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> 
 <span id="welcome">Welcome to realbuy</span>
@@ -74,8 +70,8 @@
 <button type="button" id="home-filter4" class="home-filter">UNDER CONSTRUCTION</button>
 </a>
     
-<form method="get" action="{% url 'category_home2' %}">
-      <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search">
+<form method="get" action="{% url 'category_home2' %}" >
+      <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
 </form>
 <a href="https://www.facebook.com/real.buy.5439/">
@@ -93,7 +89,7 @@
     <a href='{% url 'logout' %}'>
     <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
-    <a href='{% url 'profile' %}'>
+    <a href='{% url 'profile' user.id %}'>
     <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
     </a>
 {% else %}

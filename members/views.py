@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
 from django.urls import reverse_lazy
-from .forms import RegisterForm, EditForm, PasswordChangingForm,LoginForm
+from .forms import RegisterForm,PasswordChangingForm,LoginForm#EditForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
 
@@ -37,13 +37,13 @@ def UserLoginView(request):
     #return render(request, "members/login.html",context)
 
     
-class UserEditView(generic.UpdateView):
+'''class UserEditView(generic.UpdateView):
     form_class = EditForm
     template_name = 'members/edit_profile.html'
     success_url = reverse_lazy('profile')
     
     def get_object(self):
-        return self.request.user
+        return self.request.user  '''
     
 
 class PasswordsChangeView(PasswordChangeView):
