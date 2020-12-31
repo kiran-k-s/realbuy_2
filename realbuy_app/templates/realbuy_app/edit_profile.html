@@ -9,7 +9,7 @@ Edit Profile{% endblock %}{% block content %}
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-<img id="profile-pic" src="{{ profile.image.url }}">
+<img id="profile-edit-pic" src="{{ profile.image.url }}">
 {{ form.image }}
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
 {{ form.name }}

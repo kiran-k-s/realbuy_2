@@ -117,7 +117,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, default="user")
     image = models.ImageField(upload_to='images/')
-    email = models.EmailField()
+    email = models.EmailField(null=True,blank=True)
     phone = models.CharField(max_length=15, blank=True)
     address = models.TextField()
     

@@ -16,6 +16,12 @@ from django.contrib.auth import authenticate, login
         return redirect('home')
     else:
         print("error....")'''
+
+def UserRegisterView(request):
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
     
 def UserLoginView(request):
     form = LoginForm(request.POST or None)

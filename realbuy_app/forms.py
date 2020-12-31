@@ -108,6 +108,5 @@ class ProfileForm(forms.ModelForm):
         address = forms.CharField(widget=forms.Textarea(
             attrs={'id':'profile-edit-address'}
         ))
-        def __init__(self, *args, **kwargs):
-            super(ProfileForm, self).__init__(*args, **kwargs)  
-            self.fields['image'].widget.attrs.update({'id' : 'profile-edit-upload','placeholder':'upload profile picture'}) 
+        image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'id' : 'profile-edit-upload'}))
+         

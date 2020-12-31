@@ -2469,13 +2469,23 @@ border: none;
 
 /* edit_profile */
 
+#profile-edit-pic{
+    position: absolute;
+top: 95px;
+left: 695px;
+height: 85px;
+width: 85px;
+border-radius: 85px;
+border: solid 2px white;
+}
+
 #profile-edit-name{
     z-index: 2;
     position: absolute;
-top: 510px;
-left: 695px;
+top: 110px;
+left: 820px;
 height: 30px;
-width: 260px;
+width: 200px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2483,10 +2493,10 @@ color:white;
 #profile-edit-email{
     z-index: 2;
     position: absolute;
-top: 550px;
-left: 695px;
+top: 140px;
+left: 820px;
 height: 30px;
-width: 260px;
+width: 200px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2494,10 +2504,10 @@ color:white;
 #profile-edit-phone{
     z-index: 2;
     position: absolute;
-top: 590px;
-left: 695px;
+top: 110px;
+left: 1057px;
 height: 30px;
-width: 260px;
+width: 200px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2505,10 +2515,10 @@ color:white;
 #profile-edit-address{
     z-index: 2;
     position: absolute;
-top: 510px;
-left: 965px;
-height: 110px;
-width: 260px;
+top: 150px;
+left: 1057px;
+height: 30px;
+width: 200px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2517,7 +2527,7 @@ resize:none;
 #profile-edit-submit{
     z-index: 2;
     position: absolute;
-top: 510px;
+top: 130px;
 left: 1235px;
 height: 30px;
 width: 80px;

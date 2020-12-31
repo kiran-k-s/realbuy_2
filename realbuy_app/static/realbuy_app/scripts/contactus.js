@@ -76,7 +76,7 @@ else
 
 }
 
-function numberValidate()
+function phoneValidate()
 {
 
 	var  mobile=document.getElementById("contactus_phone").value;
@@ -118,28 +118,12 @@ function messageValidate()
 		return false;
 		}      
 	
-}   
-
-const form = document.getElementById('contactForm');
-form.addEventListener("submit", submitHandler);
-
-function submitHandler(e) {
-    e.preventDefault();
-    $.ajax({
-        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url         : '{% url 'contactus' %}', // the url where we want to POST
-        data        : $('#contactForm').serialize(), // our form data
-        dataType    : 'json', // what type of data do we expect back from the server
-        success     : successFunction
-    });
 }
 
-function successFunction(data) {
-    if (data.message === 'success') {
-        alert('Success!');
-        form.reset()
-    }
-}
+
+
+    
+
 
 /*        $(document).ready(function(){
             $('#fbutton').click(function(e){
