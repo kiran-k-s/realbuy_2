@@ -92,7 +92,7 @@ def AddView1(request):
     form = AddForm1(request.POST or None)
     return render(request,"realbuy_app/add1.html",{'form':form})'''
 
-@login_required(login_url='/login_page/') 
+@login_required(login_url='/members/login/') 
 def AddView1(request): 
   
     if request.method == 'POST': 
@@ -144,13 +144,15 @@ def ContactUs(request):
         if form.is_valid():
             form.save()
             # send an email
-            '''send_mail(
-                'message from' + request.POST['contactus_name'],  #subject
-                 request.POST['contactus_message'],  #message
-                 request.POST['contactus_mail'], #from email
-                 ['realbuy1983@gmail.com'], # to email
-
-                 )'''
+            subject = 'hi ' + form.cleaned_data.get('name') + ',realbuy received your query'
+            message = 'will connect you with the right person within 2 days'
+            recipient = form.cleaned_data.get('email')
+            send_mail(
+                subject,  #subject
+                message,  #message
+                settings.EMAIL_HOST_USER,  #from email
+                [recipient],  # to email
+                ) 
 
             return JsonResponse({
                 'message': 'success'

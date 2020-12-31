@@ -2482,10 +2482,10 @@ border: solid 2px white;
 #profile-edit-name{
     z-index: 2;
     position: absolute;
-top: 110px;
+top: 100px;
 left: 820px;
 height: 30px;
-width: 200px;
+width: 180px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2496,7 +2496,7 @@ color:white;
 top: 140px;
 left: 820px;
 height: 30px;
-width: 200px;
+width: 180px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2504,10 +2504,10 @@ color:white;
 #profile-edit-phone{
     z-index: 2;
     position: absolute;
-top: 110px;
-left: 1057px;
+top: 100px;
+left: 1035px;
 height: 30px;
-width: 200px;
+width: 180px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
@@ -2515,21 +2515,22 @@ color:white;
 #profile-edit-address{
     z-index: 2;
     position: absolute;
-top: 150px;
-left: 1057px;
-height: 30px;
-width: 200px;
+top: 140px;
+left: 1035px;
+height: 60px;
+width: 180px;
 border: 1px solid rgba(140, 140, 140, 1);
 background: transparent;
 color:white;
 resize:none;
 }
 #profile-edit-submit{
+    cursor: pointer;
     z-index: 2;
     position: absolute;
 top: 130px;
-left: 1235px;
-height: 30px;
+left: 1255px;
+height: 50px;
 width: 80px;
 background-color: rgba(47, 181, 110, 1);
 font-family: 'Antipasto';
@@ -2538,6 +2539,7 @@ color: rgba(255, 255, 255, 1);
 border:none;
 }
 #profile-edit-upload{
+    cursor: pointer;
     position:absolute;
     left:695px;
     top:190px;

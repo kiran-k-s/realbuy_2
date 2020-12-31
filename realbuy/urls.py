@@ -8,8 +8,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('realbuy_app.urls')),
-    path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    
     #url(r'^select2/', include('select2.urls')),
     
 ]

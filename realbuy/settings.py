@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'select2',
     'bootstrap_modal_forms'
 ]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,11 +126,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-'''
-EMAIL_HOST = 'smtp.gmail.com'
+
+'''EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'realbuy1983@gmail.com'
 EMAIL_HOST_PASSWORD = 'udsndagmpavfqljm'
 EMAIL_USE_TLS = True  '''
 
-LOGOUT_REDIRECT_URL = 'home' 
+LOGOUT_REDIRECT_URL = 'home'  

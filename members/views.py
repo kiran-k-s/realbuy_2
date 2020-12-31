@@ -24,23 +24,25 @@ def UserRegisterView(request):
         return redirect('home')
     
 def UserLoginView(request):
-    form = LoginForm(request.POST or None)
+    form = LoginForm()
     context = {
         'form': form
     }
-    print(request.user.is_authenticated)
-    if form.is_valid():
-        print(form.cleaned_data)
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('add1')
-        else:
-            print("error....")
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        #print(request.user.is_authenticated)
+        if form.is_valid():
+            #print(form.cleaned_data)
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request,user)
+                return redirect('add1')
+            else:
+                print("error....")
             
-    #return render(request, "members/login.html",context)
+    return render(request, "members/login.html",context)
 
     
 '''class UserEditView(generic.UpdateView):
