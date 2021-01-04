@@ -22,10 +22,10 @@ Edit Profile{% endblock %}{% block content %}
 <button type="submit" id="profile-edit-submit">UPDATE PROFILE</button>
 </form>
 <span id="profile-head-1">My</span> <span id="profile-head-2">Properties</span>
-{% for property in properties %}
-{% if user.id == property.ownership.id %}
 
 <div class="profile-grid">
+	{% for property in properties %}
+	{% if user.id == property.ownership.id %}
     <div class="profile-grid-content">
     	    <a href="#">
           <img class ="profile-property-image" src="{{property.image.url}}">
@@ -64,10 +64,10 @@ Edit Profile{% endblock %}{% block content %}
           </a>
     	  
     </div>
+    {% endif %}
+	{% endfor %}
 	  
 </div>
-{% endif %}
-{% endfor %}
 {% endif %}
 {% endblock %}
 

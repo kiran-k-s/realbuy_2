@@ -45,12 +45,12 @@ class AddForm2(forms.ModelForm):
         RESALEorNEW = [('resale', 'Resale'), ('new', 'New Booking')]
         resale_or_new = forms.ChoiceField(choices=RESALEorNEW, widget=forms.RadioSelect(attrs={ 'class':'resaleornew'}))
         
-        PROPERTY_FLOOR = [('1', '1'), ('2','2'), ('3','3'), ('4', '4'), ('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),('11','11'),('12','12'),('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20')]
+        #PROPERTY_FLOOR = [('1', '1'), ('2','2'), ('3','3'), ('4', '4'), ('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),('11','11'),('12','12'),('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20')]
         #property_floor = forms.MultipleChoiceField(choices=PROPERTY_FLOOR,widget=django_select2.forms.Select2MultipleWidget(attrs={'data-placeholder':'Choose the floor'}))
         #property_floor = forms.MultipleChoiceField(choices=PROPERTY_FLOOR,widget=Select2MultipleWidget)
-        property_floor = forms.MultipleChoiceField(choices=PROPERTY_FLOOR, widget=forms.SelectMultiple(attrs={ 'class':'property_floor'}))
+        #property_floor = forms.MultipleChoiceField(choices=PROPERTY_FLOOR, widget=forms.SelectMultiple(attrs={ 'class':'property_floor'}))
 
-
+        
         total_floor = forms.CharField(widget=forms.NumberInput())
         AVAILABILITY = [('ready to move', 'Ready to Move'),('under construction', 'Under Construction'),]
         availability = forms.ChoiceField(choices=AVAILABILITY, widget=forms.RadioSelect(attrs={ 'class':'availability'}))

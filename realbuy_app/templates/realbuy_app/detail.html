@@ -18,7 +18,11 @@ Details{% endblock %}{% block content %}
     <div id="detail-location">{{ property.location}}</div>
     <div class="detail-price">
         <span id="detail-price-1">{{ property.price}}</span>
-        <span id="detail-price-2">Lakhs</span>
+        {% if property.sell_or_rent == 'rent' %}
+        <span class="detail-price-2">/Month</span>
+        {% else %}
+        <span class="detail-price-2"></span>
+        {% endif %}
     </div>
 </div>
 <div id="detail-box-2">
@@ -41,7 +45,6 @@ Details{% endblock %}{% block content %}
 </div>
 <div id="detail-description">
         {{ property.description}}
-        has built a remarkable name and has established itself as one of the well known entities in the real estate arena. Providing help and assistance to the clients regarding realty issues along with offering useful and effective real estate solutions, stems out as the
 </div>
 <div id="detail-seller-head">Seller Info</div>
 <div id="detail-seller-username"> {{ property.ownership.profile.user}}</div>
@@ -59,18 +62,17 @@ Details{% endblock %}{% block content %}
     <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
-<!--
 <div>
     <form action="{% url 'like_post' property.pk %}" method="POST">
     {% csrf_token %}
     {% if liked %}
-    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-    {% else %}
     <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+    {% else %}
+    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
     {% endif %}
     </form>
     <span id="detail-shortlist">SHORTLIST</span>
-</div> -->
+</div> 
 <div>
     <a href="#">
         <img id="detail-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">

@@ -22,6 +22,8 @@ def UserRegisterView(request):
     if form.is_valid():
         form.save()
         return redirect('home')
+    else:
+        return redirect()
     
 def UserLoginView(request):
     form = LoginForm()

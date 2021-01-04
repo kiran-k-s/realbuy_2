@@ -10,9 +10,9 @@
     <form method="POST" action="{% url 'login_page' %}">
     {% csrf_token %}
     <span id="login-popup-username-head">Name/Email</span>
-    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username">
+    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username" autocomplete="off">
     <span id="login-popup-password-head">Password</span>
-    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password">
+    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password" autocomplete="off">
 
     <button type="submit" id='login-popup-submit'>LOGIN</button>
     </form>
@@ -41,17 +41,17 @@
     <span id="register-popup-head">REGISTER</span>
     <div id="register-popup-box-1"></div>
     <div id="register-popup-box-2"></div>
-    <form method="POST">
+    <form method="POST" action="{% url 'register' %}" >
     {% csrf_token %}
   
     <span id="register-popup-username-head">Username</span>
-    <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required>
+    <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required autocomplete="off">
     <span id="register-popup-email-head">Email</span>
-    <label for="email-register"></label> <input type="email" name="email" id="email-register" class="register-popup-email" required>
+    <label for="email-register"></label> <input type="email" name="email" id="email-register" class="register-popup-email" required autocomplete="off">
     <span id="register-popup-password1-head">Password</span>
-    <label for="password1"></label> <input type="password" name="password1" id="password1" class="register-popup-password1" maxlength="100" required>
+    <label for="password1"></label> <input type="password" name="password1" id="password1" class="register-popup-password1" maxlength="100" required autocomplete="off">
     <span id="register-popup-password2-head">Confirm Password</span>
-    <label for="password2"></label> <input type="password" name="password2" id="password2" class="register-popup-password2" maxlength="100" required>
+    <label for="password2"></label> <input type="password" name="password2" id="password2" class="register-popup-password2" maxlength="100" required autocomplete="off">
 
     <button type="submit" id='register-popup-submit'>REGISTER</button>
     </form>

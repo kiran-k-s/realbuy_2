@@ -8,23 +8,25 @@ User Profile{% endblock %}{% block content %}
 <div id="profile-user-section"></div>
 <img id="profile-pic" src="{{ user.profile.image.url }}">
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
-<div id="profile-username">{{ user.profile.name }}</div>
+<div id="profile-username">{{ profile.name | title}}</div>
 <img id="profile-mail-icon" src="{% static 'realbuy_app/images/profile/mail_icon.png' %}">
-<div id="profile-mail">{{ user.profile.email }}</div>
+<div id="profile-mail">{{ profile.email }}</div>
 <img id="profile-phone-icon" src="{% static 'realbuy_app/images/profile/phone_icon.png' %}">
-<div id="profile-phone">+91 {{ user.profile.phone }}</div>
+<div id="profile-phone">+91 {{ profile.phone }}</div>
 <img id="profile-address-icon" src="{% static 'realbuy_app/images/profile/location_icon.png' %}">
-<div id="profile-address">{{ user.profile.address }}</div>
+<div id="profile-address">{{ profile.address }}</div>
 
 <a href="{% url 'edit_profile' profile.id %}">
 	<button type="button" id="profile-edit-button"></button>
 	<img id="profile-edit-image" src="{% static 'realbuy_app/images/profile/edit1.png' %}">
 </a>
 <span id="profile-head-1">My</span> <span id="profile-head-2">Properties</span>
-{% for property in properties %}
-{% if user.id == property.ownership.id %}
+
+
 
 <div class="profile-grid">
+    {% for property in properties %}
+    {% if user.id == property.ownership.id %} 
     <div class="profile-grid-content">
     	    <a href="{% url 'detail' property.id %}">
           <img class ="profile-property-image" src="{{property.image.url}}">
@@ -37,17 +39,22 @@ User Profile{% endblock %}{% block content %}
           {% endif %}
           <div class="profile-property-price">
           <span class="profile-property-price-1">&#8377; </span>
-          <span class="profile-property-price-2">{{ property.price}}</span><span class="profile-property-price-3">/Month</span>
+          {% if property.sell_or_rent == 'rent' %}
+          <span class="profile-property-price-2">{{ property.price}}/Month</span>
+          {% else %}
+          <span class="profile-property-price-2">{{property.price}}</span>
+          {% endif %}
+         
           </div>
           <span class="profile-property-type-and-loc">TYPE & LOCATION:</span>
-          <div class="profile-property-location"> {{ property.location}}</div>
+          <div class="profile-property-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
           <span class="profile-property-plot-area">PLOT AREA:</span>
           <div class="profile-property-area">
           <span class="profile-property-area-1">{{ property.built_up_area}}</span>
-          <span class="profile-property-area-2">Cents{{ property.built_up_unit }}</span>
+          <span class="profile-property-area-2">{{ property.built_up_unit | capfirst}}</span>
           </div>
           <span class="profile-property-society">SOCIETY:</span>
-          <div class="profile-property-city"> {{ property.city }}</div>
+          <div class="profile-property-city"> {{ property.address | title }}</div>
           <span class="profile-property-description-head">DESCRIPTION:</span>
           <div class="profile-property-description"> {{ property.description }} </div>
           <span class="profile-property-posted">POSTED:</span>
@@ -63,7 +70,8 @@ User Profile{% endblock %}{% block content %}
           </a>
     	  
     </div>
-	  
+	  {% endif %}
+    {% endfor %}
 </div>
 
    <!-- delete popup -->
@@ -74,7 +82,7 @@ User Profile{% endblock %}{% block content %}
     <span id="delete-popup-head">CONFIRM DELETE</span>
     <div id="delete-popup-box-1"></div>
     <div id="delete-popup-box-2"></div>
-    <form method="POST" action="{% url 'delete' property.id %}"> 
+    <form method="POST" action="{% url 'delete' profile.id %}"> 
     {% csrf_token %}
     <img src="{% static 'realbuy_app/images/alert.png' %}" id="delete-popup-alert">
     <span id="delete-popup-content">Are you sure you want to delete this item?</span>
@@ -83,12 +91,10 @@ User Profile{% endblock %}{% block content %}
     </form>
   </div>
 </div>
-{% endif %}
-{% endfor %}
-
 <script>
 function togglePopupDelete(){
   document.getElementById("delete-popup").classList.toggle("active");
+  
 }
 </script>
 

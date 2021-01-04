@@ -3,17 +3,14 @@
 {% block title %}
 Featured Properties{% endblock %}
 {% block content %}
-<!--{% let name = property.id %}
-          <a onclick="togglePopupDelete("+name+")"> -->
-<!--{% for field in form %}
-    {% for error in field.errors %}
-        <p style="color: red">{{ error }}</p>
-    {% endfor %}
-{% endfor %} -->
+
+
+
+
 
 <div id="recentBigBox"></div>
 <div id="recentBigBox2"></div>
-<span id="recentHead1">Recent</span> <span id="recentHead2">Properties</span>
+<span id="recentHead1"></span> <span id="recentHead2"></span>
 <a href="{% url 'category_recent' 'commercial' %}"><button type="button" class="recentTopRight" id="recentTopRight1">COMMERCIAL</button></a>
 <a href="{% url 'category_recent' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
 <a href="{% url 'category_recent' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
@@ -41,6 +38,7 @@ Featured Properties{% endblock %}
         <div id="recentAddress"> {{ property.address|slice:":30" }}</div>
         <span id="recentPrice1">&#8377; </span>
         <span id="recentPrice2"> {{ property.price }}</span>
+        <span> {{ property.ownership }} </span>
         
         <div id="recentLike"><form action="{% url 'like_post' property.pk %}" method="POST">
         {% csrf_token %}

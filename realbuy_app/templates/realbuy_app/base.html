@@ -68,12 +68,22 @@
 </a>
 <a href="{% url 'category_home1' 'under construction'|slugify %}">
 <button type="button" id="home-filter4" class="home-filter">UNDER CONSTRUCTION</button>
-</a>
+</a>  
     
 <form method="get" action="{% url 'category_home2' %}" >
       <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
+</form>  
+<!--
+<form method="get" action="{% url 'category_home2' %}">
+      <button type="button" id="home-filter1" value="sell" class="home-filter">SALE</button>
+      <button type="button" id="home-filter2" value="rent" class="home-filter">RENT</button>
+      <button type="button" id="home-filter3" value="ready to move" class="home-filter">READY TO MOVE</button>
+      <button type="button" id="home-filter4" value="under construction" class="home-filter">UNDER CONSTRUCTION</button>
+      <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
+      <button type="submit" id="home-submit">SEARCH</button>
 </form>
+-->
 <a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
 </a>
@@ -89,48 +99,49 @@
     <a href='{% url 'logout' %}'>
     <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
-    <a href='{% url 'profile' user.id %}'>
+    <a href='{% url 'profile' user.profile.id %}'>
     <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
     </a>
 {% else %}
-    <!--<div class="modal fade" tabindex="-1" role="dialog" id="modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content"></div>
-      </div>
-    </div> -->
     
     <button type="button" class="home-top-right" id="home-login" onclick="togglePopupLogin()">LOGIN</button>
     
 {% endif %}
 <ul class="navbar-nav">
   <li class="nav-item active">    
-    <a class= "nav-link" href='{% url 'home' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-1">HOME</button>
+    <a class= "nav-link" id="home-top-right-1" href='{% url 'home' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>-->
+    HOME
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href='{% url 'about_us' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>
+    <a class="nav-link" id="home-top-right-2" href='{% url 'about_us' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>-->
+    ABOUT US
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href='{% url 'featured' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button>
+    <a class="nav-link" id="home-top-right-3" href='{% url 'featured' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button> -->
+    FEATURED PROPERTIES
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href='{% url 'recent' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button>
+    <a class="nav-link" id="home-top-right-4" href='{% url 'recent' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button> -->
+    RECENT PROPERTIES
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href='{% url 'add1' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>
+    <a class="nav-link" id="home-top-right-5" href='{% url 'add1' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>  -->
+    ADD PROPERTY
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href='{% url 'contactus' %}'>
-    <button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
+    <a class="nav-link" id="home-top-right-6" href='{% url 'contactus' %}'>
+    <!--<button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>   -->
+    CONTACT US
     </a>
   </li>
 </ul>
@@ -146,9 +157,9 @@
     <form method="POST" action="{% url 'login_page' %}">
     {% csrf_token %}
     <span id="login-popup-username-head">Name/Email</span>
-    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username">
+    <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username" autocomplete="off">
     <span id="login-popup-password-head">Password</span>
-    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password">
+    <label for="id_password"></label> <input type="password" name="password" class="login-popup-password" required id="id_password" autocomplete="off">
 
     <button type="submit" id='login-popup-submit'>LOGIN</button>
     </form>
@@ -177,17 +188,17 @@
     <span id="register-popup-head">REGISTER</span>
     <div id="register-popup-box-1"></div>
     <div id="register-popup-box-2"></div>
-    <form method="POST">
+    <form method="POST" action="{% url 'register' %}">
     {% csrf_token %}
   
     <span id="register-popup-username-head">Username</span>
-    <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required>
+    <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required autocomplete="off">
     <span id="register-popup-email-head">Email</span>
-    <label for="email-register"></label> <input type="email" name="email" id="email-register" class="register-popup-email" required>
+    <label for="email-register"></label> <input type="email" name="email" id="email-register" class="register-popup-email" required autocomplete="off">
     <span id="register-popup-password1-head">Password</span>
-    <label for="password1"></label> <input type="password" name="password1" id="password1" class="register-popup-password1" maxlength="100" required>
+    <label for="password1"></label> <input type="password" name="password1" id="password1" class="register-popup-password1" maxlength="100" required autocomplete="off">
     <span id="register-popup-password2-head">Confirm Password</span>
-    <label for="password2"></label> <input type="password" name="password2" id="password2" class="register-popup-password2" maxlength="100" required>
+    <label for="password2"></label> <input type="password" name="password2" id="password2" class="register-popup-password2" maxlength="100" required autocomplete="off">
 
     <button type="submit" id='register-popup-submit'>REGISTER</button>
     </form>
@@ -199,7 +210,8 @@
     
 {% block content %}
 {% endblock %}
-<script> /*
+<script> 
+
         $(document).ready(function () { 
   
             $('ul.navbar-nav > li') 
@@ -208,7 +220,7 @@
                     .removeClass('active'); 
                 $(this).addClass('active'); 
             }); 
-        }); */
+        }); 
 </script> 
 
 <script>
@@ -226,6 +238,19 @@ function togglePopupRegister(){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+
+    <!-- navbar scripts -->
+<link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"> 
+    </script> 
+    <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"> 
+    </script> 
 
 {% block javascript %}
 

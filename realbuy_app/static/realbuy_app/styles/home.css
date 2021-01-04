@@ -143,7 +143,7 @@ button {
     width: 405px;
     background-color: rgba(240, 240, 240, 1);
     font-family: 'Antipasto';
-    font-size: 12px;
+    font-size: 17px;
     border:none;
 }
 #home-submit{
@@ -195,7 +195,7 @@ button {
     font-family: 'Antipasto';
     font-size: 11px;
     height: 20px;
-    top: 35px;
+    top: 44px;
     background-color: Transparent;
     border: none;
 }
@@ -230,23 +230,52 @@ button {
     width: 90px;
 }
 #home-top-right-6{
-    left: 1210px;
-    width: 90px;
+    left: 1215px;
+    width: 75px;
 }
+
+
+.nav-link { 
+            /*color: transparent; */
+            position: absolute;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Antipasto';
+    font-size: 11px;
+    height: 20px;
+    top: 40px;
+    background-color: Transparent;
+    border: none;
+    text-align: center;
+        } 
+  
+.nav-item>a:hover { 
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(47, 181, 110, 1); 
+} 
+  
+.navbar-nav>.active>a { 
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(47, 181, 110, 1); 
+} 
+
 #home-login{
+    cursor: pointer;
     left: 1305px;
     width: 48px;    
 }
 #home-logout{
+    cursor: pointer;
     left: 1305px;
     width: 48px;  
 }
 #home-profile{
+    cursor: pointer;
     height: 24px;
     top: 10px;
     left: 1285px; 
     width: 80px;
 }
+
 
   /* login popup */
 
@@ -342,6 +371,7 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #login-popup-password-head{
     position: absolute;
@@ -360,8 +390,10 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #login-popup-submit{
+    cursor: pointer;
     position: absolute;
 top: 175px;
 left: 50px;
@@ -374,6 +406,7 @@ color: rgba(216, 216, 216, 1);
 border: none;
 }
 #login-popup-forgot{
+    cursor: pointer;
     position: absolute;
 top: 205px;
 left: 180px;
@@ -529,6 +562,7 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #register-popup-email-head{
     position: absolute;
@@ -548,6 +582,7 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #register-popup-password1-head{
     position: absolute;
@@ -566,6 +601,7 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #register-popup-password2-head{
     position: absolute;
@@ -584,8 +620,10 @@ height: 17px;
 width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
+color:white;
 }
 #register-popup-submit{
+    cursor: pointer;
     position: absolute;
 top: 270px;
 left: 50px;
@@ -870,6 +908,7 @@ text-decoration: underline;
     color: rgba(225, 225, 225, 1);
 }
 #contact-now{
+    cursor: pointer;
     position: absolute;
     top: 595px;
     left: 730px;
@@ -958,23 +997,22 @@ text-decoration: underline;
     position:absolute;
     top:125px;
     left:695px;
-    height:530px;
+    height:515px;
     width:650px;
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 206px 206px 206px;
+    grid-template-rows: 160px 160px 160px;
     /*grid-template-columns: 205px 205px 205px;
     grid-template-rows: 165px 165px 165px;*/
     grid-gap: 15px;
-    /*background-color: rgba(22, 22, 22, 1);*/
-    border: 1px solid blue;
+    background-color: rgba(22, 22, 22, 1);
+
 
 }
 .recentList{
     position:relative;
-    width:205px;
-    height:165px;
-    border: 1px solid red;
+    width:206px;
+    height:160px;
     z-index: 10;
 }
 .recentImage{
@@ -1027,7 +1065,7 @@ text-decoration: underline;
 .recentPrice{
     position: absolute;
     display: inline-block;
-    top: 142px;
+    top: 137px;
     left:2px;
     color: rgba(255, 255, 255, 1);
 }
@@ -1056,7 +1094,7 @@ text-decoration: underline;
 }
 .recentLike{
     position: absolute;
-    top:150px;
+    top:140px;
     left: 173px;
     display: inline-block;
     height: 15px;
@@ -1068,11 +1106,12 @@ text-decoration: underline;
     border:none;
 }
 .recentLikeImage{
+    cursor: pointer;
     position: absolute;
-    bottom:0px;
-    right:0px;
-    height:20px;
-    width:20px;
+    bottom: 0px;
+    right: 0px;
+    height:12px;
+    width:12px;
 }
 
 /* detail.html */
@@ -1341,16 +1380,7 @@ font-family: 'Antipasto';
 font-size: 11px;
 color: rgba(198, 198, 198, 1);
 }
-#detail-shortlist-image{
-     position: absolute;
-top: 523px;
-left: 953px;
-height: 18px;
-width: 17px;
-font-size: 5px;
-background-color: Transparent;
 
-}
 #detail-shortlist{
     position: absolute;
 top: 525px;
@@ -1364,20 +1394,26 @@ color: rgba(198, 198, 198, 1);
 #detail-shortlist-button{
     position: absolute;
     top:525px;
-    left: 945px;
+    left: 930px;
     display: inline-block;
-    height: 20px;
+    height: 15px;
     padding: 0;
     margin: 0;
-    width: 20px;
+    width: 15px;
     background: transparent;
-    border: none;
+    border: 2px solid blue;
+    /*border:none;*/
 }
 #detail-shortlist-image{
+     cursor: pointer;
     position: absolute;
-    height:20px;
-    width:20px;
+    bottom: 0px;
+    right: 0px;
+    height:12px;
+    width:12px;
+
 }
+
 #detail-map-image{
      position: absolute;
 top: 523px;
@@ -1674,27 +1710,21 @@ text-align: center;
 color: rgba(51, 51, 51, 1);
 }
 .filter-grid{
-    overflow-x:scroll;
-    scroll-behavior: smooth;
     position:absolute;
     top:185px;
-    left:15px;
+    left:0px;
     height:400px;
-    width:1360px;
+    width:1345px;
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-gap: 10px 20px;
-    padding:20px;
-    border: 1px solid blue;
-    /*background-color: rgba(22, 22, 22, 1);*/
+    grid-template-columns: 640px 640px;
+    grid-template-rows: 170px 170px;
+    grid-gap: 20px 25px;
+    padding: 20px;
+    background-color: rgba(22, 22, 22, 1);
 }
 .filter-grid-content{
     position:relative;
-    height:120px;
-    width:600px;
-    border: 1px solid red;
-
+    border:1px solid rgba(35, 35, 35, 1);;
 
 }
 .filter-image{
@@ -1887,26 +1917,27 @@ font-family: 'Antipasto';
 font-size: 11px;
 color: rgba(198, 198, 198, 1);
 }
-
 .filter-shortlist-button{
-     position: absolute;
-top: 140px;
-left: 273px;
-height: 18px;
-width: 17px;
-display: inline-block;
-padding:0;
-margin:0;
-/*border: 2px solid blue;*/
-background-color: Transparent;
-
+    position: absolute;
+    top:142px;
+    left: 270px;
+    display: inline-block;
+    height: 15px;
+    padding: 0;
+    margin: 0;
+    width: 15px;
+    background: transparent;
+    border: 2px solid blue;
+    /*border:none;*/
 }
 .filter-shortlist-image{
+     cursor: pointer;
     position: absolute;
-    bottom:0px;
-    right:0px;
-    height:20px;
-    width:20px;
+    bottom: 0px;
+    right: 0px;
+    height:12px;
+    width:12px;
+
 }
 .filter-shortlist{
     position: absolute;
@@ -2605,6 +2636,7 @@ color: rgba(255, 255, 255, 1);
 top: 165px;
 left: 695px;
 }
+
 #contactus-map-icon{
     position:absolute;
     height:50px;
@@ -2770,6 +2802,7 @@ color:white;
 resize:none;
 }
 #contactus_submit{
+    cursor: pointer;
     position: absolute;
 top: 510px;
 left: 1235px;
@@ -2788,15 +2821,17 @@ font-family: 'Antipasto';
 font-size: 12px;
 color: rgba(140, 140, 140, 1);;
 }
-.contactus_error{
+#contactus_error{
     position:absolute;
+    padding: 10px;
     top:465px;
     left:850px;
     width : 270px;
     height : 30px;
     font-size: 11px;
-    color: black;
-    background: yellow;
+    color: red;
+    background: transparent;
+    transition: all 0.5s ease;
 
 }
 
@@ -2963,4 +2998,44 @@ width: 250px;
 background: transparent;
 border: 1px solid rgba(140, 140, 140, 1);
 }
+.add1-commercial-box{
+    position: absolute;
+    top: 260px;
+    left: 700px;
+}
 
+.add1-furnished-box{
+    position: absolute;
+    top: 260px;
+    left: 850px;
+}
+.add1-land-box{
+    position: absolute;
+    top: 260px;
+    left: 1000px;
+}
+.add1-rental-box{
+    position: absolute;
+    top: 260px;
+    left: 1150px;
+}
+.add-image{
+    position: absolute;
+    top: 320px;
+    left: 750px;
+}
+#next-add2{
+    position: absolute;
+    top:600px;
+    left: 730px;
+}
+#sell-sell{
+    position:absolute;
+    top:180px;
+    left:730px;
+}
+#rent-rent{
+    position: absolute;
+    top:180px;
+    left:830px;
+}

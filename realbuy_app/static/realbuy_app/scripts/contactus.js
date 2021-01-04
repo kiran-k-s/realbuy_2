@@ -34,6 +34,7 @@
 } */
 function nameValidate()
 {
+var error = document.getElementById("contactus_error");
 var name=document.getElementById("contactus_name").value;
 
 if(name.length>=3 && name.length <=100)
@@ -46,7 +47,7 @@ if(name.length>=3 && name.length <=100)
 		else
 			{
                 document.getElementById("contactus_error").innerHTML ="Error: Name should only contain characters and space.";
-                /*$('#contactus_name').css('display','block'); */
+                
 				return false;
 			}
 		}
@@ -54,6 +55,7 @@ if(name.length>=3 && name.length <=100)
 else
     {	
         document.getElementById("contactus_error").innerHTML ="Error: Name length should be greater than 3 characters and less than 100 characters";
+  
         return false;
     }		
 }

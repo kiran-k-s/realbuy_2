@@ -41,7 +41,7 @@
     <a href='{% url 'logout' %}'>
     <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
-    <a href='{% url 'profile' %}'>
+    <a href='{% url 'profile' user.id %}'>
     <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
     </a>
 {% else %}
@@ -70,7 +70,7 @@
 <div id="filter-big-box-1"></div>
 <div id="filter-big-box-2"></div>    
 <form method="get" action="{% url 'category_filter2' %}">
-      <input class="filter-location-1" type="text" list="location2" name="location1" id="location1" placeholder="LOCATION (ANY)" />
+      <input class="filter-location-1" type="text" list="location2" name="location1" id="location1" placeholder="LOCATION (ANY)" autocomplete="off"/>
       <datalist id="location2" name="location2">
             <option>Edappal</option>
             <option>Trivandrum</option>
@@ -106,11 +106,12 @@
 <a href="{% url 'category_filter1' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
 <a href="{% url 'category_filter1' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
 <a href="{% url 'category_filter1' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
-
+{% if query_home %}
 <div class="filter-grid">
+  {% for property in query_home %}
   <div class="filter-grid-content">
-    {% if query_home %}
-    {% for property in query_home %}
+    
+    
       <a href="{% url 'detail' property.id %}">
       <img class ="filter-image" src="{{property.image.url}}">
       </a>
@@ -122,17 +123,21 @@
       {% endif %}
       <div class="filter-price">
       <span class="filter-price-1">&#8377; </span>
-      <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
+      {% if property.sell_or_rent == 'rent' %}
+          <span class="filter-price-2">{{ property.price}}/Month</span>
+          {% else %}
+          <span class="filter-price-2">{{property.price}}</span>
+      {% endif %}
       </div>
       <span class="filter-type-and-loc">TYPE & LOCATION:</span>
-      <div class="filter-location"> {{ property.location}}</div>
+      <div class="filter-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
       <span class="filter-plot-area">PLOT AREA:</span>
       <div class="filter-area">
       <span class="filter-area-1">{{ property.built_up_area}}</span>
-      <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
+      <span class="filter-area-2">{{ property.built_up_unit | capfirst}}</span>
       </div>
       <span class="filter-society">SOCIETY:</span>
-      <div class="filter-city"> {{ property.city }}</div>
+      <div class="filter-city"> {{ property.address | title }}</div>
       <span class="filter-description-head">DESCRIPTION:</span>
       <div class="filter-description"> {{ property.description }} </div>
       <span class="filter-posted">POSTED:</span>
@@ -155,9 +160,9 @@
           <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
           {% csrf_token %}
               {% if liked %}
-              <button type="submit" name="post_id" value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
               {% else %}
-              <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
               {% endif %}
           </form>
           </div>
@@ -176,227 +181,252 @@
           <span class="filter-share">SHARE</span>
       </div>
 
-    {% endfor %}
-    {% endif %}
-  </div>
-</div>
     
-<div class="filter-grid">
-  <div class="filter-grid-content">
-    {% for property in category_property_home %}
-          <a href="{% url 'detail' property.id %}">
-          <img class ="filter-image" src="{{property.image.url}}">
-          </a>
-          
-          {% if property.sell_or_rent == 'sell' %}
-          <div class="filter-sell"> ON SALE </div>
-          {% else %}
-          <div class="filter-rent"> ON RENT </div>
-          {% endif %}
-          <div class="filter-price">
-          <span class="filter-price-1">&#8377; </span>
-          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
-          </div>
-          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
-          <div class="filter-location"> {{ property.location}}</div>
-          <span class="filter-plot-area">PLOT AREA:</span>
-          <div class="filter-area">
-          <span class="filter-area-1">{{ property.built_up_area}}</span>
-          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
-          </div>
-          <span class="filter-society">SOCIETY:</span>
-          <div class="filter-city"> {{ property.city }}</div>
-          <span class="filter-description-head">DESCRIPTION:</span>
-          <div class="filter-description"> {{ property.description }} </div>
-          <span class="filter-posted">POSTED:</span>
-          <div class="filter-date"> {{ property.date }}</div>
-          <div class="filter-task-bar"></div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
 
-          <div>
+{% if category_property_home %}    
+<div class="filter-grid">
+  {% for property in category_property_home %}
+  <div class="filter-grid-content">
+    
+      <a href="{% url 'detail' property.id %}">
+      <img class ="filter-image" src="{{property.image.url}}">
+      </a>
+      
+      {% if property.sell_or_rent == 'sell' %}
+      <div class="filter-sell"> ON SALE </div>
+      {% else %}
+      <div class="filter-rent"> ON RENT </div>
+      {% endif %}
+      <div class="filter-price">
+      <span class="filter-price-1">&#8377; </span>
+      {% if property.sell_or_rent == 'rent' %}
+          <span class="filter-price-2">{{ property.price}}/Month</span>
+          {% else %}
+          <span class="filter-price-2">{{property.price}}</span>
+      {% endif %}
+      </div>
+      <span class="filter-type-and-loc">TYPE & LOCATION:</span>
+      <div class="filter-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
+      <span class="filter-plot-area">PLOT AREA:</span>
+      <div class="filter-area">
+      <span class="filter-area-1">{{ property.built_up_area}}</span>
+      <span class="filter-area-2">{{ property.built_up_unit | capfirst}}</span>
+      </div>
+      <span class="filter-society">SOCIETY:</span>
+      <div class="filter-city"> {{ property.address | title }}</div>
+      <span class="filter-description-head">DESCRIPTION:</span>
+      <div class="filter-description"> {{ property.description }} </div>
+      <span class="filter-posted">POSTED:</span>
+      <div class="filter-date"> {{ property.date }}</div>
+      <div class="filter-task-bar"></div>
+
+      <div>
           <a href="#">
-          <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+                  <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
           </a>
           <span class="filter-mail">SEND MAIL</span>
-          </div>
-
-          <div>
+      </div>
+      <div>
           <a href="#">
-          <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+              <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
           </a>
           <span class="filter-phone">PHONE NUMBER</span>
-          </div>
-
-          <div>
-          <form action="{% url 'like_post' property.pk %}" method="POST">
+      </div>
+      <div>
+          <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
           {% csrf_token %}
-          {% if liked %}
-          <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-          {% else %}
-          <button type="submit",class="filter-shortlist-button" name="post_id", value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-          {% endif %}
+              {% if liked %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+              {% else %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+              {% endif %}
           </form>
-          <span class="filter-shortlist">SHORTLIST</span>
           </div>
-
-          <div>
+          <span class="filter-shortlist">SHORTLIST</span>
+      </div>
+      <div>
           <a href="#">
-          <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
+              <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
           </a>
           <span class="filter-map">MAP</span>
-          </div>
-
-          <div>
+      </div>
+      <div>
           <a href="#">
-          <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+              <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
           </a>
           <span class="filter-share">SHARE</span>
-          </div>
-    {% endfor %}
-  </div>
-</div>
+      </div>
 
+    
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if query_filter %}
 <div class="filter-grid">
+  {% for property in query_filter %}
   <div class="filter-grid-content">
-    {% for property in query_filter %}
-          <a href="{% url 'detail' property.id %}">
-          <img class ="filter-image" src="{{property.image.url}}">
-          </a>
-          
-          {% if property.sell_or_rent == 'sell' %}
-          <div class="filter-sell"> ON SALE </div>
+    
+      <a href="{% url 'detail' property.id %}">
+      <img class ="filter-image" src="{{property.image.url}}">
+      </a>
+      
+      {% if property.sell_or_rent == 'sell' %}
+      <div class="filter-sell"> ON SALE </div>
+      {% else %}
+      <div class="filter-rent"> ON RENT </div>
+      {% endif %}
+      <div class="filter-price">
+      <span class="filter-price-1">&#8377; </span>
+      {% if property.sell_or_rent == 'rent' %}
+          <span class="filter-price-2">{{ property.price}}/Month</span>
           {% else %}
-          <div class="filter-rent"> ON RENT </div>
-          {% endif %}
-          <div class="filter-price">
-          <span class="filter-price-1">&#8377; </span>
-          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
-          </div>
-          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
-          <div class="filter-location"> {{ property.location}}</div>
-          <span class="filter-plot-area">PLOT AREA:</span>
-          <div class="filter-area">
-          <span class="filter-area-1">{{ property.built_up_area}}</span>
-          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
-          </div>
-          <span class="filter-society">SOCIETY:</span>
-          <div class="filter-city"> {{ property.city }}</div>
-          <span class="filter-description-head">DESCRIPTION:</span>
-          <div class="filter-description"> {{ property.description }} </div>
-          <span class="filter-posted">POSTED:</span>
-          <div class="filter-date"> {{ property.date }}</div>
-          <div class="filter-task-bar"></div>
+          <span class="filter-price-2">{{property.price}}</span>
+      {% endif %}
+      </div>
+      <span class="filter-type-and-loc">TYPE & LOCATION:</span>
+      <div class="filter-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
+      <span class="filter-plot-area">PLOT AREA:</span>
+      <div class="filter-area">
+      <span class="filter-area-1">{{ property.built_up_area}}</span>
+      <span class="filter-area-2">{{ property.built_up_unit | capfirst}}</span>
+      </div>
+      <span class="filter-society">SOCIETY:</span>
+      <div class="filter-city"> {{ property.address | title }}</div>
+      <span class="filter-description-head">DESCRIPTION:</span>
+      <div class="filter-description"> {{ property.description }} </div>
+      <span class="filter-posted">POSTED:</span>
+      <div class="filter-date"> {{ property.date }}</div>
+      <div class="filter-task-bar"></div>
 
-          <div>
-              <a href="#">
-                      <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
-              </a>
-              <span class="filter-mail">SEND MAIL</span>
+      <div>
+          <a href="#">
+                  <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+          </a>
+          <span class="filter-mail">SEND MAIL</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+          </a>
+          <span class="filter-phone">PHONE NUMBER</span>
+      </div>
+      <div>
+          <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
+          {% csrf_token %}
+              {% if liked %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+              {% else %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+              {% endif %}
+          </form>
           </div>
-          <div>
-              <a href="#">
-                  <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
-              </a>
-              <span class="filter-phone">PHONE NUMBER</span>
-          </div>
-          <div>
-              <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
-              {% csrf_token %}
-                  {% if liked %}
-                  <button type="submit" name="post_id" value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-                  {% else %}
-                  <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-                  {% endif %}
-              </form>
-              </div>
-              <span class="filter-shortlist">SHORTLIST</span>
-          </div>
-          <div>
-              <a href="#">
-                  <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
-              </a>
-              <span class="filter-map">MAP</span>
-          </div>
-          <div>
-              <a href="#">
-                  <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
-              </a>
-              <span class="filter-share">SHARE</span>
-          </div>
-    {% endfor %}
+          <span class="filter-shortlist">SHORTLIST</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
+          </a>
+          <span class="filter-map">MAP</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+          </a>
+          <span class="filter-share">SHARE</span>
+      </div>
+
+    
   </div>
+  {% endfor %}
 </div>
+{% endif %}
 
+{% if category_property_filter %}
 <div class="filter-grid">
+  {% for property in category_property_filter %}
   <div class="filter-grid-content">
-      {% for property in category_property_filter %}
-          <a href="{% url 'detail' property.id %}">
-          <img class ="filter-image" src="{{property.image.url}}">
-          </a>
-          
-          {% if property.sell_or_rent == 'sell' %}
-          <div class="filter-sell"> ON SALE </div>
+      
+      <a href="{% url 'detail' property.id %}">
+      <img class ="filter-image" src="{{property.image.url}}">
+      </a>
+      
+      {% if property.sell_or_rent == 'sell' %}
+      <div class="filter-sell"> ON SALE </div>
+      {% else %}
+      <div class="filter-rent"> ON RENT </div>
+      {% endif %}
+      <div class="filter-price">
+      <span class="filter-price-1">&#8377; </span>
+      {% if property.sell_or_rent == 'rent' %}
+          <span class="filter-price-2">{{ property.price}}/Month</span>
           {% else %}
-          <div class="filter-rent"> ON RENT </div>
-          {% endif %}
-          <div class="filter-price">
-          <span class="filter-price-1">&#8377; </span>
-          <span class="filter-price-2">{{ property.price}}</span><span class="filter-price-3">/Month</span>
-          </div>
-          <span class="filter-type-and-loc">TYPE & LOCATION:</span>
-          <div class="filter-location"> {{ property.location}}</div>
-          <span class="filter-plot-area">PLOT AREA:</span>
-          <div class="filter-area">
-          <span class="filter-area-1">{{ property.built_up_area}}</span>
-          <span class="filter-area-2">Cents{{ property.built_up_unit }}</span>
-          </div>
-          <span class="filter-society">SOCIETY:</span>
-          <div class="filter-city"> {{ property.city }}</div>
-          <span class="filter-description-head">DESCRIPTION:</span>
-          <div class="filter-description"> {{ property.description }} </div>
-          <span class="filter-posted">POSTED:</span>
-          <div class="filter-date"> {{ property.date }}</div>
-          <div class="filter-task-bar"></div>
+          <span class="filter-price-2">{{property.price}}</span>
+      {% endif %}
+      </div>
+      <span class="filter-type-and-loc">TYPE & LOCATION:</span>
+      <div class="filter-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
+      <span class="filter-plot-area">PLOT AREA:</span>
+      <div class="filter-area">
+      <span class="filter-area-1">{{ property.built_up_area}}</span>
+      <span class="filter-area-2">{{ property.built_up_unit | capfirst}}</span>
+      </div>
+      <span class="filter-society">SOCIETY:</span>
+      <div class="filter-city"> {{ property.address | title }}</div>
+      <span class="filter-description-head">DESCRIPTION:</span>
+      <div class="filter-description"> {{ property.description }} </div>
+      <span class="filter-posted">POSTED:</span>
+      <div class="filter-date"> {{ property.date }}</div>
+      <div class="filter-task-bar"></div>
 
-          <div>
-              <a href="#">
-                      <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
-              </a>
-              <span class="filter-mail">SEND MAIL</span>
+      <div>
+          <a href="#">
+                  <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+          </a>
+          <span class="filter-mail">SEND MAIL</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+          </a>
+          <span class="filter-phone">PHONE NUMBER</span>
+      </div>
+      <div>
+          <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
+          {% csrf_token %}
+              {% if liked %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+              {% else %}
+              <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+              {% endif %}
+          </form>
           </div>
-          <div>
-              <a href="#">
-                  <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
-              </a>
-              <span class="filter-phone">PHONE NUMBER</span>
-          </div>
-          <div>
-              <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
-              {% csrf_token %}
-                  {% if liked %}
-                  <button type="submit" name="post_id" value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-                  {% else %}
-                  <button type="submit",id="detail-shortlist-image" name="post_id", value="{{ property.id }}"><img src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-                  {% endif %}
-              </form>
-              </div>
-              <span class="filter-shortlist">SHORTLIST</span>
-          </div>
-          <div>
-              <a href="#">
-                  <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
-              </a>
-              <span class="filter-map">MAP</span>
-          </div>
-          <div>
-              <a href="#">
-                  <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
-              </a>
-              <span class="filter-share">SHARE</span>
-          </div>
+          <span class="filter-shortlist">SHORTLIST</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
+          </a>
+          <span class="filter-map">MAP</span>
+      </div>
+      <div>
+          <a href="#">
+              <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+          </a>
+          <span class="filter-share">SHARE</span>
+      </div>
 
-    {% endfor %}
+
+    
   </div>
+  {% endfor %}
 </div>
+{% endif %}
     
 <a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="filter-fb">
