@@ -129,7 +129,8 @@ def AddView1(request):
         if form.is_valid(): 
             request.session['sell_or_rent'] = form.cleaned_data.get('sell_or_rent')
             request.session['property_type'] = form.cleaned_data.get('property_type')
-            request.session['image'] = form.cleaned_data.get('image')
+            newdoc = Property(image = request.FILES['image'])
+            request.session['image'] = newdoc.filename
             request.session['city'] = form.cleaned_data.get('city')
             request.session['address'] = form.cleaned_data.get('address')
             request.session['location'] = form.cleaned_data.get('location') 
@@ -161,6 +162,32 @@ def AddView2(request):
     else: 
         form = AddForm2() 
     return render(request, 'realbuy_app/add2.html', {'form' : form}) 
+
+'''
+def UpdateView1(request,pk):
+    update_property = Property.objects.get(id=pk)
+    form = AddForm1(instance=update_property)
+    if request.method == 'POST':
+        form = AddForm1(request.POST,request.FILES, instance=update_property)
+        if form.is_valid():
+            session
+            return redirect('update2',pk)
+    
+    else: 
+        return render(request, 'realbuy_app/update1.html', {'form' : form})
+
+def UpdateView2(request,pk):
+    update_property = Property.objects.get(id=pk)
+    form = AddForm2(instance=update_property)
+    if request.method == 'POST':
+        form = AddForm2(request.POST, instance=update_property)
+        if form.is_valid():
+            session
+            form.save()
+            return redirect('home')
+    
+    else: 
+        return render(request, 'realbuy_app/update2.html', {'form' : form}) '''
     
         
 def ContactUs(request):
@@ -202,6 +229,8 @@ class UpdateView2(UpdateView):
     model = Property
     form_class = AddForm2
     template_name = 'realbuy_app/update2.html'
+
+
     
     
 def LikeView(request, pk):
@@ -215,6 +244,8 @@ def LikeView(request, pk):
         liked = True
         
     return redirect('detail',pk)
+
+
 
 
 def ProfileView(request, pk):

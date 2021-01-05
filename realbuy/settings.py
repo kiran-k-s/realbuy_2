@@ -83,7 +83,6 @@ DATABASES = {
    }
  }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -145,8 +144,9 @@ import dj_database_url
 from dj_database_url import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+'''
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', cast=bool)'''
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')

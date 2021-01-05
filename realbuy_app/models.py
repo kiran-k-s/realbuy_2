@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from multiselectfield import MultiSelectField
 from django.core.exceptions import FieldDoesNotExist
+import os
 
 class Property(models.Model):
     SELLorRENT = (
@@ -86,6 +87,7 @@ class Property(models.Model):
     description = models.TextField(blank=True,null=True)
     date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='realbuy_posts')
+    image = models.ImageField(upload_to='images/')
     
     def __str__(self):
         return str(self.description) + '|' + str(self.ownership)
@@ -95,6 +97,11 @@ class Property(models.Model):
     
     def total_likes(self):
         return self.likes.count()
+
+    @property
+    def filename(self):
+        return os.path.basename(self.image.name)
+    
     
     
     
