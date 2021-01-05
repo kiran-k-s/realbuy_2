@@ -136,7 +136,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 #heroku deploy
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
 from decouple import config,Csv
