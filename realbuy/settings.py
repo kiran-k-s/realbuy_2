@@ -39,6 +39,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During devel
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,7 +137,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 #heroku deploy
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
 from decouple import config,Csv
