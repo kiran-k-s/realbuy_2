@@ -163,7 +163,7 @@ def AddView2(request):
         form = AddForm2() 
     return render(request, 'realbuy_app/add2.html', {'form' : form}) 
 
-
+'''
 def UpdateView1(request,pk):
     update_property = Property.objects.get(id=pk)
     form = AddForm1(instance=update_property)
