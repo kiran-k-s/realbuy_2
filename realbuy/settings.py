@@ -15,7 +15,7 @@ SECRET_KEY = '$m_xqhsgx&fk%l#2j5#1#$zag((y4^5+h^7=jdv@@$aeg3c&n%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -134,3 +134,22 @@ EMAIL_HOST_PASSWORD = 'udsndagmpavfqljm'
 EMAIL_USE_TLS = True  '''
 
 LOGOUT_REDIRECT_URL = 'home'  
+
+#heroku deploy
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import os
+from decouple import config,Csv
+import dj_database_url
+from dj_database_url import config
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', cast=bool)
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+} 
+
