@@ -10,7 +10,7 @@ urlpatterns = [
     path('',include('realbuy_app.urls')),
     path('members/', include('members.urls')),
     path('members/', include('django.contrib.auth.urls')),
-    
+    path('oauth/', include('social_django.urls', namespace='social')),
     #url(r'^select2/', include('select2.urls')),
     
 ]

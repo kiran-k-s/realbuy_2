@@ -7,7 +7,7 @@ Edit Profile{% endblock %}{% block content %}
 <div id="profile-big-box-2"></div> 
 <div id="profile-user-section"></div>
 
-<form method="POST" enctype="multipart/form-data">
+<form autocomplete="off" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 <img id="profile-edit-pic" src="{{ profile.image.url }}">
 {{ form.image }}

@@ -62,15 +62,15 @@ Details{% endblock %}{% block content %}
     <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
-<div>
+<div><!--
     <form action="{% url 'like_post' property.pk %}" method="POST">
-    {% csrf_token %}
-    {% if liked %}
+    {% csrf_token %} 
+    {% if liked %} 
     <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
     {% else %}
     <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
     {% endif %}
-    </form>
+    </form> -->
     <span id="detail-shortlist">SHORTLIST</span>
 </div> 
 <div>

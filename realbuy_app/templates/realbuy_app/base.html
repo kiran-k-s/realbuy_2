@@ -108,7 +108,7 @@
     
 {% endif %}
 <ul class="navbar-nav">
-  <li class="nav-item active">    
+  <li class="nav-item">    
     <a class= "nav-link" id="home-top-right-1" href='{% url 'home' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>-->
     HOME
@@ -165,7 +165,7 @@
     </form>
     <a href="{% url 'password_reset' %}" id="login-popup-forgot"> Forgot Password? </a>
     <span id="login-popup-or">Or</span>
-    <a href="https://www.facebook.com/real.buy.5439/">
+    <a href="{% url 'social:begin' 'facebook' %}">
     <img src="{% static 'realbuy_app/images/fb.png' %}" id="login-popup-fb">
     </a>
     <a href="https://twitter.com/realbuy2">

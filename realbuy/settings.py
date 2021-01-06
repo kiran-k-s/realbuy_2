@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'members',
     'multiselectfield',
     'select2',
-    'bootstrap_modal_forms'
+    'bootstrap_modal_forms',
+    'social_django',
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
@@ -39,13 +40,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During devel
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',     #heroku_deploy
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',   #social_authentication
 ]
 
 ROOT_URLCONF = 'realbuy.urls'
@@ -61,17 +63,29 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',        #social_authentication
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
 ]
+        #social-authentication
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.github.GithubOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'realbuy.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -83,7 +97,7 @@ DATABASES = {
         'PORT': '5432',
    }
  }
-'''
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -119,7 +133,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -132,11 +146,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'realbuy1983@gmail.com'
 EMAIL_HOST_PASSWORD = 'udsndagmpavfqljm'
 EMAIL_USE_TLS = True  '''
-
+LOGIN_URL = 'login_page'
+LOGIN_REDIRECT_URL = 'add1'
+LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'home'  
 
 #heroku deploy
-
+'''
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
@@ -145,12 +161,14 @@ import dj_database_url
 from dj_database_url import config
 
 
-'''
+
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', cast=bool)'''
+DEBUG = config('DEBUG', cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
-} 
+} '''
 
+SOCIAL_AUTH_FACEBOOK_KEY = '255371952605641'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '510dc754cb356b1319cd5855acad5597'  # App Secret

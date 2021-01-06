@@ -133,7 +133,7 @@ def AddView1(request):
             request.session['image'] = newdoc.filename
             request.session['city'] = form.cleaned_data.get('city')
             request.session['address'] = form.cleaned_data.get('address')
-            request.session['location'] = form.cleaned_data.get('location') 
+            request.session['location'] = form.cleaned_data.get('location')
 
             return redirect('add2') 
     else: 
@@ -153,6 +153,7 @@ def AddView2(request):
             location = request.session.pop('location')
             form.instance.sell_or_rent = sell_or_rent
             form.instance.property_type = property_type
+            form.instance.image = image
             form.instance.city = city
             form.instance.address = address
             form.instance.location = location

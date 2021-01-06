@@ -23,7 +23,7 @@ def UserRegisterView(request):
         form.save()
         return redirect('home')
     else:
-        return redirect()
+        print("error....")
     
 def UserLoginView(request):
     form = LoginForm()
