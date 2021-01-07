@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from .forms import RegisterForm,PasswordChangingForm,LoginForm#EditForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
-
+from django.http import HttpResponseRedirect
 
 '''class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
@@ -32,9 +32,9 @@ def UserLoginView(request):
     }
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        #print(request.user.is_authenticated)
+        print(request.user.is_authenticated)
         if form.is_valid():
-            #print(form.cleaned_data)
+            print(form.cleaned_data)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
@@ -43,8 +43,7 @@ def UserLoginView(request):
                 return redirect('add1')
             else:
                 print("error....")
-            
-    return render(request, "members/login.html",context)
+    return render(request, "members/login.html",context)    
 
     
 '''class UserEditView(generic.UpdateView):

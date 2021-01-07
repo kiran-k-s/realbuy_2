@@ -75,7 +75,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth',
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -146,10 +146,10 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'realbuy1983@gmail.com'
 EMAIL_HOST_PASSWORD = 'udsndagmpavfqljm'
 EMAIL_USE_TLS = True  '''
-LOGIN_URL = 'login_page'
-LOGIN_REDIRECT_URL = 'add1'
-LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'home'  
+#LOGIN_URL = 'login_page'
+#LOGIN_REDIRECT = 'add1' 
+#LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'home' 
 
 #heroku deploy
 '''
@@ -172,3 +172,7 @@ DATABASES = {
 
 SOCIAL_AUTH_FACEBOOK_KEY = '255371952605641'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '510dc754cb356b1319cd5855acad5597'  # App Secret
+SESSION_COOKIE_SECURE=False
+'''SOCIAL_AUTH_TWITTER_KEY = '9TD8f5fhasdsbf4w61GSM9' 
+SOCIAL_AUTH_TWITTER_SECRET = 'mwtdcUe4uOvvjDk2Ausb45gsasdasdasashw65454TNSx' '''
+
