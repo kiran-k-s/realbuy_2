@@ -53,37 +53,38 @@
 </head>
     
 <body>
-
+  <!-- navbar -->
+<link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"> 
+    </script> 
+    <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"> 
+    </script> 
+    <!-- navbar ends -->
 <img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> 
 <span id="welcome">Welcome to realbuy</span>
 <span id="welcome-sub">Realbuy is a real estate firm with a vision to create luxurious living spaces that surpass the expectations of customers. Although recently launched the firm is driven with an instinct and far stretching insight that improves the real estate offerings in the city...</span>
-<a href="{% url 'category_home1' 'sell' %}">
-<button type="button" id="home-filter1" class="home-filter">SALE</button>
-</a>
-<a href="{% url 'category_home1' 'rent' %}">
-<button type="button" id="home-filter2" class="home-filter">RENT</button>
-</a>
-<a href="{% url 'category_home1' 'ready to move'|slugify %}">
-<button type="button" id="home-filter3" class="home-filter">READY TO MOVE</button>
-</a>
-<a href="{% url 'category_home1' 'under construction'|slugify %}">
-<button type="button" id="home-filter4" class="home-filter">UNDER CONSTRUCTION</button>
-</a>  
-    
+
+<!--    
 <form method="get" action="{% url 'category_home2' %}" >
       <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
 </form>  
-<!--
+-->
 <form method="get" action="{% url 'category_home2' %}">
-      <button type="button" id="home-filter1" value="sell" class="home-filter">SALE</button>
+      <button id="home-filter1" name="sell" value="sell" class="home-filter">SALE</button>
       <button type="button" id="home-filter2" value="rent" class="home-filter">RENT</button>
       <button type="button" id="home-filter3" value="ready to move" class="home-filter">READY TO MOVE</button>
       <button type="button" id="home-filter4" value="under construction" class="home-filter">UNDER CONSTRUCTION</button>
       <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
 </form>
--->
+
 <a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
 </a>
@@ -108,10 +109,11 @@
     
 {% endif %}
 <ul class="navbar-nav">
-  <li class="nav-item">    
-    <a class="nav-link" role="button" id="home-top-right-1" href='{% url 'home' %}'>
+  <li class="nav-item active">    
+    <a class="nav-link" id="home-top-right-1" href='{% url 'home' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>-->
     HOME
+    <span class="sr-only">(current) </span>
     </a>
   </li>
   <li class="nav-item">

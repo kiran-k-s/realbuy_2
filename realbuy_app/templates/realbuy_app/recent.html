@@ -24,6 +24,8 @@ Recent Properties{% endblock %}
 <a href="{% url 'category_recent' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
 <a href="{% url 'category_recent' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
 
+
+
 <div id="recentCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#recentCarousel" data-slide-to="0" class="active"></li>
@@ -32,21 +34,21 @@ Recent Properties{% endblock %}
   </ol>  
   <div class="carousel-inner">
      
-    {% for prop in object_list %}
+    {% for prop in composite_list %}
     {% if forloop.counter0 == 0 %}
-    <h1> {{ forloop.counter0 }} </h1>
+    <h1> carousel inner {{ forloop.counter0 }} </h1> 
     <div class="carousel-item active">
            
             <div class="recentContent">
 
                 
-                {% with ''|center:9 as range %}
-                {% for _ in range %}
-                <h1> {{ forloop.counter0 }} </h1>
+                {% for property in prop %}
+                
+
                 <div class="recentList">
-                    {% with object_list|list_item:forloop.parentloop.counter0 as property %}
-                    <h1>{{ forloop.counter0 }}</h1>
-                    <h1>{{ forloop.parentloop.counter0 }}</h1>
+                    
+                    <h2> recent list {{ forloop.counter0 }}</h2>
+                    <h4> recent list parent {{ forloop.parentloop.counter0 }}</h4>
                     <a  href="{% url 'detail' property.id %}">
                     <img class="recentImage" src="{{property.image.url}}">
                     </a>
@@ -72,25 +74,23 @@ Recent Properties{% endblock %}
                     
                     {% endif %}
                     </form>
-                    {% endwith %}
                 </div>
-                {{ forloop.parentloop.counter0 | add:"1" }}
                 {% endfor %}
-                {% endwith %}
             </div>  
                  
     </div>
     {% else %}
+    <h1>carousel inner else {{ forloop.counter0 }} </h1>
     <div class="carousel-item">
            
             <div class="recentContent">
 
                 
-                {% for i in '012345678'|make_list %}
+                {% for property in prop %}
+                
                 <div class="recentList">
-                    {% with object_list|list_item:forloop.parentloop.counter0 as property %}
-                    <h1>else {{ forloop.counter0 }}</h1>
-                    <h1>else {{ forloop.parentloop.counter0 }}</h1>
+                    <h2>recent list else {{ forloop.counter0 }}</h2>
+                    <h4>recent list else parent{{ forloop.parentloop.counter0 }}</h4>
                     <a  href="{% url 'detail' property.id %}">
                     <img class="recentImage" src="{{property.image.url}}">
                     </a>
@@ -116,9 +116,7 @@ Recent Properties{% endblock %}
                     
                     {% endif %}
                     </form>
-                    {% endwith %}
                 </div>
-                {{ forloop.parentloop.counter0 | add:"1" }}
                 {% endfor %}
             </div>  
                  
