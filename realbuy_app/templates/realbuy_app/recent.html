@@ -9,7 +9,7 @@ Recent Properties{% endblock %}
     position:absolute;
     top:123px;
     left:693px;
-    height:532px;
+    height:550px;
     width:652px;
 }
 
@@ -35,9 +35,10 @@ Recent Properties{% endblock %}
   <div class="carousel-inner">
      
     {% for prop in composite_list %}
-    {% if forloop.counter0 == 0 %}
+    
     <h1> carousel inner {{ forloop.counter0 }} </h1> 
-    <div class="carousel-item active">
+    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+
            
             <div class="recentContent">
 
@@ -46,7 +47,7 @@ Recent Properties{% endblock %}
                 
 
                 <div class="recentList">
-                    
+                    <!-- 
                     <h2> recent list {{ forloop.counter0 }}</h2>
                     <h4> recent list parent {{ forloop.parentloop.counter0 }}</h4>
                     <a  href="{% url 'detail' property.id %}">
@@ -73,55 +74,13 @@ Recent Properties{% endblock %}
                     <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                     
                     {% endif %}
-                    </form>
+                    </form> -->
+                    <h1> 123 </h1>
                 </div>
                 {% endfor %}
             </div>  
                  
     </div>
-    {% else %}
-    <h1>carousel inner else {{ forloop.counter0 }} </h1>
-    <div class="carousel-item">
-           
-            <div class="recentContent">
-
-                
-                {% for property in prop %}
-                
-                <div class="recentList">
-                    <h2>recent list else {{ forloop.counter0 }}</h2>
-                    <h4>recent list else parent{{ forloop.parentloop.counter0 }}</h4>
-                    <a  href="{% url 'detail' property.id %}">
-                    <img class="recentImage" src="{{property.image.url}}">
-                    </a>
-                    {% if property.sell_or_rent == 'sell' %}
-                    <div class="recentSell"> ON SALE </div>
-                    {% else %}
-                    <div class="recentRent"> ON RENT </div>
-                    {% endif %}
-                    <div class="recentCity"> {{ property.city}}</div>
-                    <div class="recentAddress"> {{ property.address|slice:":30" }}</div>
-                    <div class="recentPrice">
-                    <span class="recentPrice1">&#8377; </span>
-                    <span class="recentPrice2">{{ property.price}}</span><span class="recentPrice3">/Month</span>
-                        
-                    </div>
-                    <form action="{% url 'like_post' property.pk %}" method="POST">
-                    {% csrf_token %}
-                    {% if liked %}
-                    <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-                    
-                    {% else %}
-                    <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-                    
-                    {% endif %}
-                    </form>
-                </div>
-                {% endfor %}
-            </div>  
-                 
-    </div>
-    {% endif %}
     {% endfor %} 
 
   </div>

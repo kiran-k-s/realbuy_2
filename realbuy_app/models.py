@@ -52,29 +52,7 @@ class Property(models.Model):
     )
     resale_or_new = models.CharField(max_length=100,choices=RESALEorNEW, null=True)
     
-    PROPERTY_FLOOR = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-        ('6', '6'),
-        ('7', '7'),
-        ('8', '8'),
-        ('9', '9'),
-        ('10', '10'),
-        ('11', '11'),
-        ('12', '12'),
-        ('13', '13'),
-        ('14', '14'),
-        ('15', '15'),
-        ('16', '16'),
-        ('17', '17'),
-        ('18', '18'),
-        ('19', '19'),
-        ('20', '20'),
-    )    
-    property_floor = MultiSelectField(choices = PROPERTY_FLOOR,null=True)
+    property_floor = models.IntegerField(blank=True,null=True)
     ownership = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     total_floor = models.IntegerField(blank=True,null=True)
     

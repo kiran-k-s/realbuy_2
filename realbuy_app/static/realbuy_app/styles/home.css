@@ -1006,6 +1006,7 @@ text-decoration: underline;
     grid-template-rows: 165px 165px 165px;*/
     grid-gap: 15px;
     background-color: rgba(22, 22, 22, 1);
+    border: solid 2px white;
 
 
 }
@@ -1014,6 +1015,7 @@ text-decoration: underline;
     width:206px;
     height:160px;
     z-index: 10;
+    border: solid 2px white;
 }
 .recentImage{
     position: absolute;
@@ -3181,6 +3183,7 @@ left: 705px;
 height: 25px;
 width: 250px;
 background: transparent;
+color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
 #add1-address{
@@ -3190,6 +3193,7 @@ left: 965px;
 height: 25px;
 width: 250px;
 background: transparent;
+color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
 #add1-location{
@@ -3199,6 +3203,7 @@ left: 705px;
 height: 25px;
 width: 250px;
 background: transparent;
+color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
 .add1-commercial-box{
@@ -3227,11 +3232,6 @@ border: 1px solid rgba(140, 140, 140, 1);
     top: 320px;
     left: 750px;
 }
-#next-add2{
-    position: absolute;
-    top:600px;
-    left: 730px;
-}
 #sell-sell{
     position:absolute;
     top:180px;
@@ -3242,3 +3242,211 @@ border: 1px solid rgba(140, 140, 140, 1);
     top:180px;
     left:830px;
 }
+#add1-next{
+    position: absolute;
+    top:600px;
+    left: 830px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    background: transparent;
+    border: none;
+}
+
+/* add2.html */
+
+
+#add2-big-box{
+    position: absolute;
+    top: 75px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#add2-big-box-2{
+    position: absolute;
+    top: 80px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#add2-head-1{
+    position: absolute;
+    top: 90px;
+    left: 695px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+#add2-head-2{
+    position: absolute;
+    top: 90px;
+    left: 725px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(47, 181, 110, 1);
+}
+#add2-basic-info{
+    position: absolute;
+top: 120px;
+left: 875px;
+height: 19px;
+width: 108px;
+font-family: 'Antipasto';
+font-size: 14px;
+color: rgba(255, 255, 255, 1);
+}
+#add2-property-details{
+    position: absolute;
+top: 120px;
+left: 1025px;
+height: 19px;
+width: 95px;
+font-family: 'Antipasto';
+font-size: 14px;
+
+color: rgba(44, 166, 101, 1);
+border-bottom: 2px solid;
+}
+
+.add2-price{
+    position: absolute;
+top: 165px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-bathroom{
+    position: absolute;
+top: 165px;
+left: 965px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-bedroom{
+    position: absolute;
+top: 200px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-built{
+    position: absolute;
+top: 275px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-built-unit{
+    position: absolute;
+top: 275px;
+left: 965px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+
+.add2-carpet{
+    position: absolute;
+top: 310px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-carpet-unit{
+    position: absolute;
+top: 310px;
+left: 965px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-property-floor{
+    position: absolute;
+top: 410px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-ownership{
+    position: absolute;
+top: 410px;
+left: 965px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-total-floor{
+    position: absolute;
+top: 445px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+
+.add2-description{
+    position: absolute;
+top: 525px;
+left: 705px;
+height: 25px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+resize:none;
+}
+
+.add2-submit{
+  position: absolute;
+top: 570px;
+left: 705px;
+height: 25px;
+width: 80px;
+background-color: rgba(47, 181, 110, 1);
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(255, 255, 255, 1);
+}
+

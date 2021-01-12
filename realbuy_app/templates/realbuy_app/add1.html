@@ -45,7 +45,7 @@
 <img src="{% static 'realbuy_app/images/add1/commercial.png' %}" > 
 <img src="{% static 'realbuy_app/images/add1/furnished_select.png' %}"> 
 <img src="{% static 'realbuy_app/images/add1/land&plot_select.png' %}"> 
-<img src="{% static 'realbuy_app/images/rent_select.png' %}"> 
+<img src="{% static 'realbuy_app/images/add1/rent_select.png' %}"> 
 
 
 <form method="post" enctype="multipart/form-data">
@@ -57,44 +57,49 @@
 	<label for="id_sell_or_rent_0">
 		<input type="radio" name="sell_or_rent" value="sell" class="sellorrent" required id="id_sell_or_rent_0" checked>
 		<img id="add1-bullet-on" src="{% static 'realbuy_app/images/add1/select_bullet.png' %}" >
-		SELL
+		<span id = "add1-sell">SELL</span>
 	</label>
 </div>
 <div>
 	<label for="id_sell_or_rent_1">
 		<input type="radio" name="sell_or_rent" value="rent" class="sellorrent" required id="id_sell_or_rent_1">
 		<img id="add1-bullet-off" src="{% static 'realbuy_app/images/add1/default_bullet.png' %}" >
-		RENT</label>
+		<span id = add1-rent>RENT</span>
+	</label>
 </div>
 </div>
 </div>
 
-<span id = sell-sell>SELL</span>
-<span id = rent-rent>RENT</span>
+
+
 <p><label></label> 
 <div id="id_property_type">
 <div>
-	<label class="add1-commercial-box" for="id_property_type_0"><input type="checkbox" name="property_type" value="commercial" id="id_property_type_0">
+	<label class="add1-commercial-box" for="id_property_type_0"><input type="checkbox" name="property_type" value="commercial" id="id_property_type_0" checked>
+	<img class="add1-commercial-select" src="{% static 'realbuy_app/images/add1/commercial_select.png' %}" > 
  	Commercial
  	</label>
  </div>
  <div>
- 	<label class="add1-furnished-box" for="id_property_type_1"><input  type="checkbox" name="property_type" value="furnished home" id="id_property_type_1">Furnished Home</label>
+ 	<label class="add1-furnished-box" for="id_property_type_1"><input  type="checkbox" name="property_type" value="furnished home" id="id_property_type_1">
+ 		<img class="add1-furnished" src="{% static 'realbuy_app/images/add1/furnished_homes.png' %}" >Furnished Home</label>
  </div>
  <div>
- 	<label class="add1-land-box" for="id_property_type_2"><input type="checkbox"  name="property_type" value="land and plot" id="id_property_type_2">Land and Plot</label>
+ 	<label class="add1-land-box" for="id_property_type_2"><input type="checkbox"  name="property_type" value="land and plot" id="id_property_type_2">
+ 		<img class="add1-land" src="{% static 'realbuy_app/images/add1/land&plot.png' %}" >Land and Plot</label>
 </div>
 <div>
 	<label class="add1-rental-box" for="id_property_type_3"><input type="checkbox"  name="property_type" value="rental" id="id_property_type_3">
+	<img class="add1-rental" src="{% static 'realbuy_app/images/add1/rent.png' %}" >
  	Rental</label>
 </div>
 </div></p>
 <p><label for="id_image">Image:</label> <input type="file" name="image" accept="image/*" class="add-image" placeholder="upload property image" required id="id_image"></p>
-<p><label for="id_city">City:</label> <input type="text" name="city" class="city" placeholder="City" maxlength="100" minlength="4" required id="add1-city"></p>
-<p><label for="id_address">Address:</label> <input type="text" name="address" class="address" placeholder="Address" maxlength="100" minlength="4" required id="add1-address"></p>
-<p><label for="id_location">Location:</label> <input type="text" name="location" class="location" placeholder="Location" maxlength="100" minlength="4" required id="add1-location"></p>
+<p><label for="id_city">City:</label> <input type="text" name="city" class="city" placeholder="City" maxlength="100" minlength="4" required id="add1-city" autocomplete="off"></p>
+<p><label for="id_address">Address:</label> <input type="text" name="address" class="address" placeholder="Address" maxlength="100" minlength="4" required id="add1-address" autocomplete="off"></p>
+<p><label for="id_location">Location:</label> <input type="text" name="location" class="location" placeholder="Location" maxlength="100" minlength="4" required id="add1-location" autocomplete="off"></p>
 
-<button type="submit" id="next-add2">Next</button>
+<button type="submit" id="add1-next">Next</button>
 
     
 </form>

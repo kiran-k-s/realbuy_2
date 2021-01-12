@@ -18,6 +18,9 @@ from django.db.models import Count
 def Home(request):
     return render(request, 'realbuy_app/home.html',{})
 
+def Sample(request):
+    return render(request, 'realbuy_app/sample.html',{})
+
 def AboutUs(request):
     return render(request, 'realbuy_app/aboutus.html',{})
 '''

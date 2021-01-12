@@ -4,6 +4,7 @@ from .views import RecentView, DetailedView, FeaturedView, UpdateView1, UpdateVi
 
 urlpatterns = [
     path('', views.Home, name='home'),
+    path('sample/', views.Sample, name='sample'),
     #path('category_home1/<str:cats>/', views.CategoryViewHome1, name='category_home1'),
     path('category_home2/', views.CategoryViewHome2, name='category_home2'),
     path('category_filter2/', views.CategoryViewFilter2, name='category_filter2'),
