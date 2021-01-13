@@ -67,7 +67,13 @@ button {
 }  */
 
 /* home.html */
-
+::placeholder{
+    position: relative;
+    left:10px;
+font-family: 'Antipasto';
+font-size: 12px;
+color: rgba(140, 140, 140, 1);;
+}
 #welcome {
     position: absolute;
     top: 205px;
@@ -3019,13 +3025,7 @@ font-size: 12px;
 color: rgba(255, 255, 255, 1);
 border:none;
 }
-::placeholder{
-    position: relative;
-    left:10px;
-font-family: 'Antipasto';
-font-size: 12px;
-color: rgba(140, 140, 140, 1);;
-}
+
 #contactus_error{
     position:absolute;
     padding: 10px;
@@ -3166,16 +3166,43 @@ background-color: rgba(41, 41, 41, 1);
     font-size: 9px;
     color: rgba(255, 255, 255, 1);
 }
-#add1-bullet-off{
-    position: absolute;
-    left:800px;
-    top:180px;
-}
-#add1-bullet-on{
+
+.add1-sell-bullet-on{
     position: absolute;
     left:700px;
     top:180px;
 }
+
+#id_sell_or_rent_0{
+    position: absolute;
+    left:700px;
+    top:180px;
+}
+
+.add1-sell{
+    position: absolute;
+    left:750px;
+    top:180px;
+}
+
+.add1-rent-bullet-off{
+    position: absolute;
+    left:800px;
+    top:180px;
+}
+
+#id_sell_or_rent_1{
+    position: absolute;
+    left:800px;
+    top:180px;
+}
+
+.add1-rent{
+    position: absolute;
+    left:850px;
+    top:180px;
+}
+
 #add1-city{
     position: absolute;
 top: 405px;
@@ -3209,38 +3236,103 @@ border: 1px solid rgba(140, 140, 140, 1);
 .add1-commercial-box{
     position: absolute;
     top: 260px;
-    left: 700px;
+    left: 720px;
 }
-
+.add1-commercial{
+    position: absolute;
+    top: 260px;
+    left: 720px;
+}
+.add1-commercial-head{
+  position: absolute;
+  top:280px;
+  left:700px;
+  color: rgba(47, 181, 110, 1);
+}
 .add1-furnished-box{
     position: absolute;
     top: 260px;
-    left: 850px;
+    left: 810px;
+}
+.add1-furnished{
+    position: absolute;
+    top: 260px;
+    left: 810px;
+}
+.add1-furnished-head{
+  position: absolute;
+  top:280px;
+  left:800px;
+  color: white;
 }
 .add1-land-box{
     position: absolute;
     top: 260px;
-    left: 1000px;
+    left: 900px;
+}
+.add1-land{
+    position: absolute;
+    top: 260px;
+    left: 900px;
+}
+.add1-land-head{
+  position: absolute;
+  top:280px;
+  left:890px;
+  color: white;
 }
 .add1-rental-box{
     position: absolute;
     top: 260px;
-    left: 1150px;
+    left: 990px;
+}
+.add1-rental{
+    position: absolute;
+    top: 260px;
+    left: 990px;
+}
+.add1-rental-head{
+  position: absolute;
+  top:280px;
+  left:980px;
+  color: white;
+}
+
+.add1-commercial-image{
+    position: absolute;
+    top: 260px;
+    left: 1080px;
+}
+.add1-furnished-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1120px;
+}
+.add1-land-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1160px;
+}
+.add1-rent-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1200px;
 }
 .add-image{
     position: absolute;
     top: 320px;
     left: 750px;
 }
-#sell-sell{
-    position:absolute;
-    top:180px;
-    left:730px;
-}
-#rent-rent{
+.add1-camera{
     position: absolute;
-    top:180px;
-    left:830px;
+    top: 320px;
+    left: 750px;
+}
+.add1-camera-head{
+    position: absolute;
+    top: 340px;
+    left: 750px;
+    color: white;
 }
 #add1-next{
     position: absolute;
@@ -3255,7 +3347,7 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 /* add2.html */
 
-
+/*
 #add2-big-box{
     position: absolute;
     top: 75px;
@@ -3307,7 +3399,7 @@ color: rgba(255, 255, 255, 1);
 top: 120px;
 left: 1025px;
 height: 19px;
-width: 95px;
+width: 93px;
 font-family: 'Antipasto';
 font-size: 14px;
 
@@ -3317,7 +3409,7 @@ border-bottom: 2px solid;
 
 .add2-price{
     position: absolute;
-top: 165px;
+top: 160px;
 left: 705px;
 height: 25px;
 width: 250px;
@@ -3328,7 +3420,7 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 .add2-bathroom{
     position: absolute;
-top: 165px;
+top: 160px;
 left: 965px;
 height: 25px;
 width: 250px;
@@ -3450,3 +3542,21 @@ font-size: 12px;
 color: rgba(255, 255, 255, 1);
 }
 
+#add2-bar-1{
+    position: absolute;
+top: 160px;
+left: 695px;
+height: 18px;
+width: 650px;
+background-color: rgba(41, 41, 41, 1);
+
+}
+#add2-bar-1-content{
+    position: absolute;
+    left:705px;
+    top:162px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(255, 255, 255, 1);
+}
+*/

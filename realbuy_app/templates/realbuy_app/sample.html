@@ -8,6 +8,7 @@
 <title>Search results</title>
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<!--
 <style type="text/css">
 
 .carousel{
@@ -19,6 +20,7 @@
 }
 
 </style>
+-->
 <style type="text/css">
     
     body { 
@@ -27,7 +29,12 @@
         -o-background-size: cover;
         background-size: cover;
     }
-         
+
+    .carousel-inner > .item > .recentContent,
+      .carousel-inner > .item > a > .recentContent {
+        width: 100%;
+        height: 100%;
+        margin: auto;    
 </style>
     <!-- Custom styles for this template -->
 <link href="{% static 'realbuy_app/styles/sample.css' %}" rel="stylesheet"> 
@@ -36,26 +43,29 @@
 <div id="recentBigBox"></div>
 <div id="recentBigBox2"></div>
 <span id="recentHead1">Recent</span> <span id="recentHead2">Properties</span>
-
-  
+<!--
+<div class="col-sm-offset-5 col-sm-5" style="margin-right:0px;padding-right:0px; height:100vh;">  -->
+<div class="content">
     <div id="recentCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#recentCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#recentCarousel" data-slide-to="1"></li>
-        <li data-target="#recentCarousel" data-slide-to="2"></li>
+        {% for prop in composite_list %}
+        <li data-target="#recentCarousel" data-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+        {% endfor %}
       </ol>  
       <div class="carousel-inner">
          
-        <div class="carousel-item active">
+        {% for prop in composite_list %}
+     
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
                
                 <div class="recentContent">
 
-                    
+                    {% for property in prop %}
                     <div class="recentList">
-                    <h1> 1 </h1>       
+                    <div class="recentCity"> {{ property.city}}</div>       
                     </div>
                     
-                    
+                    <!--
                     <div class="recentList">
                     <h1> 2 </h1>       
                     </div>
@@ -87,12 +97,16 @@
                     <div class="recentList">
                     <h1> 9 </h1>       
                     </div>  
+                -->
+
+                    {% endfor %}
 
                 </div>  
                      
         </div>
+        {% endfor %}
 
-        
+        <!--
         <div class="carousel-item">
                
                 <div class="recentContent">
@@ -161,6 +175,7 @@
                 </div>  
                      
         </div> 
+    -->
 
 
       </div>
@@ -174,7 +189,7 @@
       </a>
     </div> 
 
-
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>

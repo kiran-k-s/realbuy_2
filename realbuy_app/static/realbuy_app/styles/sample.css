@@ -1,25 +1,5 @@
-.recentContent{
-    position:absolute;
-    top:0px;
-    left:0px;
-    height:515px;
-    width:650px;
-    display: grid;
-    grid-template-columns: 206px 206px 206px;
-    grid-template-rows: 160px 160px 160px;
-    grid-gap: 15px;
-    background-color: rgba(22, 22, 22, 1);
-    border: solid 2px white;
 
 
-}
-.recentList{
-    
-    width:206px;
-    height:160px;
-    z-index: 10;
-    border: solid 2px white;
-}
 #recentBigBox{
     position: absolute;
     top: 75px;
@@ -56,6 +36,44 @@
     font-size: 16px;
     color: rgba(47, 181, 110, 1);
 }
+.carousel, .carousel-inner, .carousel-inner > .item{
+  height:100%;
+  }
+
+body .carousel-inner > .item > .recentContent{
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  display: grid;
+    grid-template-columns: 206px 206px 206px;
+    grid-template-rows: 160px 160px 160px;
+    grid-gap: 15px;
+    background-color: rgba(22, 22, 22, 1);
+    border: solid 2px red;
+  }
+.recentList{
+	position: relative;
+	height: 160px;
+	width: 206px;
+    z-index: 10;
+    border: solid 2px white;
+}
+.recentCity{
+    position: absolute;
+    top:110px;
+    height: 15px;
+    width: 118px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: red;
+}
+
+.content{
+    position:absolute;
+    top:120px;
+    left:690px;
+    height:520px;
+    width:655px;
+    background-color: yellow;
 /*
 .recentContent{
     position:absolute;

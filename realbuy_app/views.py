@@ -16,13 +16,29 @@ from django.db.models import Count
 
 
 def Home(request):
-    return render(request, 'realbuy_app/home.html',{})
+    context = {
+        'current': 'home'
+    }
+    return render(request, 'realbuy_app/home.html',context)
 
-def Sample(request):
-    return render(request, 'realbuy_app/sample.html',{})
+class SampleView(ListView):
+    model = Property
+    template_name = 'realbuy_app/sample.html'
+    fields = ('sell_or_rent','image','city','address','location')
+    ordering = ['-id']
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(SampleView, self).get_context_data()
+        recent = Property.objects.all().order_by('-id')
+        composite_list = [recent[x:x+9] for x in range(0, len(recent),9)]
+        context["composite_list"] = composite_list
+        return context
 
 def AboutUs(request):
-    return render(request, 'realbuy_app/aboutus.html',{})
+    context = {
+        'current': 'aboutus'
+    }
+    return render(request, 'realbuy_app/aboutus.html',context)
 '''
 def CategoryViewHome1(request, cats):
     category_property_home = Property.objects.filter(Q(sell_or_rent__contains=cats)|Q(availability__contains=cats.replace('-',' '))).distinct()
@@ -109,6 +125,7 @@ class RecentView(ListView):
         recent = Property.objects.all().order_by('-id')
         composite_list = [recent[x:x+9] for x in range(0, len(recent),9)]
         context["composite_list"] = composite_list
+        context["current"] = 'recent'
         return context
 
 
@@ -127,9 +144,10 @@ class RecentView(ListView):
 
     
 def FeaturedView(request):
+    
     featured = Property.objects.all().annotate(count = Count('likes')).order_by('-count')
     
-    context = {'featured' : featured}
+    context = {'featured' : featured, 'current':'featured'}
     return render(request,'realbuy_app/featured.html', context)
         
 class DetailedView(DetailView):
@@ -167,7 +185,7 @@ def AddView1(request):
             return redirect('add2') 
     else: 
         form = AddForm1() 
-    return render(request, 'realbuy_app/add1.html', {'form' : form}) 
+    return render(request, 'realbuy_app/add1.html', {'form' : form,'current':'add'}) 
     
 def AddView2(request):
     if request.method == 'POST': 
@@ -191,7 +209,7 @@ def AddView2(request):
             #success_url = reverse_lazy('home')
     else: 
         form = AddForm2() 
-    return render(request, 'realbuy_app/add2.html', {'form' : form}) 
+    return render(request, 'realbuy_app/add2.html', {'form' : form,'current':'add'}) 
 
 '''
 def UpdateView1(request,pk):
@@ -246,7 +264,7 @@ def ContactUs(request):
             return JsonResponse({
                 'message': 'success'
             })
-    return render(request, 'realbuy_app/contactus.html',{'form' : form})
+    return render(request, 'realbuy_app/contactus.html',{'form' : form,'current':'contactus'})
 
     
 class UpdateView1(UpdateView):

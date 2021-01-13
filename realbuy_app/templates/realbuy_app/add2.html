@@ -1,6 +1,9 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
 {% block title %}Add Property{% endblock %}
+{% block links %}
+<link href="{% static 'realbuy_app/styles/add2.css' %}" rel="stylesheet">
+{% endblock %}
 
 
 {% block content %}
@@ -10,17 +13,22 @@
 <div id="add2-basic-info">BASIC INFORMATION</div>
 <div id="add2-property-details">PROPERTY DETAILS</div>
 
-
+<div id="add2-bar-1"></div>
+<div id="add2-bar-2"></div>
+<div id="add2-bar-3"></div>
+<span id="add2-bar-1-content">Property Area </span>
+<span id="add2-bar-2-content">Transaction Type </span>
+<span id="add2-bar-3-content">Availability</span>
 
 <form id='AddForm2' method="post">
     {% csrf_token %}
 
 
-<p><label for="id_price">Price:</label> <input class="add2-price" type="number" name="price" id="id_price" placeholder="AskingPrice: &#8377;"></p>
-<p><label for="id_bathroom">Bathroom:</label> <input class="add2-bathroom" type="number" name="bathroom" id="id_bathroom" placeholder="Bathroom(s)"></p>
-<p><label for="id_bedroom">Bedroom:</label> <input class="add2-bedroom" type="number" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)"></p>
-<p><label for="id_built_up_area">Built up area:</label> <input class="add2-built" type="number" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area"></p>
-<p><label for="id_built_up_unit">Built up unit:</label> <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" placeholder="Unit">
+<p><label for="id_price"></label> <input class="add2-price" type="number" name="price" id="id_price" placeholder="AskingPrice: &#8377;"></p>
+<p><label for="id_bathroom"></label> <input class="add2-bathroom" type="number" name="bathroom" id="id_bathroom" placeholder="Bathroom(s)"></p>
+<p><label for="id_bedroom"></label> <input class="add2-bedroom" type="number" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)"></p>
+<p><label for="id_built_up_area"></label> <input class="add2-built" type="number" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area"></p>
+<p><label for="id_built_up_unit"></label> <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" placeholder="Unit">
   <option value="CENTS">cents</option>
 
   <option value="SQM">sq.m</option>
@@ -28,8 +36,8 @@
   <option value="SQFT">sq.ft</option>
 
 </select></p>
-<p><label for="id_carpet_area">Carpet area:</label> <input class="add2-carpet" type="number" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area"></p>
-<p><label for="id_carpet_unit">Carpet unit:</label> <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit" placeholder="Unit">
+<p><label for="id_carpet_area"></label> <input class="add2-carpet" type="number" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area"></p>
+<p><label for="id_carpet_unit"></label> <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit" placeholder="Unit">
   <option value="CENTS">cents</option>
 
   <option value="SQM">sq.m</option>
@@ -37,36 +45,46 @@
   <option value="SQFT">sq.ft</option>
 
 </select></p>
-<p><label for="id_resale_or_new_0"></label> <ul id="id_resale_or_new" class="resaleornew">
-    <li><label for="id_resale_or_new_0"><input type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0">
- Resale</label>
+<p><label for="id_resale_or_new_0"></label> 
+<div id="id_resale_or_new" class="resaleornew">
 
-</li>
-    <li><label for="id_resale_or_new_1"><input type="radio" name="resale_or_new" value="new" class="resaleornew" required id="id_resale_or_new_1">
- New Booking</label>
+<div>
+  <label for="id_resale_or_new_0">
+      <input class="add2-resale-radio" type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0">
+      <span class="add2-resale">Resale</span>
+ </label>
+</div>
+<div>
+  <label for="id_resale_or_new_1">
+    <input class="add2-new-radio" type="radio" name="resale_or_new" value="new" class="resaleornew" required id="id_resale_or_new_1">
+    <span class="add2-new">New Booking</span>
+  </label>
+</div>
+</div>
+</p>
 
-</li>
-</ul></p>
-<span id="add2-resale">Res</span>
-<span id="add2-new">New</span>
 
+<p><label for="id_property_floor"></label><input class="add2-property-floor" type="number" name="property_floor" id="id_property_floor" placeholder="Property Floor"></p>
+<p><label for="owner"></label> <input class="add2-ownership" type="text" name="ownership" value="" id="owner" readonly required placeholder="Ownership" onclick="placeOwner()"></p>
+<p><label for="id_total_floor"></label> <input class="add2-total-floor" type="number" name="total_floor" required id="id_total_floor" placeholder="Total Floors"></p>
+<p><label for="id_availability_0"></label>
+<div id="id_availability" class="availability">
+<div>
+  <label for="id_availability_0">
+    <input class="add2-ready-radio" type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0">
+    <span class="add2-ready">Ready to Move</span>
+  </label>
 
-<p><label for="id_property_floor">Property floor:</label><input class="add2-property-floor" type="number" name="property_floor" id="id_property_floor" placeholder="Property Floor"></p>
-<p><label for="owner">Ownership:</label> <input class="add2-ownership" type="text" name="ownership" value="" id="owner" readonly required placeholder="Ownership" onclick="placeOwner()"></p>
-<p><label for="id_total_floor">Total floor:</label> <input class="add2-total-floor" type="number" name="total_floor" required id="id_total_floor" placeholder="Total Floors"></p>
-<p><label for="id_availability_0"></label> <ul id="id_availability" class="availability">
-    <li><label for="id_availability_0"><input type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0">
- Ready to Move</label>
+</div>
+<div>
+  <label for="id_availability_1">
+    <input class="add2-under-radio" type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1">
+    <span class="add2-under">Under Construction</span>
+  </label>
 
-</li>
-    <li><label for="id_availability_1"><input type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1">
- Under Construction</label>
-
-</li>
-</ul></p>
-<span id="add2-ready">Ready</span>
-<span id="add2-under">Under</span>
-<p><label for="id_description">Description:</label> <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" required id="id_description" placeholder="Description">
+</div>
+</div></p>
+<p><label for="id_description"></label> <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" required id="id_description" placeholder="Description">
 </textarea></p>
 
 

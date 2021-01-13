@@ -109,38 +109,37 @@
     
 {% endif %}
 <ul class="navbar-nav">
-  <li class="nav-item active">    
+  <li class="nav-item {% if current == 'home' %} active {% endif %}">    
     <a class="nav-link" id="home-top-right-1" href='{% url 'home' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>-->
     HOME
-    <span class="sr-only">(current) </span>
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item {% if current == 'aboutus' %} active {% endif %}">
     <a class="nav-link" id="home-top-right-2" href='{% url 'about_us' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>-->
     ABOUT US
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item {% if current == 'featured' %} active {% endif %}">
     <a class="nav-link" id="home-top-right-3" href='{% url 'featured' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button> -->
     FEATURED PROPERTIES
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item {% if current == 'recent' %} active {% endif %}">
     <a class="nav-link" id="home-top-right-4" href='{% url 'recent' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button> -->
     RECENT PROPERTIES
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item {% if current == 'add' %} active {% endif %}">
     <a class="nav-link" id="home-top-right-5" href='{% url 'add1' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>  -->
     ADD PROPERTY
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item {% if current == 'contactus' %} active {% endif %}">
     <a class="nav-link" id="home-top-right-6" href='{% url 'contactus' %}'>
     <!--<button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>   -->
     CONTACT US
@@ -212,18 +211,7 @@
     
 {% block content %}
 {% endblock %}
-<script> 
 
-        $(document).ready(function () { 
-  
-            $('ul.navbar-nav > li') 
-                    .click(function (e) { 
-                $('ul.navbar-nav > li') 
-                    .removeClass('active'); 
-                $(this).addClass('active'); 
-            }); 
-        }); 
-</script> 
 
 <script>
 function togglePopupLogin(){
