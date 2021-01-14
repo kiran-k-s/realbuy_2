@@ -24,7 +24,7 @@
 
 	/* CHECKED STYLES */
 	[type=radio]:checked + img {
-	  outline: 2px solid #f00;
+	  opacity: 0;
 	}
 
 	/* HIDE checkbox */
@@ -43,7 +43,11 @@
 
 	/* CHECKED STYLES */
 	[type=checkbox]:checked + img {
-	  outline: 15px solid #f00;
+	  opacity: 0;
+	}
+
+	[type=checkbox]:checked + span {
+	  opacity: 0;
 	}
 
 	/* HIDE filetype */
@@ -91,6 +95,7 @@
 <div>
 	<label for="id_sell_or_rent_0">
 		<input type="radio" name="sell_or_rent" value="sell" class="sellorrent" required id="id_sell_or_rent_0" checked>
+		<img class="add1-sell-bullet-off" src="{% static 'realbuy_app/images/add1/default_bullet.png' %}" >
 		<img class="add1-sell-bullet-on" src="{% static 'realbuy_app/images/add1/select_bullet.png' %}" >
 		<span class= "add1-sell">SELL</span>
 	</label>
@@ -98,7 +103,10 @@
 <div>
 	<label for="id_sell_or_rent_1">
 		<input type="radio" name="sell_or_rent" value="rent" class="sellorrent" required id="id_sell_or_rent_1">
+
 		<img class="add1-rent-bullet-off" src="{% static 'realbuy_app/images/add1/default_bullet.png' %}" >
+		<img class="add1-rent-bullet-on" src="{% static 'realbuy_app/images/add1/select_bullet.png' %}" >
+		
 		<span class= "add1-rent">RENT</span>
 	</label>
 </div>
@@ -111,8 +119,10 @@
 <div>
 	<label  for="id_property_type_0">
 		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" >
-		<img class="add1-commercial" src="{% static 'realbuy_app/images/add1/commercial.png' %}" > 
- 		<span class="add1-commercial-head"> Commercial </span>
+		<img class="add1-commercial" src="{% static 'realbuy_app/images/add1/commercial.png' %}" >
+		<img class="add1-commercial-select" src="{% static 'realbuy_app/images/add1/commercial_select.png' %}" >  
+ 		<span class="add1-commercial-head1"> Commercial </span>
+ 		<span class="add1-commercial-head2"> Commercial </span>
  	</label>
  </div>
  <div>

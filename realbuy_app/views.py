@@ -62,19 +62,29 @@ def CategoryViewHome2(request):
         qs = qs.filter(Q(availability__contains=ready_to_move)).distinct()
     if under_construction != '' and under_construction is not None:
         qs = qs.filter(Q(availability__contains=under_construction)).distinct()
+    composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
+    
     context = {
-        'query_home': qs
+        'composite_list': composite_list
     }
     return render(request, 'realbuy_app/filter.html', context)
 
 
 def CategoryViewRecent(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
-    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'category_property':category_property})
+    
+    composite_list = [category_property[x:x+4] for x in range(0, len(category_property),4)]
+    
+    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'composite_list':composite_list})
 
 def CategoryViewFilter1(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
-    return render(request, 'realbuy_app/filter.html', {'category_property_filter':category_property})
+    composite_list = [category_property[x:x+4] for x in range(0, len(category_property),4)]
+    
+    context = {
+        'composite_list': composite_list
+    }
+    return render(request, 'realbuy_app/filter.html', context)
 
 def CategoryViewFilter2(request):
     qs = Property.objects.all()
@@ -107,9 +117,11 @@ def CategoryViewFilter2(request):
                 qs = qs.filter(built_up_area__lte=(float(areamax)/10.76))
             else:
                 qs = qs.filter(built_up_area__lte=areamax)
+
+    composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
     
     context = {
-        'query_filter': qs
+        'composite_list': composite_list
     }
     return render(request, 'realbuy_app/filter.html', context)
 
@@ -146,8 +158,9 @@ class RecentView(ListView):
 def FeaturedView(request):
     
     featured = Property.objects.all().annotate(count = Count('likes')).order_by('-count')
+    composite_list = [featured[x:x+6] for x in range(0, len(featured),6)]
     
-    context = {'featured' : featured, 'current':'featured'}
+    context = {'composite_list' : composite_list, 'current':'featured'}
     return render(request,'realbuy_app/featured.html', context)
         
 class DetailedView(DetailView):

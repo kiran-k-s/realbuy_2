@@ -40,22 +40,37 @@
   height:100%;
   }
 
-body .carousel-inner > .item > .recentContent{
-  position: absolute;
+/* body .carousel-inner > .item > */
+.recentContent{
+ /* position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   display: grid;
     grid-template-columns: 206px 206px 206px;
     grid-template-rows: 160px 160px 160px;
     grid-gap: 15px;
     background-color: rgba(22, 22, 22, 1);
-    border: solid 2px red;
-  }
+    border: solid 2px red;  */
+    position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+    display: grid;
+  grid-template-columns: 206px 206px 206px;
+    grid-template-rows: 160px 160px 160px;
+    grid-gap: 15px;
+  background-color: #2196F3;
+  }	
 .recentList{
+	/*
 	position: relative;
 	height: 160px;
 	width: 206px;
     z-index: 10;
-    border: solid 2px white;
+    border: solid 2px white;	*/
+    position:relative;
+    background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 .recentCity{
     position: absolute;
@@ -74,24 +89,40 @@ body .carousel-inner > .item > .recentContent{
     height:520px;
     width:655px;
     background-color: yellow;
-/*
-.recentContent{
-    position:absolute;
-    top:125px;
-    left:695px;
-    height:515px;
-    width:650px;
-    display: grid;
-    grid-template-columns: 206px 206px 206px;
-    grid-template-rows: 160px 160px 160px;
-    grid-gap: 15px;
-    background-color: rgba(22, 22, 22, 1);
-
-
 }
-.recentList{
-    position:relative;
-    width:206px;
-    height:160px;
-    z-index: 10;
-}  */
+
+.carousel-control-next-icon {
+    position: fixed;
+    top: 80px;
+    left: 1310px;
+  height: 25px;
+  width: 50px;
+  outline: black;
+  /*background-size: 100%, 100%;*/
+  border-radius: 50%;
+  border: 1px solid white;
+}
+.carousel-control-prev-icon{
+    position: fixed;
+    top: 80px;
+    left: 1200px;
+  height: 25px;
+  width: 50px;
+  outline: black;
+  /*background-size: 100%, 100%;*/
+  border-radius: 50%;
+  border: 1px solid white;
+  /*background-image: none; */
+}
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 20px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 20px;
+  color: red;
+}
