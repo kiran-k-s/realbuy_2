@@ -1,0 +1,289 @@
+.carousel, .carousel-inner, .carousel-inner > .item{
+  height:100%;
+ }
+
+ .aboutus-grid{
+ 
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  
+  background-color: #2196F3;
+  } 
+
+.aboutus-container{
+    position:absolute;
+    top: 80px;
+    left: 680px;
+    height: 260px;
+    width:680px;
+}
+
+#aboutus-big-box {
+    position: absolute;
+    top: 75px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#aboutus-banner-slider{
+    position: fixed;
+    top: 80px;
+    left: 680px;
+    height: 260px;
+    width:680px;
+}
+#aboutus-detail-bar{
+    position: fixed;
+    top: 290px;
+    left: 680px;
+    height: 70px;
+    width: 680px;
+    background-color: rgba(11, 11, 11, 1);  
+    opacity: 0.95;
+}
+#aboutus-location-carousel{
+    position: fixed;
+    top: 300px;
+    left: 700px;
+    height: 30px;
+    width: 25px;
+}
+#location-carousel-sub1{
+    position: fixed;
+    top: 295px;
+    left: 715px;
+    height: 10px;
+    width: 141px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#part80-90{
+    position: fixed;
+    top: 315px;
+    left: 710px;
+    height: 10px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    
+}
+#partLakhs{
+    position: fixed;
+    top: 320px;
+    left: 760px;
+    height: 5px;
+    width: 70px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#aboutus-area{
+    position: fixed;
+    top: 300px;
+    left: 1000px;
+    height: 30px;
+    width: 25px;
+}
+#area-head{
+    position: fixed;
+    top: 298px;
+    left: 1030px;
+    height: 10px;
+    width: 32px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: rgba(184, 184, 184, 1);
+    text-align: center;
+}
+#part7789{
+    position: fixed;
+    top: 310px;
+    left: 1005px;
+    height: 15px;
+    width: 83px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#partsqft{
+    position: fixed;
+    top: 315px;
+    left: 1032px;
+    height: 10px;
+    width: 83px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#aboutus-bedroom{
+    position: fixed;
+    top: 300px;
+    left: 1135px;
+    height: 30px;
+    width: 25px;
+}
+#bedroom-head{
+    position: fixed;
+    top: 300px;
+    left: 1160px;
+    height: 10px;
+    width: 63px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: rgba(184, 184, 184, 1);
+    text-align: center;
+}
+#bedroom-sub{
+    position: fixed;
+    top: 313px;
+    left: 1170px;
+    height: 15px;
+    width: 12px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#aboutus-bathroom{
+    position: fixed;
+    top: 300px;
+    left: 1240px;
+    height: 30px;
+    width: 25px;
+}
+#bathroom-head{
+    position: fixed;
+    top: 300px;
+    left: 1265px;
+    height: 10px;
+    width: 65px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: rgba(184, 184, 184, 1);
+    text-align: center;
+}
+#bathroom-sub{
+    position: fixed;
+    top: 313px;
+    left: 1275px;
+    height: 15px;
+    width: 11px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+#aboutus-small-box{
+    position: absolute;
+    top: 340px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#partabout{
+    position: absolute;
+    top: 350px;
+    left: 700px;
+    height: 16px;
+    width: 82px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+#partus{
+    position: absolute;
+    top: 350px;
+    left: 745px;
+    height: 16px;
+    width: 82px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(47, 181, 110, 1);
+}
+#aboutus-content{
+    position: absolute;
+    top: 385px;
+    left: 700px;
+    height: 160px;
+    width: 642px;
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    line-height: 15px;
+}
+#aboutus-location-aboutus{
+    position: absolute;
+    top: 510px;
+    left: 700px;
+    height: 25px;
+    width: 20px;
+}
+#location-head{
+    position: absolute;
+    top: 505px;
+    left: 730px;
+    height: 10px;
+    width: 58px;
+    font-family: 'Antipasto';
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1);
+}
+#location-sub{
+    position: absolute;
+    top: 525px;
+    left: 730px;
+    height: 10px;
+    width: 298px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(225, 225, 225, 1);
+}
+#aboutus-phone{
+    position: absolute;
+    top: 555px;
+    left: 700px;
+    height: 25px;
+    width: 20px;
+}
+#phone-head{
+    position: absolute;
+    top: 550px;
+    left: 730px;
+    height: 10px;
+    width: 58px;
+    font-family: 'Antipasto';
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1);
+}
+#phone-sub{
+    position: absolute;
+    top: 570px;
+    left: 730px;
+    height: 10px;
+    width: 298px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(225, 225, 225, 1);
+}
+#contact-now{
+    cursor: pointer;
+    position: absolute;
+    top: 595px;
+    left: 730px;
+    height: 25px;
+    width: 85px;
+    background-color: rgba(47, 181, 110, 1);
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+    border:none;
+}

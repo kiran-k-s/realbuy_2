@@ -1,0 +1,431 @@
+
+#add1-big-box{
+    position: absolute;
+    top: 75px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    bottom:0;
+    right:0;
+}
+#add1-big-box-2{
+    position: absolute;
+    top: 80px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    bottom:0;
+    right:0;
+}
+#add1-head-1{
+    position: absolute;
+    top: 90px;
+    left: 695px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+#add1-head-2{
+    position: absolute;
+    top: 90px;
+    left: 725px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(47, 181, 110, 1);
+}
+#add1-basic-info{
+    position: absolute;
+top: 120px;
+left: 875px;
+height: 19px;
+width: 108px;
+font-family: 'Antipasto';
+font-size: 14px;
+color: rgba(44, 166, 101, 1);
+border-bottom: 2px solid;
+}
+#add1-property-details{
+    position: absolute;
+top: 120px;
+left: 1025px;
+height: 19px;
+width: 95px;
+font-family: 'Antipasto';
+font-size: 14px;
+color: rgba(255, 255, 255, 1);
+}
+#add1-bar-1{
+    position: absolute;
+top: 155px;
+left: 695px;
+height: 18px;
+width: 650px;
+background-color: rgba(41, 41, 41, 1);
+
+}
+#add1-bar-1-content{
+    position: absolute;
+    left:705px;
+    top:157px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(255, 255, 255, 1);
+}
+#add1-bar-2{
+    position: absolute;
+top: 225px;
+left: 695px;
+height: 18px;
+width: 650px;
+background-color: rgba(41, 41, 41, 1);
+}
+#add1-bar-2-content{
+    position: absolute;
+    left:705px;
+    top:227px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(255, 255, 255, 1);
+}
+#add1-bar-3{
+    position: absolute;
+top: 305px;
+left: 695px;
+height: 18px;
+width: 650px;
+background-color: rgba(41, 41, 41, 1);
+}
+#add1-bar-3-content{
+    position: absolute;
+    left:705px;
+    top:307px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(255, 255, 255, 1);
+}
+#add1-bar-4{
+    position: absolute;
+top: 375px;
+left: 695px;
+height: 18px;
+width: 650px;
+background-color: rgba(41, 41, 41, 1);
+}
+#add1-bar-4-content{
+    position: absolute;
+    left:705px;
+    top:377px;
+    font-family: 'Antipasto';
+    font-size: 9px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.add1-sell-bullet-on{
+    position: absolute;
+    left:705px;
+    top:190px;
+    height: 20px;
+    width: 20px;
+}
+
+.add1-sell-bullet-off{
+    position: absolute;
+    left:705px;
+    top:190px;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+}
+
+#id_sell_or_rent_0{
+    position: absolute;
+    left:700px;
+    top:180px;
+}
+
+.add1-sell{
+    position: absolute;
+    left:733px;
+    top:193px;
+font-size: 10px;
+color: white;
+}
+
+.add1-rent-bullet-off{
+    position: absolute;
+    left:800px;
+    top:190px;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+}
+
+.add1-rent-bullet-on{
+    position: absolute;
+    left:800px;
+    top:190px;
+    height: 20px;
+    width: 20px;
+}
+
+#id_sell_or_rent_1{
+    position: absolute;
+    left:800px;
+    top:180px;
+}
+
+.add1-rent{
+    position: absolute;
+    left:830px;
+    top:193px;
+font-size: 10px;
+color: white;
+}
+
+#add1-city{
+    position: absolute;
+top: 405px;
+left: 705px;
+height: 30px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+
+}
+#add1-address{
+    position: absolute;
+top: 405px;
+left: 965px;
+height: 30px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+#add1-location{
+    position: absolute;
+top: 445px;
+left: 705px;
+height: 30px;
+width: 250px;
+background: transparent;
+color: white;
+border: 1px solid rgba(140, 140, 140, 1);
+}
+.add1-commercial-box{
+    position: absolute;
+    top: 260px;
+    left: 718px;
+}
+.add1-commercial{
+    position: absolute;
+    top: 260px;
+    left: 718px;
+    z-index: 1;
+    height: 17px;
+    width: 17px;
+}
+.add1-commercial-select{
+    position: absolute;
+    top: 260px;
+    left: 718px;
+    height: 17px;
+    width: 17px;
+}
+.add1-commercial-head1{
+  position: absolute;
+  top:280px;
+  left:705px;
+  color: white;
+  font-family: 'Antipasto';
+font-size: 9px;
+z-index: 1;
+}
+.add1-commercial-head2{
+  position: absolute;
+  top:280px;
+  left:705px;
+  color: rgba(47, 181, 110, 1);
+  font-family: 'Antipasto';
+font-size: 9px;
+}
+.add1-furnished-box{
+    position: absolute;
+    top: 260px;
+    left: 810px;
+}
+.add1-furnished{
+    position: absolute;
+    top: 260px;
+    left: 825px;
+    z-index: 1;
+    height: 17px;
+    width: 17px;
+}
+.add1-furnished-select{
+    position: absolute;
+    top: 260px;
+    left: 825px;
+    height: 17px;
+    width: 17px;
+    
+}
+.add1-furnished-head1{
+  position: absolute;
+  top:280px;
+  left:800px;
+  color: white;
+  font-family: 'Antipasto';
+font-size: 9px;
+z-index: 1;
+}
+.add1-furnished-head2{
+  position: absolute;
+  top:280px;
+  left:800px;
+  color: rgba(47, 181, 110, 1);
+  font-family: 'Antipasto';
+font-size: 9px;
+}
+.add1-land-box{
+    position: absolute;
+    top: 260px;
+    left: 900px;
+}
+.add1-land{
+    position: absolute;
+    top: 260px;
+    left: 920px;
+    z-index: 1;
+    height: 17px;
+    width: 17px;
+}
+.add1-land-select{
+    position: absolute;
+    top: 260px;
+    left: 920px;
+    height: 17px;
+    width: 17px;
+}
+.add1-land-head1{
+  position: absolute;
+  top:280px;
+  left:910px;
+  color: white;
+  font-family: 'Antipasto';
+font-size: 9px;
+z-index: 1;
+}
+.add1-land-head2{
+  position: absolute;
+  top:280px;
+  left:910px;
+  color: rgba(47, 181, 110, 1);
+  font-family: 'Antipasto';
+font-size: 9px;
+}
+.add1-rental-box{
+    position: absolute;
+    top: 260px;
+    left: 990px;
+}
+.add1-rental{
+    position: absolute;
+    top: 260px;
+    left: 1000px;
+    z-index: 1;
+    height: 17px;
+    width: 15px;
+}
+.add1-rental-select{
+    position: absolute;
+    top: 260px;
+    left: 1000px;
+    height: 17px;
+    width: 15px;
+}
+.add1-rental-head1{
+  position: absolute;
+  top:280px;
+  left:995px;
+  color: white;
+  font-family: 'Antipasto';
+font-size: 9px;
+z-index: 1;
+}
+.add1-rental-head2{
+  position: absolute;
+  top:280px;
+  left:995px;
+  color: rgba(47, 181, 110, 1);
+  font-family: 'Antipasto';
+font-size: 9px;
+}
+
+
+.add1-commercial-image{
+    position: absolute;
+    top: 260px;
+    left: 1070px;
+    height: 17px;
+    width: 17px;
+}
+.add1-furnished-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1100px;
+    height: 17px;
+    width: 17px;
+}
+.add1-land-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1130px;
+    height: 17px;
+    width: 17px;
+}
+.add1-rent-select-image{
+    position: absolute;
+    top: 260px;
+    left: 1160px;
+    height: 17px;
+    width: 15px;
+}
+.add-image{
+    position: absolute;
+    top: 320px;
+    left: 750px;
+}
+.add1-camera{
+    position: absolute;
+    top: 338px;
+    left: 717px;
+    height: 15px;
+    width: 19px;
+}
+.add1-camera-head{
+    position: absolute;
+    top: 355px;
+    left: 705px;
+    color: white;
+    font-family: 'Antipasto';
+    font-size: 9px;
+}
+#add1-next{
+    cursor: pointer;
+    position: absolute;
+    top:600px;
+    left: 990px;
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    background: transparent;
+    border: none;
+}
+#add1-next:hover {
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(47, 181, 110, 1);
+}

@@ -90,7 +90,7 @@
     width:655px;
     background-color: yellow;
 }
-
+/*
 .carousel-control-next-icon {
     position: fixed;
     top: 80px;
@@ -98,7 +98,7 @@
   height: 25px;
   width: 50px;
   outline: black;
-  /*background-size: 100%, 100%;*/
+  background-size: 100%, 100%;
   border-radius: 50%;
   border: 1px solid white;
 }
@@ -109,10 +109,10 @@
   height: 25px;
   width: 50px;
   outline: black;
-  /*background-size: 100%, 100%;*/
+  background-size: 100%, 100%;
   border-radius: 50%;
   border: 1px solid white;
-  /*background-image: none; */
+  background-image: none; 
 }
 .carousel-control-next-icon:after
 {
@@ -125,4 +125,15 @@
   content: '<';
   font-size: 20px;
   color: red;
+}
+*/
+.carousel-control-next-icon {
+    position: fixed;
+    top: 80px;
+    left: 1310px;
+}
+.carousel-control-prev-icon{
+    position: fixed;
+    top: 80px;
+    left: 1200px;
 }

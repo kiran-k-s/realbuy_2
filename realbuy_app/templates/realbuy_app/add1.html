@@ -1,6 +1,9 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
 {% block title %}Add Property{% endblock %}
+{% block links %}
+<link href="{% static 'realbuy_app/styles/add1.css' %}" rel="stylesheet">
+{% endblock %}
 {% block styles %}
 <!--
 <style type="text/css">
@@ -34,7 +37,7 @@
 	  opacity: 0;
 	  width: 0;
 	  height: 0;
-	} /*
+	} */
 
 	/* IMAGE STYLES */
 	[type=checkbox] + img {
@@ -121,29 +124,35 @@
 		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" >
 		<img class="add1-commercial" src="{% static 'realbuy_app/images/add1/commercial.png' %}" >
 		<img class="add1-commercial-select" src="{% static 'realbuy_app/images/add1/commercial_select.png' %}" >  
- 		<span class="add1-commercial-head1"> Commercial </span>
- 		<span class="add1-commercial-head2"> Commercial </span>
+ 		<span class="add1-commercial-head1"> COMMERCIAL </span>
+ 		<span class="add1-commercial-head2"> COMMERCIAL </span>
  	</label>
  </div>
  <div>
  	<label  for="id_property_type_1">
  		<input class="add1-furnished-box" type="checkbox" name="property_type" value="furnished home" id="id_property_type_1">
  		<img class="add1-furnished" src="{% static 'realbuy_app/images/add1/furnished_homes.png' %}" >
- 		<span class="add1-furnished-head"> Furnished Home</span>
+ 		<img class="add1-furnished-select" src="{% static 'realbuy_app/images/add1/furnished_select.png' %}" >
+ 		<span class="add1-furnished-head1"> FURNISHED HOMES</span>
+ 		<span class="add1-furnished-head2"> FURNISHED HOMES</span>
  	</label>
  </div>
  <div>
  	<label  for="id_property_type_2">
  		<input class="add1-land-box" type="checkbox"  name="property_type" value="land and plot" id="id_property_type_2">
  		<img class="add1-land" src="{% static 'realbuy_app/images/add1/land&plot.png' %}" >
- 		<span class="add1-land-head"> Land and Plot</span>
+ 		<img class="add1-land-select" src="{% static 'realbuy_app/images/add1/land&plot_select.png' %}" >
+ 		<span class="add1-land-head1"> LAND&PLOT</span>
+ 		<span class="add1-land-head2"> LAND&PLOT</span>
  	</label>
 </div>
 <div>
 	<label  for="id_property_type_3">
 		<input class="add1-rental-box" type="checkbox"  name="property_type" value="rental" id="id_property_type_3">
 		<img class="add1-rental" src="{% static 'realbuy_app/images/add1/rent.png' %}" >
-		<span class="add1-rental-head"> Rental</span>
+		<img class="add1-rental-select" src="{% static 'realbuy_app/images/add1/rent_select.png' %}" >
+		<span class="add1-rental-head1"> RENTAL</span>
+		<span class="add1-rental-head2"> RENTAL</span>
 	</label>
 </div>
 </div>
@@ -152,7 +161,7 @@
 		<img class="add1-camera" src="{% static 'realbuy_app/images/add1/photo_camera.png' %}" >
 		<span class="add1-camera-head">ADD PHOTO</span>
 	</label>
-<p><label for="id_city"></label> <input type="text" name="city" class="city" placeholder="City" maxlength="100" minlength="4" required id="add1-city" autocomplete="off"></p>
+<p><label for="id_city"></label> <input type="text" name="city" class="city" placeholder="Select City" maxlength="100" minlength="4" required id="add1-city" autocomplete="off"></p>
 <p><label for="id_address"></label> <input type="text" name="address" class="address" placeholder="Address" maxlength="100" minlength="4" required id="add1-address" autocomplete="off"></p>
 <p><label for="id_location"></label> <input type="text" name="location" class="location" placeholder="Location" maxlength="100" minlength="4" required id="add1-location" autocomplete="off"></p>
 

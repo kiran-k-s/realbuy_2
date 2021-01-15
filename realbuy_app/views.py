@@ -16,8 +16,9 @@ from django.db.models import Count
 
 
 def Home(request):
+    aboutus_list = Property.objects.all()
     context = {
-        'current': 'home'
+        'current': 'home','aboutus_list':aboutus_list
     }
     return render(request, 'realbuy_app/home.html',context)
 
@@ -35,8 +36,9 @@ class SampleView(ListView):
         return context
 
 def AboutUs(request):
+    aboutus_list = Property.objects.all()
     context = {
-        'current': 'aboutus'
+        'current': 'aboutus','aboutus_list':aboutus_list
     }
     return render(request, 'realbuy_app/aboutus.html',context)
 '''
@@ -159,8 +161,10 @@ def FeaturedView(request):
     
     featured = Property.objects.all().annotate(count = Count('likes')).order_by('-count')
     composite_list = [featured[x:x+6] for x in range(0, len(featured),6)]
+    recent = Property.objects.all().order_by('-id')
+    recent_list = [recent[x:x+9] for x in range(0, len(recent),9)]
     
-    context = {'composite_list' : composite_list, 'current':'featured'}
+    context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured'}
     return render(request,'realbuy_app/featured.html', context)
         
 class DetailedView(DetailView):

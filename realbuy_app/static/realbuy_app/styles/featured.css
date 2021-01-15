@@ -227,3 +227,226 @@
     height:12px;
     width:12px;
 }
+
+
+/* recent section */
+
+.carousel, .carousel-inner, .carousel-inner > .item{
+  height:100%;
+ }
+.recentContent{
+ 
+    position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+    display: grid;
+  grid-template-columns: 206px 206px 206px;
+    grid-template-rows: 160px 160px 160px;
+    grid-gap: 15px;
+  background-color: #2196F3;
+  } 
+.recentList{
+  
+    position:relative;
+    background-color: rgba(22, 22, 22, 1);
+    /*
+    border: 1px solid rgba(0, 0, 0, 0.8);*/
+}
+.recentContainer{
+    position:absolute;
+    top:635px;
+    left:695px;
+    height:515px;
+    width:650px;
+    background-color: rgba(22, 22, 22, 1);
+}
+
+#recBigBox{
+    position: absolute;
+    top: 585px;
+    left: 675px;
+    background-color: rgba(11, 11, 11, 1);  
+    height:575px;
+    right: 0;
+}
+#recBigBox2{
+    position: absolute;
+    top: 590px;
+    left: 680px;
+    background-color: rgba(22, 22, 22, 1);
+    height:560px;
+    right:0;
+}
+#recHead1{
+    position: absolute;
+    top: 600px;
+    left: 695px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+#recHead2{
+    position: absolute;
+    top: 600px;
+    left: 740px;
+    height: 27px;
+    width: 100px;
+    font-family: 'Antipasto';
+    font-size: 16px;
+    color: rgba(47, 181, 110, 1);
+}
+.recentTopRight{
+    position: absolute;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Antipasto';
+    font-size: 11px;
+    height: 15px;
+    top: 600px;
+    background-color: Transparent;
+    border: none;
+}
+.recentTopRight:hover {
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(47, 181, 110, 1);
+}
+.recentTopRight:active {
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(47, 181, 110, 1);
+}
+#recentTopRight1{
+    left:1065px;
+    width:65px;
+}
+#recentTopRight2{
+    left:1135px;
+    width:95px;
+}
+#recentTopRight3{
+    left:1235px;
+    width:65px;
+}
+#recentTopRight4{
+    left:1305px;
+    width:50px;
+}
+
+.recentImage{
+    position: absolute;
+    height:110px;
+    width:205px;
+}
+.recentRent{
+    position: absolute;
+    top:100px;
+    left:140px;
+    height: 15px;
+    width: 50px;
+    background-color: rgba(47, 181, 110, 1);
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+.recentSell{
+    position: absolute;
+    top:100px;
+    left:140px;
+    height: 15px;
+    width: 50px;
+    background-color: rgba(231, 93, 54, 1);
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+.recentCity{
+    position: absolute;
+    top:110px;
+    height: 15px;
+    width: 118px;
+    font-family: 'Antipasto';
+    font-size: 12px;
+    color: rgba(225, 225, 225, 1);
+}
+.recentAddress{
+    position: absolute;
+    top:125px;
+    height: 20px;
+    width: 150px;
+    font-family: 'Antipasto';
+    font-size: 10px;
+    color: rgba(225, 225, 225, 1);
+}
+.recentPrice{
+    position: absolute;
+    display: inline-block;
+    top: 137px;
+    left:2px;
+    color: rgba(255, 255, 255, 1);
+}
+.recentPrice1{
+    left: 2px;
+    z-index: 1;
+    height: 20px;
+    width: 40px;
+    font-family: 'PingFangSC-Regular';
+    font-size: 11px;
+    color: rgba(47, 181, 110, 1);
+}
+.recentPrice2{
+    height: 15px;
+    width: 90px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(47, 181, 110, 1);
+}
+.recentPrice3{
+    height: 15px;
+    width: 90px;
+    font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(47, 181, 110, 1);
+}
+.recentLike{
+    position: absolute;
+    top:140px;
+    left: 173px;
+    display: inline-block;
+    height: 15px;
+    padding: 0;
+    margin: 0;
+    width: 15px;
+    background: transparent;
+    /*border: 2px solid blue;*/
+    border:none;
+}
+.recentLikeImage{
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height:12px;
+    width:12px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.featured-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.featured-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}   
+
+.featured-scroll{
+  overflow: auto;  
+  position: absolute;
+  top: 70px;
+  left: 670px;
+  right: 0px;
+  background-color: yellow;
+  
+}
