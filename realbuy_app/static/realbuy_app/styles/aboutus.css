@@ -2,9 +2,11 @@
   height:100%;
  }
 
+
+
  .aboutus-grid{
  
-    position: absolute;
+    position: relative;
     top: 0; left: 0; bottom: 0; right: 0;
   
   background-color: #2196F3;
@@ -18,7 +20,7 @@
     width:680px;
 }
 
-#aboutus-big-box {
+.aboutus-big-box {
     position: absolute;
     top: 75px;
     left: 675px;
@@ -26,33 +28,33 @@
     bottom:0;
     right:0;
 }
-#aboutus-banner-slider{
-    position: fixed;
-    top: 80px;
-    left: 680px;
+.aboutus-banner-slider{
+    position: absolute;
+    top: 0px;
+    left: 0px;
     height: 260px;
     width:680px;
 }
-#aboutus-detail-bar{
-    position: fixed;
-    top: 290px;
-    left: 680px;
+.aboutus-detail-bar{
+    position: absolute;
+    top: 210px;
+    left: 0px;
     height: 70px;
     width: 680px;
     background-color: rgba(11, 11, 11, 1);  
     opacity: 0.95;
 }
-#aboutus-location-carousel{
-    position: fixed;
-    top: 300px;
-    left: 700px;
+.aboutus-location-carousel{
+    position: absolute;
+    top: 220px;
+    left: 20px;
     height: 30px;
     width: 25px;
 }
-#location-carousel-sub1{
-    position: fixed;
-    top: 295px;
-    left: 715px;
+.location-carousel-sub1{
+    position: absolute;
+    top: 215px;
+    left: 35px;
     height: 10px;
     width: 141px;
     font-family: 'Antipasto';
@@ -60,10 +62,10 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#part80-90{
-    position: fixed;
-    top: 315px;
-    left: 710px;
+.part80-90{
+    position: absolute;
+    top: 235px;
+    left: 30px;
     height: 10px;
     width: 100px;
     font-family: 'Antipasto';
@@ -72,10 +74,10 @@
     text-align: center;
     
 }
-#partLakhs{
-    position: fixed;
-    top: 320px;
-    left: 760px;
+.partLakhs{
+    position: absolute;
+    top: 240px;
+    left: 80px;
     height: 5px;
     width: 70px;
     font-family: 'Antipasto';
@@ -83,17 +85,17 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#aboutus-area{
-    position: fixed;
-    top: 300px;
-    left: 1000px;
+.aboutus-area{
+    position: absolute;
+    top: 220px;
+    left: 320px;
     height: 30px;
     width: 25px;
 }
-#area-head{
-    position: fixed;
-    top: 298px;
-    left: 1030px;
+.area-head{
+    position: absolute;
+    top: 218px;
+    left: 350px;
     height: 10px;
     width: 32px;
     font-family: 'Antipasto';
@@ -101,10 +103,10 @@
     color: rgba(184, 184, 184, 1);
     text-align: center;
 }
-#part7789{
-    position: fixed;
-    top: 310px;
-    left: 1005px;
+.part7789{
+    position: absolute;
+    top: 230px;
+    left: 325px;
     height: 15px;
     width: 83px;
     font-family: 'Antipasto';
@@ -112,10 +114,10 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#partsqft{
-    position: fixed;
-    top: 315px;
-    left: 1032px;
+.partsqft{
+    position: absolute;
+    top: 235px;
+    left: 352px;
     height: 10px;
     width: 83px;
     font-family: 'Antipasto';
@@ -123,17 +125,17 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#aboutus-bedroom{
-    position: fixed;
-    top: 300px;
-    left: 1135px;
+.aboutus-bedroom{
+    position: absolute;
+    top: 220px;
+    left: 455px;
     height: 30px;
     width: 25px;
 }
-#bedroom-head{
-    position: fixed;
-    top: 300px;
-    left: 1160px;
+.bedroom-head{
+    position: absolute;
+    top: 220px;
+    left: 480px;
     height: 10px;
     width: 63px;
     font-family: 'Antipasto';
@@ -141,10 +143,10 @@
     color: rgba(184, 184, 184, 1);
     text-align: center;
 }
-#bedroom-sub{
-    position: fixed;
-    top: 313px;
-    left: 1170px;
+.bedroom-sub{
+    position: absolute;
+    top: 233px;
+    left: 490px;
     height: 15px;
     width: 12px;
     font-family: 'Antipasto';
@@ -152,17 +154,17 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#aboutus-bathroom{
-    position: fixed;
-    top: 300px;
-    left: 1240px;
+.aboutus-bathroom{
+    position: absolute;
+    top: 220px;
+    left: 560px;
     height: 30px;
     width: 25px;
 }
-#bathroom-head{
-    position: fixed;
-    top: 300px;
-    left: 1265px;
+.bathroom-head{
+    position: absolute;
+    top: 220px;
+    left: 585px;
     height: 10px;
     width: 65px;
     font-family: 'Antipasto';
@@ -170,10 +172,10 @@
     color: rgba(184, 184, 184, 1);
     text-align: center;
 }
-#bathroom-sub{
-    position: fixed;
-    top: 313px;
-    left: 1275px;
+.bathroom-sub{
+    position: absolute;
+    top: 233px;
+    left: 595px;
     height: 15px;
     width: 11px;
     font-family: 'Antipasto';
@@ -181,7 +183,7 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
 }
-#aboutus-small-box{
+.aboutus-small-box{
     position: absolute;
     top: 340px;
     left: 680px;

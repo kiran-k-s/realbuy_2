@@ -122,19 +122,10 @@ background-color: rgba(41, 41, 41, 1);
     color: rgba(255, 255, 255, 1);
 }
 
-.add1-sell-bullet-on{
+.add1-sell-bullet{
     position: absolute;
     left:705px;
     top:190px;
-    height: 20px;
-    width: 20px;
-}
-
-.add1-sell-bullet-off{
-    position: absolute;
-    left:705px;
-    top:190px;
-    z-index: 1;
     height: 20px;
     width: 20px;
 }
@@ -153,16 +144,7 @@ font-size: 10px;
 color: white;
 }
 
-.add1-rent-bullet-off{
-    position: absolute;
-    left:800px;
-    top:190px;
-    z-index: 1;
-    height: 20px;
-    width: 20px;
-}
-
-.add1-rent-bullet-on{
+.add1-rent-bullet{
     position: absolute;
     left:800px;
     top:190px;

@@ -4,7 +4,25 @@
 {% block links %}
 <link href="{% static 'realbuy_app/styles/add2.css' %}" rel="stylesheet">
 {% endblock %}
+{% block styles %}
+<style type="text/css">
+  input[type="radio"]{
+    display:none;
+  }
 
+  input[type="radio"] + label
+  {
+    background-image:url('{% static 'realbuy_app/images/add1/default_bullet.png' %}');
+    background-size: cover;
+  }
+
+  input[type="radio"]:checked + label
+  {
+    background-image:url('{% static 'realbuy_app/images/add1/select_bullet.png' %}');
+    background-size: cover;
+  }
+</style>
+{% endblock %}
 
 {% block content %}
 <div id="add2-big-box"></div>
@@ -49,17 +67,20 @@
 <div id="id_resale_or_new" class="resaleornew">
 
 <div>
-  <label for="id_resale_or_new_0">
-      <input class="add2-resale-radio" type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0">
-      <span class="add2-resale">Resale</span>
- </label>
+  
+      <input type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0">
+      <label for="id_resale_or_new_0" class="add2-resale-bullet">
+      
 </div>
+<span class="add2-resale">Resale</span>
 <div>
-  <label for="id_resale_or_new_1">
-    <input class="add2-new-radio" type="radio" name="resale_or_new" value="new" class="resaleornew" required id="id_resale_or_new_1">
-    <span class="add2-new">New Booking</span>
-  </label>
+  
+    <input type="radio" name="resale_or_new" value="new" class="resaleornew" required id="id_resale_or_new_1">
+    <label for="id_resale_or_new_1" class="add2-new-bullet">
+    
+
 </div>
+<span class="add2-new">New Booking</span>
 </div>
 </p>
 
@@ -70,19 +91,18 @@
 <p><label for="id_availability_0"></label>
 <div id="id_availability" class="availability">
 <div>
-  <label for="id_availability_0">
-    <input class="add2-ready-radio" type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0">
-    <span class="add2-ready">Ready to Move</span>
-  </label>
-
+  
+    <input type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0">
+    <label for="id_availability_0" class="add2-ready-bullet">
+    
 </div>
+<span class="add2-ready">Ready to Move</span>
 <div>
-  <label for="id_availability_1">
-    <input class="add2-under-radio" type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1">
-    <span class="add2-under">Under Construction</span>
-  </label>
+    <input type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1">
+    <label for="id_availability_1" class="add2-under-bullet">
 
 </div>
+<span class="add2-under">Under Construction</span>
 </div></p>
 <p><label for="id_description"></label> <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" required id="id_description" placeholder="Description">
 </textarea></p>

@@ -53,26 +53,29 @@ Details{% endblock %}{% block content %}
 <div id="detail-task-bar">Detail</div>
 
 <div>
-    
-    <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}" onclick="togglePopup1()">
+    <a href="mailto:{{property.ownership.profile.email}}">
+    <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
+    </a>
     
     <span id="detail-mail">SEND MAIL</span>
 </div>
 <div>
+    <a href="#">
     <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
+    </a>
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
-<div><!--
+
     <form action="{% url 'like_post' property.pk %}" method="POST">
     {% csrf_token %} 
     {% if liked %} 
-    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+    <button type="submit" id="detail-shortlist-button" name="post_id" value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
     {% else %}
-    <button type="submit",id="detail-shortlist-button" name="post_id", value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+    <button type="submit" id="detail-shortlist-button" name="post_id" value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
     {% endif %}
-    </form> -->
+    </form>
     <span id="detail-shortlist">SHORTLIST</span>
-</div> 
+
 <div>
     <a href="#">
         <img id="detail-map-image" src="{% static 'realbuy_app/images/map_white.png' %}">
@@ -84,17 +87,6 @@ Details{% endblock %}{% block content %}
         <img id="detail-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
     </a>
     <span id="detail-share">SHARE</span>
-</div>
-
-<!-- email popup -->
-
-<div class="popup" id="detail-popup-1">
-  <div class="overlay"></div>
-  <div class="content">
-    <div id="detail-popup-box1"></div>
-    <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup1()">
-    <span id="detail-popup-email">{{property.ownership.profile.email}}</span>
-  </div>
 </div>
 
 <!-- phone number popup -->
@@ -110,9 +102,6 @@ Details{% endblock %}{% block content %}
 
 
 <script>
-function togglePopup1(){
-  document.getElementById("detail-popup-1").classList.toggle("active");
-}
 
 function togglePopup2(){
   document.getElementById("detail-popup-2").classList.toggle("active");

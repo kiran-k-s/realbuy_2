@@ -11,33 +11,49 @@
 	input[type=checkbox]:checked + label { background: url('{% static "realbuy_app/images/add1/commercial_select.png" %}')}
 </style>  --> 
 <style type="text/css">
-	/* HIDE RADIO */
-	/*
-	[type=radio] { 
-	  position: absolute;
-	  opacity: 0;
-	  width: 0;
-	  height: 0;
-	}	*/
-
-	/* IMAGE STYLES */
-	[type=radio] + img {
-	  cursor: pointer;
+	input[type="radio"]{
+   	display:none;
 	}
 
-	/* CHECKED STYLES */
-	[type=radio]:checked + img {
-	  opacity: 0;
+	input[type="radio"] + label
+	{
+    background-image:url('{% static 'realbuy_app/images/add1/default_bullet.png' %}');
+    background-size: cover;
+    /*height: 20px;
+    width: 20px;
+    display:inline-block;
+    padding: 0 0 0 0px; */
+    /*position: absolute;
+    left:705px;
+    top:190px;
+    height: 20px;
+    width: 20px;
+    cursor:pointer;
+    border: 1px solid red; */
 	}
+
+	input[type="radio"]:checked + label
+	{
+    background-image:url('{% static 'realbuy_app/images/add1/select_bullet.png' %}');
+    background-size: cover;
+	}
+    /*
+    position: absolute;
+    left:800px;
+    top:190px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid red;
+	} */
 
 	/* HIDE checkbox */
-	/*
+	
 	[type=checkbox] { 
 	  position: absolute;
 	  opacity: 0;
 	  width: 0;
 	  height: 0;
-	} */
+	} 
 
 	/* IMAGE STYLES */
 	[type=checkbox] + img {
@@ -93,26 +109,21 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-<p><label for="id_sell_or_rent_0"></label>
-<div id="id_sell_or_rent" class="sellorrent">
-<div>
-	<label for="id_sell_or_rent_0">
-		<input type="radio" name="sell_or_rent" value="sell" class="sellorrent" required id="id_sell_or_rent_0" checked>
-		<img class="add1-sell-bullet-off" src="{% static 'realbuy_app/images/add1/default_bullet.png' %}" >
-		<img class="add1-sell-bullet-on" src="{% static 'realbuy_app/images/add1/select_bullet.png' %}" >
-		<span class= "add1-sell">SELL</span>
-	</label>
-</div>
-<div>
-	<label for="id_sell_or_rent_1">
-		<input type="radio" name="sell_or_rent" value="rent" class="sellorrent" required id="id_sell_or_rent_1">
 
-		<img class="add1-rent-bullet-off" src="{% static 'realbuy_app/images/add1/default_bullet.png' %}" >
-		<img class="add1-rent-bullet-on" src="{% static 'realbuy_app/images/add1/select_bullet.png' %}" >
+<div id="id_sell_or_rent" class="sellorrent">
+
+<div>
+		<input type="radio" name="sell_or_rent" value="sell" class="sellorrent" required id="id_sell_or_rent_0" checked>
+		<label for="id_sell_or_rent_0" class="add1-sell-bullet">
 		
-		<span class= "add1-rent">RENT</span>
-	</label>
 </div>
+<span class= "add1-sell">SELL</span>
+<div>
+		<input type="radio" name="sell_or_rent" value="rent" class="sellorrent" required id="id_sell_or_rent_1">
+		<label for="id_sell_or_rent_1" class="add1-rent-bullet">
+		
+</div>
+<span class= "add1-rent">RENT</span>
 </div>
 
 

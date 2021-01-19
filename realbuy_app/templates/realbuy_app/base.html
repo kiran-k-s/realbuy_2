@@ -6,12 +6,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>{% block title %}Home {% endblock %}</title>
-{% block links %}
-{% endblock %}
+
 
 
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+{% block links %}
+{% endblock %}
     <!-- Google fonts -->
 {% block styles %}
 {% endblock %}
@@ -24,22 +26,28 @@
         background-size: cover;
     }    
 </style>
-<!--
+
 <style type="text/css">
-        .nav-link { 
-            color: yellow; 
-        } 
-  
-        .nav-item>a:hover { 
-            color: yellow; 
-        } 
-  
-        /*code to change background color*/ 
-        .navbar-nav>.active>a { 
-            background-color: #C0C0C0; 
-            color: yellow; 
-        } 
-</style> -->
+  /*
+    [type=checkbox] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }   */
+
+  /* IMAGE STYLES */
+  [type=checkbox] + button {
+    cursor: pointer;
+  }
+
+  /* CHECKED STYLES */
+  [type=checkbox]:checked + button {
+    background-color:rgba(39, 53, 71, 1);
+
+  }
+
+</style> 
     <!-- Fonts for this template -->
 <style>
     @font-face {
@@ -76,11 +84,34 @@
       <button type="submit" id="home-submit">SEARCH</button>
 </form>  
 -->
+
 <form method="get" action="{% url 'category_home2' %}">
-      <button type="button" id="home-filter1" name="sell" value="sell" class="home-filter">SALE</button>
-      <button type="button" id="home-filter2" value="rent" class="home-filter">RENT</button>
-      <button type="button" id="home-filter3" value="ready to move" class="home-filter">READY TO MOVE</button>
-      <button type="button" id="home-filter4" value="under construction" class="home-filter">UNDER CONSTRUCTION</button>
+      <div id="id_filter_type">
+      <div>
+        <label  for="id_filter_type_0">
+          <input class="home-sale-box" type="checkbox" name="filter_type" value="sell" id="id_filter_type_0" >
+          <button type="button" id="home-filter1" name="sell" value="sell" class="home-filter">SALE</button> 
+        </label>
+       </div>
+       <div>
+        <label  for="id_filter_type_1">
+          <input class="home-rent-box" type="checkbox" name="filter_type" value="rent" id="id_filter_type_1">
+          <button type="button" id="home-filter2" value="rent" class="home-filter">RENT</button>
+        </label>
+       </div>
+       <div>
+        <label  for="id_filter_type_2">
+          <input class="home-ready-box" type="checkbox"  name="filter_type" value="ready to move" id="id_filter_type_2">
+          <button type="button" id="home-filter3" value="ready to move" class="home-filter">READY TO MOVE</button>
+        </label>
+      </div>
+      <div>
+        <label  for="id_filter_type_3">
+          <input class="home-under-box" type="checkbox"  name="filter_type" value="under construction" id="id_filter_type_3">
+          <button type="button" id="home-filter4" value="under construction" class="home-filter">UNDER CONSTRUCTION</button>
+        </label>
+      </div>
+      </div>
       <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
 </form>

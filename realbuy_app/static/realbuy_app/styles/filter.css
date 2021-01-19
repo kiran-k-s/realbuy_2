@@ -6,44 +6,27 @@
     position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
     display: grid;
-  grid-template-columns: 640px 640px;
+  grid-template-columns: 645px 645px;
     grid-template-rows: 170px 170px;
     grid-gap: 20px 25px;
     padding: 20px;
-  background-color: rgba(22, 22, 22, 1);
+  /*background-color: rgba(22, 22, 22, 1);*/
+    background-color:blue;
   }	
 .filter-grid-content{
     position:relative;
-    border:1px solid rgba(35, 35, 35, 1);;
+    border:1px solid rgba(35, 35, 35, 1);
 
 }
-/*
-.filter-grid{
-    position:absolute;
-    top:185px;
-    left:0px;
-    height:400px;
-    width:1345px;
-    display: grid;
-    grid-template-columns: 640px 640px;
-    grid-template-rows: 170px 170px;
-    grid-gap: 20px 25px;
-    padding: 20px;
-    background-color: rgba(22, 22, 22, 1);
-}
-.filter-grid-content{
-    position:relative;
-    border:1px solid rgba(35, 35, 35, 1);;
 
-}
-*/
 .filter-container{
     position:absolute;
     top:185px;
     left:0px;
     height:400px;
-    width:1345px;
-    background-color: rgba(22, 22, 22, 1);
+    width:1355px;
+    background-color: yellow;
+    /*background-color: rgba(22, 22, 22, 1);*/
 }
 
 #filter-big-box-1{
@@ -353,10 +336,10 @@ color: rgba(198, 198, 198, 1);
     top:142px;
     left: 270px;
     display: inline-block;
-    height: 15px;
+    height: 20px;
     padding: 0;
     margin: 0;
-    width: 15px;
+    width: 20px;
     background: transparent;
     border: 2px solid blue;
     /*border:none;*/
@@ -366,8 +349,8 @@ color: rgba(198, 198, 198, 1);
     position: absolute;
     bottom: 0px;
     right: 0px;
-    height:12px;
-    width:12px;
+    height:18px;
+    width:18px;
 
 }
 .filter-shortlist{
@@ -442,6 +425,6 @@ color: rgba(198, 198, 198, 1);
     height: 10px;
     width: 192px;
     font-family: 'Antipasto';
-    font-size: 9px;
+    font-size: 10px;
     color: rgba(255, 255, 255, 1);
 }

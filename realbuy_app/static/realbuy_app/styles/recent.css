@@ -197,15 +197,3 @@
     width:12px;
 }
 
-.carousel-control-next-icon {
-    position: fixed;
-    top: 110px;
-    left: 1310px;
-    height: 10px;
-}
-.carousel-control-prev-icon{
-    position: fixed;
-    top: 110px;
-    left: 1200px;
-    height: 10px;
-}

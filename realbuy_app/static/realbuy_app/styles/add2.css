@@ -103,9 +103,9 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 .add2-built-unit{
     position: absolute;
-top: 275px;
+top: 270px;
 left: 965px;
-height: 25px;
+height: 30px;
 width: 70px;
 background: transparent;
 color: white;
@@ -117,7 +117,7 @@ border: 1px solid rgba(140, 140, 140, 1);
     position: absolute;
 top: 310px;
 left: 705px;
-height: 25px;
+height: 30px;
 width: 250px;
 background: transparent;
 color: white;
@@ -128,26 +128,30 @@ border: 1px solid rgba(140, 140, 140, 1);
     position: absolute;
 top: 310px;
 left: 965px;
-height: 25px;
+height: 30px;
 width: 70px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
-.add2-resale-radio{
+.add2-resale-bullet{
     position: absolute;
     top: 375px;
     left: 705px;
+    height: 20px;
+    width: 20px;
 }
 .add2-resale{
     position: absolute;
     top: 375px;
     left: 735px;
 }
-.add2-new-radio{
+.add2-new-bullet{
     position: absolute;
     top: 375px;
     left: 800px;
+    height: 20px;
+    width: 20px;
 }
 .add2-new{
     position: absolute;
@@ -187,22 +191,25 @@ background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
-.add2-ready-radio{
+.add2-ready-bullet{
     position: absolute;
     top: 510px;
     left: 705px;
-    border: 1px solid rgba(104, 104, 104, 1);
-    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    
 }
 .add2-ready{
     position: absolute;
     top: 510px;
     left: 735px;
 }
-.add2-under-radio{
+.add2-under-bullet{
     position: absolute;
     top: 510px;
     left: 800px;
+    height: 20px;
+    width: 20px;
 }
 .add2-under{
     position: absolute;
@@ -220,7 +227,8 @@ background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 resize:none;
-scroll-behavior: none;
+/*scroll-behavior: none;*/
+overflow: hidden;
 }
 
 .add2-submit{
@@ -231,13 +239,14 @@ height: 25px;
 width: 80px;
 background-color: rgba(47, 181, 110, 1);
 font-family: 'Antipasto';
-font-size: 12px;
+font-size: 11px;
 color: rgba(255, 255, 255, 1);
+border: none;
 }
 
 #add2-bar-1{
     position: absolute;
-top: 235px;
+top: 240px;
 left: 695px;
 height: 18px;
 width: 630px;
@@ -247,14 +256,14 @@ background-color: rgba(41, 41, 41, 1);
 #add2-bar-1-content{
     position: absolute;
     left:705px;
-    top:237px;
+    top:242px;
     font-family: 'Antipasto';
     font-size: 9px;
     color: rgba(255, 255, 255, 1);
 }
 #add2-bar-2{
     position: absolute;
-top: 345px;
+top: 350px;
 left: 695px;
 height: 18px;
 width: 630px;
@@ -264,7 +273,7 @@ background-color: rgba(41, 41, 41, 1);
 #add2-bar-2-content{
     position: absolute;
     left:705px;
-    top:347px;
+    top:352px;
     font-family: 'Antipasto';
     font-size: 9px;
     color: rgba(255, 255, 255, 1);

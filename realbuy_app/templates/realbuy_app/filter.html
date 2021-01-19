@@ -27,6 +27,32 @@
     }
          
 </style>
+<style type="text/css">
+.carousel-control-next-icon {
+    position: fixed;
+    top: 170px;
+    left: 1320px;
+    height: 10px;
+    background-image: url('{% static "realbuy_app/images/featured/next_arrow.png" %}');
+
+}
+.carousel-control-prev-icon{
+    position: fixed;
+    top: 170px;
+    left: 1280px;
+    height: 10px;
+    background-image: url('{% static "realbuy_app/images/featured/prev_arrow.png" %}');
+}
+.carousel-control-prev {
+  width: 0px;
+  height: 0px;
+}
+.carousel-control-next {
+  width: 0px;
+  height: 0px;
+}
+
+</style>
     <!-- Custom styles for this template -->
 <link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
 <link href="{% static 'realbuy_app/styles/filter.css' %}" rel="stylesheet">
@@ -158,7 +184,7 @@
                         <div class="filter-task-bar"></div>
 
                         <div>
-                            <a href="#">
+                            <a href="mailto:{{property.ownership.profile.email}}">
                                     <img class="filter-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
                             </a>
                             <span class="filter-mail">SEND MAIL</span>
@@ -170,8 +196,8 @@
                             <span class="filter-phone">PHONE NUMBER</span>
                         </div>
                         <div>
-                            <!--
-                            <div class="filter-shortlist-image"><form action="{% url 'like_post' property.pk %}" method="POST">
+                            
+                            <form action="{% url 'like_post' property.pk %}" method="POST">
                             {% csrf_token %}
                                 {% if liked %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
@@ -179,8 +205,7 @@
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
                                 {% endif %}
                             </form>
-                            </div>
-                          -->
+                          
                             <span class="filter-shortlist">SHORTLIST</span>
                         </div>
                         <div>

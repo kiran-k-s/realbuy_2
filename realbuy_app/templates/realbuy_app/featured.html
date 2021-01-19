@@ -7,7 +7,7 @@ Featured Properties{% endblock %}
 <link href="{% static 'realbuy_app/styles/featured.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-<div class="featured-scroll">
+<div class="featured-scroll"> 
 <div id="featured-big-box"></div>
 <div id="featured-big-box2"></div>
 <span id="featured-head1">Featured</span> <span id="featured-head2">Properties</span>
@@ -55,7 +55,7 @@ Featured Properties{% endblock %}
                         <span class="featured-bath-head">Bathrooms</span>
                         <span class="featured-bath-content">{{property.bathroom}}</span>
                         <img src="{% static 'realbuy_app/images/featured/location_small.png' %}" class="featured-location-image">
-                        <span class="featured-location">{{property.location | title}}
+                        <span class="featured-location">{{property.location | title}}</span>
 
 
                         <form action="{% url 'like_post' property.pk %}" method="POST">
