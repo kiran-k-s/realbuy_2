@@ -8,21 +8,21 @@ Recent Properties{% endblock %}
 {% block styles %}
 <style type="text/css">
 .carousel-control-next-icon {
-    position: fixed;
-    top: 80px;
-    left: 1000px;
-    height: 5px;
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    height: 10px;
     background-image: url('{% static "realbuy_app/images/featured/next_arrow.png" %}');
-    border: 1px solid white;
+    z-index: 20;
 }
 .carousel-control-prev-icon{
-    position: fixed;
-    top: 110px;
-    left: 1200px;
+    position: absolute;
+    top: -15px;
+    left: 600px;
     height: 10px;
     background-image: url('{% static "realbuy_app/images/featured/prev_arrow.png" %}');
-    border: 1px solid white;
-}
+    z-index: 20;
+} 
 .carousel-control-prev {
   width: 0px;
   height: 0px;
@@ -31,7 +31,10 @@ Recent Properties{% endblock %}
   width: 0px;
   height: 0px;
 }
-
+.carousel .carousel-indicators li {
+    display: none;
+    
+}
 
 </style>
 {% endblock %}
@@ -76,13 +79,13 @@ Recent Properties{% endblock %}
                         <span class="recentPrice2">{{ property.price}}</span><span class="recentPrice3">/Month</span>
                             
                         </div>
-                        <form action="{% url 'like_post' property.pk %}" method="POST">
+                        <form action="{% url 'like_recent' property.pk %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}
-                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
                         
                         {% endif %}
                         </form>       
@@ -111,81 +114,5 @@ Recent Properties{% endblock %}
 </div>
 
 
-
-<!--
-<div class="recentContent">
-{% for property in object_list %}
-    <div class="recentList">
-        <a  href="{% url 'detail' property.id %}">
-        <img class="recentImage" src="{{property.image.url}}">
-        </a>
-        {% if property.sell_or_rent == 'sell' %}
-        <div class="recentSell"> ON SALE </div>
-        {% else %}
-        <div class="recentRent"> ON RENT </div>
-        {% endif %}
-        <div class="recentCity"> {{ property.city}}</div>
-        <div class="recentAddress"> {{ property.address|slice:":30" }}</div>
-        <div class="recentPrice">
-        <span class="recentPrice1">&#8377; </span>
-        {% if property.sell_or_rent == 'rent' %}
-        <span class="recentPrice2">{{ property.price}}/Month</span>
-        {% else %}
-        <span class="recentPrice2">{{property.price}}</span>
-        {% endif %}
-
-            
-        </div>
-        <form action="{% url 'like_post' property.pk %}" method="POST">
-        {% csrf_token %}
-        {% if liked %}
-        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-        
-        {% else %}
-        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-        
-        {% endif %}
-        </form>
-        }
-    </div>
-{% endfor %}
-</div>    
-<div class="recentContent">
-{% for property in category_property %}
-    <div class="recentList">
-        <a  href="{% url 'detail' property.id %}">
-            <img class="recentImage" src="{{property.image.url}}">
-        </a>
-        {% if property.sell_or_rent == 'sell' %}
-        <div class="recentSell"> ON SALE </div>
-        {% else %}
-        <div class="recentRent"> ON RENT </div>
-        {% endif %}
-        <div class="recentCity"> {{ property.city}}</div>
-        <div class="recentAddress"> {{ property.address|slice:":30" }}</div>
-        <div class="recentPrice">
-            <span class="recentPrice1">&#8377; </span>
-            {% if property.sell_or_rent == 'rent' %}
-            <span class="recentPrice2">{{ property.price}}/Month</span>
-            {% else %}
-            <span class="recentPrice2">{{property.price}}</span>
-            {% endif %}
-            
-        </div>
-        
-        <form action="{% url 'like_post' property.pk %}" method="POST">
-        {% csrf_token %}
-        {% if user.is_authenticated %}
-            {% if liked %}
-            <button class="recentLike" type="submit", name="post_id", value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
-            {% else %}
-            <button class="recentLike" type="submit", name="post_id", value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
-            {% endif %}
-        {% endif %}</form>
-    </div>
-    
-{% endfor %}
-</div>  
--->
 
 {% endblock %}

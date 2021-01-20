@@ -112,6 +112,11 @@ color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
 
+.add2-dropdown1{
+    position: absolute;
+    top: 285px;
+    left: 1015px;
+}
 
 .add2-carpet{
     position: absolute;
@@ -134,6 +139,11 @@ background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
 }
+.add2-dropdown2{
+    position: absolute;
+    top: 325px;
+    left: 1015px;
+}
 .add2-resale-bullet{
     position: absolute;
     top: 375px;
@@ -143,25 +153,30 @@ border: 1px solid rgba(140, 140, 140, 1);
 }
 .add2-resale{
     position: absolute;
-    top: 375px;
+    top: 380px;
     left: 735px;
+    font-size: 10px;
+color: white;
 }
 .add2-new-bullet{
     position: absolute;
     top: 375px;
-    left: 800px;
+    left: 820px;
     height: 20px;
     width: 20px;
+
 }
 .add2-new{
     position: absolute;
-    top: 375px;
-    left: 830px;
+    top: 380px;
+    left: 850px;
+    font-size: 10px;
+color: white;
 
 }
 .add2-property-floor{
     position: absolute;
-top: 395px;
+top: 405px;
 left: 705px;
 height: 30px;
 width: 250px;
@@ -172,7 +187,7 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 .add2-ownership{
     position: absolute;
-top: 395px;
+top: 405px;
 left: 965px;
 height: 30px;
 width: 250px;
@@ -183,7 +198,7 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 .add2-total-floor{
     position: absolute;
-top: 435px;
+top: 445px;
 left: 705px;
 height: 30px;
 width: 250px;
@@ -201,27 +216,31 @@ border: 1px solid rgba(140, 140, 140, 1);
 }
 .add2-ready{
     position: absolute;
-    top: 510px;
+    top: 515px;
     left: 735px;
+    font-size: 10px;
+color: white;
 }
 .add2-under-bullet{
     position: absolute;
     top: 510px;
-    left: 800px;
+    left: 820px;
     height: 20px;
     width: 20px;
 }
 .add2-under{
     position: absolute;
-    top: 510px;
-    left: 830px;
+    top: 515px;
+    left: 850px;
+    font-size: 10px;
+color: white;
 
 }
 .add2-description{
     position: absolute;
 top: 540px;
 left: 705px;
-height: 55px;
+height: 60px;
 width: 250px;
 background: transparent;
 color: white;
@@ -280,7 +299,7 @@ background-color: rgba(41, 41, 41, 1);
 }
 #add2-bar-3{
     position: absolute;
-top: 480px;
+top: 485px;
 left: 695px;
 height: 18px;
 width: 630px;
@@ -290,7 +309,7 @@ background-color: rgba(41, 41, 41, 1);
 #add2-bar-3-content{
     position: absolute;
     left:705px;
-    top:482px;
+    top:487px;
     font-family: 'Antipasto';
     font-size: 9px;
     color: rgba(255, 255, 255, 1);

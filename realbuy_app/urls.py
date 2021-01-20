@@ -20,7 +20,10 @@ urlpatterns = [
     path('update1/<int:pk>', UpdateView1.as_view(), name='update1'),
     path('update2/<int:pk>', UpdateView2.as_view(), name='update2'),
     path('delete/<int:pk>', views.DeleteView, name='delete'),
-    path('like/<int:pk>', views.LikeView, name='like_post'),
+    path('like_detail/<int:pk>', views.DetailLikeView, name='like_detail'),
+    path('like_recent/<int:pk>', views.RecentLikeView, name='like_recent'),
+    path('like_featured/<int:pk>', views.FeaturedLikeView, name='like_featured'),
+    path('like_filter/<int:pk>', views.FilterLikeView, name='like_filter'),
     path('profile/<int:pk>', views.ProfileView, name='profile'),
     path('edit_profile/<int:pk>', views.EditProfile, name='edit_profile'),
     

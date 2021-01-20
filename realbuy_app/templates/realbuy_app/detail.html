@@ -2,10 +2,9 @@
 {% load static %}
 {% block title %}
 Details{% endblock %}{% block content %}
-
 <div id="detail-big-box"></div>
 <div id="detail-big-box-2"></div>
-
+<h1> {{ property.total_likes }} </h1>
 <a href="{% url 'home' %}">
     <img id="detail-close" src="{% static 'realbuy_app/images/close.png' %}">
 </a>
@@ -66,7 +65,7 @@ Details{% endblock %}{% block content %}
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
 
-    <form action="{% url 'like_post' property.pk %}" method="POST">
+    <form action="{% url 'like_detail' property.pk %}" method="POST">
     {% csrf_token %} 
     {% if liked %} 
     <button type="submit" id="detail-shortlist-button" name="post_id" value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>

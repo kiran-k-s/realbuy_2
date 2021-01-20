@@ -21,6 +21,17 @@
     background-image:url('{% static 'realbuy_app/images/add1/select_bullet.png' %}');
     background-size: cover;
   }
+  select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+  }
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}
 </style>
 {% endblock %}
 
@@ -42,11 +53,15 @@
     {% csrf_token %}
 
 
-<p><label for="id_price"></label> <input class="add2-price" type="number" name="price" id="id_price" placeholder="AskingPrice: &#8377;"></p>
-<p><label for="id_bathroom"></label> <input class="add2-bathroom" type="number" name="bathroom" id="id_bathroom" placeholder="Bathroom(s)"></p>
-<p><label for="id_bedroom"></label> <input class="add2-bedroom" type="number" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)"></p>
-<p><label for="id_built_up_area"></label> <input class="add2-built" type="number" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area"></p>
-<p><label for="id_built_up_unit"></label> <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" placeholder="Unit">
+<p><label for="id_price"></label> <input class="add2-price" type="text" name="price" id="id_price" placeholder="AskingPrice: &#8377;" autocomplete="off"></p>
+<p><label for="id_bathroom"></label> <input class="add2-bathroom" type="text" name="bathroom" id="id_bathroom" placeholder="Bathroom(s)" autocomplete="off"></p>
+<p><label for="id_bedroom"></label> <input class="add2-bedroom" type="text" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)" autocomplete="off"></p>
+<p><label for="id_built_up_area"></label> <input class="add2-built" type="text" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area" autocomplete="off"></p>
+<p><label for="id_built_up_unit"></label>
+ <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" placeholder="Unit">
+  <option value="" disabled selected hidden style="font-family: 'Antipasto';
+font-size: 12px; color: rgba(140, 140, 140, 1);">Unit</option>
+
   <option value="CENTS">cents</option>
 
   <option value="SQM">sq.m</option>
@@ -54,21 +69,25 @@
   <option value="SQFT">sq.ft</option>
 
 </select></p>
-<p><label for="id_carpet_area"></label> <input class="add2-carpet" type="number" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area"></p>
+<img class="add2-dropdown1" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >
+<p><label for="id_carpet_area"></label> <input class="add2-carpet" type="text" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area" autocomplete="off"></p>
 <p><label for="id_carpet_unit"></label> <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit" placeholder="Unit">
-  <option value="CENTS">cents</option>
+  <option value="" disabled selected hidden>Unit</option>
+
+  <option value="CENTS" style="background-color: transparent;">cents</option>
 
   <option value="SQM">sq.m</option>
 
   <option value="SQFT">sq.ft</option>
 
 </select></p>
+<img class="add2-dropdown2" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >
 <p><label for="id_resale_or_new_0"></label> 
 <div id="id_resale_or_new" class="resaleornew">
 
 <div>
   
-      <input type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0">
+      <input type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0" checked>
       <label for="id_resale_or_new_0" class="add2-resale-bullet">
       
 </div>
@@ -85,24 +104,24 @@
 </p>
 
 
-<p><label for="id_property_floor"></label><input class="add2-property-floor" type="number" name="property_floor" id="id_property_floor" placeholder="Property Floor"></p>
+<p><label for="id_property_floor"></label><input class="add2-property-floor" type="text" name="property_floor" id="id_property_floor" placeholder="Property Floor" autocomplete="off"></p>
 <p><label for="owner"></label> <input class="add2-ownership" type="text" name="ownership" value="" id="owner" readonly required placeholder="Ownership" onclick="placeOwner()"></p>
-<p><label for="id_total_floor"></label> <input class="add2-total-floor" type="number" name="total_floor" required id="id_total_floor" placeholder="Total Floors"></p>
+<p><label for="id_total_floor"></label> <input class="add2-total-floor" type="text" name="total_floor" required id="id_total_floor" placeholder="Total Floors" autocomplete="off"></p>
 <p><label for="id_availability_0"></label>
 <div id="id_availability" class="availability">
 <div>
   
-    <input type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0">
+    <input type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0" checked>
     <label for="id_availability_0" class="add2-ready-bullet">
     
 </div>
-<span class="add2-ready">Ready to Move</span>
+<span class="add2-ready">Ready to move</span>
 <div>
     <input type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1">
     <label for="id_availability_1" class="add2-under-bullet">
 
 </div>
-<span class="add2-under">Under Construction</span>
+<span class="add2-under">Under construction</span>
 </div></p>
 <p><label for="id_description"></label> <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" required id="id_description" placeholder="Description">
 </textarea></p>

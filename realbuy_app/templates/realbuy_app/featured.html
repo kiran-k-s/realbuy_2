@@ -6,6 +6,41 @@ Featured Properties{% endblock %}
 {% block links %}
 <link href="{% static 'realbuy_app/styles/featured.css' %}" rel="stylesheet">
 {% endblock %}
+{% block styles %}
+<style type="text/css">
+
+.carousel-control-next-icon {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    height: 10px;
+    background-image: url('{% static "realbuy_app/images/featured/next_arrow.png" %}');
+    z-index: 20;
+}
+.carousel-control-prev-icon{
+    position: absolute;
+    top: -15px;
+    left: 600px;
+    height: 10px;
+    background-image: url('{% static "realbuy_app/images/featured/prev_arrow.png" %}');
+    z-index: 20;
+} 
+.carousel-control-prev {
+  width: 0px;
+  height: 0px;
+}
+.carousel-control-next {
+  width: 0px;
+  height: 0px;
+}
+
+.carousel .carousel-indicators li {
+    display: none;
+    
+}
+
+</style>
+{% endblock %}
 {% block content %}
 <div class="featured-scroll"> 
 <div id="featured-big-box"></div>
@@ -58,7 +93,7 @@ Featured Properties{% endblock %}
                         <span class="featured-location">{{property.location | title}}</span>
 
 
-                        <form action="{% url 'like_post' property.pk %}" method="POST">
+                        <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
                         <button class="featured-like" type="submit" name="post_id" value="{{ property.id }}"><img class="featured-like-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
@@ -132,7 +167,7 @@ Featured Properties{% endblock %}
                         <span class="recentPrice2">{{ property.price}}</span><span class="recentPrice3">/Month</span>
                             
                         </div>
-                        <form action="{% url 'like_post' property.pk %}" method="POST">
+                        <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>

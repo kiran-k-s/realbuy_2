@@ -49,21 +49,13 @@ def CategoryViewHome1(request, cats):
 def CategoryViewHome2(request):
     qs = Property.objects.all()
     search_query = request.GET.get('home_search')
-    sell = request.GET.get('home-filter1')
-    rent = request.GET.get('home-filter2')
-    ready_to_move = request.GET.get('home-filter3')
-    under_construction = request.GET.get('home-filter4') 
+    button = request.GET.get('filter_type')
 
     if search_query != '' and search_query is not None:
         qs = qs.filter(Q(location__icontains=search_query)|Q(property_type__icontains=search_query)|Q(city__icontains=search_query)|Q(address__icontains=search_query)|Q(resale_or_new__icontains=search_query)).distinct()
-    if sell != '' and sell is not None:
-        qs = qs.filter(Q(sell_or_rent__contains=sell)).distinct()
-    if rent != '' and rent is not None:
-        qs = qs.filter(Q(sell_or_rent__contains=rent)).distinct()
-    if ready_to_move != '' and ready_to_move is not None:
-        qs = qs.filter(Q(availability__contains=ready_to_move)).distinct()
-    if under_construction != '' and under_construction is not None:
-        qs = qs.filter(Q(availability__contains=under_construction)).distinct()
+    if button != '' and button is not None:
+        qs = qs.filter(Q(sell_or_rent__contains=button)|Q(availability__contains=button)).distinct()
+    
     composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
     
     context = {
@@ -137,24 +129,22 @@ class RecentView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(RecentView, self).get_context_data()
         recent = Property.objects.all().order_by('-id')
-        composite_list = [recent[x:x+9] for x in range(0, len(recent),9)]
-        context["composite_list"] = composite_list
-        context["current"] = 'recent'
-        return context
-
-
-    '''
-    def get_context_data(self, *args, **kwargs):
-        context = super(RecentView, self).get_context_data()
-
-        prop = Property.objects.all()
-        for pro in prop:
-
+        '''
+        for prop in recent:
             liked = False
             if prop.likes.filter(id=self.request.user.id).exists():
                 liked = True
-            context["liked"] = liked
-            return context   '''
+            like_count = prop.total_likes()         '''
+        '''    
+        for prop in recent:
+            items = prop.liked()
+            print(items)            '''
+        composite_list = [recent[x:x+9] for x in range(0, len(recent),9)]
+        context["composite_list"] = composite_list
+        context["current"] = 'recent'
+        #context["liked"] = liked
+
+        return context
 
     
 def FeaturedView(request):
@@ -163,6 +153,7 @@ def FeaturedView(request):
     composite_list = [featured[x:x+6] for x in range(0, len(featured),6)]
     recent = Property.objects.all().order_by('-id')
     recent_list = [recent[x:x+9] for x in range(0, len(recent),9)]
+   
     
     context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured'}
     return render(request,'realbuy_app/featured.html', context)
@@ -298,7 +289,43 @@ class UpdateView2(UpdateView):
 
     
     
-def LikeView(request, pk):
+def DetailLikeView(request, pk):
+    post = get_object_or_404(Property, id=request.POST.get('post_id'))
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+        
+    return redirect('detail',pk)
+
+def RecentLikeView(request, pk):
+    post = get_object_or_404(Property, id=request.POST.get('post_id'))
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+        
+    return redirect('recent')
+
+def FeaturedLikeView(request, pk):
+    post = get_object_or_404(Property, id=request.POST.get('post_id'))
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+        
+    return redirect('featured')
+
+def FilterLikeView(request, pk):
     post = get_object_or_404(Property, id=request.POST.get('post_id'))
     liked = False
     if post.likes.filter(id=request.user.id).exists():

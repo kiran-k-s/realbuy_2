@@ -13,30 +13,9 @@
   }	
 .featured-grid-content{
     position:relative;
-    border:1px solid rgba(35, 35, 35, 1);;
 
 }
-/*
-.featured-grid{
-    position:absolute;
-    top:125px;
-    left:695px;
-    height:515px;
-    width:650px;
-    display: grid;
-    grid-template-columns: 206px 206px 206px;
-    grid-template-rows: 227px 227px;
-    grid-column-gap: 15px;
-    background-color: rgba(22, 22, 22, 1);
 
-
-}
-.featured-grid-content{
-    position:relative;
-    z-index: 10;
-    border: 1px red solid;
-}
-*/
 .featured-container{
     position:absolute;
     top:50px;

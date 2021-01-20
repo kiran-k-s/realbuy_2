@@ -51,7 +51,10 @@
   width: 0px;
   height: 0px;
 }
-
+.carousel .carousel-indicators li {
+    display: none;
+    
+}
 </style>
     <!-- Custom styles for this template -->
 <link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
@@ -197,7 +200,7 @@
                         </div>
                         <div>
                             
-                            <form action="{% url 'like_post' property.pk %}" method="POST">
+                            <form action="{% url 'like_filter' property.pk %}" method="POST">
                             {% csrf_token %}
                                 {% if liked %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>

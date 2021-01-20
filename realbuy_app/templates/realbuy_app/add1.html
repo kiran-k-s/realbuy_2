@@ -5,11 +5,7 @@
 <link href="{% static 'realbuy_app/styles/add1.css' %}" rel="stylesheet">
 {% endblock %}
 {% block styles %}
-<!--
-<style type="text/css">
-	input[type=checkbox] { background: url('{% static "realbuy_app/images/add1/commercial.png" %}') }
-	input[type=checkbox]:checked + label { background: url('{% static "realbuy_app/images/add1/commercial_select.png" %}')}
-</style>  --> 
+
 <style type="text/css">
 	input[type="radio"]{
    	display:none;
@@ -19,41 +15,22 @@
 	{
     background-image:url('{% static 'realbuy_app/images/add1/default_bullet.png' %}');
     background-size: cover;
-    /*height: 20px;
-    width: 20px;
-    display:inline-block;
-    padding: 0 0 0 0px; */
-    /*position: absolute;
-    left:705px;
-    top:190px;
-    height: 20px;
-    width: 20px;
-    cursor:pointer;
-    border: 1px solid red; */
 	}
-
+	
 	input[type="radio"]:checked + label
 	{
     background-image:url('{% static 'realbuy_app/images/add1/select_bullet.png' %}');
     background-size: cover;
-	}
-    /*
-    position: absolute;
-    left:800px;
-    top:190px;
-    height: 20px;
-    width: 20px;
-    border: 1px solid red;
-	} */
+	}	
 
 	/* HIDE checkbox */
-	
+	/*
 	[type=checkbox] { 
 	  position: absolute;
 	  opacity: 0;
 	  width: 0;
 	  height: 0;
-	} 
+	} 	*/
 
 	/* IMAGE STYLES */
 	[type=checkbox] + img {
