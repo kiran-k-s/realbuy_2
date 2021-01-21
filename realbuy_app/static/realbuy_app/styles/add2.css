@@ -66,6 +66,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:10px;
 }
 
 .add2-bathroom{
@@ -108,8 +109,11 @@ left: 965px;
 height: 30px;
 width: 70px;
 background: transparent;
-color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+color: rgba(140, 140, 140, 1);
+font-family: 'Antipasto';
+font-size: 12px;
+padding-left:10px;
 }
 
 .add2-dropdown1{
@@ -136,8 +140,11 @@ left: 965px;
 height: 30px;
 width: 70px;
 background: transparent;
-color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+color: rgba(140, 140, 140, 1);
+font-family: 'Antipasto';
+font-size: 12px;
+padding-left:10px;
 }
 .add2-dropdown2{
     position: absolute;

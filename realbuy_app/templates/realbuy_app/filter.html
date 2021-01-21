@@ -51,9 +51,8 @@
   width: 0px;
   height: 0px;
 }
-.carousel .carousel-indicators li {
-    display: none;
-    
+.carousel .carousel-indicators{
+  bottom: -40px !important;
 }
 </style>
     <!-- Custom styles for this template -->
@@ -102,32 +101,35 @@
 <div id="filter-big-box-2"></div>    
 <form method="get" action="{% url 'category_filter2' %}">
       <input class="filter-location-1" type="text" list="location2" name="location1" id="location1" placeholder="LOCATION (ANY)" autocomplete="off"/>
-      <datalist id="location2" name="location2">
-            <option>Edappal</option>
-            <option>Trivandrum</option>
-            <option>Thrissur</option>
-            <option>Ernamkulam</option>
+      <datalist id="location2" name="location2" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">
+            <option style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Trivandrum</option>
+            <option style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Thrissur</option>
+            <option style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Ernamkulam</option>
       </datalist>
-      <select class="filter-property-status" id="property_status" name="property_status" placeholder="PROPERTY STATUS">
+      <select class="filter-property-status" id="property_status" name="property_status">
       <option hidden disabled selected value>PROPERTY STATUS</option>
-      <option value="ready to move">Ready to move</option>
-      <option value="under construction">Under Construction</option>
-      <option value="sell">Sell</option>
-      <option value="rent">Rent</option>
+      <option value="ready to move" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Ready to move</option>
+      <option value="under construction" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Under Construction</option>
+      <option value="sell" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Sell</option>
+      <option value="rent" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Rent</option>
+      <option value="resale" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">Resale</option>
+      <option value="new" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">New Booking</option>
       </select>
-      <select class="filter-areamin" id="areamin" name="areamin" placeholder="AREA MIN SQUAREFEET">
-      <option hidden disabled selected value>AREA MIN SQUAREFEET</option>
-      <option value="1000">1000</option>
-      <option value="5000">10000</option>
-      <option value="10000"> 100000</option>
-      <option value="100000">1000000</option>
+      <select class="filter-areamin" id="areamin" name="areamin">
+      <option hidden disabled selected>AREA MIN SQUAREFEET</option>
+      <option value="1000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">1000</option>
+      <option value="5000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">5000</option>
+      <option value="10000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);"> 10000</option>
+      <option value="25000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">25000</option>
+      <option value="50000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">50000</option>
       </select>
-      <select class="filter-areamax" id="areamax" name="areamax" placeholder="AREA MAX SQUAREFEET">
-      <option hidden disabled selected value>AREA MAX SQUAREFEET</option>
-      <option value="1000"> 1000</option>
-      <option value="5000"> 10000</option>
-          <option value="10000">100000</option>
-      <option value="100000">1000000</option>
+      <select class="filter-areamax" id="areamax" name="areamax" >
+      <option hidden disabled selected>AREA MAX SQUAREFEET</option>
+      <option value="5000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);"> 5000</option>
+      <option value="10000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);"> 10000</option>
+      <option value="25000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">25000</option>
+      <option value="50000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">50000</option>
+      <option value="100000" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">100000</option>
       </select>
     
       <button type="submit" id="filter_submit">SEARCH</button>

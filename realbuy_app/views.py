@@ -49,12 +49,26 @@ def CategoryViewHome1(request, cats):
 def CategoryViewHome2(request):
     qs = Property.objects.all()
     search_query = request.GET.get('home_search')
-    button = request.GET.get('filter_type')
-
+    button1 = request.GET.get('filter_type1')
+    button2 = request.GET.get('filter_type2')
+    button3 = request.GET.get('filter_type3')
+    button4 = request.GET.get('filter_type4')
     if search_query != '' and search_query is not None:
         qs = qs.filter(Q(location__icontains=search_query)|Q(property_type__icontains=search_query)|Q(city__icontains=search_query)|Q(address__icontains=search_query)|Q(resale_or_new__icontains=search_query)).distinct()
-    if button != '' and button is not None:
-        qs = qs.filter(Q(sell_or_rent__contains=button)|Q(availability__contains=button)).distinct()
+    if (button1 != '' and button1 is not None) and (button2 != '' and button2 is not None):
+        qs = qs.filter(Q(sell_or_rent__contains=button1)|Q(sell_or_rent__contains=button2))
+    elif button1 != '' and button1 is not None:
+        qs = qs.filter(Q(sell_or_rent__contains=button1))
+    elif button2 != '' and button2 is not None:
+        qs = qs.filter(Q(sell_or_rent__contains=button2))
+
+    if (button3 != '' and button3 is not None) and (button4 != '' and button4 is not None):
+        qs = qs.filter(Q(availability__contains=button3)|Q(availability__contains=button4))
+    elif button3 != '' and button3 is not None:
+        qs = qs.filter(Q(availability__contains=button3))
+    elif button4 != '' and button4 is not None:
+        qs = qs.filter(Q(availability__contains=button4))
+
     
     composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
     
@@ -94,6 +108,27 @@ def CategoryViewFilter2(request):
     if property_status != '' and property_status is not None:
         qs = qs.filter(Q(availability__icontains=property_status)|Q(sell_or_rent__icontains=property_status)|Q(resale_or_new__icontains=property_status)).distinct()
     if areamin != '' and areamin is not None:
+        cents = qs.filter(Q(built_up_unit__icontains='CENTS'))
+        cents = cents.filter(built_up_area__gte=(float(areamin)/435.6))
+        sqm = qs.filter(Q(built_up_unit__icontains='SQM'))
+        sqm = sqm.filter(built_up_area__gte=(float(areamin)/10.76))
+        sqft = qs.filter(Q(built_up_unit__icontains='SQFT'))
+        sqft = sqft.filter(built_up_area__gte=areamin)
+        areamin_list = cents | sqm | sqft
+        qs = qs | areamin_list
+        qs = qs.distinct()
+
+    if areamax != '' and areamax is not None:
+        cents = qs.filter(Q(built_up_unit__icontains='CENTS'))
+        cents = cents.filter(built_up_area__lte=(float(areamax)/435.6))
+        sqm = qs.filter(Q(built_up_unit__icontains='SQM'))
+        sqm = sqm.filter(built_up_area__lte=(float(areamax)/10.76))
+        sqft = qs.filter(Q(built_up_unit__icontains='SQFT'))
+        sqft = sqft.filter(built_up_area__lte=areamax)
+        areamax_list = cents | sqm | sqft
+        qs = qs | areamax_list
+        qs = qs.distinct()
+        '''
         for item in qs:
             if item.built_up_unit == 'CENTS':
                 print(item.built_up_unit)
@@ -110,7 +145,7 @@ def CategoryViewFilter2(request):
             elif item.built_up_unit == 'SQM':
                 qs = qs.filter(built_up_area__lte=(float(areamax)/10.76))
             else:
-                qs = qs.filter(built_up_area__lte=areamax)
+                qs = qs.filter(built_up_area__lte=areamax)'''
 
     composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
     

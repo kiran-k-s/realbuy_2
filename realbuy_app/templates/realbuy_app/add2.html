@@ -58,27 +58,27 @@ select::-ms-expand {
 <p><label for="id_bedroom"></label> <input class="add2-bedroom" type="text" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)" autocomplete="off"></p>
 <p><label for="id_built_up_area"></label> <input class="add2-built" type="text" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area" autocomplete="off"></p>
 <p><label for="id_built_up_unit"></label>
- <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" placeholder="Unit">
-  <option value="" disabled selected hidden style="font-family: 'Antipasto';
-font-size: 12px; color: rgba(140, 140, 140, 1);">Unit</option>
+ <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" >
+  <option value="" disabled selected hidden>Unit</option>
 
-  <option value="CENTS">cents</option>
+  <option value="CENTS" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">cents</option>
 
-  <option value="SQM">sq.m</option>
+  <option value="SQM" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.m</option>
 
-  <option value="SQFT">sq.ft</option>
+  <option value="SQFT" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.ft</option>
 
 </select></p>
 <img class="add2-dropdown1" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >
 <p><label for="id_carpet_area"></label> <input class="add2-carpet" type="text" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area" autocomplete="off"></p>
-<p><label for="id_carpet_unit"></label> <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit" placeholder="Unit">
-  <option value="" disabled selected hidden>Unit</option>
+<p><label for="id_carpet_unit"></label> 
+  <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit">
+  <option value="" disabled selected hidden >Unit</option>
 
-  <option value="CENTS" style="background-color: transparent;">cents</option>
+  <option value="CENTS" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">cents</option>
 
-  <option value="SQM">sq.m</option>
+  <option value="SQM" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.m</option>
 
-  <option value="SQFT">sq.ft</option>
+  <option value="SQFT" style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.ft</option>
 
 </select></p>
 <img class="add2-dropdown2" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >

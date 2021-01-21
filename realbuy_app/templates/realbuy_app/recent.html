@@ -81,7 +81,8 @@ Recent Properties{% endblock %}
                         </div>
                         <form action="{% url 'like_recent' property.pk %}" method="POST">
                         {% csrf_token %}
-                        {% if liked %}
+                        <h3>{{ property.liked }}</h3>
+                        {% if property.liked %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}

@@ -41,7 +41,7 @@
     top: 75px;
     left: 0px;
     background-color: rgba(22, 22, 22, 1);
-    bottom:0;
+    bottom:72px;
     right:0;
 }
 #filter-logo{
@@ -332,16 +332,15 @@ color: rgba(198, 198, 198, 1);
 }
 .filter-shortlist-button{
     position: absolute;
-    top:142px;
-    left: 270px;
+    top:138px;
+    left: 265px;
     display: inline-block;
     height: 20px;
     padding: 0;
     margin: 0;
     width: 20px;
     background: transparent;
-    border: 2px solid blue;
-    /*border:none;*/
+    border:none;
 }
 .filter-shortlist-image{
      cursor: pointer;

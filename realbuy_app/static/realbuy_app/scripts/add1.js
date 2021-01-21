@@ -1,0 +1,73 @@
+function cityValidate()
+{
+var error = document.getElementById("add1_error");
+var name=document.getElementById("add1-city").value;
+
+if(name.length>=3 && name.length <=100)
+		{
+			if(/^[a-zA-Z\s]+$/.test(name))
+			{
+                document.getElementById("add1_error").innerHTML ="";
+				return true;
+			}
+		else
+			{
+                document.getElementById("add1_error").innerHTML ="Error: City should only contain characters and space.";
+                
+				return false;
+			}
+		}
+		
+else
+    {	
+        document.getElementById("add1_error").innerHTML ="Error: City length should be greater than 2 characters and less than 100 characters";
+  
+        return false;
+    }		
+}
+
+function locationValidate()
+{
+var error = document.getElementById("add1_error");
+var name=document.getElementById("add1-location").value;
+
+if(name.length>=3 && name.length <=100)
+		{
+			if(/^[a-zA-Z\s]+$/.test(name))
+			{
+                document.getElementById("add1_error").innerHTML ="";
+				return true;
+			}
+		else
+			{
+                document.getElementById("add1_error").innerHTML ="Error: Location should only contain characters and space.";
+                
+				return false;
+			}
+		}
+		
+else
+    {	
+        document.getElementById("add1_error").innerHTML ="Error: Location length should be greater than 3 characters and less than 100 characters";
+  
+        return false;
+    }		
+}
+
+
+function addressValidate()
+{
+	var  message=document.getElementById("add1-address").value;
+
+	if(message.length>=20)
+		{
+		document.getElementById("add1_error").innerHTML ="";
+		return true;
+		}
+	else
+		{
+		document.getElementById("add1_error").innerHTML ="Error: Address is mandatory with a minimum of 20 character length";
+		return false;
+		}      
+	
+}

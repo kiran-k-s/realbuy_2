@@ -64,6 +64,7 @@
 {% endblock %}
 
 {% block content %}
+<script src="{% static 'realbuy_app/scripts/add1.js' %}"></script> 
 <div id="add1-big-box"></div>
 <div id="add1-big-box-2"></div> 
 <span id="add1-head-1">ADD</span> <span id="add1-head-2">PROPERTY</span>
@@ -149,9 +150,13 @@
 		<img class="add1-camera" src="{% static 'realbuy_app/images/add1/photo_camera.png' %}" >
 		<span class="add1-camera-head">ADD PHOTO</span>
 	</label>
-<p><label for="id_city"></label> <input type="text" name="city" class="city" placeholder="Select City" maxlength="100" minlength="4" required id="add1-city" autocomplete="off"></p>
-<p><label for="id_address"></label> <input type="text" name="address" class="address" placeholder="Address" maxlength="100" minlength="4" required id="add1-address" autocomplete="off"></p>
-<p><label for="id_location"></label> <input type="text" name="location" class="location" placeholder="Location" maxlength="100" minlength="4" required id="add1-location" autocomplete="off"></p>
+<div class="add1_error" id="add1_error"></div>
+<p><label for="id_city"></label> 
+	<input type="text" name="city" class="city" placeholder="Select City" maxlength="100" minlength="4" required id="add1-city" autocomplete="off" onblur="cityValidate();"></p>
+<p><label for="id_address"></label>
+ 	<input type="text" name="address" class="address" placeholder="Address" maxlength="100" minlength="4" required id="add1-address" autocomplete="off" onblur="addressValidate();"></p>
+<p><label for="id_location"></label> 
+	<input type="text" name="location" class="location" placeholder="Location" maxlength="100" minlength="4" required id="add1-location" autocomplete="off" onblur="locationValidate();"></p>
 
 <button type="submit" id="add1-next">Next</button>
 

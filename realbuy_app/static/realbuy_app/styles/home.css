@@ -142,6 +142,7 @@ color: rgba(140, 140, 140, 1);
   z-index: 30;
 }
 .home-filter {
+    cursor: pointer;
     position: absolute;
     top: 370px;
     height: 30px;
@@ -183,6 +184,7 @@ color: rgba(140, 140, 140, 1);
     border:none;
 }
 #home-submit{
+    cursor: pointer;
     position: absolute;
     top: 400px;
     left: 476px;
