@@ -122,6 +122,32 @@ function messageValidate()
 	
 }
 
+    const form = document.getElementById('contactForm');
+    form.addEventListener("submit", submitHandler);
+
+    function submitHandler(e) {
+        e.preventDefault();
+        var nameok=nameValidate();
+        var mailok=mailValidate();
+        var phoneok=phoneValidate();
+        var messageok=messageValidate();
+      if(nameok==true && mailok==true && phoneok==true && messageok==true){   
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '{% url 'contactus' %}', // the url where we want to POST
+            data        : $('#contactForm').serialize(), // our form data
+            dataType    : 'json', // what type of data do we expect back from the server
+            success     : successFunction
+        });
+      }
+    }
+
+    function successFunction(data) {
+        if (data.message === 'success') {
+            alert('Success!');
+            form.reset()
+        }
+    }
 
 
     

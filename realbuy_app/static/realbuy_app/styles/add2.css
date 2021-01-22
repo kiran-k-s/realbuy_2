@@ -66,7 +66,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
-padding-bottom:10px;
+padding-bottom:5px;
 }
 
 .add2-bathroom{
@@ -78,6 +78,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 
 .add2-bedroom{
@@ -89,6 +90,21 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
+}
+
+#add2_error{
+    position:absolute;
+    padding: 10px;
+    top:200px;
+    left:965px;
+    width : 270px;
+    height : 30px;
+    font-size: 11px;
+    color: red;
+    background: transparent;
+    transition: all 0.5s ease;
+
 }
 
 .add2-built{
@@ -100,6 +116,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 
 .add2-built-unit{
@@ -131,6 +148,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 
 .add2-carpet-unit{
@@ -190,6 +208,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 
 .add2-ownership{
@@ -201,6 +220,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 
 .add2-total-floor{
@@ -212,6 +232,7 @@ width: 250px;
 background: transparent;
 color: white;
 border: 1px solid rgba(140, 140, 140, 1);
+padding-bottom:5px;
 }
 .add2-ready-bullet{
     position: absolute;

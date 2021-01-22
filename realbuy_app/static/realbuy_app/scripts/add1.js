@@ -1,13 +1,15 @@
+
 function cityValidate()
 {
 var error = document.getElementById("add1_error");
-var name=document.getElementById("add1-city").value;
+var city=document.getElementById("add1-city").value;
 
-if(name.length>=3 && name.length <=100)
+if(city.length>=3 && city.length <=100)
 		{
-			if(/^[a-zA-Z\s]+$/.test(name))
+			if(/^[a-zA-Z\s]+$/.test(city))
 			{
                 document.getElementById("add1_error").innerHTML ="";
+              
 				return true;
 			}
 		else
@@ -21,7 +23,7 @@ if(name.length>=3 && name.length <=100)
 else
     {	
         document.getElementById("add1_error").innerHTML ="Error: City length should be greater than 2 characters and less than 100 characters";
-  
+  		
         return false;
     }		
 }
@@ -29,13 +31,14 @@ else
 function locationValidate()
 {
 var error = document.getElementById("add1_error");
-var name=document.getElementById("add1-location").value;
+var location=document.getElementById("add1-location").value;
 
-if(name.length>=3 && name.length <=100)
+if(location.length>=3 && location.length <=100)
 		{
-			if(/^[a-zA-Z\s]+$/.test(name))
+			if(/^[a-zA-Z\s]+$/.test(location))
 			{
                 document.getElementById("add1_error").innerHTML ="";
+                
 				return true;
 			}
 		else
@@ -49,7 +52,7 @@ if(name.length>=3 && name.length <=100)
 else
     {	
         document.getElementById("add1_error").innerHTML ="Error: Location length should be greater than 3 characters and less than 100 characters";
-  
+        
         return false;
     }		
 }
@@ -57,9 +60,9 @@ else
 
 function addressValidate()
 {
-	var  message=document.getElementById("add1-address").value;
+	var  address=document.getElementById("add1-address").value;
 
-	if(message.length>=20)
+	if(address.length>=20)
 		{
 		document.getElementById("add1_error").innerHTML ="";
 		return true;

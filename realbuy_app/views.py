@@ -221,6 +221,7 @@ def AddView1(request):
             request.session['property_type'] = form.cleaned_data.get('property_type')
             newdoc = Property(image = request.FILES['image'])
             request.session['image'] = newdoc.filename
+            #request.session['image'] = newdoc
             request.session['city'] = form.cleaned_data.get('city')
             request.session['address'] = form.cleaned_data.get('address')
             request.session['location'] = form.cleaned_data.get('location')
@@ -231,6 +232,7 @@ def AddView1(request):
     return render(request, 'realbuy_app/add1.html', {'form' : form,'current':'add'}) 
     
 def AddView2(request):
+    
     if request.method == 'POST': 
         form = AddForm2(request.POST) 
   
@@ -250,10 +252,42 @@ def AddView2(request):
             form.save()
             return redirect('home') 
             #success_url = reverse_lazy('home')
+        else:
+            print("error")
     else: 
         form = AddForm2() 
     return render(request, 'realbuy_app/add2.html', {'form' : form,'current':'add'}) 
-
+    
+    '''
+    form = AddForm2()
+    if request.is_ajax():
+        form = AddForm2(request.POST)
+        print(request.POST)
+        print("sucess1")
+        if form.is_valid():
+            print("sucess1")
+            sell_or_rent = request.session.pop('sell_or_rent') 
+            property_type = request.session.pop('property_type')
+            image = request.session.pop('image')
+            city = request.session.pop('city')
+            address = request.session.pop('address')
+            location = request.session.pop('location')
+            form.instance.sell_or_rent = sell_or_rent
+            form.instance.property_type = property_type
+            form.instance.image = image
+            form.instance.city = city
+            form.instance.address = address
+            form.instance.location = location
+            print("sucess2")
+            form.save()
+            print("sucess3")
+            return JsonResponse({
+                'message': 'success'
+            })
+        else:
+            print("error")
+    return render(request, 'realbuy_app/add2.html', {'form' : form,'current':'add'}) 
+    '''
 '''
 def UpdateView1(request,pk):
     update_property = Property.objects.get(id=pk)

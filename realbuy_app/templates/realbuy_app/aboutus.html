@@ -55,10 +55,21 @@
 				<span class="location-carousel-sub1">{{property.address}}</span>
 				<div class="aboutus-price">
                         {% if property.sell_or_rent == 'rent' %}
-                            <span class="aboutus-price-1">{{ property.price}}</span>
+                        	{% if property.price >= 100000 %}
+                            <span class="aboutus-price-1">{% widthratio property.price 100000 1 %}</span>
+                            <span class="aboutus-price-2">Lakhs</span>
+                            <span class="aboutus-price-3">/Month</span>
+                            {% else %}
+                            <span class="aboutus-price-1">{{ property.price }}</span>
                             <span class="aboutus-price-2">/Month</span>
+                            {% endif %}
                         {% else %}
-                            <span class="aboutus-price-1">{{property.price}}</span>
+                            {% if property.price >= 100000 %}
+                            <span class="aboutus-price-1">{% widthratio property.price 100000 1 %}</span>
+                            <span class="aboutus-price-2">Lakhs</span>
+                            {% else %}
+                            <span class="aboutus-price-1">{{ property.price }}</span>
+                            {% endif %}
                         {% endif %}
                 </div>
 				<img src="{% static 'realbuy_app/images/area.png' %}" class="aboutus-area">
@@ -67,8 +78,6 @@
         			<span id="aboutus-area-content-1">{{ property.built_up_area}}</span>
         			<span id="aboutus-area-content-2">{{property.built_up_unit}}</span>
     			</div>
-				<span class="part7789">{{ property.built_up_area}}</span>
-				<span class="partsqft">{{ property.built_up_unit}}</span>
 				<img src="{% static 'realbuy_app/images/bedroom.png' %}" class="aboutus-bedroom">
 				<span class="bedroom-head">Bedrooms</span>
 				<span class="bedroom-sub">{{ property.bedroom }}</span>

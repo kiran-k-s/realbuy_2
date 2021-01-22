@@ -54,19 +54,18 @@
 .location-carousel-sub1{
     position: absolute;
     top: 215px;
-    left: 35px;
+    left: 50px;
     height: 10px;
-    width: 141px;
+    width: 175px;
     font-family: 'Antipasto';
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
-    text-align: center;
 }
 .aboutus-price{
     position: absolute;
     display: inline-block;
-    top: 235px;
-    left: 30px;
+    top: 232px;
+    left: 55px;
     color: rgba(255, 255, 255, 1);
 }
 
@@ -77,6 +76,12 @@
     height: 10px;
 }
 .aboutus-price-2{
+   font-family: 'Antipasto';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 1);
+    height: 5px;
+}
+.aboutus-price-3{
    font-family: 'Antipasto';
     font-size: 11px;
     color: rgba(255, 255, 255, 1);
@@ -127,8 +132,8 @@
     position: absolute;
     display: inline-block;
     top: 230px;
-    left: 325px;
-    color: rgba(47, 181, 110, 1);
+    left: 353px;
+    color: rgba(255, 255, 255, 1);
 }
 
 .aboutus-area-content-1{
@@ -143,28 +148,7 @@
     color: rgba(255, 255, 255, 1);
     height: 10px;
 }
-.part7789{
-    position: absolute;
-    top: 230px;
-    left: 325px;
-    height: 15px;
-    width: 83px;
-    font-family: 'Antipasto';
-    font-size: 16px;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-}
-.partsqft{
-    position: absolute;
-    top: 235px;
-    left: 352px;
-    height: 10px;
-    width: 83px;
-    font-family: 'Antipasto';
-    font-size: 12px;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-}
+
 .aboutus-bedroom{
     position: absolute;
     top: 220px;
