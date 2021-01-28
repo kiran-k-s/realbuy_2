@@ -31,19 +31,24 @@ def UserLoginView(request):
         'form': form
     }
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(request.POST or None)
         print(request.user.is_authenticated)
         if form.is_valid():
             print(form.cleaned_data)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
+            user = (authenticate(request, username=username, password=password)) or (authenticate(request, email=username, password=password))
             if user is not None:
                 login(request,user)
+                
                 return redirect('add1')
             else:
                 print("error....")
-    return render(request, "members/login.html",context)    
+        else:
+            print(form.errors)
+            return render(request, "realbuy_app/home.html",{'formLogin':form})
+    else:    
+        return render(request, "members/login.html",context)    
 
     
 '''class UserEditView(generic.UpdateView):

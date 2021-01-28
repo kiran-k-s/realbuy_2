@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
 from .models import Property, ContactUs, Profile
 from .forms import AddForm1, AddForm2, ContactUsForm, ProfileForm
+from members.forms import LoginForm, RegisterForm
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
@@ -17,8 +18,10 @@ from django.db.models import Count
 
 def Home(request):
     aboutus_list = Property.objects.all()
+    formLogin = LoginForm()
+    formRegister = RegisterForm()
     context = {
-        'current': 'home','aboutus_list':aboutus_list
+        'current': 'home','aboutus_list':aboutus_list,'formLogin':formLogin, 'formRegister':formRegister
     }
     return render(request, 'realbuy_app/home.html',context)
 
@@ -205,10 +208,11 @@ class DetailedView(DetailView):
             liked = True
         context["liked"] = liked
         return context
-'''@login_required(login_url='/login_page/')    
-def AddView1(request):
-    form = AddForm1(request.POST or None)
-    return render(request,"realbuy_app/add1.html",{'form':form})'''
+
+
+    
+
+    
 
 @login_required(login_url='/members/login/') 
 def AddView1(request): 
@@ -217,46 +221,66 @@ def AddView1(request):
         form = AddForm1(request.POST, request.FILES) 
   
         if form.is_valid(): 
+            
             request.session['sell_or_rent'] = form.cleaned_data.get('sell_or_rent')
             request.session['property_type'] = form.cleaned_data.get('property_type')
             newdoc = Property(image = request.FILES['image'])
-            request.session['image'] = newdoc.filename
-            #request.session['image'] = newdoc
+            newdoc.save()
+            print(newdoc)
+            print(newdoc.id)
+            #request.session['image'] = newdoc.filename
             request.session['city'] = form.cleaned_data.get('city')
             request.session['address'] = form.cleaned_data.get('address')
-            request.session['location'] = form.cleaned_data.get('location')
-
-            return redirect('add2') 
+            request.session['location'] = form.cleaned_data.get('location') 
+            pk = newdoc.id
+            #newdoc = form.save(commit=False)
+            #print(prop)
+            #request.session['prop']=prop
+            return redirect('add2',pk) 
+        else:
+            print("error")
     else: 
         form = AddForm1() 
     return render(request, 'realbuy_app/add1.html', {'form' : form,'current':'add'}) 
     
-def AddView2(request):
-    
+def AddView2(request, pk):
+    print("success1")
+    prop = Property.objects.get(id=pk)
+    print(prop.image.url)
+    print("success2")
     if request.method == 'POST': 
         form = AddForm2(request.POST) 
-  
+        
         if form.is_valid(): 
+            #prop = request.session.get('prop', None)
+            
             sell_or_rent = request.session.pop('sell_or_rent') 
             property_type = request.session.pop('property_type')
-            image = request.session.pop('image')
             city = request.session.pop('city')
             address = request.session.pop('address')
             location = request.session.pop('location')
             form.instance.sell_or_rent = sell_or_rent
             form.instance.property_type = property_type
-            form.instance.image = image
             form.instance.city = city
             form.instance.address = address
             form.instance.location = location
+            form.instance.image = prop.image
+            print(form.instance.image.url)
+            print(form.instance.location)
+            print("hai")
+            #prop = form.save(commit=False)
             form.save()
+            Property.objects.get(id=pk).delete()
+            
             return redirect('home') 
             #success_url = reverse_lazy('home')
         else:
             print("error")
     else: 
-        form = AddForm2() 
-    return render(request, 'realbuy_app/add2.html', {'form' : form,'current':'add'}) 
+        form = AddForm2()
+        print("sucess3") 
+    context = {'form' : form,'current':'add','pk':pk}
+    return render(request, 'realbuy_app/add2.html',context) 
     
     '''
     form = AddForm2()

@@ -132,7 +132,7 @@
     position: absolute;
     display: inline-block;
     top: 230px;
-    left: 353px;
+    left: 355px;
     color: rgba(255, 255, 255, 1);
 }
 
@@ -140,13 +140,13 @@
    font-family: 'Antipasto';
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
-    height: 15px;
+    height: 16px;
 }
 .aboutus-area-content-2{
    font-family: 'Antipasto';
-    font-size: 12px;
-    color: rgba(255, 255, 255, 1);
-    height: 10px;
+    font-size: 11px;
+    color: rgba(184, 184, 184, 1);
+    height: 11px;
 }
 
 .aboutus-bedroom{

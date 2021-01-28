@@ -66,12 +66,7 @@
 <span id="welcome">Welcome to realbuy</span>
 <span id="welcome-sub">Realbuy is a real estate firm with a vision to create luxurious living spaces that surpass the expectations of customers. Although recently launched the firm is driven with an instinct and far stretching insight that improves the real estate offerings in the city...</span>
 
-<!--    
-<form method="get" action="{% url 'category_home2' %}" >
-      <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
-      <button type="submit" id="home-submit">SEARCH</button>
-</form>  
--->
+
 
 <form method="get" action="{% url 'category_home2' %}" style="position: absolute; width:0px;">
         <label  for="id_filter_type_0">
@@ -93,6 +88,8 @@
       <input type="text" placeholder="Type Location or Project/Society or Keyword" name="home_search" id="home_search" autocomplete="off">
       <button type="submit" id="home-submit">SEARCH</button>
 </form>
+
+
 
 <a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="home-fb">
@@ -166,6 +163,9 @@
     <div id="home-popup-box-2"></div>
     <form method="POST" action="{% url 'login_page' %}">
     {% csrf_token %}
+    
+    <span class="login-popup-error">{{formLogin.errors}}</span>
+    
     <span id="login-popup-username-head">Name/Email</span>
     <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username" autocomplete="off">
     <span id="login-popup-password-head">Password</span>

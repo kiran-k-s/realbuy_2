@@ -84,7 +84,7 @@
 <img class="add1-rent-select-image" src="{% static 'realbuy_app/images/add1/rent_select.png' %}"> 
 
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" onsubmit="return checkForm(this);">
     {% csrf_token %}
 
 
