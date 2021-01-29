@@ -1,7 +1,18 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-    
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+<button type="submit" id="next-add2">Next</button>
+</form>
+<!--{% let name = property.id %}
+          <a onclick="togglePopupDelete("+name+")"> -->
+<!--{% for field in form %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+{% endfor %} -->    
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

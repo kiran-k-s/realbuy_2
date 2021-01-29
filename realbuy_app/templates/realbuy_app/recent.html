@@ -76,9 +76,14 @@ Recent Properties{% endblock %}
                         <div class="recentAddress"> {{ property.address|slice:":30" }}</div>
                         <div class="recentPrice">
                         <span class="recentPrice1">&#8377; </span>
-                        <span class="recentPrice2">{{ property.price}}</span><span class="recentPrice3">/Month</span>
-                            
+                        {% if property.sell_or_rent == 'rent' %}
+                        <span class="recentPrice2">{{ property.price}}/Month</span>
+                        {% else %}
+                        <span class="recentPrice2">{{property.price}}</span>
+                        {% endif %}    
                         </div>
+
+               
                         <form action="{% url 'like_recent' property.pk %}" method="POST">
                         {% csrf_token %}
                         <h3>{{ property.liked }}</h3>

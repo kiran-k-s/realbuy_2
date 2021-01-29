@@ -52,7 +52,7 @@ class Property(models.Model):
     )
     resale_or_new = models.CharField(max_length=100,choices=RESALEorNEW, null=True)
     
-    property_floor = models.IntegerField(blank=True,null=True)
+    property_floor = models.IntegerField(blank=True,null=True,default=None)
     ownership = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     total_floor = models.IntegerField(blank=True,null=True)
     

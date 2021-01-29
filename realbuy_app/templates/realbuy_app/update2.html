@@ -1,32 +1,147 @@
-<!doctype html>
-<html lang="en">
+{% extends 'realbuy_app/base.html' %}
 {% load static %}
-<!--{% let name = property.id %}
-          <a onclick="togglePopupDelete("+name+")"> -->
-<!--{% for field in form %}
-    {% for error in field.errors %}
-        <p style="color: red">{{ error }}</p>
-    {% endfor %}
-{% endfor %} -->
-    
-<head><title>Update Page2</title>
-</head>
+{% block title %}Update Property{% endblock %}
+{% block links %}
+<link href="{% static 'realbuy_app/styles/add2.css' %}" rel="stylesheet">
+{% endblock %}
+{% block styles %}
+<style type="text/css">
+  input[type="radio"]{
+    display:none;
+  }
 
-<body>
+  input[type="radio"] + label
+  {
+    background-image:url('{% static 'realbuy_app/images/add1/default_bullet.png' %}');
+    background-size: cover;
+  }
 
+  input[type="radio"]:checked + label
+  {
+    background-image:url('{% static 'realbuy_app/images/add1/select_bullet.png' %}');
+    background-size: cover;
+  }
+  select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+  }
 
-<h1>Update Property</h1>
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}
+</style>
+{% endblock %}
 
+{% block content %}
+<script src="{% static 'realbuy_app/scripts/add2.js' %}"></script> 
+<div id="add2-big-box"></div>
+<div id="add2-big-box-2"></div> 
+<span id="add2-head-1">ADD</span> <span id="add2-head-2">PROPERTY</span>
+<div id="add2-basic-info">BASIC INFORMATION</div>
+<div id="add2-property-details">PROPERTY DETAILS</div>
 
+<div id="add2-bar-1"></div>
+<div id="add2-bar-2"></div>
+<div id="add2-bar-3"></div>
+<span id="add2-bar-1-content">Property Area </span>
+<span id="add2-bar-2-content">Transaction Type </span>
+<span id="add2-bar-3-content">Availability</span>
 
 <form id='AddForm2' method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-<button class="btn btn-lg btn-danger btn-block" type="submit" id="fbutton">submit</button>
 
+
+<p><label for="id_price"></label> <input class="add2-price" type="text" name="price" id="id_price" placeholder="AskingPrice: &#8377;" autocomplete="off" value="{{property.price}}" onblur="priceValidate();"></p>
+<p><label for="id_bathroom"></label> <input class="add2-bathroom" type="text" name="bathroom" id="id_bathroom" placeholder="Bathroom(s)" autocomplete="off" value="{{property.bathroom}}" onblur="bathroomValidate();"></p>
+<p><label for="id_bedroom"></label> <input class="add2-bedroom" type="text" name="bedroom" id="id_bedroom" placeholder="Bedroom(s)" autocomplete="off" value="{{property.bedroom}}" onblur="bedroomValidate();"></p>
+<div class="add2_error" id="add2_error"></div>
+<p><label for="id_built_up_area"></label> 
+  <input class="add2-built" type="text" name="built_up_area" required id="id_built_up_area" placeholder="Built-Up Area" autocomplete="off" value="{{property.built_up_area}}" onblur="builtValidate();"></p>
+<p><label for="id_built_up_unit"></label>
+ <select class="add2-built-unit" name="built_up_unit" class="builtupunit" id="id_built_up_unit" required>
+  <option value="" disabled selected hidden>Unit</option>
+
+  <option value="CENTS" {% if property.built_up_unit == "CENTS" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">cents</option>
+
+  <option value="SQM" {% if property.built_up_unit == "SQM" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.m</option>
+
+  <option value="SQFT" {% if property.built_up_unit == "SQFT" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.ft</option>
+
+</select></p>
+<img class="add2-dropdown1" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >
+<p><label for="id_carpet_area"></label> 
+  <input class="add2-carpet" type="text" name="carpet_area" required id="id_carpet_area" placeholder="Carpet Area" autocomplete="off" value="{{property.carpet_area}}" onblur="carpetValidate();"></p>
+<p><label for="id_carpet_unit"></label> 
+  <select class="add2-carpet-unit" name="carpet_unit" class="carpetunit" id="id_carpet_unit" required>
+  <option value="" disabled selected hidden >Unit</option>
+
+  <option value="CENTS" {% if property.carpet_unit == "CENTS" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">cents</option>
+
+  <option value="SQM" {% if property.carpet_unit == "SQM" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.m</option>
+
+  <option value="SQFT" {% if property.carpet_unit == "SQFT" %} selected {% endif %} style="color: rgba(140, 140, 140, 1);background-color: rgba(22, 22, 22, 1);">sq.ft</option>
+
+</select></p>
+<img class="add2-dropdown2" src="{% static 'realbuy_app/images/dropdown_arrow.png' %}" >
+<p><label for="id_resale_or_new_0"></label> 
+<div id="id_resale_or_new" class="resaleornew">
+
+<div>
+  
+      <input type="radio" name="resale_or_new" value="resale" class="resaleornew" required id="id_resale_or_new_0" {% if property.resale_or_new == 'resale' %} checked {% endif %}>
+      <label for="id_resale_or_new_0" class="add2-resale-bullet">
+      
+</div>
+<span class="add2-resale">Resale</span>
+<div>
+  
+    <input type="radio" name="resale_or_new" value="new" class="resaleornew" required id="id_resale_or_new_1" {% if property.resale_or_new == 'new' %} checked {% endif %}>
+    <label for="id_resale_or_new_1" class="add2-new-bullet">
     
+
+</div>
+<span class="add2-new">New Booking</span>
+</div>
+</p>
+
+
+<p><label for="id_property_floor"></label>
+  <input class="add2-property-floor" type="text" name="property_floor" id="id_property_floor" placeholder="Property Floor" autocomplete="off" value="{{property.property_floor}}" onblur="propertyFloorValidate();"></p>
+<p><label for="owner"></label>
+ <input class="add2-ownership" type="text" name="ownership" value="" id="owner" readonly required placeholder="Ownership" onclick="placeOwner()"></p>
+<p><label for="id_total_floor"></label>
+ <input class="add2-total-floor" type="text" name="total_floor" required id="id_total_floor" placeholder="Total Floors" autocomplete="off" value="{{property.total_floor}}" onblur="totalFloorValidate();"></p>
+<p><label for="id_availability_0"></label>
+<div id="id_availability" class="availability">
+<div>
+  
+    <input type="radio" name="availability" value="ready to move" class="availability" required id="id_availability_0" {% if property.availability == 'ready to move' %} checked {% endif %}>
+    <label for="id_availability_0" class="add2-ready-bullet">
+    
+</div>
+<span class="add2-ready">Ready to move</span>
+<div>
+    <input type="radio" name="availability" value="under construction" class="availability" required id="id_availability_1" {% if property.availability == 'under construction' %} checked {% endif %}>
+    <label for="id_availability_1" class="add2-under-bullet">
+
+</div>
+<span class="add2-under">Under construction</span>
+</div></p>
+<p><label for="id_description"></label> 
+  <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" id="id_description" required onblur="descriptionValidate();">{{property.description}}
+</textarea></p>
+
+
+<button class="add2-submit" type="submit" onclick="placeOwner()">UPDATE AD</button>
+
 </form>
+
 <script>
+function placeOwner()
+{
 var name = "{{ user.username }}";
 document.getElementById("owner").value = name;
 document.getElementById('AddForm2').onsubmit = function() {
@@ -34,7 +149,59 @@ document.getElementById('AddForm2').onsubmit = function() {
     var txt = document.getElementById('owner');
     txt.value = "{{ user.id }}";
   }
+}
 </script>
-</body>
+<!--
+<script>
+    
+    const form = document.getElementById('AddForm2');
+    form.addEventListener("submit", submitHandler);
 
-</html>
+    function submitHandler(e) {
+        e.preventDefault();
+        var priceok=priceValidate();
+        var bathok=bathroomValidate();
+        var bedok=bedroomValidate();
+        var builtok=builtValidate();
+        var carpetok=carpetValidate();
+        var propertyok=propertyFloorValidate();
+        var totalok=totalFloorValidate();
+        var descok=descriptionValidate();
+      if(priceok==true && bathok==true && bedok==true && builtok==true && carpetok==true && propertyok==true && totalok==true && descok==true){   
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '{% url 'update2' pk %}', // the url where we want to POST
+            data        : $('#AddForm2').serialize(), // our form data
+            dataType    : 'json', // what type of data do we expect back from the server
+            success     : successFunction
+        });
+      }
+    }
+
+    function successFunction(data) {
+        if (data.message === 'success') {
+            alert('Success!');
+            form.reset()
+        }
+    }
+
+    
+</script> 
+-->
+
+
+{% endblock %}
+
+{% block script %}
+<script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous">
+</script>
+{% endblock %}    
+
+
+
+
+
+

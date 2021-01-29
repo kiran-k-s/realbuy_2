@@ -252,7 +252,7 @@ def AddView2(request, pk):
         form = AddForm2(request.POST) 
         
         if form.is_valid(): 
-            #prop = request.session.get('prop', None)
+        
             
             sell_or_rent = request.session.pop('sell_or_rent') 
             property_type = request.session.pop('property_type')
@@ -268,16 +268,15 @@ def AddView2(request, pk):
             print(form.instance.image.url)
             print(form.instance.location)
             print("hai")
-            #prop = form.save(commit=False)
             form.save()
             Property.objects.get(id=pk).delete()
             
             return redirect('home') 
-            #success_url = reverse_lazy('home')
         else:
             print("error")
     else: 
         form = AddForm2()
+
         print("sucess3") 
     context = {'form' : form,'current':'add','pk':pk}
     return render(request, 'realbuy_app/add2.html',context) 
@@ -312,18 +311,17 @@ def AddView2(request, pk):
             print("error")
     return render(request, 'realbuy_app/add2.html', {'form' : form,'current':'add'}) 
     '''
-'''
+
 def UpdateView1(request,pk):
     update_property = Property.objects.get(id=pk)
     form = AddForm1(instance=update_property)
     if request.method == 'POST':
         form = AddForm1(request.POST,request.FILES, instance=update_property)
         if form.is_valid():
-            session
+            form.save()
             return redirect('update2',pk)
     
-    else: 
-        return render(request, 'realbuy_app/update1.html', {'form' : form})
+    return render(request, 'realbuy_app/update1.html', {'form' : form, 'property':update_property})
 
 def UpdateView2(request,pk):
     update_property = Property.objects.get(id=pk)
@@ -331,12 +329,11 @@ def UpdateView2(request,pk):
     if request.method == 'POST':
         form = AddForm2(request.POST, instance=update_property)
         if form.is_valid():
-            session
             form.save()
             return redirect('home')
     
-    else: 
-        return render(request, 'realbuy_app/update2.html', {'form' : form}) '''
+    
+    return render(request, 'realbuy_app/update2.html', {'form' : form, 'property':update_property, 'pk':pk}) 
     
         
 def ContactUs(request):
@@ -366,20 +363,6 @@ def ContactUs(request):
                 'message': 'success'
             })
     return render(request, 'realbuy_app/contactus.html',{'form' : form,'current':'contactus'})
-
-    
-class UpdateView1(UpdateView):
-    model = Property
-    form_class = AddForm1
-    template_name = 'realbuy_app/update1.html'
-
-    
-class UpdateView2(UpdateView):
-    model = Property
-    form_class = AddForm2
-    template_name = 'realbuy_app/update2.html'
-
-
     
     
 def DetailLikeView(request, pk):
