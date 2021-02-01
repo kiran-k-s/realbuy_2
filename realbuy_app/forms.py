@@ -18,9 +18,9 @@ class AddForm1(forms.ModelForm):
                                           choices=PROPERTY_TYPE)
         '''property_type = forms.MultipleChoiceField(choices=PROPERTY_TYPE, widget=forms.SelectMultiple(attrs={ 'class':'propertytype'}))'''
 
-        city = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'city', 'placeholder' : 'City'}))
-        address = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'address', 'placeholder' : 'Address'}))
-        location = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(attrs={'class' : 'location', 'placeholder' : 'Location'}))
+        city = forms.CharField(widget=forms.TextInput(attrs={'class' : 'city', 'placeholder' : 'City'}))
+        address = forms.CharField(widget=forms.TextInput(attrs={'class' : 'address', 'placeholder' : 'Address'}))
+        location = forms.CharField(widget=forms.TextInput(attrs={'class' : 'location', 'placeholder' : 'Location'}))
         
         class Meta:
             model = Property
@@ -61,6 +61,11 @@ class AddForm2(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.fields['property_floor'].queryset = Property.objects.none()
+
+        def clean(self):
+            self.cleaned_data = super(AddForm2, self).clean()
+            if self.cleaned_data['property_floor'] == '': self.cleaned_data['property_floor'] = None
+            return self.cleaned_data
         
         
                                                    
@@ -68,15 +73,15 @@ class ContactUsForm(forms.ModelForm):
         class Meta:
             model = ContactUs
             fields = ('name','email','phone','message')
-        name = forms.CharField(max_length=100, min_length=4, widget=forms.TextInput(
+        name = forms.CharField(max_length=100, widget=forms.TextInput(
             attrs={'id':'contactus_name','placeholder' : 'Name'}))
         email = forms.EmailField(max_length=45 , widget=forms.EmailInput(
             attrs={'id':'contactus_mail', "placeholder":"Email"}
         ))
-        phone = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(
+        phone = forms.CharField( widget=forms.TextInput(
             attrs={'id':'contactus_phone', "placeholder":"Phone Number"}
         ),required=False)
-        message = forms.CharField(min_length=20, widget=forms.Textarea(
+        message = forms.CharField( widget=forms.Textarea(
             attrs={'id':'contactus_message',"placeholder":"Message"}
         ))
 

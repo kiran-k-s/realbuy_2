@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-    
+{% load humanize %}    
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -195,8 +195,9 @@
                             <span class="filter-mail">SEND MAIL</span>
                         </div>
                         <div>
+                            
                             <a href="#">
-                                <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
+                                <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
                             </a>
                             <span class="filter-phone">PHONE NUMBER</span>
                         </div>
@@ -204,7 +205,7 @@
                             
                             <form action="{% url 'like_filter' property.pk %}" method="POST">
                             {% csrf_token %}
-                                {% if liked %}
+                                {% if property.liked %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                                 {% else %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
@@ -260,6 +261,25 @@
 <img src="{% static 'realbuy_app/images/google.png' %}" id="filter-google">
 </a>
 <span id="filter-copyright">&copy; 2016. realbuy.com. All rights reserved.</span>
+
+<!-- phone number popup -->
+
+<div class="popup" id="filter-popup-2">
+  <div class="overlay"></div>
+  <div class="content">
+    <div id="filter-popup-box2"></div>
+    <img id="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
+    <span id="filter-popup-phone">+91 {{property.ownership.profile.phone}}</span>
+  </div>
+</div>
+
+
+<script>
+
+function togglePopup2(){
+  document.getElementById("detail-popup-2").classList.toggle("active");
+}
+</script>
 
 <script>
 function togglePopupLogin(){

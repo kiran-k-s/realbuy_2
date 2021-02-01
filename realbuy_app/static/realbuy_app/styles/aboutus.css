@@ -74,6 +74,7 @@
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
     height: 10px;
+    letter-spacing: 1px;
 }
 .aboutus-price-2{
    font-family: 'Antipasto';
@@ -86,29 +87,6 @@
     font-size: 11px;
     color: rgba(255, 255, 255, 1);
     height: 5px;
-}
-.part80-90{
-    position: absolute;
-    top: 235px;
-    left: 30px;
-    height: 10px;
-    width: 100px;
-    font-family: 'Antipasto';
-    font-size: 16px;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    
-}
-.partLakhs{
-    position: absolute;
-    top: 240px;
-    left: 80px;
-    height: 5px;
-    width: 70px;
-    font-family: 'Antipasto';
-    font-size: 11px;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
 }
 .aboutus-area{
     position: absolute;
@@ -141,6 +119,7 @@
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
     height: 16px;
+    letter-spacing: 1px;
 }
 .aboutus-area-content-2{
    font-family: 'Antipasto';

@@ -1,5 +1,6 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}
 Recent Properties{% endblock %}
 {% block links %}
@@ -77,16 +78,17 @@ Recent Properties{% endblock %}
                         <div class="recentPrice">
                         <span class="recentPrice1">&#8377; </span>
                         {% if property.sell_or_rent == 'rent' %}
-                        <span class="recentPrice2">{{ property.price}}/Month</span>
+                        <span class="recentPrice2">{{ property.price|intcomma}}/Month</span>
                         {% else %}
-                        <span class="recentPrice2">{{property.price}}</span>
+                        <span class="recentPrice2">{{property.price|intcomma}}</span>
                         {% endif %}    
                         </div>
+                        <h3 style="color:red; z-index: 100;"> {{property.liked}} </h3>
 
                
                         <form action="{% url 'like_recent' property.pk %}" method="POST">
                         {% csrf_token %}
-                        <h3>{{ property.liked }}</h3>
+                        
                         {% if property.liked %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         

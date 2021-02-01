@@ -426,3 +426,69 @@ color: rgba(198, 198, 198, 1);
     font-size: 10px;
     color: rgba(255, 255, 255, 1);
 }
+
+
+/* filter phone popup */
+#filter-popup-2 .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:1;
+  display:none;
+}
+
+#filter-popup-2 .content {
+  position:absolute;
+  top:70%;
+  left:75%;
+  transform:translate(-50%,-50%) scale(0);
+  /*background: rgba(43, 43, 43, 1);*/
+  background:#fff;
+  width:300px;
+  height:100px;
+  z-index:2;
+  padding:20px;
+  border: 5px solid black;
+  box-sizing:border-box;
+  
+
+}
+
+#filter-popup-phone{
+    position: absolute;
+    top:30px;
+    left:5px;
+    width:250px;
+    height:40px;
+    font-size: 20px;
+    color: black;
+    text-align: center;  
+}
+
+#filter-popup-close {
+  cursor:pointer;
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:20px;
+  height:20px;
+  /*background:#222;
+  color:#fff;
+  font-size:25px;
+  font-weight:600;
+  line-height:30px;
+  text-align:center;
+  border-radius:50%; */
+}
+
+#filter-popup-2.active .overlay {
+  display:block;
+}
+
+#filter-popup-2.active .content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}

@@ -36,7 +36,7 @@ Contact Us{% endblock %}{% block content %}
 
 
 
-<form id='contactForm' method='POST'>
+<form id='contactForm' method='POST' onsubmit="return(validateForm())">
     {% csrf_token %}
     <div class="contactus_error" id="contactus_error"></div>
     <input type="text" name="name" id="contactus_name" placeholder="Name" autocomplete="off" maxlength="100" minlength="4" required onblur="nameValidate();">
@@ -48,6 +48,25 @@ Contact Us{% endblock %}{% block content %}
     <button id="contactus_submit" type="submit">SUBMIT</button>
 </form>
 
+<script type="text/javascript">
+    function validateForm() {
+ 
+    
+    var nameok=nameValidate();
+    var mailok=mailValidate();
+    var phoneok=phoneValidate();
+    var messageok=messageValidate();
+    
+    if(nameok==true && mailok==true && phoneok==true && messageok==true)
+    {  
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+ }
+</script>
         
 <script>
     

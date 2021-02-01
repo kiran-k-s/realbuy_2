@@ -175,20 +175,30 @@ function totalFloorValidate()
 {
 
 	var total_floor=document.getElementById("id_total_floor").value;
+	var property_floor=document.getElementById("id_property_floor").value;
 	const re=/^\d+$/;
 
 	if(re.test(total_floor)|| total_floor.length ==0) 
 		{
-		if(total_floor.length<3)
-			{
-			document.getElementById("add2_error").innerHTML ="";
-			return true;
-			}
-		else
-			{
-			document.getElementById("add2_error").innerHTML ="Error: Maximum of 2 digits allowed for total floor";
+		  if(Number(total_floor) >= Number(property_floor))
+		  {
+			if(total_floor.length<3)
+				{
+				document.getElementById("add2_error").innerHTML ="";
+				return true;
+				}
+			else
+				{
+				document.getElementById("add2_error").innerHTML ="Error: Maximum of 2 digits allowed for total floor";
+				return false;
+				}
+		  }
+		  else
+		  {
+		  	document.getElementById("add2_error").innerHTML ="Error: total floor must be greater than or equal to property floor";
 			return false;
-			}
+		  }
+
 		}
 	else
 		{

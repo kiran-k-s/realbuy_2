@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'select2',
     'bootstrap_modal_forms',
     'social_django',
+    'django.contrib.humanize'
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 

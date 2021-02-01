@@ -76,20 +76,5 @@ function addressValidate()
 }
 
 
-function checkForm(form)
-  {
-    
-    var nameok=nameValidate();
-    var mailok=mailValidate();
-    var phoneok=phoneValidate();
-    var messageok=messageValidate();
-    if(nameok==true && mailok==true && phoneok==true && messageok==true)
-    {  
-    return true;
-	}
-	else
-	{
-	return false;
-	}
-  }
+
 

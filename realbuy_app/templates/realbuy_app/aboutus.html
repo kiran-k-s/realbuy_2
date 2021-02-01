@@ -1,5 +1,6 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}About Us {% endblock %}
 {% block links %}
 <link href="{% static 'realbuy_app/styles/aboutus.css' %}" rel="stylesheet">
@@ -60,7 +61,7 @@
                             <span class="aboutus-price-2">Lakhs</span>
                             <span class="aboutus-price-3">/Month</span>
                             {% else %}
-                            <span class="aboutus-price-1">{{ property.price }}</span>
+                            <span class="aboutus-price-1">{{ property.price|intcomma }}</span>
                             <span class="aboutus-price-2">/Month</span>
                             {% endif %}
                         {% else %}
@@ -68,14 +69,14 @@
                             <span class="aboutus-price-1">{% widthratio property.price 100000 1|floatformat %}</span>
                             <span class="aboutus-price-2">Lakhs</span>
                             {% else %}
-                            <span class="aboutus-price-1">{{ property.price }}</span>
+                            <span class="aboutus-price-1">{{ property.price|intcomma }}</span>
                             {% endif %}
                         {% endif %}
                 </div>
 				<img src="{% static 'realbuy_app/images/area.png' %}" class="aboutus-area">
 				<span class="area-head">Area</span>
 				<div class="aboutus-area-content">
-        			<span class="aboutus-area-content-1">{{ property.built_up_area|floatformat}}</span>
+        			<span class="aboutus-area-content-1">{{ property.built_up_area|floatformat|intcomma}}</span>
         			<span class="aboutus-area-content-2">{{property.built_up_unit}}</span>
     			</div>
 				<img src="{% static 'realbuy_app/images/bedroom.png' %}" class="aboutus-bedroom">

@@ -1,5 +1,6 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
+{% load humanize %}
 {% load property_tags %}
 {% block title %}
 Featured Properties{% endblock %}
@@ -95,7 +96,7 @@ Featured Properties{% endblock %}
 
                         <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
-                        {% if liked %}
+                        {% if property.liked %}
                         <button class="featured-like" type="submit" name="post_id" value="{{ property.id }}"><img class="featured-like-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}
@@ -169,7 +170,7 @@ Featured Properties{% endblock %}
                         </div>
                         <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
-                        {% if liked %}
+                        {% if property.liked %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
                         
                         {% else %}

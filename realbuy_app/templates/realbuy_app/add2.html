@@ -50,7 +50,7 @@ select::-ms-expand {
 <span id="add2-bar-2-content">Transaction Type </span>
 <span id="add2-bar-3-content">Availability</span>
 
-<form id='AddForm2' method="post">
+<form id='AddForm2' method="post" onsubmit="return(validateForm())">
     {% csrf_token %}
 
 
@@ -131,7 +131,7 @@ select::-ms-expand {
 <span class="add2-under">Under construction</span>
 </div></p>
 <p><label for="id_description"></label> 
-  <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" minlength="20" required id="id_description" onblur="descriptionValidate();">
+  <textarea name="description" cols="40" rows="10" class="add2-description" placeholder="Description" required id="id_description" onblur="descriptionValidate();">
 </textarea></p>
 
 
@@ -140,6 +140,33 @@ select::-ms-expand {
 </form>
 
 <script>
+
+
+  function validateForm() {
+ 
+    
+    var priceok=priceValidate();
+    var bathok=bathroomValidate();
+    var bedok=bedroomValidate();
+    var builtok=builtValidate();
+    var carpetok=carpetValidate();
+    var propok=propertyFloorValidate();
+    var totalok=totalFloorValidate();
+    var descok=descriptionValidate();
+    
+    
+    if(priceok==true && bathok==true && bedok==true && builtok==true && carpetok==true && propok==true && totalok==true && descok==true)
+    {  
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+ }
+
+
+
 function placeOwner()
 {
 var name = "{{ user.username }}";
@@ -150,6 +177,10 @@ document.getElementById('AddForm2').onsubmit = function() {
     txt.value = "{{ user.id }}";
   }
 }
+
+
+
+     
 </script>
 <!--
 <script>

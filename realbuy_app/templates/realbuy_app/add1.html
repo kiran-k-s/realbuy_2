@@ -50,7 +50,7 @@
 	
 	[type=file] { 
 	  position: absolute;
-	  opacity: 0;
+	  opacity: 1;
 	  width: 0;
 	  height: 0;
 	} 
@@ -84,7 +84,7 @@
 <img class="add1-rent-select-image" src="{% static 'realbuy_app/images/add1/rent_select.png' %}"> 
 
 
-<form method="post" enctype="multipart/form-data" onsubmit="return checkForm(this);">
+<form method="post" enctype="multipart/form-data" onsubmit="return(validateForm())">
     {% csrf_token %}
 
 
@@ -162,5 +162,24 @@
 
     
 </form>
+
+<script type="text/javascript">
+	function validateForm() {
+ 
+    
+    var cityok=cityValidate();
+    var locationok=locationValidate();
+    var addressok=addressValidate();
+    
+    if(cityok==true && locationok==true && addressok==true)
+    {  
+    return true;
+	}
+	else
+	{
+	return false;
+	}
+ }
+</script>
 
 {% endblock %}

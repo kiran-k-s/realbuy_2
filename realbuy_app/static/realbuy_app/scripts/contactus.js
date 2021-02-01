@@ -122,6 +122,8 @@ function messageValidate()
 	
 }
 
+/*
+
     const form = document.getElementById('contactForm');
     form.addEventListener("submit", submitHandler);
 
@@ -151,7 +153,7 @@ function messageValidate()
 
 
     
-
+*/
 
 /*        $(document).ready(function(){
             $('#fbutton').click(function(e){

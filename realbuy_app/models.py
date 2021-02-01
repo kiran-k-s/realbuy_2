@@ -77,10 +77,10 @@ class Property(models.Model):
         return self.likes.count()
         
     def liked(request,self):
-        liked = False
+        like = False
         if self.likes.filter(id=self.request.user.id).exists():
-            liked = True
-        return liked    
+            like = True
+        return like
 
     @property
     def filename(self):

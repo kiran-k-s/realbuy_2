@@ -1,5 +1,6 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}
 Details{% endblock %}{% block content %}
 <div id="detail-big-box"></div>
@@ -16,7 +17,7 @@ Details{% endblock %}{% block content %}
     <img id="detail-box-1-image" src="{% static 'realbuy_app/images/location_carousel.png' %}">
     <div id="detail-location">{{ property.location}}</div>
     <div class="detail-price">
-        <span id="detail-price-1">{{ property.price}}</span>
+        <span id="detail-price-1">{{ property.price|intcomma}}</span>
         {% if property.sell_or_rent == 'rent' %}
         <span class="detail-price-2">/Month</span>
         {% else %}
@@ -28,7 +29,7 @@ Details{% endblock %}{% block content %}
     <img id="detail-box-2-image" src="{% static 'realbuy_app/images/area.png' %}">
     <div id="detail-area-head">Area</div>
     <div class="detail-area-content">
-        <span id="detail-area-content-1">{{ property.built_up_area}}</span>
+        <span id="detail-area-content-1">{{ property.built_up_area|floatformat|intcomma}}</span>
         <span id="detail-area-content-2">{{property.built_up_unit}}</span>
     </div>
 </div>
@@ -95,7 +96,7 @@ Details{% endblock %}{% block content %}
   <div class="content">
     <div id="detail-popup-box2"></div>
     <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
-    <span id="detail-popup-phone">{{property.ownership.profile.phone}}</span>
+    <span id="detail-popup-phone">+91 {{property.ownership.profile.phone}}</span>
   </div>
 </div>
 
