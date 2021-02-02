@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-{% load humanize %}    
+{% load humanize %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% load property_tags %}    
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -205,7 +208,7 @@
                             
                             <form action="{% url 'like_filter' property.pk %}" method="POST">
                             {% csrf_token %}
-                                {% if property.liked %}
+                                {% if like_dict|get_value_from_dict:property.id %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                                 {% else %}
                                 <button class="filter-shortlist-button" type="submit" name="post_id" value="{{ property.id }}"><img class="filter-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
@@ -268,7 +271,8 @@
   <div class="overlay"></div>
   <div class="content">
     <div id="filter-popup-box2"></div>
-    <img id="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
+
+    <!-- <img id="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()"> -->
     <span id="filter-popup-phone">+91 {{property.ownership.profile.phone}}</span>
   </div>
 </div>

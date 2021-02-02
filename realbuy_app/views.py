@@ -44,11 +44,8 @@ def AboutUs(request):
         'current': 'aboutus','aboutus_list':aboutus_list
     }
     return render(request, 'realbuy_app/aboutus.html',context)
-'''
-def CategoryViewHome1(request, cats):
-    category_property_home = Property.objects.filter(Q(sell_or_rent__contains=cats)|Q(availability__contains=cats.replace('-',' '))).distinct()
-    return render(request, 'realbuy_app/filter.html', {'cats':cats.title().replace('-',' '), 'category_property_home':category_property_home})
-'''
+
+
 def CategoryViewHome2(request):
     qs = Property.objects.all()
     search_query = request.GET.get('home_search')
@@ -74,26 +71,47 @@ def CategoryViewHome2(request):
 
     
     composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
+
+    like_dict={}
+    for prop in qs:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict[prop.id]=like
     
     context = {
-        'composite_list': composite_list
+        'composite_list': composite_list, 'like_dict':like_dict
     }
     return render(request, 'realbuy_app/filter.html', context)
 
 
 def CategoryViewRecent(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
+    like_dict={}
+    for prop in category_property:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict[prop.id]=like
     
     composite_list = [category_property[x:x+4] for x in range(0, len(category_property),4)]
     
-    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'composite_list':composite_list})
+    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'composite_list':composite_list, 'like_dict':like_dict})
 
 def CategoryViewFilter1(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
     composite_list = [category_property[x:x+4] for x in range(0, len(category_property),4)]
-    
+    like_dict={}
+    for prop in category_property:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict[prop.id]=like
     context = {
-        'composite_list': composite_list
+        'composite_list': composite_list, 'like_dict':like_dict
     }
     return render(request, 'realbuy_app/filter.html', context)
 
@@ -151,9 +169,15 @@ def CategoryViewFilter2(request):
                 qs = qs.filter(built_up_area__lte=areamax)'''
 
     composite_list = [qs[x:x+4] for x in range(0, len(qs),4)]
-    
+    like_dict={}
+    for prop in qs:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict[prop.id]=like
     context = {
-        'composite_list': composite_list
+        'composite_list': composite_list, 'like_dict':like_dict
     }
     return render(request, 'realbuy_app/filter.html', context)
 
@@ -167,20 +191,22 @@ class RecentView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(RecentView, self).get_context_data()
         recent = Property.objects.all().order_by('-id')
-        '''
+        
+        like_dict={}
         for prop in recent:
-            liked = False
+            like = False
             if prop.likes.filter(id=self.request.user.id).exists():
-                liked = True
-            like_count = prop.total_likes()         '''
-        '''    
-        for prop in recent:
-            items = prop.liked()
-            print(items)            '''
+                like = True
+        
+            like_dict[prop.id]=like
+        print(like_dict) 
+
         composite_list = [recent[x:x+9] for x in range(0, len(recent),9)]
+        
         context["composite_list"] = composite_list
         context["current"] = 'recent'
-        #context["liked"] = liked
+        context["like_dict"] = like_dict
+
 
         return context
 
@@ -188,12 +214,28 @@ class RecentView(ListView):
 def FeaturedView(request):
     
     featured = Property.objects.all().annotate(count = Count('likes')).order_by('-count')
+    like_dict_featured={}
+    for prop in featured:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict_featured[prop.id]=like
+        
     composite_list = [featured[x:x+6] for x in range(0, len(featured),6)]
     recent = Property.objects.all().order_by('-id')
+    like_dict_recent={}
+    for prop in recent:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict_recent[prop.id]=like
+         
     recent_list = [recent[x:x+9] for x in range(0, len(recent),9)]
    
     
-    context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured'}
+    context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured', 'like_dict_featured':like_dict_featured, 'like_dict_recent':like_dict_recent}
     return render(request,'realbuy_app/featured.html', context)
         
 class DetailedView(DetailView):

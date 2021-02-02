@@ -76,7 +76,7 @@ class Property(models.Model):
     def total_likes(self):
         return self.likes.count()
         
-    def liked(request,self):
+    def liked(self,request):
         like = False
         if self.likes.filter(id=self.request.user.id).exists():
             like = True

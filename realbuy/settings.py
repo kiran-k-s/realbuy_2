@@ -33,7 +33,16 @@ INSTALLED_APPS = [
     'select2',
     'bootstrap_modal_forms',
     'social_django',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    #allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #providers
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook'
+
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
@@ -48,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',   #social_authentication
+    #'social_django.middleware.SocialAuthExceptionMiddleware',   #social_authentication
 ]
 
 ROOT_URLCONF = 'realbuy.urls'
@@ -65,23 +74,24 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'social_django.context_processors.backends',        #social_authentication
-                'social_django.context_processors.login_redirect',
+                #'social_django.context_processors.backends',        #social_authentication
+                #'social_django.context_processors.login_redirect',
 
             ],
         },
     },
 ]
         #social-authentication
+'''        
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.google.GoogleOAuth',
 
     'django.contrib.auth.backends.ModelBackend',
-)
+)'''
 
-WSGI_APPLICATION = 'realbuy.wsgi.application'
+# WSGI_APPLICATION = 'realbuy.wsgi.application'
 
 
 # Database
@@ -170,10 +180,16 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 } '''
-
+'''
 SOCIAL_AUTH_FACEBOOK_KEY = '255371952605641'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '510dc754cb356b1319cd5855acad5597'  # App Secret
 SESSION_COOKIE_SECURE=False
-'''SOCIAL_AUTH_TWITTER_KEY = '9TD8f5fhasdsbf4w61GSM9' 
-SOCIAL_AUTH_TWITTER_SECRET = 'mwtdcUe4uOvvjDk2Ausb45gsasdasdasashw65454TNSx' '''
+SOCIAL_AUTH_TWITTER_KEY = '9TD8f5fhasdsbf4w61GSM9' 
+SOCIAL_AUTH_TWITTER_SECRET = 'mwtdcUe4uOvvjDk2Ausb45gsasdasdasashw65454TNSx' 
+SOCIAL_AUTH_GOOGLE_KEY = '652793475567-c9j1s8hfv8io16heb1mub1ek91m1id91.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_SECRET = 'BUIe7RnyCmTmGAf_LwegKAUE'  '''
 
+
+SITE_ID = 1  #allauth
+
+LOGIN_REDIRECT_URL = '/'

@@ -1004,7 +1004,7 @@ color: rgba(198, 198, 198, 1);
     margin: 0;
     width: 20px;
     background: transparent;
-    /*border:none;*/
+    border:none;
 }
 #detail-shortlist-image{
      cursor: pointer;

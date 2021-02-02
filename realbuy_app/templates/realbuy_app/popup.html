@@ -18,13 +18,13 @@
     </form>
     <a href="{% url 'password_reset' %}" id="login-popup-forgot"> Forgot Password? </a>
     <span id="login-popup-or">Or</span>
-    <a href="{% url 'social:begin' 'facebook' %}">
+    <a href="{% provider_login_url "facebook" method="js_sdk" %}">
     <img src="{% static 'realbuy_app/images/fb.png' %}" id="login-popup-fb">
     </a>
-    <a href="{% url 'social:begin' 'twitter' %}">
+    <a href="{% url 'add1' %}">
     <img src="{% static 'realbuy_app/images/twitter.png' %}" id="login-popup-twitter">
     </a>
-    <a href="{% url 'social:begin' 'google-oauth2' %}">
+    <a href="{% provider_login_url "google" method="js_sdk" %}">
     <img src="{% static 'realbuy_app/images/google.png' %}" id="login-popup-google">
     </a>
     <span id="login-popup-register-1">Don't have an account?</span>

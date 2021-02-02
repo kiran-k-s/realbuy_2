@@ -96,7 +96,7 @@ Featured Properties{% endblock %}
 
                         <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
-                        {% if property.liked %}
+                        {% if like_dict_featured|get_value_from_dict:property.id %}
                         <button class="featured-like" type="submit" name="post_id" value="{{ property.id }}"><img class="featured-like-image" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}
@@ -170,7 +170,7 @@ Featured Properties{% endblock %}
                         </div>
                         <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
-                        {% if property.liked %}
+                        {% if like_dict_recent|get_value_from_dict:property.id %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
                         
                         {% else %}

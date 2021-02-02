@@ -7,11 +7,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('',include('realbuy_app.urls')),
     path('members/', include('members.urls')),
     path('members/', include('django.contrib.auth.urls')),
-    path('oauth/', include('social_django.urls', namespace='social')),
-    #url(r'^select2/', include('select2.urls')),
+    #path('oauth/', include('social_django.urls', namespace='social')),
+    
     
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

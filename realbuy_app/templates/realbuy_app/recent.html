@@ -1,6 +1,7 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
 {% load humanize %}
+{% load property_tags %}
 {% block title %}
 Recent Properties{% endblock %}
 {% block links %}
@@ -58,7 +59,6 @@ Recent Properties{% endblock %}
       <div class="carousel-inner">
          
         {% for prop in composite_list %}
-     
         <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
                
                 <div class="recentContent">
@@ -82,14 +82,13 @@ Recent Properties{% endblock %}
                         {% else %}
                         <span class="recentPrice2">{{property.price|intcomma}}</span>
                         {% endif %}    
-                        </div>
-                        <h3 style="color:red; z-index: 100;"> {{property.liked}} </h3>
+                        </div>      
 
                
                         <form action="{% url 'like_recent' property.pk %}" method="POST">
                         {% csrf_token %}
                         
-                        {% if property.liked %}
+                        {% if like_dict|get_value_from_dict:property.id %}
                         <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}
