@@ -21,9 +21,10 @@ def UserRegisterView(request):
     form = RegisterForm(request.POST)
     if form.is_valid():
         form.save()
-        return redirect('home')
+        return redirect('login_page')
     else:
-        print("error....")
+        print(form.errors)
+        return redirect('unsuccess')
     
 def UserLoginView(request):
     form = LoginForm()
@@ -46,7 +47,8 @@ def UserLoginView(request):
                 print("error....")
         else:
             print(form.errors)
-            return render(request, "realbuy_app/home.html",{'formLogin':form})
+            return redirect('unsuccess')
+            
     else:    
         return render(request, "members/login.html",context)    
 

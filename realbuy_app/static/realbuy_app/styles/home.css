@@ -399,12 +399,12 @@ z-index: 1;
   position:absolute;
     padding: 10px;
     top:40px;
-    left:80px;
+    left:40px;
     width : 250px;
     height : 30px;
     font-size: 11px;
     color: red;
-    background: yellow;
+    background: transparent;
     transition: all 0.5s ease;
 }
 #login-popup-username-head{
@@ -426,6 +426,7 @@ width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
 color:white;
+font-size: 12px;
 }
 #login-popup-password-head{
     position: absolute;
@@ -617,6 +618,7 @@ width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
 color:white;
+font-size: 12px;
 }
 #register-popup-email-head{
     position: absolute;
@@ -637,6 +639,7 @@ width: 200px;
 border: 1px solid rgba(210, 210, 210, 1);
 background: transparent;
 color:white;
+font-size: 12px;
 }
 #register-popup-password1-head{
     position: absolute;

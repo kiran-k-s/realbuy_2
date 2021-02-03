@@ -131,10 +131,10 @@ Featured Properties{% endblock %}
 <div id="recBigBox"></div>
 <div id="recBigBox2"></div>
 <span id="recHead1">Recent</span> <span id="recHead2">Properties</span>
-<a href="{% url 'category_recent' 'commercial' %}"><button type="button" class="recentTopRight" id="recentTopRight1">COMMERCIAL</button></a>
-<a href="{% url 'category_recent' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
-<a href="{% url 'category_recent' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
-<a href="{% url 'category_recent' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
+<a href="{% url 'category_featured' 'commercial' %}"><button type="button" class="recentTopRight" id="recentTopRight1">COMMERCIAL</button></a>
+<a href="{% url 'category_featured' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
+<a href="{% url 'category_featured' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
+<a href="{% url 'category_featured' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
 
 <div class="recentContainer">
     <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -171,10 +171,10 @@ Featured Properties{% endblock %}
                         <form action="{% url 'like_featured' property.pk %}" method="POST">
                         {% csrf_token %}
                         {% if like_dict_recent|get_value_from_dict:property.id %}
-                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
+                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
                         
                         {% else %}
-                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_select.png' %}"></button>
+                        <button class="recentLike" type="submit" name="post_id" value="{{ property.id }}"><img class="recentLikeImage" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
                         
                         {% endif %}
                         </form>       

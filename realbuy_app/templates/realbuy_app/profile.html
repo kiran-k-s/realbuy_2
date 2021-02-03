@@ -7,7 +7,9 @@ User Profile{% endblock %}{% block content %}
 <div id="profile-big-box"></div>
 <div id="profile-big-box-2"></div> 
 <div id="profile-user-section"></div>
+{% if profile.image %}
 <img id="profile-pic" src="{{ user.profile.image.url }}">
+{% endif %}
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
 <div id="profile-username">{{ profile.name | title}}</div>
 <img id="profile-mail-icon" src="{% static 'realbuy_app/images/profile/mail_icon.png' %}">
@@ -65,7 +67,7 @@ User Profile{% endblock %}{% block content %}
     			<img class="profile-property-edit-image" src="{% static 'realbuy_app/images/profile/edit.png' %}">
     		  </a>
           
-          <a onclick="togglePopupDelete()">  
+          <a href="#" data-id="{{ property.id }}" onclick="togglePopupDelete()">  
     			<button type="button" class="profile-property-delete-button"></button>
     			<img class="profile-property-delete-image" src="{% static 'realbuy_app/images/profile/delete-button.png' %}">
           </a>
@@ -83,7 +85,7 @@ User Profile{% endblock %}{% block content %}
     <span id="delete-popup-head">CONFIRM DELETE</span>
     <div id="delete-popup-box-1"></div>
     <div id="delete-popup-box-2"></div>
-    <form method="POST" action="{% url 'delete' profile.id %}"> 
+    <form method="POST" action="{% url 'delete' profile.id %}" id="deleteForm"> 
     {% csrf_token %}
     <img src="{% static 'realbuy_app/images/alert.png' %}" id="delete-popup-alert">
     <span id="delete-popup-content">Are you sure you want to delete this item?</span>
@@ -95,7 +97,9 @@ User Profile{% endblock %}{% block content %}
 <script>
 function togglePopupDelete(){
   document.getElementById("delete-popup").classList.toggle("active");
-  
+  const id = $(this).data('id');
+  alert(id);
+  $('#deleteForm').attr('action', '/clients/'+ id + '/destroy');
 }
 </script>
 

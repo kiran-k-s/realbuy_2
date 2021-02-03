@@ -14,7 +14,11 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.db.models import Count
 
+def Success(request):
+    return render(request, 'realbuy_app/success.html')
 
+def Unsuccess(request):
+    return render(request, 'realbuy_app/unsuccess.html')
 
 def Home(request):
     aboutus_list = Property.objects.all()
@@ -85,20 +89,6 @@ def CategoryViewHome2(request):
     }
     return render(request, 'realbuy_app/filter.html', context)
 
-
-def CategoryViewRecent(request, cats):
-    category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
-    like_dict={}
-    for prop in category_property:
-        like = False
-        if prop.likes.filter(id=request.user.id).exists():
-            like = True
-        
-        like_dict[prop.id]=like
-    
-    composite_list = [category_property[x:x+4] for x in range(0, len(category_property),4)]
-    
-    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'composite_list':composite_list, 'like_dict':like_dict})
 
 def CategoryViewFilter1(request, cats):
     category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
@@ -182,6 +172,8 @@ def CategoryViewFilter2(request):
     return render(request, 'realbuy_app/filter.html', context)
 
 
+
+
 class RecentView(ListView):
     model = Property
     template_name = 'realbuy_app/recent.html'
@@ -210,6 +202,21 @@ class RecentView(ListView):
 
         return context
 
+
+def CategoryViewRecent(request, cats):
+    category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
+    like_dict={}
+    for prop in category_property:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict[prop.id]=like
+    
+    composite_list = [category_property[x:x+9] for x in range(0, len(category_property),9)]
+    
+    return render(request, 'realbuy_app/recent.html', {'cats':cats.title().replace('-',' '), 'composite_list':composite_list, 'like_dict':like_dict})
+
     
 def FeaturedView(request):
     
@@ -237,6 +244,36 @@ def FeaturedView(request):
     
     context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured', 'like_dict_featured':like_dict_featured, 'like_dict_recent':like_dict_recent}
     return render(request,'realbuy_app/featured.html', context)
+
+
+def CategoryViewFeatured(request, cats):
+    featured = Property.objects.all().annotate(count = Count('likes')).order_by('-count')
+    like_dict_featured={}
+    for prop in featured:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict_featured[prop.id]=like
+        
+    composite_list = [featured[x:x+6] for x in range(0, len(featured),6)]
+
+    category_property = Property.objects.filter(Q(property_type__contains=cats.replace('-',' ')))
+    like_dict_recent={}
+    for prop in category_property:
+        like = False
+        if prop.likes.filter(id=request.user.id).exists():
+            like = True
+        
+        like_dict_recent[prop.id]=like
+    
+    recent_list = [category_property[x:x+9] for x in range(0, len(category_property),9)]
+
+    context = {'composite_list' : composite_list, 'recent_list': recent_list, 'current':'featured', 'like_dict_featured':like_dict_featured, 'like_dict_recent':like_dict_recent}
+    
+    return render(request, 'realbuy_app/featured.html', context)
+
+
         
 class DetailedView(DetailView):
     model = Property
@@ -313,7 +350,7 @@ def AddView2(request, pk):
             form.save()
             Property.objects.get(id=pk).delete()
             
-            return redirect('home') 
+            return redirect('success') 
         else:
             print("error")
     else: 
@@ -372,7 +409,7 @@ def UpdateView2(request,pk):
         form = AddForm2(request.POST, instance=update_property)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('success')
     
     
     return render(request, 'realbuy_app/update2.html', {'form' : form, 'property':update_property, 'pk':pk}) 

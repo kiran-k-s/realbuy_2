@@ -74,7 +74,7 @@
     <a href='{% url 'logout' %}'>
     <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
-    <a href='{% url 'profile' user.id %}'>
+    <a href='{% url 'profile' user.profile.id %}'>
     <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
     </a>
 {% else %}

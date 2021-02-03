@@ -4,6 +4,8 @@ from django.urls import reverse
 from multiselectfield import MultiSelectField
 from django.core.exceptions import FieldDoesNotExist
 import os
+from django.db.models.signals import post_save  #profile created with registration
+from django.dispatch import receiver
 
 class Property(models.Model):
     SELLorRENT = (
@@ -107,7 +109,7 @@ class ContactUs(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, default="user")
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank = True)
     email = models.EmailField(null=True,blank=True)
     phone = models.CharField(max_length=15, blank=True)
     address = models.TextField()
@@ -115,7 +117,12 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.user)
     
-    
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()    
     
     
     

@@ -12,6 +12,7 @@ urlpatterns = [
     path('about_us/', views.AboutUs, name='about_us'),
     path('recent/', RecentView.as_view(), name='recent'),
     path('category_recent/<str:cats>/', views.CategoryViewRecent, name='category_recent'),
+    path('category_featured/<str:cats>/', views.CategoryViewFeatured, name='category_featured'),
     path('featured/',views.FeaturedView, name='featured'),
     path('detail/<int:pk>', DetailedView.as_view(), name='detail'),
     path('add1/', views.AddView1, name='add1'),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('like_filter/<int:pk>', views.FilterLikeView, name='like_filter'),
     path('profile/<int:pk>', views.ProfileView, name='profile'),
     path('edit_profile/<int:pk>', views.EditProfile, name='edit_profile'),
-    
+    path('success/', views.Success, name='success'),
+    path('unsuccess/', views.Unsuccess, name='unsuccess'),
 ]

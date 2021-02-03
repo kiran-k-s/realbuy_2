@@ -11,7 +11,9 @@ Edit Profile{% endblock %}
 
 <form autocomplete="off" method="POST" enctype="multipart/form-data" onsubmit="return(validateForm())">
     {% csrf_token %}
+{% if profile.image %}
 <img id="profile-edit-pic" src="{{ profile.image.url }}">
+{% endif %}
 {{ form.image }}
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
 <input type="text" name="name" value="{{profile.name}}" id="profile-edit-name" required onblur="nameValidate();">

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     #providers
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook'
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
 
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
@@ -192,4 +193,4 @@ SOCIAL_AUTH_GOOGLE_SECRET = 'BUIe7RnyCmTmGAf_LwegKAUE'  '''
 
 SITE_ID = 1  #allauth
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'add1'
