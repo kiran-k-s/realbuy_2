@@ -17,12 +17,65 @@
     }
          
 </style>
-    
+<link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet">     
 </head>
 
 <body>
+{% include "realbuy_app/popup.html" %}
+{% if user.is_authenticated %}
+    <a href='{% url 'logout' %}'>
+    <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
+    </a>
+    <a href='{% url 'profile' user.profile.id %}'>
+    <button type="button" class="home-filter" id="home-profile">MY PROFILE</button>
+    </a>
+{% else %}
+    <button type="button" class="home-top-right" id="home-login" onclick="togglePopupLogin()">LOGIN</button>
+   
+{% endif %}
+    
+<a href='{% url 'home' %}'>
+<button type="button" class="home-top-right" id="home-top-right-1">HOME</button>
+</a>
+<a href='{% url 'about_us' %}'>
+<button type="button" class="home-top-right" id="home-top-right-2">ABOUT US</button>
+</a>
+<a href='{% url 'featured' %}'>
+<button type="button" class="home-top-right" id="home-top-right-3">FEATURED PROPERTIES</button>
+</a>
+<a href='{% url 'recent' %}'>
+<button type="button" class="home-top-right" id="home-top-right-4">RECENT PROPERTIES</button>
+</a>
+<a href='{% url 'add1' %}'>
+<button type="button" class="home-top-right" id="home-top-right-5">ADD PROPERTY</button>
+</a>
+<a href='{% url 'contactus' %}'>
+<button type="button" class="home-top-right" id="home-top-right-6">CONTACT US</button>
+</a>
+<h1 style="color:red; text-align:center;">FAILED!!! 
+</h1>
+{% for field in form %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+{% endfor %}
 
-<h1 style="color:red;text-align:center;">Failed!!!</h1>
 
+{% for error in form.non_field_errors %}
+    <p style="color: red">{{ error }}</p>
+{% endfor %}
+
+
+<script>
+function togglePopupLogin(){
+  document.getElementById("home-popup").classList.toggle("active");
+}
+</script>
+
+<script>
+function togglePopupRegister(){
+  document.getElementById("register-popup").classList.toggle("active");
+}
+</script>
 </body>
 </html>

@@ -9,13 +9,19 @@ User Profile{% endblock %}{% block content %}
 <div id="profile-user-section"></div>
 {% if profile.image %}
 <img id="profile-pic" src="{{ user.profile.image.url }}">
+{% else %}
+<img id="profile-pic" src="{% static 'realbuy_app/images/profile/profile_pic.png' %}">
 {% endif %}
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
 <div id="profile-username">{{ profile.name | title}}</div>
 <img id="profile-mail-icon" src="{% static 'realbuy_app/images/profile/mail_icon.png' %}">
 <div id="profile-mail">{{ profile.email }}</div>
 <img id="profile-phone-icon" src="{% static 'realbuy_app/images/profile/phone_icon.png' %}">
+{% if profile.phone %}
 <div id="profile-phone">+91 {{ profile.phone }}</div>
+{% else %}
+<div id="profile-phone"></div>
+{% endif %}
 <img id="profile-address-icon" src="{% static 'realbuy_app/images/profile/location_icon.png' %}">
 <div id="profile-address">{{ profile.address }}</div>
 

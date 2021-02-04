@@ -1,6 +1,9 @@
 {% extends 'realbuy_app/base.html' %}
 {% load static %}
 {% load humanize %}
+{% load social_share %}
+
+
 {% block title %}
 Details{% endblock %}{% block content %}
 <div id="detail-big-box"></div>
@@ -88,6 +91,7 @@ Details{% endblock %}{% block content %}
     </a>
     <span id="detail-share">SHARE</span>
 </div>
+{% post_to_facebook object_or_url "Post to Facebook!" %}
 
 <!-- phone number popup -->
 

@@ -13,6 +13,8 @@ Edit Profile{% endblock %}
     {% csrf_token %}
 {% if profile.image %}
 <img id="profile-edit-pic" src="{{ profile.image.url }}">
+{% else %}
+<img id="profile-edit-pic" src="{% static 'realbuy_app/images/profile/profile_pic.png' %}">
 {% endif %}
 {{ form.image }}
 <img id="profile-username-icon" src="{% static 'realbuy_app/images/profile/profileaccount_icon.png' %}">
@@ -20,6 +22,7 @@ Edit Profile{% endblock %}
 <img id="profile-mail-icon" src="{% static 'realbuy_app/images/profile/mail_icon.png' %}">
 <input type="email" name="email" value="{{profile.email}}" id="profile-edit-email" required onblur="mailValidate();">
 <img id="profile-phone-icon" src="{% static 'realbuy_app/images/profile/phone_icon.png' %}">
+<span id="india-number">+91</span>
 <input type="text" name="phone" value="{{profile.phone}}" id="profile-edit-phone" onblur="phoneValidate();">
 <img id="profile-address-icon" src="{% static 'realbuy_app/images/profile/location_icon.png' %}">
 <textarea name="address" cols="40" rows="10" id="profile-edit-address" required onblur="addressValidate();">

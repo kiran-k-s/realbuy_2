@@ -24,7 +24,8 @@ def UserRegisterView(request):
         return redirect('login_page')
     else:
         print(form.errors)
-        return redirect('unsuccess')
+        context = {'form': form }
+        return render(request, "realbuy_app/unsuccess.html",context)
     
 def UserLoginView(request):
     form = LoginForm()
@@ -47,7 +48,8 @@ def UserLoginView(request):
                 print("error....")
         else:
             print(form.errors)
-            return redirect('unsuccess')
+            context = {'form': form }
+            return render(request, "realbuy_app/unsuccess.html",context)
             
     else:    
         return render(request, "members/login.html",context)    

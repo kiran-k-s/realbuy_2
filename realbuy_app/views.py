@@ -126,8 +126,7 @@ def CategoryViewFilter2(request):
         sqft = qs.filter(Q(built_up_unit__icontains='SQFT'))
         sqft = sqft.filter(built_up_area__gte=areamin)
         areamin_list = cents | sqm | sqft
-        qs = qs | areamin_list
-        qs = qs.distinct()
+        qs = areamin_list
 
     if areamax != '' and areamax is not None:
         cents = qs.filter(Q(built_up_unit__icontains='CENTS'))
@@ -137,8 +136,7 @@ def CategoryViewFilter2(request):
         sqft = qs.filter(Q(built_up_unit__icontains='SQFT'))
         sqft = sqft.filter(built_up_area__lte=areamax)
         areamax_list = cents | sqm | sqft
-        qs = qs | areamax_list
-        qs = qs.distinct()
+        qs = areamax_list
         '''
         for item in qs:
             if item.built_up_unit == 'CENTS':

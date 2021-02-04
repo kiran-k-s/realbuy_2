@@ -3,6 +3,38 @@
 {% block title %}
 Contact Us{% endblock %}{% block content %}
 
+{% block styles %}
+<style type="text/css">
+    textarea::placeholder {  
+                  
+                /* Firefox, Chrome, Opera */ 
+                text-align: right; 
+                color: red;
+            } 
+
+    textarea::-webkit-input-placeholder {
+  text-align: right; 
+  color: red;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+  text-align: right; 
+  color: red;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+  text-align: right; 
+  color: red; 
+}
+
+textarea:-ms-input-placeholder {
+  text-align: right; 
+  color: red;
+}
+
+</style>
+{% endblock %}
+
 <script src="{% static 'realbuy_app/scripts/contactus.js' %}"></script> 
 
 

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'social_django',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'django_social_share',
     #allauth
     'allauth',
     'allauth.account',
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
 
                 #'social_django.context_processors.backends',        #social_authentication
                 #'social_django.context_processors.login_redirect',

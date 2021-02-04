@@ -142,6 +142,7 @@
 <a href="{% url 'category_filter1' 'furnished home'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight2">FURNISHED HOMES</button></a>
 <a href="{% url 'category_filter1' 'land and plot'|slugify %}"><button type="button" class="recentTopRight" id="recentTopRight3">LAND&amp;PLOT</button></a>
 <a href="{% url 'category_filter1' 'rental' %}"><button type="button" class="recentTopRight" id="recentTopRight4">RENTAL</button></a>
+{% if composite_list %}
 <div class="filter-container">
     <div id="filterCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
       <ol class="carousel-indicators">
@@ -171,16 +172,16 @@
                         <div class="filter-price">
                         <span class="filter-price-1">&#8377; </span>
                         {% if property.sell_or_rent == 'rent' %}
-                            <span class="filter-price-2">{{ property.price}}/Month</span>
+                            <span class="filter-price-2">{{ property.price|intcomma}}/Month</span>
                             {% else %}
-                            <span class="filter-price-2">{{property.price}}</span>
+                            <span class="filter-price-2">{{property.price|intcomma}}</span>
                         {% endif %}
                         </div>
                         <span class="filter-type-and-loc">TYPE & LOCATION:</span>
                         <div class="filter-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
                         <span class="filter-plot-area">PLOT AREA:</span>
                         <div class="filter-area">
-                        <span class="filter-area-1">{{ property.built_up_area}}</span>
+                        <span class="filter-area-1">{{ property.built_up_area|floatformat|intcomma}}</span>
                         <span class="filter-area-2">{{ property.built_up_unit | capfirst}}</span>
                         </div>
                         <span class="filter-society">SOCIETY:</span>
@@ -253,6 +254,11 @@
 
 </div>
 
+{% else %}
+<h1 style="color:red; text-align:center; position: absolute;
+top: 250px;">No results found!!! 
+</h1>
+{% endif %}
     
 <a href="https://www.facebook.com/real.buy.5439/">
 <img src="{% static 'realbuy_app/images/fb.png' %}" id="filter-fb">

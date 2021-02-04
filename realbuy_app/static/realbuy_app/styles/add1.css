@@ -429,8 +429,9 @@ border: 1px solid rgba(140, 140, 140, 1);
 
 #image-currently{
     position: absolute;
-    top: 325px;
-    left: 710px;
+    top: 315px;
+    left: 700px;
     height: 11px;
     width: 500px;
+    color: white;
 }
