@@ -33,9 +33,10 @@ INSTALLED_APPS = [
     'select2',
     'bootstrap_modal_forms',
     'social_django',
-    'django.contrib.humanize',
-    'django.contrib.sites',
+    'django.contrib.humanize',  
+    'django.contrib.sites',   # for allauth
     'django_social_share',
+    'django_google_maps',
     #allauth
     'allauth',
     'allauth.account',

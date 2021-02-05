@@ -8,27 +8,27 @@ Contact Us{% endblock %}{% block content %}
     textarea::placeholder {  
                   
                 /* Firefox, Chrome, Opera */ 
-                text-align: right; 
+                text-align: left; 
                 color: red;
             } 
 
     textarea::-webkit-input-placeholder {
-  text-align: right; 
+  text-align: left; 
   color: red;
 }
 
 textarea:-moz-placeholder { /* Firefox 18- */
-  text-align: right; 
+  text-align: left; 
   color: red;
 }
 
 textarea::-moz-placeholder {  /* Firefox 19+ */
-  text-align: right; 
+  text-align: left; 
   color: red; 
 }
 
 textarea:-ms-input-placeholder {
-  text-align: right; 
+  text-align: left; 
   color: red;
 }
 
@@ -75,8 +75,10 @@ textarea:-ms-input-placeholder {
     <input type="email" name="email" id="contactus_mail" placeholder="Email" autocomplete="off" maxlength="45" required
     onblur="mailValidate();" >
     <input type="text" name="phone" id="contactus_phone" placeholder="Phone Number" autocomplete="off" maxlength="10" minlength="10" onblur="phoneValidate();">
-    <textarea name="message" cols="40" rows="10" id="contactus_message" placeholder="Message" minlength="20" required onblur="messageValidate();">
-    </textarea> 
+    {{ form.message }}
+    <textarea name="message" cols="40" rows="10" id="contactus_message" placeholder="Message" required onblur="messageValidate();">
+    </textarea>
+
     <button id="contactus_submit" type="submit">SUBMIT</button>
 </form>
 

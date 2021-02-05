@@ -20,7 +20,7 @@ Details{% endblock %}{% block content %}
     <img id="detail-box-1-image" src="{% static 'realbuy_app/images/location_carousel.png' %}">
     <div id="detail-location">{{ property.location}}</div>
     <div class="detail-price">
-        <span id="detail-price-1">{{ property.price|intcomma}}</span>
+        <span id="detail-price-1">{{ property.price|intcomma }}</span>
         {% if property.sell_or_rent == 'rent' %}
         <span class="detail-price-2">/Month</span>
         {% else %}
@@ -64,7 +64,7 @@ Details{% endblock %}{% block content %}
 </div>
 <div>
     <a href="#">
-    <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
+    <img id="detail-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopupPhone()">
     </a>
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
@@ -87,28 +87,66 @@ Details{% endblock %}{% block content %}
 </div>
 <div>
     <a href="#">
-        <img id="detail-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
+        <img id="detail-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}" onclick="togglePopupShare()">
     </a>
     <span id="detail-share">SHARE</span>
 </div>
-{% post_to_facebook object_or_url "Post to Facebook!" %}
+
+
+
+
 
 <!-- phone number popup -->
 
-<div class="popup" id="detail-popup-2">
+<div class="popup" id="detail-phone-popup">
   <div class="overlay"></div>
   <div class="content">
     <div id="detail-popup-box2"></div>
-    <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()">
+    <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone()">
     <span id="detail-popup-phone">+91 {{property.ownership.profile.phone}}</span>
   </div>
 </div>
 
 
+   <!-- share popup -->
+<div class="popup" id="detail-share-popup">
+  <div class="overlay"></div>
+  <div class="content">
+    <img id="share-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupShare()">
+    <div id="links-hide" style="display:none;">
+    {% post_to_facebook object_or_url "Post to Facebook!" %}
+    {% post_to_twitter "New Property: {{property.address}}. Check it out!" object_or_url "Post to Twitter" %}
+    {% send_email object.title "New Property: {{property.address}}. Check it out!" object_or_url "Post to google" %}
+    </div>
+
+    <div class="facebook-this">
+    <a href="{{ facebook_url }}" class="" target="_blank"><img src="{% static 'realbuy_app/images/fb.png' %}" id="share-popup-fb"></a>
+    </div>
+
+
+    <div class="tweet-this">
+    <a href="{{ tweet_url }}" class="meta-act-link meta-tweet " target="_blank"><img src="{% static 'realbuy_app/images/twitter.png' %}" id="share-popup-twitter"></a>
+    </div>
+
+    <div class="mail-this">
+    <a href="{{ mailto_url }}" class=""><img src="{% static 'realbuy_app/images/google.png' %}" id="share-popup-google"></a>
+    </div>
+
+    
+  </div>
+</div>
+
 <script>
 
-function togglePopup2(){
-  document.getElementById("detail-popup-2").classList.toggle("active");
+function togglePopupShare(){
+  document.getElementById("detail-share-popup").classList.toggle("active");
+}
+</script>
+
+<script>
+
+function togglePopupPhone(){
+  document.getElementById("detail-phone-popup").classList.toggle("active");
 }
 </script>
 

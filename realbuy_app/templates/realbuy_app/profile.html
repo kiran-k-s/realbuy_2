@@ -73,7 +73,7 @@ User Profile{% endblock %}{% block content %}
     			<img class="profile-property-edit-image" src="{% static 'realbuy_app/images/profile/edit.png' %}">
     		  </a>
           
-          <a href="#" data-id="{{ property.id }}" onclick="togglePopupDelete()">  
+          <a id="property-id-carrier" href="#" data-id="{{ property.id }}" onclick="togglePopupDelete()">  
     			<button type="button" class="profile-property-delete-button"></button>
     			<img class="profile-property-delete-image" src="{% static 'realbuy_app/images/profile/delete-button.png' %}">
           </a>
@@ -101,12 +101,13 @@ User Profile{% endblock %}{% block content %}
   </div>
 </div>
 <script>
-function togglePopupDelete(){
-  document.getElementById("delete-popup").classList.toggle("active");
+
+
+$("#property-id-carrier").on('click', function() {
   const id = $(this).data('id');
   alert(id);
-  $('#deleteForm').attr('action', '/clients/'+ id + '/destroy');
-}
+});  
+
 </script>
 
 
