@@ -95,12 +95,12 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )'''
 
-# WSGI_APPLICATION = 'realbuy.wsgi.application'
+WSGI_APPLICATION = 'realbuy.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -111,7 +111,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
    }
- }
+ }  '''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -167,7 +167,7 @@ EMAIL_USE_TLS = True  '''
 LOGOUT_REDIRECT_URL = 'home' 
 
 #heroku deploy
-'''
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
@@ -183,7 +183,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
-} '''
+} 
 '''
 SOCIAL_AUTH_FACEBOOK_KEY = '255371952605641'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '510dc754cb356b1319cd5855acad5597'  # App Secret
