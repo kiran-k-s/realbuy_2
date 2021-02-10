@@ -1,6 +1,7 @@
 import os
 
 from pathlib import Path
+#import django_heroku    #heroku deploy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,7 +101,7 @@ WSGI_APPLICATION = 'realbuy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -111,7 +112,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
    }
- }  '''
+ }  
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -148,13 +149,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))        #heroku deploy
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#django_heroku.settings(locals())       #activate django heroku
 
 '''EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -167,7 +170,7 @@ EMAIL_USE_TLS = True  '''
 LOGOUT_REDIRECT_URL = 'home' 
 
 #heroku deploy
-
+'''
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
@@ -184,6 +187,7 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 } 
+'''
 '''
 SOCIAL_AUTH_FACEBOOK_KEY = '255371952605641'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '510dc754cb356b1319cd5855acad5597'  # App Secret

@@ -398,7 +398,23 @@ def UpdateView1(request,pk):
             form.save()
             return redirect('update2',pk)
     
-    return render(request, 'realbuy_app/update1.html', {'form' : form, 'property':update_property})
+    com = False
+    fur = False
+    land = False
+    rent = False
+    if Property.objects.filter(Q(property_type__contains='commercial',id =pk)).exists():
+        print("commercial")
+        com = True
+    if Property.objects.filter(Q(property_type__contains='furnished home',id=pk)).exists():
+        print("furnished")
+        fur = True
+    if Property.objects.filter(Q(property_type__contains='land and plot',id=pk)).exists():
+        print("land and plot")
+        land = True
+    if Property.objects.filter(Q(property_type__contains='rental',id=pk)).exists():
+        print("rental")
+        rent = True
+    return render(request, 'realbuy_app/update1.html', {'form' : form, 'property':update_property, 'com' : com, 'fur': fur, 'land':land, 'rent':rent})
 
 def UpdateView2(request,pk):
     update_property = Property.objects.get(id=pk)

@@ -110,7 +110,7 @@
 <div id="id_property_type">
 <div>
 	<label  for="id_property_type_0">
-		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" {% if property.property_type == "commercial" %} checked {% endif %}>
+		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" {% if com == True %} checked {% endif %}>
 		<img class="add1-commercial" src="{% static 'realbuy_app/images/add1/commercial.png' %}" >
 		<img class="add1-commercial-select" src="{% static 'realbuy_app/images/add1/commercial_select.png' %}" >  
  		<span class="add1-commercial-head1"> COMMERCIAL </span>
@@ -119,7 +119,7 @@
  </div>
  <div>
  	<label  for="id_property_type_1">
- 		<input class="add1-furnished-box" type="checkbox" name="property_type" value="furnished home" id="id_property_type_1" {% if property.property_type == "furnished home" %} checked {% endif %}>
+ 		<input class="add1-furnished-box" type="checkbox" name="property_type" value="furnished home" id="id_property_type_1" {% if fur == True %} checked {% endif %}>
  		<img class="add1-furnished" src="{% static 'realbuy_app/images/add1/furnished_homes.png' %}" >
  		<img class="add1-furnished-select" src="{% static 'realbuy_app/images/add1/furnished_select.png' %}" >
  		<span class="add1-furnished-head1"> FURNISHED HOMES</span>
@@ -128,7 +128,7 @@
  </div>
  <div>
  	<label  for="id_property_type_2">
- 		<input class="add1-land-box" type="checkbox"  name="property_type" value="land and plot" id="id_property_type_2" {% if property.property_type == "land and plot" %} checked {% endif %}>
+ 		<input class="add1-land-box" type="checkbox"  name="property_type" value="land and plot" id="id_property_type_2" {% if land == True %} checked {% endif %}>
  		<img class="add1-land" src="{% static 'realbuy_app/images/add1/land&plot.png' %}" >
  		<img class="add1-land-select" src="{% static 'realbuy_app/images/add1/land&plot_select.png' %}" >
  		<span class="add1-land-head1"> LAND&PLOT</span>
@@ -137,7 +137,7 @@
 </div>
 <div>
 	<label  for="id_property_type_3">
-		<input class="add1-rental-box" type="checkbox"  name="property_type" value="rental" id="id_property_type_3" {% if property.property_type == "rental" %} checked {% endif %}>
+		<input class="add1-rental-box" type="checkbox"  name="property_type" value="rental" id="id_property_type_3" {% if rent == True %} checked {% endif %}>
 		<img class="add1-rental" src="{% static 'realbuy_app/images/add1/rent.png' %}" >
 		<img class="add1-rental-select" src="{% static 'realbuy_app/images/add1/rent_select.png' %}" >
 		<span class="add1-rental-head1"> RENTAL</span>

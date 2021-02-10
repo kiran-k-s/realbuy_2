@@ -30,9 +30,17 @@ class LoginForm(forms.Form):
         # if user_qs.count() == 1:
         #       user = user_qs.first()
         if username and password:
-            user = (authenticate(username=username,password=password)) or (authenticate(email=username, password=password))
+            user = authenticate(username=username,password=password)
             if not user:
-                raise forms.ValidationError("This user doesn't exist")
+                User = get_user_model()
+                user_queryset = User.objects.all().filter(email__iexact=username)
+                if user_queryset:
+                    username = user_queryset[0].username
+                    user = authenticate(username=username, password=password)
+                    if not user:
+                        raise forms.ValidationError("This user doesn't exist")
+                else:
+                    raise forms.ValidationError("This user doesn't exist")
             if not user.check_password(password):
                 raise forms.ValidationError("Incorrect Password")
             

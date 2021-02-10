@@ -6,6 +6,9 @@ from .forms import RegisterForm,PasswordChangingForm,LoginForm#EditForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 '''class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
@@ -39,7 +42,13 @@ def UserLoginView(request):
             print(form.cleaned_data)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = (authenticate(request, username=username, password=password)) or (authenticate(request, email=username, password=password))
+            user = authenticate(request, username=username, password=password)
+            if user is None:
+                User = get_user_model()
+                user_queryset = User.objects.all().filter(email__iexact=username)
+                if user_queryset:
+                    username = user_queryset[0].username
+                    user = authenticate(username=username, password=password)
             if user is not None:
                 login(request,user)
                 

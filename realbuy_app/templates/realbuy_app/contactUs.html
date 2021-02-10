@@ -45,7 +45,7 @@ textarea:-ms-input-placeholder {
 <span id="contactus-location">Our Location</span>
 
 <div id="contactus-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105730.58891652685!2d76.35495828437325!3d9.997311585902336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c8201a7dadf%3A0x3d1dac7f91e2f2e0!2sCarnival%20Phase%20IV%20Exit%20Rd%2C%20Infopark%20Campus%2C%20Kakkanad%2C%20Kerala%20682030!5e0!3m2!1sen!2sin!4v1608699991189!5m2!1sen!2sin" width="650" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105730.58891652685!2d76.35495828437325!3d9.997311585902336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c8201a7dadf%3A0x3d1dac7f91e2f2e0!2sCarnival%20Phase%20IV%20Exit%20Rd%2C%20Infopark%20Campus%2C%20Kakkanad%2C%20Kerala%20682030!5e0!3m2!1sen!2sin!4v1608699991189!5m2!1sen!2sin" width="650" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" data-map-type="satellite"></iframe>
         
     </iframe>
 </div>
@@ -76,8 +76,8 @@ textarea:-ms-input-placeholder {
     onblur="mailValidate();" >
     <input type="text" name="phone" id="contactus_phone" placeholder="Phone Number" autocomplete="off" maxlength="10" minlength="10" onblur="phoneValidate();">
     {{ form.message }}
-    <textarea name="message" cols="40" rows="10" id="contactus_message" placeholder="Message" required onblur="messageValidate();">
-    </textarea>
+    <!-- <textarea name="message" cols="40" rows="10" id="contactus_message" placeholder="Message" required onblur="messageValidate();">
+    </textarea> -->
 
     <button id="contactus_submit" type="submit">SUBMIT</button>
 </form>
@@ -89,9 +89,9 @@ textarea:-ms-input-placeholder {
     var nameok=nameValidate();
     var mailok=mailValidate();
     var phoneok=phoneValidate();
-    var messageok=messageValidate();
     
-    if(nameok==true && mailok==true && phoneok==true && messageok==true)
+    
+    if(nameok==true && mailok==true && phoneok==true)
     {  
     return true;
     }
@@ -112,8 +112,8 @@ textarea:-ms-input-placeholder {
         var nameok=nameValidate();
         var mailok=mailValidate();
         var phoneok=phoneValidate();
-        var messageok=messageValidate();
-      if(nameok==true && mailok==true && phoneok==true && messageok==true){   
+        
+      if(nameok==true && mailok==true && phoneok==true){   
         $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
             url         : '{% url 'contactus' %}', // the url where we want to POST

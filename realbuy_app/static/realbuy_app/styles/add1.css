@@ -433,5 +433,6 @@ border: 1px solid rgba(140, 140, 140, 1);
     left: 700px;
     height: 11px;
     width: 500px;
-    color: white;
+    color: blue;
+    font-size: 11px;
 }
