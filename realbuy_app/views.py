@@ -537,5 +537,5 @@ def EditProfile(request, pk):
 def DeleteView(request, pk):
     if request.method == 'POST':
         Property.objects.get(id=pk).delete()
-        return redirect('profile',pk)    
+        return redirect('profile',request.user.profile.id)    
     

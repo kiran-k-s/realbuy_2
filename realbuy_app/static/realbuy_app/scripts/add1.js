@@ -62,14 +62,14 @@ function addressValidate()
 {
 	var  address=document.getElementById("add1-address").value;
 
-	if(address.length>=20)
+	if(address.length>=8)
 		{
 		document.getElementById("add1_error").innerHTML ="";
 		return true;
 		}
 	else
 		{
-		document.getElementById("add1_error").innerHTML ="Error: Address is mandatory with a minimum of 20 character length";
+		document.getElementById("add1_error").innerHTML ="Error: Address is mandatory with a minimum of 8 character length";
 		return false;
 		}      
 	

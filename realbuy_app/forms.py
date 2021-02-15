@@ -81,7 +81,7 @@ class ContactUsForm(forms.ModelForm):
         phone = forms.CharField( widget=forms.TextInput(
             attrs={'id':'contactus_phone', "placeholder":"Phone Number"}
         ),required=False)
-        message = forms.CharField( widget=forms.Textarea(
+        message = forms.CharField(min_length=20, widget=forms.Textarea(
             attrs={'id':'contactus_message',"placeholder":"Message"}
         ))
 

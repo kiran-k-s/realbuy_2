@@ -11,32 +11,6 @@ color: rgba(140, 140, 140, 1);
 z-index: 150;
 } 
 
-textarea::placeholder {  
-                  
-                /* Firefox, Chrome, Opera */ 
-                text-align: right; 
-                color: red;
-            } 
-
-    textarea::-webkit-input-placeholder {
-  text-align: right; 
-  color: red;
-}
-
-textarea:-moz-placeholder { /* Firefox 18- */
-  text-align: right; 
-  color: red;
-}
-
-textarea::-moz-placeholder {  /* Firefox 19+ */
-  text-align: right; 
-  color: red; 
-}
-
-textarea:-ms-input-placeholder {
-  text-align: right; 
-  color: red;
-}
 
 #welcome {
     position: absolute;

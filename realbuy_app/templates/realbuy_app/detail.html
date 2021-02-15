@@ -8,7 +8,6 @@
 Details{% endblock %}{% block content %}
 <div id="detail-big-box"></div>
 <div id="detail-big-box-2"></div>
-<h1> {{ property.total_likes }} </h1>
 <a href="{% url 'home' %}">
     <img id="detail-close" src="{% static 'realbuy_app/images/close.png' %}">
 </a>
@@ -68,6 +67,7 @@ Details{% endblock %}{% block content %}
     </a>
     <span id="detail-phone">PHONE NUMBER</span>
 </div>
+    {% if user.is_authenticated %}
 
     <form action="{% url 'like_detail' property.pk %}" method="POST">
     {% csrf_token %} 
@@ -77,6 +77,11 @@ Details{% endblock %}{% block content %}
     <button type="submit" id="detail-shortlist-button" name="post_id" value="{{ property.id }}"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}"></button>
     {% endif %}
     </form>
+
+    {% else %}
+    <button id="detail-shortlist-button"><img id="detail-shortlist-image" src="{% static 'realbuy_app/images/fav_white.png' %}" onclick="togglePopupPhone()"></button>
+    {% endif %}
+
     <span id="detail-shortlist">SHORTLIST</span>
 
 <div>
@@ -103,7 +108,19 @@ Details{% endblock %}{% block content %}
   <div class="content">
     <div id="detail-popup-box2"></div>
     <img id="detail-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone()">
-    <span id="detail-popup-phone">+91 {{property.ownership.profile.phone}}</span>
+    {% if user.is_authenticated %}
+    {% if property.ownership.profile.phone %}
+    <span id="detail-popup-phone">+91 {{property.ownership.profile.phone}}
+    </span>
+    {% else %}
+    <span id="detail-popup-phone">Not added
+    </span>
+    {% endif %}
+    {% else %}
+    <span id="detail-popup-phone">Login Please
+    </span>
+    {% endif %}
+
   </div>
 </div>
 

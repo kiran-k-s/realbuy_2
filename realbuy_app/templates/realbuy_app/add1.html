@@ -50,9 +50,11 @@
 	
 	[type=file] { 
 	  position: absolute;
-	  opacity: 1;
-	  width: 0;
-	  height: 0;
+	  opacity: -1;
+	  top: 345px;
+	  left: 725px;
+	  width: .5px;
+	  height: .5px;
 	} 
 
 	
@@ -110,7 +112,7 @@
 <div id="id_property_type">
 <div>
 	<label  for="id_property_type_0">
-		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" >
+		<input class="add1-commercial-box" type="checkbox" name="property_type" value="commercial" id="id_property_type_0" checked>
 		<img class="add1-commercial" src="{% static 'realbuy_app/images/add1/commercial.png' %}" >
 		<img class="add1-commercial-select" src="{% static 'realbuy_app/images/add1/commercial_select.png' %}" >  
  		<span class="add1-commercial-head1"> COMMERCIAL </span>
