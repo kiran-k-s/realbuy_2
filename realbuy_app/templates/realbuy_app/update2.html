@@ -39,7 +39,7 @@ select::-ms-expand {
 <script src="{% static 'realbuy_app/scripts/add2.js' %}"></script> 
 <div id="add2-big-box"></div>
 <div id="add2-big-box-2"></div> 
-<span id="add2-head-1">ADD</span> <span id="add2-head-2">PROPERTY</span>
+<span id="add2-head-1">EDIT</span> <span id="add2-head-2">PROPERTY</span>
 <div id="add2-basic-info">BASIC INFORMATION</div>
 <div id="add2-property-details">PROPERTY DETAILS</div>
 
@@ -109,7 +109,7 @@ select::-ms-expand {
 
 
 <p><label for="id_property_floor"></label>
-  <input class="add2-property-floor" type="text" name="property_floor" id="id_property_floor" placeholder="Property Floor" autocomplete="off" value="{{property.property_floor}}" onblur="propertyFloorValidate();"></p>
+  <input class="add2-property-floor" type="text" name="property_floor" id="id_property_floor" placeholder="Property Floor" autocomplete="off" value={% if property.property_floor == None %}""{% else %}"{{property.property_floor}}"{% endif %} onblur="propertyFloorValidate();"></p>
 <p><label for="owner"></label>
  <input class="add2-ownership" type="text" name="ownership" value="" id="owner" readonly required placeholder="Ownership" onclick="placeOwner()"></p>
 <p><label for="id_total_floor"></label>

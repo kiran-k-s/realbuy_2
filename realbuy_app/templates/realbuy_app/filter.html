@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-{% load humanize %}
-{% load socialaccount %}
-{% providers_media_js %}
-{% load property_tags %}    
+{% load humanize %}       <!-- 150.0 to 150 and 1450 to 1,450 -->
+{% load socialaccount %}   <!-- social login -->
+{% providers_media_js %}    <!-- social login -->
+{% load property_tags %}    <!-- template tag for dictionary value access by giving key -->
+{% load social_share %}    <!-- social share -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -200,8 +201,8 @@
                         </div>
                         <div>
                             
-                            <a href="#">
-                                <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}" onclick="togglePopup2()">
+                            <a class="phone-id-carrier" href="#" data-popupnum="{{ forloop.counter }}" data-phone="{{ property.ownership.profile.phone }}">
+                                <img class="filter-phone-image" src="{% static 'realbuy_app/images/call_white.png' %}">
                             </a>
                             <span class="filter-phone">PHONE NUMBER</span>
                         </div>
@@ -225,11 +226,39 @@
                             <span class="filter-map">MAP</span>
                         </div>
                         <div>
-                            <a href="#">
+                            <a class="share-id-carrier" href="#" data-popupcount="{{ forloop.counter }}"
+                            data-share = "{{ property.address }}">
                                 <img class="filter-share-image" src="{% static 'realbuy_app/images/sharing_white.png' %}">
                             </a>
                             <span class="filter-share">SHARE</span>
                         </div>
+                        <div class="popup" id="{% if forloop.counter == 1 %}filter-popup-share1{% endif %}{% if forloop.counter == 2 %}filter-popup-share2{% endif %}{% if forloop.counter == 3 %}filter-popup-share3{% endif %}{% if forloop.counter == 4 %}filter-popup-share4{% endif %}">
+                          <div class="overlay"></div>
+                          <div class="content">
+                            <img class="share-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="{% if forloop.counter == 1 %}togglePopupShare1(){% endif %}{% if forloop.counter == 2 %}togglePopupShare2(){% endif %}{% if forloop.counter == 3 %}togglePopupShare3(){% endif %}{% if forloop.counter == 4 %}togglePopupShare4(){% endif %}">
+                            <div class="links-hide" style="display:none;">
+                            {% post_to_facebook object_or_url "Post to Facebook!" %}
+                            {% post_to_twitter "New Property: {{property.address}}. Check it out!" object_or_url "Post to Twitter" %}
+                            {% send_email object.title "New Property: {{property.address}}. Check it out!" object_or_url "Post to google" %}
+                            </div>
+
+                            <div class="facebook-this">
+                            <a href="{{ facebook_url }}" class="" target="_blank"><img src="{% static 'realbuy_app/images/fb.png' %}" class="share-popup-fb"></a>
+                            </div>
+
+
+                            <div class="tweet-this">
+                            <a href="{{ tweet_url }}" class="meta-act-link meta-tweet " target="_blank"><img src="{% static 'realbuy_app/images/twitter.png' %}" class="share-popup-twitter"></a>
+                            </div>
+
+                            <div class="mail-this">
+                            <a href="{{ mailto_url }}" class=""><img src="{% static 'realbuy_app/images/google.png' %}" class="share-popup-google"></a>
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
       
                     </div>     
                     {% endfor %}
@@ -273,21 +302,237 @@ top: 250px;">No results found!!!
 
 <!-- phone number popup -->
 
-<div class="popup" id="filter-popup-2">
+
+<div class="popup" id="filter-popup-phone1">
   <div class="overlay"></div>
   <div class="content">
     <div id="filter-popup-box2"></div>
+    <img class="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone1()">
+    {% if user.is_authenticated %}
+    <span id="filter-popup-phone" class="popup-phone-class">
+    </span>
+    {% else %}
+    <span id="filter-popup-phone">Login Please
+    </span>
+    {% endif %}
 
-    <!-- <img id="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopup2()"> -->
-    <span id="filter-popup-phone">+91 {{property.ownership.profile.phone}}</span>
   </div>
 </div>
 
 
-<script>
+<div class="popup" id="filter-popup-phone2">
+  <div class="overlay"></div>
+  <div class="content">
+    <div id="filter-popup-box2"></div>
+    <img class="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone2()">
+    {% if user.is_authenticated %}
+    <span id="filter-popup-phone" class="popup-phone-class">
+    </span>
+    {% else %}
+    <span id="filter-popup-phone">Login Please
+    </span>
+    {% endif %}
 
-function togglePopup2(){
-  document.getElementById("detail-popup-2").classList.toggle("active");
+  </div>
+</div>
+
+<div class="popup" id="filter-popup-phone3">
+  <div class="overlay"></div>
+  <div class="content">
+    <div id="filter-popup-box2"></div>
+    <img class="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone3()">
+    {% if user.is_authenticated %}
+    <span id="filter-popup-phone" class="popup-phone-class">
+    </span>
+    {% else %}
+    <span id="filter-popup-phone">Login Please
+    </span>
+    {% endif %}
+
+  </div>
+</div>
+
+<div class="popup" id="filter-popup-phone4">
+  <div class="overlay"></div>
+  <div class="content">
+    <div id="filter-popup-box2"></div>
+    <img class="filter-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupPhone4()">
+    {% if user.is_authenticated %}
+    <span id="filter-popup-phone" class="popup-phone-class">
+    </span>
+    {% else %}
+    <span id="filter-popup-phone">Login Please
+    </span>
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+          /*phone number popup*/
+let lis = document.querySelectorAll(".phone-id-carrier");
+let lis_array = Array.from(lis);
+
+lis.forEach(function(elem) {
+  elem.addEventListener("click", function(e) {
+    alert(elem.dataset.popupnum);
+    if (elem.dataset.popupnum == 1){
+        
+        if (elem.dataset.phone){
+            alert(elem.dataset.phone);
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "+91 " + elem.dataset.phone;
+            }
+        }
+        else{
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "Not added";
+            }
+
+        }
+        togglePopupPhone1();
+      
+    }
+    if (elem.dataset.popupnum == 2){
+        
+        if (elem.dataset.phone){
+            alert(elem.dataset.phone);
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "+91 " + elem.dataset.phone;
+            }
+        }
+        else{
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "Not added";
+            }
+
+        }
+        togglePopupPhone2();
+    }
+
+    if (elem.dataset.popupnum == 3){
+        
+        if (elem.dataset.phone){
+            alert(elem.dataset.phone);
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "+91 " + elem.dataset.phone;
+            }
+        }
+        else{
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "Not added";
+            }
+
+        }
+        togglePopupPhone3();
+    }
+
+    if (elem.dataset.popupnum == 4){
+        
+        if (elem.dataset.phone){
+            alert(elem.dataset.phone);
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "+91 " + elem.dataset.phone;
+            }
+        }
+        else{
+            var y = document.getElementsByClassName('popup-phone-class');
+            var i;
+            for (i = 0; i < y.length; i++) {
+              y[i].innerHTML = "Not added";
+            }
+
+        }
+        togglePopupPhone4();
+    }
+    var popupnum = elem.dataset.popupnum;
+    var phone = elem.dataset.phone
+    
+    
+    })
+  })  
+
+function togglePopupPhone1(){
+  document.getElementById("filter-popup-phone1").classList.toggle("active");
+}
+
+function togglePopupPhone2(){
+  document.getElementById("filter-popup-phone2").classList.toggle("active");
+}
+
+function togglePopupPhone3(){
+  document.getElementById("filter-popup-phone3").classList.toggle("active");
+}
+
+function togglePopupPhone4(){
+  document.getElementById("filter-popup-phone4").classList.toggle("active");
+}
+
+
+        /*share popup*/
+
+let lis = document.querySelectorAll(".share-id-carrier");
+let lis_array = Array.from(lis);
+
+lis.forEach(function(elem) {
+  elem.addEventListener("click", function(e) {
+    alert(elem.dataset.popupcount);
+    if (elem.dataset.popupcount == 1){
+        togglePopupShare1();
+      
+    }
+    if (elem.dataset.popupcount == 2){
+        togglePopupShare2();
+      
+    }
+
+    if (elem.dataset.popupcount == 3){
+        togglePopupShare3();
+      
+    }
+
+    if (elem.dataset.popupcount == 4){
+        togglePopupShare4();
+      
+    }
+    
+    
+    })
+  })  
+
+
+function togglePopupShare1(){
+  document.getElementById("filter-popup-share1").classList.toggle("active");
+}
+
+function togglePopupShare2(){
+  document.getElementById("filter-popup-share2").classList.toggle("active");
+}
+
+function togglePopupShare3(){
+  document.getElementById("filter-popup-share3").classList.toggle("active");
+}
+
+function togglePopupShare4(){
+  document.getElementById("filter-popup-share4").classList.toggle("active");
 }
 </script>
 

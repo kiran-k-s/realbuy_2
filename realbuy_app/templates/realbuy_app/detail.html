@@ -130,12 +130,11 @@ Details{% endblock %}{% block content %}
   <div class="overlay"></div>
   <div class="content">
     <img id="share-popup-close" src="{% static 'realbuy_app/images/popup_close.png' %}" onclick="togglePopupShare()">
-    <div id="links-hide" style="display:none;">
+    <div id="links-hide"  style="display:none;">
     {% post_to_facebook object_or_url "Post to Facebook!" %}
     {% post_to_twitter "New Property: {{property.address}}. Check it out!" object_or_url "Post to Twitter" %}
     {% send_email object.title "New Property: {{property.address}}. Check it out!" object_or_url "Post to google" %}
     </div>
-
     <div class="facebook-this">
     <a href="{{ facebook_url }}" class="" target="_blank"><img src="{% static 'realbuy_app/images/fb.png' %}" id="share-popup-fb"></a>
     </div>
@@ -148,6 +147,7 @@ Details{% endblock %}{% block content %}
     <div class="mail-this">
     <a href="{{ mailto_url }}" class=""><img src="{% static 'realbuy_app/images/google.png' %}" id="share-popup-google"></a>
     </div>
+    
 
     
   </div>
