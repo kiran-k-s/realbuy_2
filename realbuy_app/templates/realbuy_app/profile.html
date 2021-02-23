@@ -30,7 +30,22 @@ User Profile{% endblock %}{% block content %}
 	<img id="profile-edit-image" src="{% static 'realbuy_app/images/profile/edit1.png' %}">
 </a>
 <span id="profile-head-1">My</span> <span id="profile-head-2">Properties</span>
+{% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+      <span class="profile-success">
 
+        
+        {{ message }}
+        
+
+
+      </span>
+      </li>
+      {% endfor %}
+    </ul>
+{% endif %}
 
 
 <div class="profile-grid">
@@ -49,9 +64,9 @@ User Profile{% endblock %}{% block content %}
           <div class="profile-property-price">
           <span class="profile-property-price-1">&#8377; </span>
           {% if property.sell_or_rent == 'rent' %}
-          <span class="profile-property-price-2">{{ property.price}}/Month</span>
+          <span class="profile-property-price-2">{{ property.price|intcomma}}/Month</span>
           {% else %}
-          <span class="profile-property-price-2">{{property.price}}</span>
+          <span class="profile-property-price-2">{{property.price|intcomma}}</span>
           {% endif %}
          
           </div>
@@ -59,13 +74,18 @@ User Profile{% endblock %}{% block content %}
           <div class="profile-property-location">{{property.property_type}}/{{ property.location |lower|capfirst}}</div>
           <span class="profile-property-plot-area">PLOT AREA:</span>
           <div class="profile-property-area">
-          <span class="profile-property-area-1">{{ property.built_up_area}}</span>
-          <span class="profile-property-area-2">{{ property.built_up_unit | capfirst}}</span>
+          <span class="profile-property-area-1">{{ property.built_up_area|floatformat|intcomma}}</span>
+          <span class="profile-property-area-2">{{ property.built_up_unit |lower|capfirst}}</span>
           </div>
           <span class="profile-property-society">SOCIETY:</span>
-          <div class="profile-property-city"> {{ property.address | title }}</div>
+          {% for addr in property.address_list %}
+          {% if forloop.counter == 1 %}
+          <div class="profile-property-city"> {{ addr | title }}</div>
+          {% endif %}
+          {% endfor %}
+          
           <span class="profile-property-description-head">DESCRIPTION:</span>
-          <div class="profile-property-description"> {{ property.description }} </div>
+          <div class="profile-property-description"> {{ property.description |capfirst }} </div>
           <span class="profile-property-posted">POSTED:</span>
           <div class="profile-property-date"> {{ property.date }}</div>
           <a href="{% url 'update1' property.pk %}">

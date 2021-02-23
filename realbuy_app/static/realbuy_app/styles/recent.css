@@ -142,7 +142,7 @@
     height: 20px;
     width: 150px;
     font-family: 'Antipasto';
-    font-size: 10px;
+    font-size: 9px;
     color: rgba(225, 225, 225, 1);
 }
 .recentPrice{
@@ -167,6 +167,7 @@
     font-family: 'Antipasto';
     font-size: 11px;
     color: rgba(47, 181, 110, 1);
+    letter-spacing: .8px;
 }
 .recentPrice3{
     height: 15px;

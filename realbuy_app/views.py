@@ -13,6 +13,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.db.models import Count
+from django.contrib import messages
 
 def Success(request):
     return render(request, 'realbuy_app/success.html')
@@ -347,8 +348,8 @@ def AddView2(request, pk):
             print("hai")
             form.save()
             Property.objects.get(id=pk).delete()
-            
-            return redirect('success') 
+            messages.error(request, "Success!!!")
+            return redirect('profile',request.user.profile.id) 
         else:
             print("error")
     else: 
@@ -423,7 +424,8 @@ def UpdateView2(request,pk):
         form = AddForm2(request.POST, instance=update_property)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            messages.error(request, "Success!!!")
+            return redirect('profile',request.user.profile.id)
     
     
     return render(request, 'realbuy_app/update2.html', {'form' : form, 'property':update_property, 'pk':pk}) 
@@ -504,7 +506,7 @@ def FilterLikeView(request, pk):
         post.likes.add(request.user)
         liked = True
         
-    return redirect('detail',pk)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 
@@ -514,7 +516,8 @@ def ProfileView(request, pk):
     profile = Profile.objects.get(id=pk)
     context = {
         'properties': properties,
-        'profile': profile
+        'profile': profile,
+        'current':'profile'
     }
     return render(request, 'realbuy_app/profile.html', context) 
 

@@ -65,6 +65,17 @@
     <p style="color: red">{{ error }}</p>
 {% endfor %}
 
+{% for field in message %}
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+        {% endfor %}
+
+
+        {% for error in message.non_field_errors %}
+        {{ error }}
+        {% endfor %}
+
 
 <script>
 function togglePopupLogin(){

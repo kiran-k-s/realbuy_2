@@ -125,6 +125,7 @@
     font-family: 'Antipasto';
     font-size: 11px;
     color: rgba(47, 181, 110, 1);
+    letter-spacing: .8px;
 }
 .featured-bed-image{
   position:absolute;
@@ -185,6 +186,7 @@
   font-family: 'Antipasto';
   font-size: 13px;
   color: rgba(255, 255, 255, 1);
+  width:150px;
 }
 .featured-like{
     position: absolute;

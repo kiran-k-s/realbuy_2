@@ -56,7 +56,7 @@
 				<span class="location-carousel-sub1">{{property.address}}</span>
 				<div class="aboutus-price">
                         {% if property.sell_or_rent == 'rent' %}
-                        	{% if property.price >= 100000 %}
+                            {% if property.price >= 100000 %}
                             <span class="aboutus-price-1">{% widthratio property.price 100000 1 %}</span>
                             <span class="aboutus-price-2">Lakhs</span>
                             <span class="aboutus-price-3">/Month</span>
@@ -66,13 +66,21 @@
                             {% endif %}
                         {% else %}
                             {% if property.price >= 100000 %}
-                            <span class="aboutus-price-1">{% widthratio property.price 100000 1|floatformat %}</span>
+                            {% if property.price < 10000000 %}
+                            <span class="aboutus-price-1">{% widthratio property.price 100000 1 %}</span>
                             <span class="aboutus-price-2">Lakhs</span>
+                            {% else %}
+                            <span class="aboutus-price-1">{% widthratio property.price 10000000 1 %}</span>
+                            <span class="aboutus-price-2">Crore</span>
+                            {% endif %}
+
+
                             {% else %}
                             <span class="aboutus-price-1">{{ property.price|intcomma }}</span>
                             {% endif %}
-                        {% endif %}
-                </div>
+                            
+                        {% endif %}     
+        </div>
 				<img src="{% static 'realbuy_app/images/area.png' %}" class="aboutus-area">
 				<span class="area-head">Area</span>
 				<div class="aboutus-area-content">

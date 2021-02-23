@@ -70,11 +70,19 @@
                             {% endif %}
                         {% else %}
                             {% if property.price >= 100000 %}
+                            {% if property.price < 10000000 %}
                             <span class="aboutus-price-1">{% widthratio property.price 100000 1 %}</span>
                             <span class="aboutus-price-2">Lakhs</span>
                             {% else %}
+                            <span class="aboutus-price-1">{% widthratio property.price 10000000 1 %}</span>
+                            <span class="aboutus-price-2">Crore</span>
+                            {% endif %}
+
+
+                            {% else %}
                             <span class="aboutus-price-1">{{ property.price|intcomma }}</span>
                             {% endif %}
+                            
                         {% endif %}
                 </div>
                 <img src="{% static 'realbuy_app/images/area.png' %}" class="aboutus-area">

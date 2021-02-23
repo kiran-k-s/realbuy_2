@@ -77,12 +77,15 @@ class Property(models.Model):
     
     def total_likes(self):
         return self.likes.count()
+
+    def address_list(self):
+        return self.address.split(',')
         
-    def liked(self,request):
-        like = False
-        if self.likes.filter(id=self.request.user.id).exists():
-            like = True
-        return like
+    # def liked(self,request):
+    #     like = False
+    #     if self.likes.filter(id=self.request.user.id).exists():
+    #         like = True
+    #     return like
 
     @property
     def filename(self):
@@ -110,7 +113,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, default="user")
     image = models.ImageField(upload_to='images/', blank = True)
-    email = models.EmailField(null=True,blank=True)
+    email = models.EmailField(null=True,blank=True, default="user@mail.com")
     phone = models.CharField(max_length=15, blank=True)
     address = models.TextField()
     

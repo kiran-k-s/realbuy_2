@@ -77,9 +77,9 @@ Featured Properties{% endblock %}
                         <div class="featured-price">
                         <span class="featured-price1">&#8377; </span>
                         {% if property.sell_or_rent == 'rent' %}
-                        <span class="featured-price2">{{ property.price}}/Month</span>
+                        <span class="featured-price2">{{ property.price|intcomma}}/Month</span>
                         {% else %}
-                        <span class="featured-price2">{{property.price}}</span>
+                        <span class="featured-price2">{{property.price|intcomma}}</span>
                         {% endif %}
 
                             
@@ -91,7 +91,7 @@ Featured Properties{% endblock %}
                         <span class="featured-bath-head">Bathrooms</span>
                         <span class="featured-bath-content">{{property.bathroom}}</span>
                         <img src="{% static 'realbuy_app/images/featured/location_small.png' %}" class="featured-location-image">
-                        <span class="featured-location">{{property.location | title}}</span>
+                        <span class="featured-location">{{property.location | title}}, {{property.city|title}}</span>
 
 
                         <form action="{% url 'like_featured' property.pk %}" method="POST">

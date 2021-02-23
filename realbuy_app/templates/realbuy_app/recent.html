@@ -73,8 +73,15 @@ Recent Properties{% endblock %}
                         {% else %}
                         <div class="recentRent"> ON RENT </div>
                         {% endif %}
-                        <div class="recentCity"> {{ property.city}}</div>
-                        <div class="recentAddress"> {{ property.address|slice:":30" }}</div>
+                        {% for addr in property.address_list %}
+                        {% if forloop.counter == 1 %}
+                        <div class="recentCity"> {{ addr|upper }} </div>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <div class="recentAddress"> {{ property.location|upper }}, {{ property.city|upper }}
+                        </div>
+                        
                         <div class="recentPrice">
                         <span class="recentPrice1">&#8377; </span>
                         {% if property.sell_or_rent == 'rent' %}

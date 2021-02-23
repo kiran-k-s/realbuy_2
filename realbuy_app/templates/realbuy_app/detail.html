@@ -17,7 +17,7 @@ Details{% endblock %}{% block content %}
 </div>
 <div id="detail-box-1">
     <img id="detail-box-1-image" src="{% static 'realbuy_app/images/location_carousel.png' %}">
-    <div id="detail-location">{{ property.location}}</div>
+    <div id="detail-location">{{ property.location|title }}</div>
     <div class="detail-price">
         <span id="detail-price-1">{{ property.price|intcomma }}</span>
         {% if property.sell_or_rent == 'rent' %}
@@ -46,16 +46,18 @@ Details{% endblock %}{% block content %}
     <div id="detail-bathroom-content">{{ property.bathroom}}</div>    
 </div>
 <div id="detail-description">
-        {{ property.description}}
+        {{ property.description|capfirst}}
 </div>
 <div id="detail-seller-head">Seller Info</div>
-<div id="detail-seller-username"> {{ property.ownership.profile.user}}</div>
-<div id="detail-seller-address"> {{ property.ownership.profile.address}}</div>
+<div id="detail-seller-username"> {{ property.ownership.profile.user|capfirst}}</div>
+<div id="detail-seller-address"> {{ property.ownership.profile.address|capfirst}}</div>
 
 <div id="detail-task-bar">Detail</div>
 
 <div>
-    <a href="mailto:{{property.ownership.profile.email}}">
+    <a href="
+    {% if user.is_authenticated %}mailto:{{property.ownership.profile.email}}"{% else %}
+    #" onclick="togglePopupPhone()"{% endif %}>
     <img id="detail-mail-image" src="{% static 'realbuy_app/images/mail_white.png' %}">
     </a>
     
