@@ -63,7 +63,7 @@
 <link href="{% static 'realbuy_app/styles/home.css' %}" rel="stylesheet"> 
 </head>
     
-<body {% if messages %} onload="togglePopupLogin()" {% endif %}>
+<body {% if loginform %} onload="togglePopupLogin()" {% endif %}>
 
 <img src="{% static 'realbuy_app/images/logo.png' %}" id="logo"> 
 <span id="welcome">Welcome to realbuy</span>
@@ -109,13 +109,13 @@
     <a href='{% url 'logout' %}'>
     <button type="button" class="home-top-right" id="home-logout" >LOGOUT</button>
     </a>
-  <ul class="profile-nav">
-    <li class="profile-item {% if current == 'profile' %} active {% endif %}"> 
+<div class="profile-nav">
+  <div class="profile-item {% if current == 'profile' %} active {% endif %}"> 
     <a id="home-profile" class="profile-link" href='{% url 'profile' user.profile.id %}'>
     MY PROFILE
     </a>
-    </li>
-  </ul>
+  </div>
+</div>
     
 {% else %}
     
@@ -163,23 +163,12 @@
     <span id="home-popup-head">LOGIN</span>
     <div id="home-popup-box-1"></div>
     <div id="home-popup-box-2"></div>
-    <form method="POST" action="{% url 'login_page' %}">
+    <form id="loginForm" method="POST">
     {% csrf_token %}
 
-    {% for field in form %}
-    {% for error in field.errors %}
-        <p class="login-popup-error">{{ error }}</p>
-    {% endfor %}
-{% endfor %}
-
-
-{% for error in form.non_field_errors %}
-    <p class="login-popup-error">{{ error }}</p>
-{% endfor %}
-
-
     
-
+    <p class="login-popup-error" id="login-popup-error"></p>
+    
     
     <span id="login-popup-username-head">Name/Email</span>
     <label for="id_username"></label> <input type="text" name="username" class="login-popup-username" required id="id_username" autocomplete="off">
@@ -213,9 +202,11 @@
     <span id="register-popup-head">REGISTER</span>
     <div id="register-popup-box-1"></div>
     <div id="register-popup-box-2"></div>
-    <form method="POST" action="{% url 'register' %}">
+    <form method="POST" id="registerForm">
     {% csrf_token %}
-  
+
+    <p class="login-popup-error" id="login-popup-error"></p>
+
     <span id="register-popup-username-head">Username</span>
     <label for="username"></label> <input type="text" name="username" id="username" class="register-popup-username" maxlength="100" autofocus required autocomplete="off">
     <span id="register-popup-email-head">Email</span>
@@ -248,15 +239,125 @@ function togglePopupRegister(){
   document.getElementById("register-popup").classList.toggle("active");
 }
 </script>
+
+<script>
+    
+    const form = document.getElementById('loginForm');
+    form.addEventListener("submit", submitHandler);
+
+    function submitHandler(e) {
+        e.preventDefault();
+          
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '{% url 'login_page' %}', // the url where we want to POST
+            data        : $('#loginForm').serialize(), // our form data
+            dataType    : 'json', // what type of data do we expect back from the server
+            success     : successFunction
+        });
+      
+    }
+
+    function successFunction(data) {
+      if(data.message === 'error')
+      {
+      alert(data.loginform);
+      
+        
+        for(field in data.loginform)
+        {
+            for(error in field.errors)
+            {
+                      document.getElementById("login-popup-error").innerHTML = error;
+                      alert("1");
+              
+            }
+   
+        }
+        for(error in loginform.non_field_errors)
+        {
+            document.getElementById("login-popup-error").innerHTML = error;
+            alert("2");
+        }
+     
+        
+      }
+      if(data.message === 'success')
+      {
+      alert("user logged in");
+      }
+
+    }
+</script> 
+
+
+<script>
+    
+    const regform = document.getElementById('registerForm');
+    regform.addEventListener("submit", regsubmitHandler);
+
+    function regsubmitHandler(e) {
+        e.preventDefault();
+          
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '{% url 'register' %}', // the url where we want to POST
+            data        : $('#registerForm').serialize(), // our form data
+            dataType    : 'json', // what type of data do we expect back from the server
+            success     : successRegFunction
+        });
+      
+    }
+
+    function successRegFunction(data) {
+      /*alert(typeof(data));*/
+      alert(data);
+      /*if(data.message === 'error')
+      {
+      alert(data.registerform);
+      var formError = data.registerform
+      alert(formError);  
+        for(var name in formError)
+        {
+            for(var i in formError[name])
+            {
+                      alert(formError[name][i].message);
+                      document.getElementById("login-popup-error").innerHTML = formError[name][i].message;
+                      
+              
+            }
+   
+        }
+        for(error in registerform.non_field_errors)
+        {
+            document.getElementById("login-popup-error").innerHTML = error;
+            alert("2");
+        }
+     
+        
+      }*/
+      if(data.message === 'success')
+      {
+      alert("user registered");
+      }
+
+    }
+</script> 
+
 <!--
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --> 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
-
+<script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous">
+</script>
 {% block script %}
 
 {% endblock script %}
 </body>
 </html>
+

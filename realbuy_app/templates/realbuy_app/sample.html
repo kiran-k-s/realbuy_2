@@ -22,6 +22,23 @@
       {% endfor %}
     </ul>
     {% endif %}
+
+
+    for(field in data.loginForm)
+{
+      for(error in field.errors)
+      {
+                document.getElementById("login-popup-error").innerHTML = error;
+                form.reset()
+        
+      }
+   
+}
+for(error in data.loginForm.non_field_errors)
+{
+    document.getElementById("login-popup-error").innerHTML = error;
+    form.reset()  
+}
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
